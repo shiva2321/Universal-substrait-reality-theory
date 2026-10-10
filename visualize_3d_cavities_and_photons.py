@@ -170,7 +170,7 @@ def plot_3d_and_photon_visualizations(data):
              bbox=dict(boxstyle="round,pad=0.8", fc="#fdfefe", ec="#7f8c8d", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\visualize_3d_cavities_and_photons.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'visualize_3d_cavities_and_photons.png')
     plt.savefig(output_path, dpi=300)
     print(f"Plot successfully saved to: {output_path}")
     

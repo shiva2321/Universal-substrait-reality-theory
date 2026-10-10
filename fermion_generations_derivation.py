@@ -1,4 +1,5 @@
 import numpy as np
+import os
 import scipy.constants as const
 import matplotlib.pyplot as plt
 
@@ -169,7 +170,7 @@ ax1.legend(facecolor='#21262d', edgecolor='#30363d', labelcolor='white', fontsiz
 ax1.grid(True, color='#30363d', ls=':', alpha=0.5)
 
 # Subplot 2: Mass Spectrum Comparison (Theory vs Experiment)
-particles = ['Electron ($e$)', 'Muon ($\mu$)', 'Tau ($\tau$)']
+particles = ['Electron ($e$)', 'Muon ($\\mu$)', 'Tau ($\\tau$)']
 x_pos = np.arange(3)
 width = 0.35
 
@@ -199,7 +200,7 @@ for k in range(3):
     polar_ax.plot(th, val, 'o', color=colors[k], markersize=12, label=f'Gen {k+1}: {labels[k].split()[0]}')
     polar_ax.plot([0, th], [0, val], color=colors[k], lw=2, ls='-')
 
-polar_ax.set_title('3. Basal Plane Tripartite Vector Representation ($120^\circ$ Phase)', color='white', fontsize=11, fontweight='bold', pad=15)
+polar_ax.set_title('3. Basal Plane Tripartite Vector Representation ($120^\\circ$ Phase)', color='white', fontsize=11, fontweight='bold', pad=15)
 polar_ax.legend(facecolor='#21262d', edgecolor='#30363d', labelcolor='white', loc='lower right', bbox_to_anchor=(1.3, -0.1), fontsize=8)
 
 # Subplot 4: Substrate Action Barrier Delta S
@@ -209,12 +210,12 @@ ax4.set_xticks([1, 2, 3])
 ax4.set_xticklabels(['Gen 1: Electron', 'Gen 2: Muon', 'Gen 3: Tau'], color='white')
 ax4.set_ylabel(r'Instanton Action $S = \ln(m_P / m)$')
 ax4.set_title('4. Generation Tunneling Action Barriers', fontsize=11, fontweight='bold')
-for i, txt in enumerate([f"$S_e = {S_k[0]:.2f}$", f"$S_\mu = {S_k[1]:.2f}$", f"$S_\\tau = {S_k[2]:.2f}$"]):
+for i, txt in enumerate([f"$S_e = {S_k[0]:.2f}$", f"$S_\\mu = {S_k[1]:.2f}$", f"$S_\\tau = {S_k[2]:.2f}$"]):
     ax4.annotate(txt, (k_vals[i] + 1, S_k[i] + 0.8), color='white', fontweight='bold', ha='center', fontsize=9)
 ax4.legend(facecolor='#21262d', edgecolor='#30363d', labelcolor='white')
 ax4.grid(True, color='#30363d', ls=':', alpha=0.5)
 
 plt.tight_layout()
-out_png = 'fermion_generations_derivation.png'
+out_png = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'fermion_generations_derivation.png')
 plt.savefig(out_png, dpi=300, facecolor=fig.get_facecolor(), edgecolor='none')
 print(f"\nPlot saved successfully to {out_png}")

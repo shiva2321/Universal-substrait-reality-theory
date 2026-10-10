@@ -7,6 +7,27 @@
 
 ---
 
+> **⚠ ERRATA / INDEPENDENT AUDIT (October 2026).** This document has been independently checked, and the full findings are in [`audit/USRT_AUDIT_REPORT.md`](audit/USRT_AUDIT_REPORT.md). Run `python3 audit/run_all.py` to reproduce every number. The prose below has **not** been rewritten. The main corrections:
+>
+> - **Lattice (§1 / Calc. 1.1–1.7).**
+>   - The FCC Cauchy–Born constants are C11 = √2 k/a and C12 = C44 = k/(√2 a), so the calibration constant is 28.8, not 7.2.
+>   - The lattice is elastically **anisotropic**. The low-energy speed of light would vary with direction by 17–33 %, against an experimental bound of about 1e-17.
+>   - The "4.23e19 GeV longitudinal gap" is the **top** of the phonon band, and the longitudinal branch is gapless.
+>   - Λ* = √(calibration constant) identically. Λ* > 0.3 implies a quantum *liquid*, which has no shear modulus.
+>   - c is an input, not an output: no velocity can be formed from ħ and G alone.
+> - **Gravity (§2).** The displacement u_r = −r_g/r is not a Navier–Cauchy solution. The 1.751″ deflection, γ = 1 and the Mercury advance come from the GR metric written in by hand. The scalar "cavitation" sector alone gives γ = 0 and is short-ranged (screened).
+> - **Mass formulas (§3, 4, 6.4, 8).** These are fits, not derivations, and they are excluded by measurement:
+>   - electron: 42σ;
+>   - proton ratio 6π⁵ + (3π/2)α: 5,523σ (6π⁵ is Lenz 1951);
+>   - muon with δ = 2/9: 452σ.
+>
+>   3/(8α) is Nottale's earlier relation. Koide's Q = 2/3 is a genuine but pre-existing empirical regularity.
+> - **Entanglement (§5.3).** With the quoted angles, the CHSH arithmetic gives S = 0 (b′ must be 3π/4). A local vortex model gives S = 2.000, and 2√2 appears only when the quantum rule is typed in.
+> - **Concordance table (§15).** Most "PASSED" rows are standard physics or identities (inputs returned as outputs), not tests of the substrate.
+> - **Figures.** Figure 1 (`hyperdimensional_reality_view.jpg`) is an AI-generated artist's impression. The original "isotropy" panel was hard-coded; the regenerated figure shows the computed anisotropy.
+
+---
+
 ## Abstract
 
 ### Technical Abstract

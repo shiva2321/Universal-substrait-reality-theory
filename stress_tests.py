@@ -8,6 +8,7 @@ Evaluates:
 5. Weak Equivalence Principle: MICROSCOPE satellite bound eta < 1e-15.
 """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -124,7 +125,7 @@ def plot_stress_tests(data):
     axs[1, 1].set_xlim(0, 32)
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\stress_tests.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'stress_tests.png')
     plt.savefig(output_path, dpi=300)
     print(f"Stress test plots successfully saved to: {output_path}")
 

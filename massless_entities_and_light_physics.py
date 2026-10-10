@@ -11,8 +11,11 @@ Key Physics Proven:
 1. Masslessness: Invariant mass m_gamma = (1/c^2) sqrt(E^2 - p^2 c^2) = 0 identically.
 2. Speed of Light: c = sqrt(mu_0 / rho_0) = 299,792,458 m/s derived from substrate elasticity.
 3. Vacuum Impedance & Constants: Z_0 = 376.730313668 Ohm, epsilon_0, mu_0, alpha.
-4. Transverse Polarization: Exactly 2 physical helicity states (lambda = +/- 1);
-   longitudinal mode frozen out by the 4.23e19 GeV compression gap.
+4. Transverse Polarization: Exactly 2 physical helicity states (lambda = +/- 1).
+   AUDIT: the original claim that the longitudinal mode is "frozen out by a
+   4.23e19 GeV compression gap" is wrong -- 4.23e19 GeV is the band TOP; the
+   longitudinal acoustic branch of any elastic medium is gapless (computed below).
+   Items 2-3 are identities (mu_sub is defined as rho_sub c^2; mu_0 is an input).
 5. Wave-Particle Duality: Action quantization S = oint p dq = n h across Planck lattice;
    photoelectric threshold E = h nu - Phi and Compton scattering Delta lambda = (h/m_e c)(1 - cos theta).
 6. Multi-Messenger & Empirical Benchmarks: PDG photon mass bound (< 1e-18 eV),
@@ -20,6 +23,7 @@ Key Physics Proven:
 ================================================================================
 """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
@@ -76,6 +80,9 @@ print(f"Vacuum Wave Impedance Z_0   : {Z_0_derived:.9f} Ohms (Target: {Z_0_codat
 print(f"Vacuum Permittivity eps_0   : {eps_0_derived:.12e} F/m (Target: {eps_0_codata:.12e} F/m, Match: 100.000000%)")
 print(f"Vacuum Permeability mu_0    : {mu_0_codata:.12e} H/m (Target: {mu_0_codata:.12e} H/m, Match: 100.000000%)")
 print(f"Fine Structure Constant alpha: 1 / {1.0/alpha_derived:.8f} (CODATA: 1 / {1.0/alpha_codata:.8f})")
+print("AUDIT: mu_sub was DEFINED above as rho_sub * c^2, and mu_0 is the CODATA input,")
+print("       so c, Z_0, eps_0 and alpha are reproduced by construction (identities),")
+print("       not derived. No substrate quantity fixes e or alpha here.")
 
 # -----------------------------------------------------------------------------
 # 3. DISPERSION RELATION, GROUP VELOCITY & STRICT MASSLESSNESS
@@ -104,28 +111,44 @@ v_g_photon   = np.full_like(p_photons, c_exact)
 print("\n--- [2] PROOF OF EXACT PHOTON MASSLESSNESS (m_gamma = 0) ---")
 print(f"Computed Invariant Mass m_gamma: {max_m_photon_eV:.2e} eV (Identically Zero)")
 print(f"PDG Experimental Upper Bound    : < {PDG_PHOTON_MASS_BOUND_EV:.2e} eV")
-print(f"Photon Mass Test Status         : PASSED (Exact theoretical zero matches PDG bound)")
+print(f"Photon Mass Test Status         : consistent (m = 0 is assumed via omega = c k; standard physics)")
 
 # -----------------------------------------------------------------------------
 # 4. TRANSVERSE POLARIZATION & LONGITUDINAL MODE FREEZE-OUT
 # -----------------------------------------------------------------------------
 # In a 3D elastic medium, both transverse (shear) and longitudinal (compression)
 # waves can exist in principle.
-# In USRT, the longitudinal compression mode has an energy gap:
-E_gap_GeV = 4.23e19 # Derived in foundational_substrate_potential.py
-# Thermal or excitation suppression factor for longitudinal mode:
-# P_longitudinal = exp(-E_gap / (k_B * T)) ~ 0 for any physical energy E << E_gap.
-# Therefore, div(A) = 0 (Coulomb / Transverse gauge) is an exact physical constraint.
-# Only 2 orthogonal transverse polarizations exist:
+# AUDIT (see audit/a01_lattice_dynamics.py): the original code asserted a
+# longitudinal "gap" E_gap = 4.23e19 GeV and a Boltzmann suppression
+# exp(-E_gap/E). That number is hbar*omega_max, the TOP of the phonon band,
+# not a gap. In any elastic lattice/solid the longitudinal (compression)
+# branch is acoustic: omega_L(k) = c_L k -> 0 as k -> 0. A 500 nm longitudinal
+# wave is therefore an ordinary low-energy excitation (energy ~ hbar c_L k),
+# exactly like the transverse ones. Removing it needs extra structure
+# (an incompressibility constraint K -> infinity, or an emergent gauge
+# redundancy as in Levin-Wen string-net / Volovik He-3A models). Below we
+# compute both acoustic branches of an isotropic Cauchy solid (lambda = mu,
+# the central-force Cauchy relation) to show the longitudinal branch is gapless.
+E_band_top_GeV = 4.23e19   # hbar*omega_max quoted by the original script (band top)
+c_T_rel = 1.0                                   # transverse speed (units of c)
+c_L_rel = np.sqrt((1.0 + 2.0) / 1.0)            # sqrt((lambda+2mu)/mu) = sqrt(3) for lambda = mu
+k_frac = np.linspace(0.0, 1.0, 400)             # k / k_BZ
+omega_T_rel = c_T_rel * (2.0/np.pi) * np.sin(0.5*np.pi*k_frac)   # monatomic-chain shaped branch
+omega_L_rel = c_L_rel * (2.0/np.pi) * np.sin(0.5*np.pi*k_frac)
+lam_test = 500e-9
+E_long_500nm_eV = hbar * c_L_rel * c_exact * (2*np.pi/lam_test) / e_charge
+# Only 2 orthogonal transverse polarizations exist for a GAUGE field:
 # eps_+ = (x_hat + i*y_hat) / sqrt(2)  (Helicity +1, Right Circular)
 # eps_- = (x_hat - i*y_hat) / sqrt(2)  (Helicity -1, Left Circular)
 # Helicity h = S . p / (|S| |p|) = +/- 1.
 
-print("\n--- [3] POLARIZATION & FREEZE-OUT OF LONGITUDINAL LIGHT ---")
-print(f"Longitudinal Mode Gap E_gap     : {E_gap_GeV:.2e} GeV (>> Planck scale)")
-print(f"Longitudinal Excitation Ratio   : exp(-E_gap / E_gamma) -> 0.000000000")
-print(f"Physical Photon Degrees of Freedom: Exactly 2 transverse helicity states (lambda = +1, -1)")
-print(f"Absence of Longitudinal Photon  : Confirmed by Gauge Invariance & Bulk Incompressibility")
+print("\n--- [3] POLARIZATION: THE LONGITUDINAL BRANCH IS NOT GAPPED ---")
+print(f"Value quoted as 'gap' (4.23e19 GeV): hbar*omega_max = BAND TOP, not a gap")
+print(f"Longitudinal acoustic branch     : omega_L = c_L k, c_L/c_T = {c_L_rel:.4f} (Cauchy solid), omega_L(0) = 0")
+print(f"Energy of a 500 nm longitudinal wave: {E_long_500nm_eV:.3f} eV (ordinary, NOT suppressed)")
+print(f"Measured photon: exactly 2 transverse helicity states (lambda = +1, -1)")
+print(f"AUDIT: an elastic substrate predicts a 3rd (longitudinal) light-like mode at")
+print(f"       all energies. The original 'freeze-out' claim was a misreading of the band top.")
 
 # -----------------------------------------------------------------------------
 # 5. WAVE-PARTICLE DUALITY & ACTION QUANTIZATION
@@ -175,7 +198,11 @@ print("\n--- [5] LORENTZ INVARIANCE & HIGH-ENERGY ASTROPHYSICS ---")
 print(f"USRT Dispersion Correction Order : n = 2 (superfluid symmetric lattice)")
 print(f"100 GeV Photon Speed Deviation   : Delta c / c = {0.5 * (100.0 / E_planck_GeV)**2:.2e}")
 print(f"Fermi-LAT GRB 090510 Bound       : Delta c / c < 1e-17")
-print(f"Astrophysical Consistency        : PERFECT (deviation is 17 orders of magnitude below bound)")
+print(f"Astrophysical Consistency        : consistent for an ISOTROPIC medium (deviation is 17 orders of magnitude below bound)")
+print("AUDIT: a discrete Planck lattice (HCP/FCC) is elastically anisotropic: the")
+print("       LONG-wavelength transverse speed varies by ~17% (HCP) / ~33% (FCC) with")
+print("       direction (audit/a01_lattice_dynamics.py). That is not Planck-suppressed and")
+print("       violates resonator isotropy bounds (~1e-17) unless fine-tuned (Collins et al. 2004).")
 
 # -----------------------------------------------------------------------------
 # 8. OTHER MASSLESS BOSONS: GRAVITONS & GLUONS
@@ -237,23 +264,21 @@ ax2.set_ylim(0, 1.1)
 ax2.grid(True, linestyle='--', alpha=0.6)
 ax2.legend(loc='lower right', fontsize=9.5)
 
-# Panel 3: Transverse Helicity Modes vs Frozen Longitudinal Mode
+# Panel 3: Acoustic branches of the elastic substrate (longitudinal is gapless)
 ax3 = fig.add_subplot(gs[0, 2])
-modes = [r'Helicity $\lambda = +1$' + '\n(Right Circular)', 
-         r'Helicity $\lambda = -1$' + '\n(Left Circular)', 
-         r'Longitudinal $\lambda = 0$' + '\n(Compression Mode)']
-energies = [0.0, 0.0, E_gap_GeV] # Effective mass/gap scale in GeV
-colors = ['#2ca02c', '#1f77b4', '#d62728']
-
-bars = ax3.bar(modes, [1.0, 1.0, 1e-19], color=colors, edgecolor='black', width=0.55)
-ax3.set_yscale('log')
-ax3.set_ylim(1e-25, 10)
-ax3.set_title(r"$\mathbf{(c)\ Polarization\ State\ Freedom\ & \ Gap}$", fontsize=12, fontweight='bold')
-ax3.set_ylabel("Excitation Probability in Vacuum", fontsize=11)
-ax3.text(0, 1.5, "PHYSICAL (Free)", ha='center', fontweight='bold', color='#2ca02c', fontsize=9)
-ax3.text(1, 1.5, "PHYSICAL (Free)", ha='center', fontweight='bold', color='#1f77b4', fontsize=9)
-ax3.text(2, 1e-15, f"FROZEN OUT\nGap: {E_gap_GeV:.2e} GeV\nProb: ~ 0", ha='center', fontweight='bold', color='#d62728', fontsize=9)
-ax3.grid(True, which='both', linestyle='--', alpha=0.5, axis='y')
+ax3.plot(k_frac, omega_T_rel, color='#2ca02c', lw=2.2, label=r'Transverse $\lambda=\pm1$ (2 branches)')
+ax3.plot(k_frac, omega_L_rel, color='#d62728', lw=2.2, label=r'Longitudinal $\lambda=0$ ($c_L=\sqrt{3}\,c_T$)')
+ax3.axhline(c_L_rel*(2.0/np.pi), color='gray', ls=':', lw=1.2)
+ax3.text(0.03, c_L_rel*(2.0/np.pi)*1.03, r"band top $\hbar\omega_{max}$ (mislabelled 'gap' = 4.2e19 GeV)", fontsize=8.5, color='gray')
+ax3.annotate("gapless: $\\omega_L \\to 0$ as $k \\to 0$", xy=(0.02, 0.03), xytext=(0.25, 0.35),
+             arrowprops=dict(arrowstyle='->', color='#d62728'), color='#d62728', fontsize=9.5, fontweight='bold')
+ax3.set_xlim(0, 1.0)
+ax3.set_ylim(0, 1.35)
+ax3.set_title(r"$\mathbf{(c)\ Acoustic\ Branches:\ No\ Longitudinal\ Gap}$", fontsize=12, fontweight='bold')
+ax3.set_xlabel(r"$k / k_{BZ}$", fontsize=11)
+ax3.set_ylabel(r"$\omega / \omega_{\rm scale}$", fontsize=11)
+ax3.legend(loc='lower right', fontsize=8.5)
+ax3.grid(True, linestyle='--', alpha=0.5)
 
 # Panel 4: Compton Scattering Wavelength Shift (Wavepacket Scattering)
 ax4 = fig.add_subplot(gs[1, 0])
@@ -306,16 +331,19 @@ scorecard_text = (
     f"   * Theory: m_g = 0.000 eV (Identical)\n"
     f"   * LIGO GW170817: < 1.2e-22 eV [CONFIRMED]\n\n"
     "3. Vacuum Characteristic Impedance Z_0:\n"
-    f"   * Theory: Z_0 = mu_0 * c = {Z_0_derived:.4f} Ohms\n"
-    f"   * CODATA: 376.7303 Ohms [100.000000%]\n\n"
+    f"   * Z_0 = mu_0 * c = {Z_0_derived:.4f} Ohms\n"
+    f"   * IDENTITY: mu_0 and c are inputs\n\n"
     "4. Vacuum Permittivity eps_0 & Permeability mu_0:\n"
-    f"   * eps_0 = {eps_0_derived:.6e} F/m [100.0000%]\n"
-    f"   * mu_0 = {mu_0_codata:.6e} N/A^2 [100.0000%]\n\n"
+    f"   * eps_0 = 1/(mu_0 c^2) = {eps_0_derived:.6e} F/m\n"
+    f"   * IDENTITY (mu_sub := rho_sub c^2)\n\n"
     "5. Helicity & Polarizations:\n"
-    "   * Transverse states: 2 (lambda = +/- 1)\n"
-    f"   * Longitudinal state: 0 (Frozen at {E_gap_GeV:.1e} GeV)\n\n"
+    "   * Observed: 2 transverse states\n"
+    "   * Elastic substrate: 3rd longitudinal\n"
+    "     branch is GAPLESS [OPEN PROBLEM]\n\n"
     "6. Lorentz Invariance Violation (LIV):\n"
-    "   * Delta c / c < 1e-34 (Fermi Limit: < 1e-17) [CONSISTENT]"
+    "   * Planck lattice: long-wave c anisotropy\n"
+    "     17-33% (HCP/FCC) vs bounds ~1e-17\n"
+    "     [FAILS unless fine-tuned; Collins 2004]"
 )
 
 ax6.text(0.02, 0.98, scorecard_text, fontsize=9.2, verticalalignment='top',
@@ -324,7 +352,7 @@ ax6.text(0.02, 0.98, scorecard_text, fontsize=9.2, verticalalignment='top',
 plt.suptitle("UNIFIED SUBSTRATE REALITY THEORY (USRT): MASSLESS ENTITIES & ELECTRODYNAMICS",
              fontsize=14, fontweight='bold', y=0.99)
 
-out_fig = "massless_entities_and_light_physics.png"
+out_fig = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'massless_entities_and_light_physics.png')
 plt.savefig(out_fig, dpi=300, bbox_inches='tight')
 print(f"\nFigure saved successfully to: {out_fig}")
 print("="*80)

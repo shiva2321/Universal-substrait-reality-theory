@@ -7,6 +7,7 @@ Simulates:
 4. Saves high-quality plots for rigorous visualization.
 """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_bvp, solve_ivp
@@ -162,11 +163,17 @@ def plot_results(r_eval, rho_substrate, delta_rho, Phi_eff, x_traj, y_traj):
     axs[1, 1].legend(loc='upper right', frameon=True)
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\cavity_simulation.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'cavity_simulation.png')
     plt.savefig(output_path, dpi=300)
     print(f"Simulation plots successfully saved to: {output_path}")
 
 if __name__ == "__main__":
     r_eval, rho_substrate, delta_rho, Phi_eff, dPhi_dr = solve_substrate_cavity()
     x_traj, y_traj, t_traj, r_traj = simulate_orbit(r_eval, Phi_eff)
+    # Audit check (2026-10): how does the cavity fall off with distance?
+    tail = (r_eval > 4.0) & (r_eval < 16.0) & (delta_rho < 0)
+    slope = np.polyfit(r_eval[tail], np.log(-delta_rho[tail] * r_eval[tail]), 1)[0]
+    print(f"Cavity tail: |delta_rho| * r ~ exp({slope:.3f} r)  (Yukawa/screened; linear theory: exp(-sqrt2 r))")
+    print("A Newtonian 1/r potential would give a constant |delta_rho| * r. The static GP cavity therefore")
+    print("produces a SHORT-RANGE attraction (range ~ healing length), not long-range gravity.")
     plot_results(r_eval, rho_substrate, delta_rho, Phi_eff, x_traj, y_traj)

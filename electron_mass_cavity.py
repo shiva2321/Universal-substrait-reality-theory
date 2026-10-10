@@ -9,8 +9,16 @@ Evaluates:
    - Quantum Spin: S = r_C * (E / c) = hbar / 2.
    - Magnetic Moment: mu = I * Area = e * hbar / (2 * m_e) = mu_B (Bohr Magneton).
 3. Self-Induced Substrate Cavity Profile keeping the wave trapped.
+
+AUDIT NOTE (see audit/USRT_AUDIT_REPORT.md):
+   r_C is defined from the measured m_e, so E = m_e c^2 and mu = mu_B are
+   identities, not derivations. The angular momentum actually computed is
+   L = r_C E / c = hbar (spin 1); the factor 1/2 was typed in. With L = hbar
+   the g-factor is 1, not the measured 2.0023. The cavity profile in panel 2
+   is a hand-drawn Gaussian, not a solved field equation.
 """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -36,10 +44,12 @@ def calculate_electron_soliton():
     E_joules = hbar * omega_Z                   # 8.1871e-14 J
     E_MeV = (E_joules / eV) / 1e6               # 0.5109989 MeV
     
-    # 4. Spin angular momentum of the circulating wave
-    # Angular momentum L = r_C * p = r_C * (E / c) = hbar
-    # Accounting for half-integral phase winding (double-cover SU(2)):
-    S_spin = hbar / 2.0
+    # 4. Angular momentum of the circulating wave
+    # AUDIT: computed honestly, L = r_C * p = r_C * (E / c) = hbar (spin-1, not 1/2).
+    # The original code then *assigned* S = hbar/2 by hand ("double cover");
+    # nothing in this loop model produces the factor 1/2.
+    L_orbital = r_C * (E_joules / c)
+    S_spin = L_orbital
     
     # 5. Effective current and magnetic moment
     # Current I = e * nu_Z
@@ -48,8 +58,18 @@ def calculate_electron_soliton():
     Area = np.pi * (r_C**2)
     # Magnetic dipole moment mu = I * Area
     mu_calc = I_current * Area                  # 9.2740e-24 J/T
-    mu_Bohr = (e_charge * hbar) / (2.0 * m_e)   # 9.2740e-24 J/T (Exact match!)
-    
+    mu_Bohr = (e_charge * hbar) / (2.0 * m_e)   # 9.2740e-24 J/T
+    # AUDIT: mu = I*A = e c r_C / 2 = e hbar / (2 m_e) is an identity once
+    # r_C = hbar/(m_e c) is chosen; it is not a prediction. The physical
+    # check is the g-factor: g = 2 m_e mu / (e L). With L = hbar this gives
+    # g = 1, whereas the measured electron has g = 2.00231930436.
+    g_factor = 2.0 * m_e * mu_calc / (e_charge * L_orbital)
+    print(f"  L = r_C * E / c          = {L_orbital/hbar:.6f} hbar  (code previously asserted hbar/2)")
+    print(f"  mu = I * A               = {mu_calc/mu_Bohr:.6f} mu_B (identity given r_C = hbar/m_e c)")
+    print(f"  g = 2 m_e mu / (e L)     = {g_factor:.6f}   (measured g_e = 2.00231930436)")
+    print("  AUDIT: the circulating-loop picture is the Williamson-van der Mark / Hestenes")
+    print("  zitterbewegung model (prior art). As coded it gives spin 1 and g = 1, not 1/2 and 2.")
+
     return {
         "lambda_C": lambda_C,
         "r_C": r_C,
@@ -58,7 +78,9 @@ def calculate_electron_soliton():
         "E_MeV": E_MeV,
         "S_spin": S_spin,
         "mu_calc": mu_calc,
-        "mu_Bohr": mu_Bohr
+        "mu_Bohr": mu_Bohr,
+        "g_factor": g_factor,
+        "hbar": hbar
     }
 
 def simulate_electron_cavity_profile(r_C):
@@ -121,17 +143,19 @@ def plot_electron_mass_cavity(p, r, rho_wave, rho_sub, V_conf):
     # Subplot 3: Derivation Ledger & Exact Match with Nature
     axs[1, 0].axis('off')
     ledger_text = (
-        "=== EXACT MATHEMATICAL DERIVATION OF THE ELECTRON ===\n\n"
-        f"1. REDUCED COMPTON RADIUS:  r_C = hbar / (m_e * c) = {p['r_C']*1e13:.3f} x 10^-13 m\n"
-        f"2. ZITTERBEWEGUNG FREQUENCY: nu = c / (2*pi*r_C)     = {p['nu_Z']*1e-20:.4f} x 10^20 Hz\n"
-        f"3. TRAPPED WAVE ENERGY:      E = h * nu = hbar*omega = {p['E_MeV']:.4f} MeV\n"
-        f"   => REST MASS GENERATED:   m_e = E / c^2           = 9.109 x 10^-31 kg\n\n"
-        "4. DERIVED QUANTUM SPIN:\n"
-        f"   S = r_C * (E / c) * (1/2) = hbar / 2 (Spin-1/2 Dirac Fermion!)\n\n"
-        "5. DERIVED MAGNETIC DIPOLE MOMENT:\n"
-        f"   mu_derived = Current * Area = {p['mu_calc']:.4e} J/T\n"
-        f"   mu_Bohr    = e * hbar / (2*m_e) = {p['mu_Bohr']:.4e} J/T\n"
-        "   AGREEMENT WITH REAL EXPERIMENT: 100.000% EXACT MATCH!"
+        "=== LOOP-ELECTRON LEDGER (AUDITED) ===\n\n"
+        f"1. INPUT RADIUS:  r_C = hbar / (m_e * c) = {p['r_C']*1e13:.3f} x 10^-13 m\n"
+        "   (m_e is an INPUT here; everything below is an identity)\n"
+        f"2. LOOP FREQUENCY: nu = c / (2*pi*r_C)   = {p['nu_Z']*1e-20:.4f} x 10^20 Hz\n"
+        f"3. LOOP ENERGY:    E = hbar*omega        = {p['E_MeV']:.4f} MeV (= m_e c^2 by construction)\n\n"
+        "4. ANGULAR MOMENTUM (computed):\n"
+        f"   L = r_C * (E / c) = {p['S_spin']/p['hbar']:.3f} hbar   -> spin 1, NOT 1/2\n"
+        "   (the original ledger inserted a factor 1/2 by hand)\n\n"
+        "5. MAGNETIC MOMENT:\n"
+        f"   mu = I * Area = {p['mu_calc']:.4e} J/T = mu_B (identity)\n"
+        f"   g = 2 m_e mu / (e L) = {p['g_factor']:.3f}   vs measured 2.0023\n"
+        "   => model FAILS the g-factor test (prior art: Williamson-\n"
+        "      van der Mark 1997, Hestenes zitterbewegung)"
     )
     axs[1, 0].text(0.02, 0.98, ledger_text, va='top', ha='left', family='monospace', fontsize=10.0,
                    bbox=dict(boxstyle="round,pad=0.8", fc="#fdfefe", ec="#bdc3c7", lw=1.5))
@@ -139,10 +163,11 @@ def plot_electron_mass_cavity(p, r, rho_wave, rho_sub, V_conf):
     # Subplot 4: Summary Table
     axs[1, 1].axis('off')
     summary_text = (
-        "=== WHY THE ELECTRON HAS MASS: THE COMPLETE MECHANISM ===\n\n"
-        "1. YES, YOU ARE SPOT ON:\n"
-        "   The electron's mass is literally a LIGHT-SPEED RIPPLE\n"
-        "   TRAPPED IN A SELF-INDUCED CAVITY!\n\n"
+        "=== THE TRAPPED-WAVE PICTURE (CONJECTURE) ===\n\n"
+        "1. THE IDEA (sound part: Einstein-box inertia):\n"
+        "   Any confined energy E has inertia E/c^2. A ripple\n"
+        "   trapped in a cavity therefore has rest mass.\n"
+        "   (Open: why E = 0.511 MeV, and spin 1/2 / g = 2.)\n\n"
         "2. HOW IT IS TRAPPED:\n"
         "   - A free light ripple travels in a straight line at c.\n"
         "     Because it moves at c, it has NO rest mass (m = 0).\n"
@@ -164,7 +189,7 @@ def plot_electron_mass_cavity(p, r, rho_wave, rho_sub, V_conf):
                    bbox=dict(boxstyle="round,pad=0.8", fc="#e8f8f5", ec="#1abc9c", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\electron_mass_cavity.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'electron_mass_cavity.png')
     plt.savefig(output_path, dpi=300)
     print(f"Electron mass cavity plots saved to: {output_path}")
 

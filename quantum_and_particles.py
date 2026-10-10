@@ -6,6 +6,7 @@ Simulation and Mathematical Proofs of:
 4. Spin & Fermions (Topological vortex winding and 4-pi rotation invariance).
 """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -140,7 +141,7 @@ def plot_quantum_and_particles(th_deg, I_tot, diff_env, E_vals, T_prob, th_rot, 
                    ha='center', fontsize=10, bbox=dict(boxstyle="round,pad=0.4", fc="white", ec="red", alpha=0.9))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\quantum_and_particles.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'quantum_and_particles.png')
     plt.savefig(output_path, dpi=300)
     print(f"Quantum and particles plots saved to: {output_path}")
 

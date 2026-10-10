@@ -7,6 +7,7 @@ Simulation and Mathematical Modeling of:
 3. 2D/3D Cross-Sections of Cavity Wells at Increasing Energy Levels.
 """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -144,7 +145,7 @@ def plot_cavity_energy_scaling(data):
                    bbox=dict(boxstyle="round,pad=0.8", fc="#fdfefe", ec="#bdc3c7", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\cavity_energy_scaling.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'cavity_energy_scaling.png')
     plt.savefig(output_path, dpi=300)
     print(f"Cavity energy scaling plots saved to: {output_path}")
 

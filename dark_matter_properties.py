@@ -172,7 +172,7 @@ def plot_dark_matter_properties(data):
              bbox=dict(boxstyle="round,pad=0.8", fc="#fdfefe", ec="#2c3e50", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\dark_matter_properties.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'dark_matter_properties.png')
     plt.savefig(output_path, dpi=300)
     print(f"Dark Matter properties plot saved to: {output_path}")
     

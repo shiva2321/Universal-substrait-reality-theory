@@ -7,6 +7,7 @@ Evaluates:
 3. The Proton (99% of human mass): Relativistic quarks & gluon flux-tubes bouncing at 99.9% c.
 """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -136,7 +137,7 @@ def plot_what_gets_trapped(a_accel, F_rad, m_iner, X, Y, R, psi_trap, cav_wall):
                    bbox=dict(boxstyle="round,pad=0.8", fc="#e8f8f5", ec="#1abc9c", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\what_gets_trapped.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'what_gets_trapped.png')
     plt.savefig(output_path, dpi=300)
     print(f"What gets trapped plot saved to: {output_path}")
 

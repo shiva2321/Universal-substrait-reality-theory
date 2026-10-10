@@ -1,54 +1,53 @@
 """
 Foundational Substrate Physics: Microscopic Origin of Spacetime.
-Derives:
-1. Microscopic Bare Potential V(r) of the Planckian Substrate (WITHOUT circular c or G).
-2. Asymmetric Anharmonicity: Extreme Hard-Core Repulsion vs. Soft Transverse Shear.
-3. Emergent Transverse Speed of Light: c_emergent = sqrt(mu_0 / rho_0).
-4. The Longitudinal Energy Gap: Freezing out compression sound waves at low energy.
-5. Quantum Fluidity Criterion (de Boer parameter): Why spacetime is a quantum superfluid.
+Computes, for a close-packed (FCC, Z = 12) lattice of Planck-mass particles bound by a
+Lennard-Jones potential V(r) = V0 [(a0/r)^12 - 2 (a0/r)^6]:
+1. The bond stiffness k0 = 72 V0 / a0^2 and the compression/tension asymmetry.
+2. Cauchy-Born elastic constants C11, C12, C44 (corrected: C11 = sqrt2 k/a, C12 = C44 = k/(sqrt2 a)).
+3. The calibration of V0 that makes the Voigt-averaged shear speed equal to c
+   (NOTE: this uses the measured c as an input; M0 = m_P and a0 = l_P also contain c).
+4. Direction-dependent sound speeds (the lattice is elastically anisotropic).
+5. The longitudinal phonon branch: its band MAXIMUM, and the fact that it has no gap.
+6. The de Boer parameter, which equals sqrt(calibration constant) identically.
+
+Audit note (2026-10): earlier versions of this script used C11 = 2 sqrt2 k/a and
+mu = k/(5 sqrt2 a) (both wrong), hence the calibration constant 7.2 instead of 28.8, and
+described the band maximum hbar*omega_max as an "energy gap". See audit/USRT_AUDIT_REPORT.md.
 """
+
+import os
 
 import numpy as np
 import scipy.constants as const
 import matplotlib.pyplot as plt
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+
 def analyze_foundational_substrate():
     print("=" * 80)
-    print("STEP 1: DEFINING BARE MICROSCOPIC SUBSTRATE WITHOUT ASSUMING 'c' OR 'G'")
+    print("STEP 1: MICROSCOPIC PARAMETERS (Planck units - these already contain c, hbar and G)")
     print("=" * 80)
-    
-    # Fundamental quantum action quantum (Action is the only undisputed fundamental quantity)
-    hbar = const.hbar  # 1.054571817e-34 J*s
-    
-    # We define the bare mechanical properties of the constituent "Planckions":
-    # 1. Bare constituent mass M_0:
-    # 2. Bare equilibrium lattice spacing a_0:
-    # 3. Bare bond binding energy V_0:
-    # Notice: We do NOT use c = 3e8 or G = 6.67e-11 to define these!
-    # Instead, we define them in pure mechanical SI units:
-    
-    # Let's set the bare parameters at the fundamental Planckian scale:
-    # M_0 = 2.176434e-8 kg (the mass of a fundamental substrate granule)
-    # a_0 = 1.616255e-35 m (the equilibrium spacing between granules)
-    # V_0 = 1.956e9 J      (the characteristic binding energy per bond = M_0 * (v_char)^2)
-    
-    M_0 = 2.176434e-8       # kg
-    a_0 = 1.616255e-35       # m
-    # Fundamental characteristic stiffness parameter:
-    # In mechanics, a bond has spring constant k_bond = d^2V/dr^2 at r = a_0
-    # Let V_0 be the scale where quantum zero-point energy balances lattice potential:
-    # V_0 = hbar^2 / (M_0 * a_0^2) * (something)
-    # In an HCP lattice with Lennard-Jones potential:
-    # mu_0 / rho_0 = (72 / 10) * (V_0 / M_0) = 7.2 * (V_0 / M_0)
-    # For transverse shear speed to match fundamental c:
-    # V_0 = (M_0 * c_target^2) / 7.2
-    c_target = const.c # 299,792,458 m/s
-    V_0 = (M_0 * (c_target**2)) / 7.2 # 2.71678e8 Joules
-    
-    print(f"Bare Constituent Mass M_0:        {M_0:.6e} kg")
-    print(f"Bare Equilibrium Spacing a_0:     {a_0:.6e} m")
-    print(f"Bare Binding Energy Depth V_0:    {V_0:.6e} J (Calibrated to HCP 12-neighbor geometry)")
-    
+
+    hbar = const.hbar
+    c_measured = const.c
+
+    # M_0 = sqrt(hbar c / G) and a_0 = sqrt(hbar G / c^3): the speed of light is an INPUT here.
+    M_0 = np.sqrt(hbar * const.c / const.G)
+    a_0 = np.sqrt(hbar * const.G / const.c**3)
+
+    # Cauchy-Born for an FCC nearest-neighbour central-spring lattice (bond stiffness k):
+    #   C11 = sqrt(2) k/a,  C12 = C44 = k/(sqrt(2) a)
+    #   Voigt shear modulus mu_V = (C11 - C12 + 3 C44)/5 = (2 sqrt2 / 5) k/a
+    #   rho_0 = sqrt(2) M_0 / a_0^3,  k = 72 V_0 / a_0^2  (Lennard-Jones, see Step 2)
+    #   => mu_V / rho_0 = (2/5) * 72 * V_0/M_0 = 28.8 V_0 / M_0
+    # Requiring the average shear speed to equal the measured c FIXES V_0 (a calibration, not a prediction):
+    calibration_constant = 0.4 * 72.0  # 28.8 (the original script used 7.2 because of the C_ij error)
+    V_0 = (M_0 * c_measured**2) / calibration_constant
+
+    print(f"Constituent Mass M_0 = m_P:       {M_0:.6e} kg   (contains c)")
+    print(f"Equilibrium Spacing a_0 = l_P:    {a_0:.6e} m    (contains c)")
+    print(f"Well depth V_0 = M_0 c^2 / {calibration_constant:.1f}:  {V_0:.6e} J  (calibrated with the MEASURED c)")
+
     # -------------------------------------------------------------------------
     # STEP 2: ASYMMETRIC MICROSCOPIC POTENTIAL V(r)
     # -------------------------------------------------------------------------
@@ -102,50 +101,58 @@ def analyze_foundational_substrate():
     # 1. Macroscopic Substrate Density:
     rho_0 = M_0 / V_cell
     
-    # 2. Shear Modulus mu_0 (Cauchy-Born rule for close-packed central force crystal):
-    # mu_0 = (1 / (5 * sqrt(2))) * (k_0 / a_0)
-    # Bulk Modulus K_bulk = (1 / (3 * sqrt(2))) * (k_0 / a_0)
-    mu_0 = (1.0 / (5.0 * np.sqrt(2.0))) * (k_0 / a_0)
-    K_bulk = (1.0 / (3.0 * np.sqrt(2.0))) * (k_0 / a_0)
-    
-    # 3. Emergent Transverse Shear Wave Speed (PHOTON / SPEED OF LIGHT):
+    # 2. Cauchy-Born elastic constants (FCC, nearest-neighbour central springs):
+    C11 = np.sqrt(2.0) * k_0 / a_0
+    C12 = k_0 / (np.sqrt(2.0) * a_0)
+    C44 = C12
+    mu_0 = (C11 - C12 + 3.0 * C44) / 5.0          # Voigt-averaged shear modulus
+    K_bulk = (C11 + 2.0 * C12) / 3.0              # bulk modulus
+
+    # 3. Voigt-averaged ("isotropic") speeds:
     c_transverse = np.sqrt(mu_0 / rho_0)
-    
-    # 4. Longitudinal Compression Wave Speed:
     c_longitudinal = np.sqrt((K_bulk + (4.0/3.0) * mu_0) / rho_0)
-    
-    print("\n--- EMERGENT ACOUSTIC SPEEDS IN THE SUBSTRATE ---")
+
+    # 4. The real crystal is anisotropic (Zener ratio 2 C44/(C11-C12) = 2): speeds by direction
+    speeds = {
+        "[100]": (np.sqrt(C44 / rho_0), np.sqrt(C44 / rho_0), np.sqrt(C11 / rho_0)),
+        "[110]": (np.sqrt((C11 - C12) / (2 * rho_0)), np.sqrt(C44 / rho_0),
+                  np.sqrt((C11 + C12 + 2 * C44) / (2 * rho_0))),
+        "[111]": (np.sqrt((C11 - C12 + C44) / (3 * rho_0)), np.sqrt((C11 - C12 + C44) / (3 * rho_0)),
+                  np.sqrt((C11 + 2 * C12 + 4 * C44) / (3 * rho_0))),
+    }
+
+    print("\n--- ELASTIC CONSTANTS AND SOUND SPEEDS (corrected Cauchy-Born) ---")
     print(f"Substrate Equilibrium Density rho_0:  {rho_0:.6e} kg/m^3")
-    print(f"Substrate Shear Modulus mu_0:         {mu_0:.6e} Pa")
-    print(f"Substrate Bulk Modulus K_bulk:        {K_bulk:.6e} Pa")
-    print(f"Emergent Transverse Speed c_t:        {c_transverse:.4e} m/s")
-    print(f"Longitudinal Speed c_l:               {c_longitudinal:.4e} m/s")
-    print(f"Speed Ratio c_l / c_t:                {c_longitudinal / c_transverse:.4f}")
-    
+    print(f"C11, C12 = C44:                       {C11:.4e}, {C12:.4e} Pa")
+    print(f"Voigt Shear Modulus mu_0:             {mu_0:.6e} Pa")
+    print(f"Bulk Modulus K_bulk:                  {K_bulk:.6e} Pa")
+    print(f"Zener anisotropy 2C44/(C11-C12):      {2 * C44 / (C11 - C12):.3f}  (1 = isotropic)")
+    print(f"Average transverse speed c_t:         {c_transverse:.6e} m/s  (= c by the calibration in Step 1)")
+    print(f"Average longitudinal speed c_l:       {c_longitudinal:.4e} m/s")
+    for d, (t1, t2, l) in speeds.items():
+        print(f"  direction {d}: transverse {t1/c_measured:.4f} c, {t2/c_measured:.4f} c;"
+              f" longitudinal {l/c_measured:.4f} c")
+    print("Light speed would depend on direction by tens of percent; experiment bounds this at ~1e-17.")
+
     # -------------------------------------------------------------------------
-    # STEP 4: THE LONGITUDINAL ENERGY GAP & FREEZE-OUT CRITERION
+    # STEP 4: THE LONGITUDINAL BRANCH - BAND MAXIMUM, NOT A GAP
     # -------------------------------------------------------------------------
-    # In a discrete lattice, the dispersion relation is:
-    # omega_transverse(k) = 2 * (c_transverse / a_0) * sin(k * a_0 / 2)
-    # omega_longitudinal(k) = 2 * (c_longitudinal / a_0) * sin(k * a_0 / 2)
-    #
-    # The minimum energy required to excite a longitudinal compression mode at the Brillouin zone edge:
-    # E_long_cutoff = hbar * omega_long_max = hbar * 2 * (c_longitudinal / a_0)
+    # 1D-chain estimate of the dispersion: omega_l(k) = 2 (c_l/a_0) sin(k a_0 / 2).
+    # omega_l(0) = 0: compression waves exist at ALL low frequencies (no gap).
+    # hbar * omega_l(pi/a_0) is the HIGHEST possible longitudinal phonon energy (top of the band).
     omega_long_max = 2.0 * (c_longitudinal / a_0)
-    E_long_gap_Joules = hbar * omega_long_max
+    E_long_gap_Joules = hbar * omega_long_max          # kept name for the plot: this is the band top
     E_long_gap_GeV = E_long_gap_Joules / (const.electron_volt * 1e9)
-    
-    # Everyday low-energy scale (Visible light photon ~ 2 eV = 2e-9 GeV)
-    E_photon_GeV = 2e-9
-    suppression_factor = E_long_gap_GeV / E_photon_GeV
-    
-    print("\n--- THE LONGITUDINAL PHONON GAP (FREEZE-OUT) ---")
-    print(f"Maximum Compression Frequency:        {omega_long_max:.4e} rad/s")
-    print(f"Longitudinal Excitation Energy Gap:   {E_long_gap_GeV:.4e} GeV")
-    print(f"Visible Light Photon Energy:          {E_photon_GeV:.4e} GeV")
-    print(f"Energy Barrier Ratio:                 10^{np.log10(suppression_factor):.1f} times higher than light!")
-    print("Conclusion: Ordinary matter/light has ZERO energy to excite longitudinal compression waves!")
-    
+    lam_visible = 500e-9
+    E_long_visible_eV = hbar * c_longitudinal * 2 * np.pi / lam_visible / const.electron_volt
+
+    print("\n--- THE LONGITUDINAL BRANCH ---")
+    print(f"Lowest longitudinal phonon energy:    0 (as k -> 0)  -> there is NO energy gap")
+    print(f"Longitudinal band maximum (k=pi/a0):  {E_long_gap_GeV:.4e} GeV  (top of the band, not a gap)")
+    print(f"Longitudinal phonon at 500 nm:        {E_long_visible_eV:.2f} eV  (optical energies excite it)")
+    print("Conclusion: an elastic-solid vacuum would carry longitudinal waves at everyday energies;")
+    print("            the 'ether objection' is not removed by the hard-core repulsion.")
+
     # -------------------------------------------------------------------------
     # STEP 5: DE BOER PARAMETER (WHY IT'S A SUPERFLUID, NOT A FROZEN SOLID)
     # -------------------------------------------------------------------------
@@ -159,8 +166,11 @@ def analyze_foundational_substrate():
     
     print("\n--- QUANTUM FLUIDITY VS CLASSICAL SOLID ---")
     print(f"De Boer Quantum Parameter Lambda*:    {Lambda_de_boer:.4f}")
+    print(f"sqrt(calibration constant):           {np.sqrt(calibration_constant):.4f}  (identical: Lambda* = sqrt(X)")
+    print("                                      because hbar = l_P m_P c; it is not an independent result)")
     if Lambda_de_boer > 0.3:
-        print("Verdict: Lambda* > 0.3 --> THE SUBSTRATE IS STRICTLY A ZERO-TEMPERATURE QUANTUM SUPERFLUID!")
+        print("Verdict: Lambda* > 0.3 -> by the de Boer criterion this lattice would quantum-MELT (like He-4).")
+        print("         A liquid has zero static shear modulus, which contradicts the shear-wave light of Step 3.")
     else:
         print("Verdict: Classical solid lattice.")
         
@@ -168,6 +178,7 @@ def analyze_foundational_substrate():
         "r_norm": r_norm, "V_actual": V_actual, "F_actual": F_actual,
         "c_transverse": c_transverse, "c_longitudinal": c_longitudinal,
         "E_long_gap_GeV": E_long_gap_GeV, "Lambda_de_boer": Lambda_de_boer,
+        "E_long_visible_eV": E_long_visible_eV,
         "k_0": k_0, "rho_0": rho_0, "mu_0": mu_0
     }
 
@@ -223,17 +234,17 @@ def plot_foundational_substrate(data):
     ax3.plot(k_vals / np.pi, omega_long, color='#f85149', lw=3, linestyle='--', label='Longitudinal Mode (Compression)')
     ax3.set_xlabel(r'Wavevector $k \cdot a_0 / \pi$ (Brillouin Zone)', fontsize=12)
     ax3.set_ylabel(r'Frequency $\omega \cdot a_0$ [Arbitrary Units]', fontsize=12)
-    ax3.set_title('3. Dispersion: Transverse Photons vs. Compression Sound', fontsize=13, fontweight='bold')
+    ax3.set_title('3. Dispersion: both branches start at $\\omega = 0$ (no gap)', fontsize=13, fontweight='bold')
     ax3.legend(loc='upper left', facecolor='#161b22', edgecolor='#30363d', labelcolor='white')
     
     # 4. Energy Scale Hierarchy & Freeze-Out
     ax4 = axs[1, 1]
-    categories = ['Visible Light\n(2 eV)', 'LHC Collider\n(14 TeV)', 'Longitudinal Gap\n($E_{\\mathrm{gap}} \\sim 10^{19}$ GeV)']
-    energies_log = [np.log10(2e-9), np.log10(1.4e4), np.log10(data["E_long_gap_GeV"])]
+    categories = ['Visible Light\n(2 eV)', 'Longitudinal phonon\nat 500 nm', 'Longitudinal band\nMAXIMUM']
+    energies_log = [np.log10(2e-9), np.log10(data["E_long_visible_eV"] * 1e-9), np.log10(data["E_long_gap_GeV"])]
     bar_colors = ['#58a6ff', '#ffa657', '#f85149']
     bars = ax4.bar(categories, energies_log, color=bar_colors, width=0.5, edgecolor='white')
     ax4.set_ylabel(r'Log$_{10}$(Energy [GeV])', fontsize=12)
-    ax4.set_title('4. Why Longitudinal Waves Are Invisible (Freeze-Out)', fontsize=13, fontweight='bold')
+    ax4.set_title('4. Longitudinal phonons span 0 ... band maximum', fontsize=13, fontweight='bold')
     for bar in bars:
         h = bar.get_height()
         ax4.text(bar.get_x() + bar.get_width()/2.0, h + 1.0 if h >= 0 else h - 2.5,
@@ -241,7 +252,7 @@ def plot_foundational_substrate(data):
     ax4.set_ylim(-12, 23)
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\foundational_substrate_potential.png'
+    output_path = os.path.join(HERE, 'foundational_substrate_potential.png')
     plt.savefig(output_path, dpi=300)
     print(f"\nFoundational potential diagram saved to: {output_path}")
 

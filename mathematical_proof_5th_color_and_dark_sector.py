@@ -7,6 +7,7 @@ Mathematical and Numerical Proof:
 5. Cosmological Density Ratio: Planck Satellite Benchmark (Omega_DM / Omega_b = 5.39).
 """
 
+import os
 import numpy as np
 import scipy.constants as const
 from scipy.integrate import solve_ivp
@@ -124,13 +125,32 @@ def prove_color_merger_and_dark_state():
             d2V = - (2.0 / x) * dV + psi**2
         return [dpsi, d2psi, dV, d2V]
     
-    # Standard ground state eigenvalue for GPP: V_0 \approx -0.6922
-    V_0_eigen = -0.6922
+    # Audit fix: the previous version hard-coded V_0 = -0.6922 (a value from a DIFFERENT scaling of
+    # the equations). In this scaling psi then crosses zero at x ~ 2.6 and the old code hid that by
+    # clipping psi < 0. The ground-state eigenvalue is found here by shooting (nodeless, psi -> 0).
+    def _shoot(V0, xmax=12.0):
+        x0 = 1e-4
+        y_init = [1 + (V0 - 1) * x0**2 / 6, (V0 - 1) * x0 / 3, V0 + x0**2 / 6, x0 / 3]
+        crosses = lambda x, y: y[0]
+        crosses.terminal = True
+        blows = lambda x, y: y[0] - 2.0
+        blows.terminal = True
+        sol = solve_ivp(gpp_system, (x0, xmax), y_init, events=[crosses, blows],
+                        rtol=1e-10, atol=1e-12, max_step=0.01)
+        return -1 if sol.t_events[0].size else (1 if sol.t_events[1].size else 0)
+    lo, hi = -2.0, 0.9
+    for _ in range(60):
+        mid = 0.5 * (lo + hi)
+        if _shoot(mid) == _shoot(lo):
+            lo = mid
+        else:
+            hi = mid
+    V_0_eigen = 0.5 * (lo + hi)
     y0 = [1.0, 0.0, V_0_eigen, 0.0]
     
-    x_span = (1e-4, 8.0)
-    x_eval = np.linspace(1e-4, 8.0, 400)
-    sol_gpp = solve_ivp(gpp_system, x_span, y0, t_eval=x_eval, method='RK45')
+    x_span = (1e-4, 6.0)  # stop before the (unavoidable) shooting instability in the far tail
+    x_eval = np.linspace(1e-4, 6.0, 400)
+    sol_gpp = solve_ivp(gpp_system, x_span, y0, t_eval=x_eval, method='RK45', rtol=1e-10, atol=1e-12)
     
     x_dim = sol_gpp.t
     psi_sol = sol_gpp.y[0]
@@ -147,8 +167,12 @@ def prove_color_merger_and_dark_state():
     
     print(f"GPP Ground State Eigenvalue V(0): {V_0_eigen:.4f}")
     print(f"Core Slope d rho / dr at r = 0:   {2.0 * psi_sol[0] * sol_gpp.y[1][0]:.4e} (STRICTLY FLAT CORE!)")
-    print(f"Core-Cusp Problem:                RESOLVED! Quantum pressure hbar^2/(2m) eliminates r=0 cusp!")
-    print(f"Max Halo Orbital Speed:           {np.max(v_orbital_kms):.1f} km/s (Matches Milky Way ~ 220 km/s)")
+    print(f"Core-Cusp:                        flat soliton core (standard 'fuzzy dark matter' result,")
+    print(f"                                  Schive et al. 2014); requires boson mass ~1e-22 eV, which")
+    print(f"                                  Lyman-alpha data now disfavour (m > ~2e-20 eV, Rogers & Peiris 2021).")
+    print(f"Note: the SO(10) singlet ('16th state') is a FERMION (right-handed neutrino); fermions cannot")
+    print(f"      form this Bose condensate, so the two dark-matter pictures in USRT are inconsistent.")
+    print(f"Max Halo Orbital Speed:           {np.max(v_orbital_kms):.1f} km/s (normalised to 220 km/s by construction - not a prediction)")
     
     # -------------------------------------------------------------------------
     # PROOF 4: COSMIC DENSITY RATIO (PLANCK 2018 SATELLITE BENCHMARK)
@@ -157,10 +181,13 @@ def prove_color_merger_and_dark_state():
     print("PROOF 4: COSMOLOGICAL DENSITY RATIO DERIVATION (DARK vs BARYONIC)")
     print("=" * 80)
     
-    # Planck 2018 observational data:
-    omega_b_measured = 0.0493   # Baryonic matter (visible atoms)
-    omega_dm_measured = 0.2650  # Dark matter
-    ratio_measured = omega_dm_measured / omega_b_measured # 5.375
+    # Planck 2018 (TT,TE,EE+lowE+lensing) physical densities.
+    # Audit fix: the previous version used Omega_DM = 0.2650 (Planck gives 0.1200/0.6736^2 = 0.2645),
+    # which made the target 5.3753 and is how "5 + 3/8 = 5.375" was found (see comments below).
+    omega_c_h2, d_omega_c_h2 = 0.1200, 0.0012
+    omega_b_h2, d_omega_b_h2 = 0.02237, 0.00015
+    ratio_measured = omega_c_h2 / omega_b_h2
+    ratio_sigma = ratio_measured * np.hypot(d_omega_c_h2 / omega_c_h2, d_omega_b_h2 / omega_b_h2)
     
     # Theoretical Geometric Derivation:
     # In an HCP lattice condensation with 12 nearest neighbors and 5 SU(5) unified dimensions:
@@ -174,9 +201,13 @@ def prove_color_merger_and_dark_state():
     
     error_cosmic = 100.0 * np.abs(ratio_predicted - ratio_measured) / ratio_measured
     
-    print(f"Measured Ratio (Planck 2018):     Omega_DM / Omega_b = {ratio_measured:.4f}")
-    print(f"USRT Predicted Geometric Ratio:   5 + sin^2(theta_W) = 5 + 3/8 = {ratio_predicted:.4f}")
-    print(f"Agreement with Planck Data:       {100.0 - error_cosmic:.4f}% (MATCH TO 3 DECIMAL PLACES!)")
+    print(f"Measured Ratio (Planck 2018):     Omega_c h^2 / Omega_b h^2 = {ratio_measured:.4f} +- {ratio_sigma:.4f}")
+    print(f"USRT Ratio:                       5 + 3/8 = {ratio_predicted:.4f}  ({(ratio_predicted-ratio_measured)/ratio_sigma:+.2f} sigma)")
+    print(f"Note: with the measured low-energy sin^2(theta_W) = 0.2312 it would be 5.2312"
+          f" ({(5.2312-ratio_measured)/ratio_sigma:+.2f} sigma);")
+    print(f"      7 simple fractions p/q (q <= 12) also lie within 1 sigma (16/3, 27/5, 43/8, ...),")
+    print(f"      so a 1-sigma match at 1% precision is weak evidence. The formula was found by")
+    print(f"      decomposing the (mis-entered) target 5.375 = 43/8.")
     
     return {
         "x_dim": x_dim, "rho_sol": rho_sol, "v_orbital_kms": v_orbital_kms,
@@ -249,7 +280,7 @@ def plot_dark_sector_proofs(data):
         ax4.text(b.get_x() + b.get_width()/2.0, h + 0.2, f'{h:.4f}', ha='center', color='white', fontweight='bold', fontsize=12)
         
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\mathematical_proof_5th_color_and_dark_sector.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'mathematical_proof_5th_color_and_dark_sector.png')
     plt.savefig(output_path, dpi=300)
     print(f"\nDark sector mathematical proof diagram saved to: {output_path}")
 

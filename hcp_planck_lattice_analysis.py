@@ -6,7 +6,8 @@ Evaluates:
 1. Kepler's Conjecture: Maximum packing density in 3D (eta = pi / (3*sqrt(2)) = 74.05%).
 2. The 12-Coordination Sphere (Kissing Number = 12) in HCP geometry.
 3. The Geometric Origin of K = sqrt(3)/2 = cos(pi/6) from the HCP basal triangle.
-4. Emergent Acoustic Isotropy: How an HCP lattice produces perfect Lorentz Invariance
+4. Long-wavelength sound speeds vs direction (computed from the HCP dynamical matrix).
+   Audit note (2026-10): they are NOT isotropic; an earlier version drew a hard-coded circle.
    for long-wavelength waves (lambda >> ell_P).
 """
 
@@ -54,17 +55,51 @@ def analyze_hcp_lattice():
     densities = [np.pi / 6.0, np.pi * np.sqrt(3.0) / 8.0, np.pi * np.sqrt(3.0) / 16.0, np.pi / (3.0 * np.sqrt(2.0))]
     
     # -------------------------------------------------------------
-    # 3. Acoustic Wave Isotropy in HCP Lattice
+    # 3. Acoustic Wave (An)isotropy in the HCP Lattice - COMPUTED
     # -------------------------------------------------------------
-    # For long wavelengths (k -> 0), calculate directional sound speed v_s(theta)
-    # in an elastic HCP continuum
-    theta_angles = np.linspace(0, 2*np.pi, 200)
-    # Elastic stiffness anisotropy parameter delta_c ~ (k * ell_P)^2
-    # At low energy k * ell_P ~ 1e-20: completely flat / circle
-    v_s_low_energy = np.ones_like(theta_angles) # Exactly isotropic!
-    # At Planck cutoff k * ell_P ~ 0.3: tiny lattice anisotropy
-    v_s_planck_cutoff = 1.0 + 0.05 * np.cos(6 * theta_angles)
-    
+    # Audit fix (2026-10): the previous version did not compute anything here; it set
+    # v_s_low_energy = np.ones(...) ("Exactly isotropic!") and drew an invented 5% 6-fold ripple.
+    # Below, the long-wavelength sound speeds are obtained from the full dynamical matrix of an
+    # ideal HCP lattice (2-atom basis, nearest-neighbour central springs), as a function of the
+    # polar angle theta measured from the c-axis (in the x-z plane).
+    a_lat = 1.0
+    c_lat = a_lat * np.sqrt(8.0 / 3.0)
+    A_vecs = np.array([[a_lat, 0, 0], [a_lat / 2, a_lat * np.sqrt(3) / 2, 0], [0, 0, c_lat]])
+    basis = np.array([[0, 0, 0], [a_lat / 2, a_lat / (2 * np.sqrt(3)), c_lat / 2]])
+    bonds = []
+    for s_i, tau_s in enumerate(basis):
+        for n1 in range(-2, 3):
+            for n2 in range(-2, 3):
+                for n3 in range(-2, 3):
+                    R = n1 * A_vecs[0] + n2 * A_vecs[1] + n3 * A_vecs[2]
+                    for s_j, tau_j in enumerate(basis):
+                        d = R + tau_j - tau_s
+                        if abs(np.linalg.norm(d) - a_lat) < 1e-6:
+                            bonds.append((s_i, s_j, d))
+
+    def acoustic_speeds(u, qmag=1e-4):
+        q = qmag * u
+        D = np.zeros((6, 6), dtype=complex)
+        for s_i, s_j, d in bonds:
+            n = d / np.linalg.norm(d)
+            nn = np.outer(n, n)
+            D[3*s_i:3*s_i+3, 3*s_i:3*s_i+3] += nn
+            D[3*s_i:3*s_i+3, 3*s_j:3*s_j+3] -= nn * np.exp(1j * (q @ d))
+        w2 = np.sort(np.linalg.eigvalsh(D).real)[:3]
+        return np.sqrt(np.clip(w2, 0, None)) / qmag
+
+    theta_angles = np.linspace(0, 2*np.pi, 181)
+    speeds = np.array([acoustic_speeds(np.array([np.sin(t), 0.0, np.cos(t)])) for t in theta_angles])
+    v_ref = np.mean(speeds[:, :2])                  # average transverse speed, called "c"
+    v_s_TA1 = speeds[:, 0] / v_ref
+    v_s_TA2 = speeds[:, 1] / v_ref
+    v_s_LA = speeds[:, 2] / v_ref
+    print(f"HCP long-wavelength transverse speeds vary from {min(v_s_TA1.min(), v_s_TA2.min()):.3f} c "
+          f"to {max(v_s_TA1.max(), v_s_TA2.max()):.3f} c with direction (NOT isotropic).")
+    print(f"Longitudinal speed varies from {v_s_LA.min():.3f} c to {v_s_LA.max():.3f} c.")
+    v_s_low_energy = v_s_TA1
+    v_s_planck_cutoff = v_s_TA2
+
     return {
         "x_neighbors": x_neighbors, "y_neighbors": y_neighbors, "z_neighbors": z_neighbors,
         "lattices": lattices, "densities": densities,
@@ -124,14 +159,16 @@ def plot_hcp_analysis(data):
                      fontweight='bold', fontsize=9.5)
         
     # -------------------------------------------------------------
-    # Panel 3: Emergence of Smooth, Isotropic Spacetime (Lorentz Invariance)
+    # Panel 3: Computed directional sound speeds (anisotropic)
     # -------------------------------------------------------------
     ax3 = fig.add_subplot(2, 2, 3, projection='polar')
     ax3.plot(data["theta_angles"], data["v_s_low_energy"], 'blue', lw=2.5,
-             label=r'Low Energy ($E \ll E_P$): Perfect Circle $\rightarrow v_s = c$ (Lorentz Invariant)')
+             label=r'Transverse mode TA1 at LOW energy ($k \to 0$), computed')
     ax3.plot(data["theta_angles"], data["v_s_planck_cutoff"], 'crimson', linestyle='--', lw=1.8,
-             label=r'Planck Boundary ($E \sim E_P$): Tiny 6-Fold Anisotropy ($\Delta v/c \sim 5\%$)')
-    ax3.set_title(r"3. Why We Don't 'Feel' the Lattice:" + "\n" + r"Smooth Spacetime Emerges Acoustically at $\lambda \gg \ell_P$",
+             label=r'Transverse mode TA2 at LOW energy ($k \to 0$), computed')
+    ax3.plot(data["theta_angles"], np.ones_like(data["theta_angles"]), color='gray', lw=1, linestyle=':',
+             label='Perfect isotropy (what Lorentz invariance requires)')
+    ax3.set_title(r"3. Computed low-energy transverse speed vs angle to c-axis:" + "\n" + r"NOT a circle - the lattice is anisotropic even at $\lambda \gg \ell_P$",
                   fontsize=11.5, fontweight='bold', va='bottom')
     ax3.set_ylim(0.8, 1.2)
     ax3.legend(loc='lower center', bbox_to_anchor=(0.5, -0.32), frameon=True, fontsize=8.5)
@@ -154,20 +191,21 @@ def plot_hcp_analysis(data):
         "   - In an HCP lattice, every layer is a 2D triangular grid.\n"
         "   - The altitude of an equilateral triangle is exactly:\n"
         "         h = sin(60 deg) = cos(30 deg) = sqrt(3)/2 = 0.866025!\n"
-        "   - Zero-point wave vibrations projected onto the lattice bonds naturally\n"
-        "     inherit this exact geometric factor, yielding our 99.992% mass match!\n\n"
-        "3. HISTORICAL PRECEDENT (Prof. F. Winterberg's Planck Aether):\n"
-        "   - Physicist Friedwardt Winterberg (student of Heisenberg) independently\n"
-        "     showed that an HCP Planck lattice produces:\n"
-        "     * Maxwell's Equations as transverse acoustic shear waves\n"
-        "     * Dirac Spinors as quantized vortex filaments\n"
-        "     * Perfect Lorentz invariance at low energies (acoustic smoothing)!"
+        "   - (Claimed to enter the electron mass; see the audit note below.)\n\n"
+        "3. AUDIT (computed in panel 3):\n"
+        "   - Long-wavelength transverse speeds in HCP depend on the angle to\n"
+        "     the c-axis by ~17% (FCC: ~33%). Light speed would be direction-\n"
+        "     dependent at ALL energies - excluded by experiment (~1e-17).\n"
+        "   - sqrt(3)/2 is a geometric number of the triangle; no fluctuation\n"
+        "     determinant was computed, so its use in m_e is a fit.\n"
+        "   - Winterberg's Planck-aether model uses +/- mass 'planckions';\n"
+        "     the HCP/Maxwell/Dirac claims above are not verified."
     )
     ax4.text(0.01, 0.98, analysis_text, va='top', ha='left', family='monospace', fontsize=9.0,
              bbox=dict(boxstyle="round,pad=0.8", fc="#fdfefe", ec="#2c3e50", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\hcp_planck_lattice_analysis.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'hcp_planck_lattice_analysis.png')
     plt.savefig(output_path, dpi=300)
     print(f"HCP lattice analysis plot saved to: {output_path}")
     

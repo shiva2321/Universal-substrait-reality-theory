@@ -136,7 +136,7 @@ def plot_electron_energy_origin(data):
              bbox=dict(boxstyle="round,pad=0.8", fc="#f4f6f7", ec="#2c3e50", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\electron_energy_derivation.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'electron_energy_derivation.png')
     plt.savefig(output_path, dpi=300)
     print(f"Electron energy derivation plot saved to: {output_path}")
     

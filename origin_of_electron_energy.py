@@ -8,6 +8,7 @@ Evaluates:
    related by powers of the fine-structure constant alpha = 1 / 137.036.
 """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -135,7 +136,7 @@ def plot_origin_of_electron_energy(data):
                    bbox=dict(boxstyle="round,pad=0.8", fc="#e8f8f5", ec="#1abc9c", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\origin_of_electron_energy.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'origin_of_electron_energy.png')
     plt.savefig(output_path, dpi=300)
     print(f"Origin of electron energy plots saved to: {output_path}")
 

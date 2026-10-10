@@ -8,6 +8,7 @@ Evaluates:
 5. Sonic Horizon Hawking Radiation in BEC Condensate (Steinhauer 2016/2019).
 """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -39,7 +40,9 @@ def calculate_real_phenomena():
     
     theta_tensor = (4.0 * G * M_sun / (c**2 * R_sun)) * rad_to_arcsec
     theta_scalar = (2.0 * G * M_sun / (c**2 * R_sun)) * rad_to_arcsec
-    theta_measured = 1.751 # Cassini spacecraft / VLBI (1.751 +/- 0.0001 arcsec)
+    # VLBI deflection measurements give gamma = 0.99992 +- 0.00012 (Lambert & Le Poncin-Lafitte 2011);
+    # Cassini (Bertotti et al. 2003) measured gamma - 1 = (2.1 +- 2.3)e-5 via Shapiro delay, not 1.751".
+    theta_measured = 1.751 # GR value at the solar limb, consistent with gamma = 1 measurements
     
     # -------------------------------------------------------------
     # 3. Perihelion Precession of Mercury
@@ -55,8 +58,14 @@ def calculate_real_phenomena():
     
     dphi_rad = (6.0 * np.pi * G * M_sun) / (c**2 * a_merc * (1.0 - e_merc**2))
     precession_tensor = dphi_rad * rad_to_arcsec * revs_per_century
-    precession_scalar = (4.0/6.0) * precession_tensor # Naive scalar potential yields wrong factor
+    # PPN perihelion advance scales as (2 + 2*gamma - beta)/3 relative to GR.
+    # A purely 'temporal' (scalar acoustic) metric has gamma = 0; taking beta = 1 gives 1/3 of GR.
+    # Audit fix: the previous version used an unexplained factor 4/6.
+    gamma_scalar, beta_scalar = 0.0, 1.0
+    precession_scalar = (2.0 + 2.0 * gamma_scalar - beta_scalar) / 3.0 * precession_tensor
     precession_measured = 42.98 # arcseconds per century (observed relativistic residue)
+    print("Note: all three numbers here are standard General Relativity formulas (any metric theory")
+    print("      with gamma = beta = 1 gives them); they test GR, not the substrate model.")
     
     # -------------------------------------------------------------
     # 4. BEC Acoustic Black Hole Hawking Temperature
@@ -147,7 +156,7 @@ def plot_phenomenology(data):
                    bbox=dict(boxstyle="round,pad=0.8", fc="#fdfefe", ec="#bdc3c7", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\phenomenology_proofs.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'phenomenology_proofs.png')
     plt.savefig(output_path, dpi=300)
     print(f"Phenomenology proofs saved to: {output_path}")
 

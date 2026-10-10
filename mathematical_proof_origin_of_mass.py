@@ -7,6 +7,7 @@ Resolves:
 4. The Weak Equivalence Principle Proof (m_i = m_g): Tested against the MICROSCOPE Satellite Bound (eta < 1e-15).
 """
 
+import os
 import numpy as np
 import scipy.constants as const
 import matplotlib.pyplot as plt
@@ -170,7 +171,7 @@ def plot_origin_of_mass(data):
     ax1.plot(p_vals, E_free, color='#58a6ff', lw=2.5, linestyle='--', label=r'Free Light Wave: $E = |p|c$ ($m = 0$)')
     ax1.plot(p_vals, E_massive, color='#f85149', lw=3.2, label=r'Trapped Vortex Soliton: $E = \sqrt{p^2 c^2 + m_0^2 c^4}$')
     ax1.plot(0, 1.0, 'o', color='#7ee787', markersize=10, label=r'Rest Mass State: $p_{\mathrm{net}} = 0 \to m_0 = E/c^2$')
-    ax1.set_xlabel('Momentum $p \cdot c / E_0$', fontsize=12)
+    ax1.set_xlabel('Momentum $p \\cdot c / E_0$', fontsize=12)
     ax1.set_ylabel('Energy $E / E_0$', fontsize=12)
     ax1.set_ylim(0, 2.5)
     ax1.set_title(r'1. The Birth of Mass: Dispersion Invariance', fontsize=13, fontweight='bold')
@@ -184,7 +185,7 @@ def plot_origin_of_mass(data):
     ax2.set_xlabel(r'Acceleration $a$ [m/s$^2$]', fontsize=12)
     ax2.set_ylabel(r'Required Force $F$ [$\times 10^{-28}\,$N]', fontsize=12)
     ax2.set_title(r'2. Origin of Inertia: $F = m_i \cdot a$ via Doppler Asymmetry', fontsize=13, fontweight='bold')
-    ax2.text(50, F[100]*1e28 * 0.5, f"Linear Slope = $m_i$\n$m_i = {data['m_i_extracted']:.4e}\,$kg\nMatches $E/c^2$ to 100.0000%!",
+    ax2.text(50, F[100]*1e28 * 0.5, f"Linear Slope = $m_i$\n$m_i = {data['m_i_extracted']:.4e}\\,$kg\nMatches $E/c^2$ to 100.0000%!",
              ha='center', color='white', fontweight='bold', fontsize=11,
              bbox=dict(boxstyle="round,pad=0.5", fc="#161b22", ec="#7ee787"))
     ax2.legend(loc='upper left', facecolor='#161b22', edgecolor='#30363d', labelcolor='white')
@@ -215,7 +216,7 @@ def plot_origin_of_mass(data):
         ax4.text(b.get_x() + b.get_width()/2.0, h * 3.0, f'{h:.1e}', ha='center', color='white', fontweight='bold', fontsize=11)
         
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\mathematical_proof_origin_of_mass.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'mathematical_proof_origin_of_mass.png')
     plt.savefig(output_path, dpi=300)
     print(f"\nOrigin of mass and inertia diagram saved to: {output_path}")
 

@@ -16,6 +16,7 @@ Key Physics Proven:
 ================================================================================
 """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
@@ -189,7 +190,7 @@ ax4.text(0.02, 0.98, scorecard, fontsize=9.2, verticalalignment='top',
 plt.suptitle("USRT SUBSTRATE RUPTURE (10^19 GeV) vs REAL-WORLD BLACK HOLE FORMATION",
              fontsize=14, fontweight='bold', y=0.99)
 
-out_fig = "black_hole_planck_energy_relation.png"
+out_fig = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'black_hole_planck_energy_relation.png')
 plt.savefig(out_fig, dpi=300, bbox_inches='tight')
 print(f"\nFigure successfully saved to: {out_fig}")
 print("="*80)

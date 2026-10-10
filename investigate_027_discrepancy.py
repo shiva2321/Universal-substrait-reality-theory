@@ -208,7 +208,7 @@ def plot_discrepancy_investigation(data):
              bbox=dict(boxstyle="round,pad=0.8", fc="#f4ecf7", ec="#8e44ad", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\investigate_027_discrepancy.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'investigate_027_discrepancy.png')
     plt.savefig(output_path, dpi=300)
     print(f"Investigation plot saved to: {output_path}")
     

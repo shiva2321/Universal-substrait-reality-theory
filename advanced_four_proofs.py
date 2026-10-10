@@ -61,6 +61,10 @@ def prove_superfluid_dispersion():
     print(f"Linear LIV Predicted Delay:    {delta_t_linear:.4f} seconds  (Violates experimental bound: {delta_t_measured_bound} s!)")
     print(f"USRT Quadratic Delay:          {delta_t_quadratic:.4e} seconds (Completely imperceptible!)")
     print(f"Suppression Factor:            10^{np.log10(delta_t_linear / delta_t_quadratic):.1f} times smaller than linear!")
+    print("Audit note: this treats only Planck-suppressed (E/E_P)^2 dispersion. A close-packed lattice is")
+    print("            also ANISOTROPIC at low energy (transverse speeds differ by 10-30% with direction,")
+    print("            audit/a01_lattice_dynamics.py), which is excluded by Michelson-Morley-type tests;")
+    print("            and Collins et al., PRL 93, 191301 (2004) show loops regenerate O(1) violations.")
     
     return {
         "E_photon_GeV": E_photon_GeV,
@@ -116,6 +120,9 @@ def prove_faddeev_skyrme_stability():
     print(f"Topological Lower Bound (Q_H=1): {E_topological_floor / eV / 1e6:.6f} MeV")
     print(f"Energy Minimum Point:            R / r_C = 1.0000 (Identically Stable!)")
     print(f"Second Derivative d^2E/dlam^2:   {2 * I_4 / (1.0**3) / eV / 1e6:.4f} MeV > 0 (Strict Global Minimum)")
+    print("Audit note: I_2 = I_4 = E_0/2 is SET from the measured electron energy, so the minimum at")
+    print("            R = r_C and the 'bound' = 0.511 MeV are inputs, not results. Derrick's-theorem")
+    print("            evasion by a Skyrme term is real (Faddeev-Niemi 1997), but no scale follows from it.")
     
     return {
         "lam": lam,
@@ -176,8 +183,9 @@ def prove_su3_color_algebra():
     print(f"All 8 Gell-Mann matrices Traceless:   {all_traceless}")
     print(f"Exact Orthogonality Tr(l_a l_b) = 2d: {exact_ortho}")
     print(f"Cyclic 3-Layer Step Eigen-phases:     {angles_P} degrees (Exact Z_3 symmetry!)")
-    print(f"This proves that transitions between the 3 layers of HCP constitute")
-    print(f"the exact 8 Gluons of SU(3) Color Gauge Symmetry with Z_3 Center!")
+    print("Audit note: these are properties of ANY 3-state system (the Gell-Mann matrices). They do not")
+    print("            produce an SU(3) gauge theory (local gauge invariance, gluon self-interaction,")
+    print("            confinement). Also, HCP stacking is ABAB (2 layers); a 3-layer cycle is FCC.")
     
     return {
         "ortho_matrix": ortho_matrix,
@@ -232,7 +240,11 @@ def prove_substrate_decoherence():
     
     print(f"Initial Off-Diagonal Interference Term rho_12(0): {rho_12_amplitude[0]:.4f}")
     print(f"Final Off-Diagonal Interference Term rho_12(5):   {rho_12_amplitude[-1]:.4f} (~ 0)")
-    print(f"Final Diagonal Probabilities: P_1 = {rho_11[-1]:.2f}, P_2 = {rho_22[-1]:.2f} (Strict Born Rule P = |c|^2)")
+    print(f"Final Diagonal Probabilities: P_1 = {rho_11[-1]:.2f}, P_2 = {rho_22[-1]:.2f}")
+    print("Audit note: the diagonal entries are held fixed at |c|^2 by construction (rho_11 = c1^2), so the")
+    print("            Born rule is assumed, not derived. Decoherence removes interference but does not by")
+    print("            itself explain why one outcome occurs or why P = |c|^2. The rate G m^2/(hbar dx) is the")
+    print("            Diosi-Penrose estimate, an existing hypothesis, not a substrate calculation.")
     
     return {
         "tau_electron": tau_electron,
@@ -336,7 +348,7 @@ def generate_proofs_dashboard(p1, p2, p3, p4):
     ax4.grid(True, color='#30363d', ls=':', alpha=0.5)
     
     plt.tight_layout()
-    out_file = r'f:\Reality_theory\advanced_four_proofs.png'
+    out_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'advanced_four_proofs.png')
     plt.savefig(out_file, dpi=300, facecolor=fig.get_facecolor(), edgecolor='none')
     print(f"\n4-Proof Dashboard saved successfully to: {out_file}")
     

@@ -1,11 +1,15 @@
 """
 The Quark Sector & Baryon Physics in Unified Substrate Reality Theory (USRT):
-1. The Proton Mass and the Proton-to-Electron Mass Ratio: m_p / m_e = 6*pi^5 + (3pi/2)*alpha (99.99999% precision).
+1. The Proton-to-Electron Mass Ratio formula m_p / m_e = 6*pi^5 + (3pi/2)*alpha.
+   Audit note: 6 pi^5 is F. Lenz's 1951 observation (Phys. Rev. 82, 554). The added (3pi/2) alpha
+   term leaves a residual of 1.77e-4, i.e. ~5,500 times the CODATA 2022 uncertainty (3.2e-8),
+   so the formula is excluded; "99.99999%" is not a meaningful measure of agreement.
 2. The 3-Layer Lattice Braiding & Color Confinement: The Linear Flux Tube (sigma = 1 GeV/fm = 160,000 N).
 3. The Strong Coupling Constant alpha_s(Q) and Asymptotic Freedom from the 12-Neighbor Substrate.
 4. The Neutron-Proton Mass Difference Delta m = 1.2933 MeV & Cosmic Nuclear Stability.
 """
 
+import os
 import numpy as np
 import scipy.constants as const
 import matplotlib.pyplot as plt
@@ -55,6 +59,10 @@ def compute_quark_and_baryon_physics():
     print(f"Predicted Ratio m_p / m_e:                        {ratio_predicted:.8f}")
     print(f"Measured Ratio (CODATA 2022):                     {ratio_measured:.8f}")
     print(f"Agreement Precision:                              {precision_ratio:.7f}% (Error: {diff_ratio:.6f})")
+    mu_unc_codata2022 = 3.2e-8
+    print(f"CODATA 2022 uncertainty of m_p/m_e:               {mu_unc_codata2022:.1e}"
+          f"  -> formula is off by {diff_ratio/mu_unc_codata2022:,.0f} standard deviations")
+    print("Provenance: 6*pi^5 = F. Lenz, Phys. Rev. 82, 554 (1951); the alpha term was added to fit.")
     print(f"Predicted Proton Rest Mass:                       {m_p_predicted_MeV:.6f} MeV")
     print(f"Measured Proton Rest Mass:                        {m_p_MeV:.6f} MeV (Diff: {diff_mass_MeV*1000:.2f} keV)")
     
@@ -133,14 +141,18 @@ def compute_quark_and_baryon_physics():
     #    Proton (uud, Q = +1) has positive Coulomb repulsion inside its core (adding mass: + 0.76 MeV)
     #    Neutron (udd, Q = 0) has net negative/zero Coulomb core energy.
     #    Net: Delta m = (m_d - m_u) - Delta E_EM = 2.05 - 0.76 = + 1.29 MeV!
-    delta_E_EM_MeV = 0.7567 # EM repulsion inside proton
-    delta_quark_MeV = 2.0500 # (m_d - m_u)
-    delta_m_predicted_MeV = delta_quark_MeV - delta_E_EM_MeV
+    # Audit fix: the previous version used 2.0500 and 0.7567 MeV, chosen so that their difference
+    # reproduced the measured value. The published first-principles lattice QCD+QED result
+    # (BMW collaboration, Borsanyi et al., Science 347, 1452 (2015)) is used instead:
+    delta_quark_MeV = 2.52   # QCD (m_d - m_u) contribution, +-0.29 MeV
+    delta_E_EM_MeV = 1.00    # QED contribution (lowers m_n - m_p), +-0.16 MeV
+    delta_m_predicted_MeV = delta_quark_MeV - delta_E_EM_MeV  # 1.52 +- ~0.3 MeV (paper: 1.51(16)(23))
     
     print(f"Measured Mass Difference:         m_n - m_p = {delta_m_measured_MeV:.6f} MeV (= {delta_m_units_m_e:.4f} m_e)")
     print(f"Quark Mass Difference (d - u):    + {delta_quark_MeV:.4f} MeV")
     print(f"Proton EM Repulsion Reduction:    - {delta_E_EM_MeV:.4f} MeV")
-    print(f"Net Predicted Difference:         + {delta_m_predicted_MeV:.4f} MeV")
+    print(f"Net (lattice QCD+QED, BMW 2015):  + {delta_m_predicted_MeV:.2f} +- ~0.3 MeV  (consistent with measurement)")
+    print("Note: this is Standard-Model lattice physics; USRT does not derive these two contributions.")
     print("\n--- ANTHROPIC NUCLEAR STABILITY WINDOW ---")
     print(f"Beta Decay Threshold:             m_n - m_p > m_e = 0.511 MeV (FREE NEUTRONS DECAY INTO PROTONS!)")
     print(f"Hydrogen Stability Limit:         m_n - m_p < m_p + m_e (IF > 1.3 MeV, DEUTERIUM BECOMES UNSTABLE!)")
@@ -225,7 +237,7 @@ def plot_quark_and_baryon_physics(data):
     ax4.legend(loc='lower right', facecolor='#161b22', edgecolor='#30363d', labelcolor='white')
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\quark_sector_and_baryon_physics.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'quark_sector_and_baryon_physics.png')
     plt.savefig(output_path, dpi=300)
     print(f"\nQuark sector and baryon physics diagram saved to: {output_path}")
 

@@ -1,13 +1,20 @@
 """
-Rigorous Mathematical Derivation: First-Principles Electron Mass from Topological Soliton & HCP Lattice.
-Resolves:
-1. The Faddeev-Skyrme Topological Soliton Profile & Vakulenko-Kapitansky Lower Bound.
-2. The First-Principles Origin of the Instanton Action: S_0 = 3 / (8 * alpha).
-3. The Geometric Zero-Mode Fluctuation Determinant: K_HCP = sqrt(3) / 2 = cos(pi / 6).
-4. The Exact Quantum Radiative Correction: Delta S = (alpha / 2pi) * sqrt(Z) where Z = 12.
-5. Exact Mass Prediction vs. CODATA 2022 Measured Value (99.999% precision).
+Electron-mass formula of USRT:  m_e = m_P (sqrt3/2) exp(-[3/(8 alpha) - (alpha/2pi) sqrt12]).
+Evaluates:
+1. A hedgehog-type soliton profile theta(r) (illustrative; it does not enter the mass formula,
+   and a hedgehog theta(r) is a Skyrmion-type ansatz, not a Hopfion).
+2. The leading term S_0 = 3/(8 alpha)  (this is L. Nottale's scale-relativity relation
+   alpha ln(m_P/m_e) = 3/8, with 3/8 taken from SU(5) - see arXiv:hep-th/0307093).
+3. The prefactor K = sqrt3/2 and the term (alpha/2pi) sqrt12, which were selected AFTER computing
+   the remaining discrepancy (see investigate_027_discrepancy.py); no determinant is computed.
+4. Comparison with CODATA 2022 using the real uncertainty (dominated by G): the formula gives
+   0.510755 MeV vs 0.510999 MeV, a relative miss of 4.8e-4 = ~42 standard deviations.
+
+Audit note (2026-10): an earlier version printed a hard-coded "(0.0000054!)" residual and claimed
+"99.999% precision"; the true residual is 4.77e-4 (0.048% in mass).
 """
 
+import os
 import numpy as np
 import scipy.constants as const
 from scipy.integrate import solve_bvp
@@ -128,7 +135,9 @@ def derive_rigorous_electron_mass():
     print(f"Bare Semi-Classical Action S_bare: S_0 - ln(K_HCP) = {S_bare:.8f}")
     print(f"Remaining Discrepancy Delta S:    {delta_S_remaining:.8f}")
     print(f"Lattice Schwinger Radiative Term: (alpha / 2pi) * sqrt(12) = {delta_S_rad:.8f}")
-    print(f"Residual Error |Delta S - rad|:   {np.abs(delta_S_remaining - delta_S_rad):.8f} (0.0000054!)")
+    print(f"Residual Error |Delta S - rad|:   {np.abs(delta_S_remaining - delta_S_rad):.8f}")
+    print("Note: K = sqrt3/2 and (alpha/2pi) sqrt12 were chosen after this discrepancy was computed;")
+    print("      they are fitted, not derived (no fluctuation determinant or loop integral is evaluated).")
     
     # -------------------------------------------------------------------------
     # STEP 6: FINAL FIRST-PRINCIPLES ELECTRON MASS PREDICTION
@@ -148,7 +157,12 @@ def derive_rigorous_electron_mass():
     print(f"Predicted Electron Mass:          {m_e_predicted_MeV:.8f} MeV")
     print(f"Measured Electron Mass (CODATA):  {m_e_measured_MeV:.8f} MeV")
     print(f"Mass Accuracy:                    {100.0 - mass_error_percent:.6f}%")
-    print(f"Action/Exponent Accuracy:         {100.0 - exponent_error_percent:.7f}%")
+    print(f"Action/Exponent Accuracy:         {100.0 - exponent_error_percent:.7f}%  (not a meaningful metric)")
+    # Honest comparison: m_P carries the uncertainty of G (2.2e-5 relative -> 1.1e-5 in m_P)
+    rel_unc = 0.5 * 0.00015 / 6.67430
+    n_sigma = abs(np.log(m_e_predicted / m_e_measured)) / rel_unc
+    print(f"Relative miss:                    {(m_e_predicted/m_e_measured - 1):+.3e}")
+    print(f"Allowed by measurement (via G):   +-{rel_unc:.1e}  -> formula is off by {n_sigma:.0f} standard deviations")
     print("=" * 80)
     
     return {
@@ -228,7 +242,7 @@ def plot_rigorous_derivation(data):
                  f'{h:.6f} MeV', ha='center', color='white', fontweight='bold', fontsize=11)
         
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\rigorous_electron_mass_derivation.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'rigorous_electron_mass_derivation.png')
     plt.savefig(output_path, dpi=300)
     print(f"\nRigorous derivation diagram saved to: {output_path}")
 

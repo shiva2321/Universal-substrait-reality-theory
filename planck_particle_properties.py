@@ -199,7 +199,7 @@ def plot_planck_particle_properties(data):
              bbox=dict(boxstyle="round,pad=0.8", fc="#f4ecf7", ec="#8e44ad", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\planck_particle_properties.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'planck_particle_properties.png')
     plt.savefig(output_path, dpi=300)
     print(f"Planck particle properties plot saved to: {output_path}")
     

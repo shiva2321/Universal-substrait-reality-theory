@@ -13,15 +13,18 @@ Key Quantitative Properties Calculated:
 2. Spacing a_0 = l_P = 1.616255e-35 m.
 3. Fundamental Time Scale tau_0 = 5.391247e-44 s.
 4. Binding Cohesive Energy V_0 = E_P = 1.2209e19 GeV (1.956e9 J).
-5. Bond Spring Stiffness k_bond = c^6 / (hbar * G) = 7.489e79 N/m.
+5. Bond Spring Stiffness k_bond = E_P / l_P^2 = 7.488e78 N/m.
 6. Number Density n_0 = sqrt(2) / a_0^3 = 3.352e104 m^-3 (HCP packing).
 7. Inertial Substrate Density rho_0 = 7.295e96 kg/m^3.
-8. Elastic Bulk Modulus K = 6.556e113 N/m^2, Shear Modulus mu = 3.934e113 N/m^2.
-9. de Boer Quantum Fluidity Parameter Lambda* = 2.6833 >> 0.3 (Non-freezing).
+8. Elastic Bulk Modulus K = rho c^2 = 6.55e113 N/m^2, Shear Modulus mu = 3K/5 = 3.93e113 N/m^2.
+   (Audit note: with these two choices sqrt(mu/rho) = sqrt(0.6) c = 0.775 c, not c.)
+9. de Boer Quantum Fluidity Parameter Lambda* = hbar/(a0 sqrt(M0 V0)) = 1.0000 for V0 = E_P.
+   (Audit note: an earlier version printed a hard-coded 2.6833 here; it is now computed.)
 10. Coordination Number Z = 12 (Hexagonal Close-Packed / FCC).
 ================================================================================
 """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
@@ -56,13 +59,16 @@ K_bulk = rho_substrate * (c**2)                      # Bulk modulus [N/m^2]
 mu_shear = (3.0 / 5.0) * K_bulk                      # Shear modulus [N/m^2]
 
 # de Boer Quantum Fluidity Parameter: Lambda* = hbar / (a_0 * sqrt(M_0 * V_0))
-lambda_de_boer = hbar / (l_P * np.sqrt(m_P * E_P_J)) # Exactly 1.0 in pure units, 2.68 with lattice factor
-lambda_de_boer_corrected = 2.6833 # Incorporating 12-neighbor HCP zero-point sum
+lambda_de_boer = hbar / (l_P * np.sqrt(m_P * E_P_J)) # = 1 exactly, because hbar = l_P m_P c
+# Audit fix: the previous version replaced this by a hard-coded 2.6833 ("12-neighbor zero-point sum")
+# that is not computed anywhere. The computed value is used below.
+lambda_de_boer_corrected = lambda_de_boer
+c_transverse_check = np.sqrt(mu_shear / rho_substrate)  # = sqrt(3/5) c with K = rho c^2, mu = 3K/5
 
 print("="*80)
 print("EXACT PHYSICAL PROPERTIES OF PLANCKIONS IN USRT")
 print("="*80)
-print(f"1.  Bare Mass (M_0)             : {m_P:.6e} kg ({m_P*1e6:.2f} micrograms)")
+print(f"1.  Bare Mass (M_0)             : {m_P:.6e} kg ({m_P*1e9:.2f} micrograms)")
 print(f"2.  Equilibrium Spacing (a_0)   : {l_P:.6e} m")
 print(f"3.  Fundamental Period (tau_0)  : {t_P:.6e} s")
 print(f"4.  Characteristic Frequency    : {omega_P / (2*np.pi):.6e} Hz")
@@ -72,7 +78,8 @@ print(f"7.  Number Density (n_0)        : {n_planckions:.6e} particles/m^3")
 print(f"8.  Substrate Mass Density      : {rho_substrate:.6e} kg/m^3")
 print(f"9.  Bulk Modulus (K)            : {K_bulk:.6e} N/m^2 (Pascals)")
 print(f"10. Shear Modulus (mu)          : {mu_shear:.6e} N/m^2")
-print(f"11. de Boer Parameter (Lambda*) : {lambda_de_boer_corrected:.4f} >> 0.3 (Non-freezing Superfluid)")
+print(f"    -> sqrt(mu/rho) = {c_transverse_check:.6e} m/s = {c_transverse_check/c:.4f} c  (NOT c: these moduli are inconsistent)")
+print(f"11. de Boer Parameter (Lambda*) : {lambda_de_boer_corrected:.4f}  (= 1 exactly for V_0 = E_P; > 0.3 means quantum melting)")
 print(f"12. Coordination Number (Z)     : {Z_coord} (Hexagonal Close-Packed)")
 print("="*80)
 
@@ -193,7 +200,7 @@ ax4.text(0.02, 0.98, scorecard, fontsize=9.0, verticalalignment='top',
 plt.suptitle("UNIFIED SUBSTRATE REALITY THEORY (USRT): MICROSCOPIC PLANCKION DYNAMICS",
              fontsize=14, fontweight='bold', y=0.99)
 
-out_fig = "planckion_properties_and_physics.png"
+out_fig = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'planckion_properties_and_physics.png')
 plt.savefig(out_fig, dpi=300, bbox_inches='tight')
 print(f"\nFigure saved successfully to: {out_fig}")
 print("="*80)

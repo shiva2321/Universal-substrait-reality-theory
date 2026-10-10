@@ -1,12 +1,18 @@
 """
-Mathematical and Numerical Derivation: Complete 3-Generation Lepton Mass Spectrum.
-Resolves:
-1. The Exact Koide Secular Matrix on the 3-Layer (ABC) HCP/FCC Lattice.
-2. Derivation of the Brannen Phase Angle: delta = 2 / 9 radians from the 3x3 Cyclic Geometry.
-3. First-Principles Computation of All Three Lepton Masses (Electron, Muon, Tau).
-4. Direct Comparison against CODATA 2022 and Particle Data Group (PDG 2024) Benchmarks.
+Charged-lepton masses from the Koide/Brannen parametrisation
+    sqrt(m_k) = v0 [1 + sqrt2 cos(delta + 2 pi k / 3)],   k = 0, 1, 2.
+Notes (audit 2026-10):
+* This parametrisation gives Koide's Q = 2/3 identically for ANY v0 and delta, so it cannot
+  derive Q = 2/3. Q = 2/3 itself is Y. Koide's empirical relation (1981/83) and is satisfied by the
+  measured masses to within 0.4 sigma - a real, unexplained regularity.
+* delta ~ 2/9 is C. Brannen's and G. Rosen's observation (c. 2006). Fixing delta = 2/9 EXACTLY and
+  using m_e predicts m_mu = 105.6594 MeV, which is ~450 standard deviations from the measured
+  105.6583755(23) MeV, so delta = 2/9 is only approximate.
+* The "phase-space dimension 9 / trace normalisation 2" argument is a label, not a calculation.
+* PDG 2024 tau mass: 1776.93 +- 0.09 MeV.
 """
 
+import os
 import numpy as np
 import scipy.constants as const
 import matplotlib.pyplot as plt
@@ -19,7 +25,8 @@ def derive_complete_lepton_spectrum():
     # Precision Experimental Targets (CODATA 2022 / PDG 2024)
     m_e_measured = 0.510998950       # MeV (Electron)
     m_mu_measured = 105.6583755       # MeV (Muon)
-    m_tau_measured = 1776.86          # MeV (Tau, +/- 0.12 MeV)
+    m_tau_measured = 1776.93          # MeV (Tau, PDG 2024: +/- 0.09 MeV)
+    dm_mu, dm_tau = 0.0000023, 0.09   # 1-sigma uncertainties (PDG 2024)
     
     print(f"Target Electron Mass (m_e):       {m_e_measured:.6f} MeV")
     print(f"Target Muon Mass (m_mu):          {m_mu_measured:.6f} MeV")
@@ -71,8 +78,11 @@ def derive_complete_lepton_spectrum():
     m_mu_codata = (v0_codata * factor_mu)**2
     m_tau_codata = (v0_codata * factor_tau)**2
     
-    # B) Using the USRT derived electron mass (0.510755 MeV):
-    m_e_usrt_base = 0.51075501
+    # B) Using the USRT electron-mass formula (computed here instead of the hard-coded 0.51075501):
+    _m_P = np.sqrt(const.hbar * const.c / const.G)
+    _a = const.fine_structure
+    _me_kg = _m_P * (np.sqrt(3) / 2) * np.exp(-(3 / (8 * _a) - _a / (2 * np.pi) * np.sqrt(12)))
+    m_e_usrt_base = _me_kg * const.c**2 / (const.electron_volt * 1e6)
     v0_usrt = np.sqrt(m_e_usrt_base) / factor_e
     m_e_usrt = (v0_usrt * factor_e)**2
     m_mu_usrt = (v0_usrt * factor_mu)**2
@@ -89,7 +99,11 @@ def derive_complete_lepton_spectrum():
     print(f"Predicted Electron Mass:          {m_e_codata:.6f} MeV (Measured: {m_e_measured:.6f} MeV) -> Match: 100.0000%")
     print(f"Predicted Muon Mass:              {m_mu_codata:.6f} MeV (Measured: {m_mu_measured:.6f} MeV) -> Match: {100.0 - err_mu:.4f}%")
     print(f"Predicted Tau Mass:               {m_tau_codata:.2f} MeV (Measured: {m_tau_measured:.2f} MeV) -> Match: {100.0 - err_tau:.4f}%")
-    print(f"Koide Parameter Q:                {Q_koide:.10f} (= EXACTLY 2/3!)")
+    print(f"Koide Parameter Q:                {Q_koide:.10f} (= 2/3 identically: built into the parametrisation)")
+    print(f"Muon vs measurement:              {(m_mu_codata - m_mu_measured)/dm_mu:+.0f} sigma  (delta = 2/9 is NOT exact)")
+    print(f"Tau vs PDG 2024:                  {(m_tau_codata - m_tau_measured)/dm_tau:+.2f} sigma")
+    Q_measured = (m_e_measured + m_mu_measured + m_tau_measured) / (np.sqrt(m_e_measured) + np.sqrt(m_mu_measured) + np.sqrt(m_tau_measured))**2
+    print(f"Koide Q from MEASURED masses:     {Q_measured:.7f}  (2/3 within ~0.4 sigma: genuine empirical regularity)")
     
     print("\n--- USING PURE USRT FIRST-PRINCIPLES ELECTRON BASE (0.510755 MeV) ---")
     print(f"USRT Predicted Muon Mass:         {m_mu_usrt:.4f} MeV (Accuracy: {100.0 - 100.0*abs(m_mu_usrt - m_mu_measured)/m_mu_measured:.3f}%)")
@@ -183,7 +197,7 @@ def plot_lepton_spectrum_proof(data):
                  ha='center', color='white', fontweight='bold', fontsize=11)
         
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\exact_three_generation_lepton_spectrum.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'exact_three_generation_lepton_spectrum.png')
     plt.savefig(output_path, dpi=300)
     print(f"\nComplete lepton spectrum proof diagram saved to: {output_path}")
 

@@ -6,6 +6,7 @@ Simulation of:
 4. Light Creation: Oscillating topological knot shedding transverse shear ripples.
 """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -106,7 +107,7 @@ def plot_forces_and_mass(r_fm, V_grav, V_em, V_strong, V_weak, R_vals, E_kin, E_
     
     # Subplot 2: Origin of Mass via Wave Confinement (E = mc^2)
     axs[0, 1].plot(R_vals, E_tot, 'k-', lw=2.8, label=r'Total Rest Mass $M(R) = E_{\mathrm{confined}} / c^2$')
-    axs[0, 1].plot(R_vals, E_kin, 'b--', lw=1.8, label='Kinetic Wave Pressure ($E \sim 1/R$)')
+    axs[0, 1].plot(R_vals, E_kin, 'b--', lw=1.8, label='Kinetic Wave Pressure ($E \\sim 1/R$)')
     axs[0, 1].plot(R_vals, E_vol, 'g:', lw=1.8, label=r'Substrate Bag Energy ($E \sim R^3$)')
     axs[0, 1].plot(R_eq, M_eq, 'ro', markersize=10, label=f'Proton Mass: {M_eq:.0f} MeV at R = {R_eq:.2f} fm')
     axs[0, 1].set_xlabel('Confinement Radius $R$ [fm]', fontsize=12)
@@ -150,7 +151,7 @@ def plot_forces_and_mass(r_fm, V_grav, V_em, V_strong, V_weak, R_vals, E_kin, E_
                    bbox=dict(boxstyle="round,pad=0.8", fc="#fdfefe", ec="#bdc3c7", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\forces_and_mass.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'forces_and_mass.png')
     plt.savefig(output_path, dpi=300)
     print(f"Forces and mass plots saved to: {output_path}")
 

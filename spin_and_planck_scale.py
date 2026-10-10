@@ -5,6 +5,7 @@ Mathematical Simulation and Analysis of:
 3. The Planck Length (l_P ~ 1.6e-35 m) as the Substrate's Microscopic Healing Length.
 """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -164,7 +165,7 @@ def plot_spin_and_planck(X, Y, Phase, Vx, Vy, log_N, log_cav, benchmarks, k_norm
                    bbox=dict(boxstyle="round,pad=0.8", fc="#fdfefe", ec="#bdc3c7", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\spin_and_planck_scale.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'spin_and_planck_scale.png')
     plt.savefig(output_path, dpi=300)
     print(f"Spin and Planck scale plots saved to: {output_path}")
 

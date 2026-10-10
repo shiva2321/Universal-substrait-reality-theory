@@ -21,6 +21,7 @@ Key Physics Proven:
 ================================================================================
 """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
@@ -252,7 +253,7 @@ ax6.text(0.02, 0.98, summary_box, fontsize=9.2, verticalalignment='top',
 plt.suptitle("UNIFIED SUBSTRATE REALITY THEORY (USRT): PHYSICAL MECHANISM OF ENERGY TRAPPING",
              fontsize=14, fontweight='bold', y=0.99)
 
-out_file = "energy_trapping_mechanism_simulation.png"
+out_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'energy_trapping_mechanism_simulation.png')
 plt.savefig(out_file, dpi=300, bbox_inches='tight')
 print(f"\nDiagnostic figure saved to: {out_file}")
 print("="*80)

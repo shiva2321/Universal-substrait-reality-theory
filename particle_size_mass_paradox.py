@@ -208,7 +208,7 @@ def plot_analysis(data):
              bbox=dict(boxstyle="round,pad=0.8", fc="#fef9e7", ec="#f39c12", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\particle_size_mass_paradox.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'particle_size_mass_paradox.png')
     plt.savefig(output_path, dpi=300)
     print(f"Plot successfully saved to: {output_path}")
     

@@ -170,7 +170,7 @@ def plot_planck_breaking_points(data):
              bbox=dict(boxstyle="round,pad=0.8", fc="#f4f6f7", ec="#2c3e50", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\planck_scale_breaking_point.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'planck_scale_breaking_point.png')
     plt.savefig(output_path, dpi=300)
     print(f"Plot successfully saved to: {output_path}")
     

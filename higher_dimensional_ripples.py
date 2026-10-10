@@ -164,7 +164,7 @@ def plot_higher_dimensional_ripples(data):
              bbox=dict(boxstyle="round,pad=0.8", fc="#fdfefe", ec="#7f8c8d", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\higher_dimensional_ripples.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'higher_dimensional_ripples.png')
     plt.savefig(output_path, dpi=300)
     print(f"Higher-dimensional ripple plot saved to: {output_path}")
     

@@ -174,7 +174,7 @@ def plot_substrate_properties(data):
              bbox=dict(boxstyle="round,pad=0.8", fc="#f4f6f7", ec="#2c3e50", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\substrate_mass_and_elasticity.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'substrate_mass_and_elasticity.png')
     plt.savefig(output_path, dpi=300)
     print(f"Substrate mass and elasticity plot saved to: {output_path}")
     

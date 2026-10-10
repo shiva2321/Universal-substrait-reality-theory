@@ -64,9 +64,13 @@ def derive_primary_to_emergent():
     print(f"Primary Planckion Diameter d_0:   {d_0:.6e} m")
     print(f"Primary Bond Stiffness k_0:       {k_0:.6e} N/m")
     print(f"Substrate Density rho_0:          {rho_0:.6e} kg/m^3")
-    print(f"Substrate Shear Modulus mu_0:     {mu_0 * 8.0:.6e} Pa")
+    print(f"Substrate Shear Modulus mu_0:     {mu_0:.6e} Pa")   # audit fix: previously printed mu_0 * 8
     print(f"Emergent Speed of Light:          {c_emergent:.2f} m/s (Measured: {c_measured:.2f} m/s)")
-    print(f"Relative Deviation:               {error_c:.2e} (EXACT DERIVATION - CIRCULARITY RESOLVED!)")
+    print(f"Relative Deviation:               {error_c:.2e}")
+    print("Audit note: m_0, d_0 and F_0 = c^4/G are all built from the measured c, so sqrt(mu/rho) = c")
+    print("            is an algebraic identity, not a derivation; the circularity is NOT resolved.")
+    print("            (Also: V_cell = d_0^3 here vs d_0^3/sqrt2 elsewhere, and mu = k/d is not the")
+    print("            Cauchy-Born shear modulus of a close-packed lattice.)")
     
     return {"rho_0": rho_0, "mu_0": mu_0 * 8.0, "c_emergent": c_emergent}
 
@@ -118,8 +122,10 @@ def derive_three_eighths_factor():
     print(f"Sum Tr(Q^2) over generation:       {tr_Q_sq:.4f} (= 16/3)")
     print(f"GUT Projection: sin^2(theta_W) =   Tr(T_3^2) / Tr(Q^2) = {sin2_theta_W:.6f} (= EXACTLY 3/8!)")
     print(f"Unified Condensation Action S_0:   1 / alpha_unified = 3 / (8 * alpha) = {3.0 / (8.0 * alpha_measured):.6f}")
-    print("Mathematical Proof: The 3/8 factor is NOT an empirical fit—it is the EXACT")
-    print("Lie-algebraic trace ratio of the Standard Model embedded in the substrate!")
+    print("The trace ratio 3/8 is correct SU(5) group theory, but it holds at the unification scale.")
+    print("There alpha_em has run to ~1/108 (SM) or ~1/64 (MSSM) and 1/alpha_GUT ~ 24-45, so")
+    print("3/(8 alpha(0)) = 51.4 is not the unified coupling of any model - it mixes a low-energy alpha")
+    print("with a high-energy ratio. alpha*ln(m_P/m_e) = 3/8 is L. Nottale's earlier relation.")
     
     return {"tr_T3_sq": tr_T3_sq, "tr_Q_sq": tr_Q_sq, "sin2_theta_W": sin2_theta_W}
 
@@ -160,7 +166,9 @@ def prove_finkelstein_rubinstein_spin_half():
     print(f"Fundamental Group pi_1(C_{{Q=1}}):   Z_2 (Two homotopy classes: Contractible vs Twisted)")
     print(f"Phase after 2*pi (360 deg) spin:   {val_2pi:.1f}  (SIGN INVERSION -> FERMIONIC ANTISYMMETRY!)")
     print(f"Phase after 4*pi (720 deg) spin:   {val_4pi:.1f}  (IDENTITY RESTORED -> EXACT SPIN-1/2!)")
-    print("Proof Complete: A classical knotted vector soliton in 3D is strictly a SPIN-1/2 DIRAC FERMION.")
+    print("Status: correct topology - pi_1 of the Q=1 Hopf configuration space is Z_2 (Auckly-Kapitanski),")
+    print("so FERMIONIC QUANTISATION IS ALLOWED (Krusch & Speight, CMP 2006). It is a possible choice, not")
+    print("a derivation that the electron is such a soliton; the Faddeev field is not derived from the lattice.")
     
     return {"thetas": thetas, "spin_phase_real": spin_phase_real, "val_2pi": val_2pi, "val_4pi": val_4pi}
 
@@ -202,14 +210,19 @@ def prove_3d_superfluid_entanglement():
     S_chsh = np.abs(E_ab - E_ab_prime + E_a_prime_b + E_a_prime_b_prime)
     # S = |-1/sqrt(2) - (-1/sqrt(2)) + (-1/sqrt(2)) + (1/sqrt(2))| ... let's check standard CHSH:
     # S = | -cos(pi/4) - cos(3pi/4) - cos(pi/4) + cos(pi/4) | -> 2*sqrt(2) = 2.828427
-    S_tsirelson = 2.0 * np.sqrt(2.0)
+    # Audit fix: S_chsh evaluated with the angles above is 0 (the b' = -pi/4 choice is wrong);
+    # the old code discarded it and printed a hard-coded 2*sqrt(2). With b' = 3pi/4:
+    S_correct_qm = np.abs(-np.cos(-np.pi/4) - (-np.cos(0 - 3*np.pi/4)) + (-np.cos(np.pi/2 - np.pi/4))
+                          + (-np.cos(np.pi/2 - 3*np.pi/4)))
+    S_tsirelson = S_correct_qm
     
     print(f"Condensate Phase Continuity:       del^2 theta = 0 (Rigid Global Wavefunction)")
-    print(f"Bell Correlation Function:         E(a, b) = -cos(a - b) (Exact Quantum Mechanics)")
-    print(f"CHSH Bell Parameter S:             {S_tsirelson:.6f} (Exact Tsirelson Bound 2*sqrt(2))")
-    print(f"Local Realism Bound (S <= 2.0):    VIOLATED AT 2.8284 (Quantum Non-locality in Pure 3D!)")
-    print("Proof Complete: Entanglement requires ZERO extra dimensions—it is the natural")
-    print("phase-rigidity of a continuous, zero-viscosity 3D quantum superfluid ocean!")
+    print(f"Bell Correlation Function:         E(a, b) = -cos(a - b)  (quantum mechanics, typed in - not derived)")
+    print(f"CHSH with the angles quoted above: S = {S_chsh:.6f}  (sign slip in the original derivation)")
+    print(f"CHSH with b' = 3pi/4:              S = {S_tsirelson:.6f}  (quantum value, because E was put in)")
+    print("Audit note: a phase relation theta_A + theta_B = const fixed at creation is a LOCAL hidden")
+    print("variable and gives S <= 2 when actually simulated (audit/a03_bell_models.py). Disturbances of")
+    print("theta travel at the sound speed, so they cannot produce space-like Bell correlations either.")
     
     return {"angles_diff": angles_diff, "E_corr": E_corr, "S_tsirelson": S_tsirelson}
 
@@ -242,7 +255,7 @@ def derive_complete_lepton_spectrum():
     # Let's test the exact geometric formula:
     # theta_0_geom = (2.0 / 9.0) * np.pi * (1.0 + (alpha_measured / np.pi) * np.sqrt(2.0))
     # Let's calibrate theta_0 from the FCC tetrahedral geometry:
-    theta_0_exact = 132.73305 * np.pi / 180.0 # 2.31663 rad
+    theta_0_exact = 132.73305 * np.pi / 180.0 # 2.31663 rad  -- FITTED to the measured lepton masses (audit note)
     
     # Calculate v_0 directly from the predicted electron mass:
     # sqrt(m_e) = v_0 * [ 1 + sqrt(2) * cos(theta_0) ]
@@ -265,7 +278,9 @@ def derive_complete_lepton_spectrum():
     print(f"Electron Mass: Predicted = {m_e_pred_MeV:.4f} MeV | Measured = {m_e_real_MeV:.4f} MeV (Accuracy: {100-err_e:.2f}%)")
     print(f"Muon Mass:     Predicted = {m_mu_pred_MeV:.4f} MeV | Measured = {m_mu_real_MeV:.4f} MeV (Accuracy: {100-err_mu:.2f}%)")
     print(f"Tau Mass:      Predicted = {m_tau_pred_MeV:.4f} MeV | Measured = {m_tau_real_MeV:.4f} MeV (Accuracy: {100-err_tau:.2f}%)")
-    print(f"Koide Parameter Q_pred = {np.sum(m_leptons_pred) / (np.sum(np.sqrt(m_leptons_pred))**2):.8f} (= EXACTLY 2/3!)")
+    print(f"Koide Parameter Q_pred = {np.sum(m_leptons_pred) / (np.sum(np.sqrt(m_leptons_pred))**2):.8f} (= 2/3 identically, by construction)")
+    print("Audit note: theta_0 = 132.73305 deg is fitted to the measured muon and tau masses, so these")
+    print("            'predictions' contain only one genuinely predicted number (Koide's tau relation).")
     
     return {
         "m_e_pred": m_e_pred_MeV, "m_mu_pred": m_mu_pred_MeV, "m_tau_pred": m_tau_pred_MeV,
@@ -354,7 +369,7 @@ def plot_ironclad_refinements(r1, r2, r3, r4, r5):
     ax4.grid(True, color='#30363d', ls=':', alpha=0.5)
     
     plt.tight_layout()
-    out_file = r'f:\Reality_theory\ironclad_theory_refinements.png'
+    out_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ironclad_theory_refinements.png')
     plt.savefig(out_file, dpi=300, facecolor=fig.get_facecolor(), edgecolor='none')
     print(f"\nIronclad Refinements Dashboard saved to: {out_file}")
     

@@ -1,0 +1,23 @@
+
+==============================================================================
+Bell-CHSH test of explicit 'vortex cord' models (400k pairs each)
+==============================================================================
+0. Paper's own CHSH arithmetic: E = -cos(a-b), S = |E(a,b)-E(a,b')+E(a',b)+E(a',b')| with the
+   quoted angles (0, pi/2, pi/4, -pi/4) gives S = 0.000, not 2.828: a sign slip in the
+   documents (2*sqrt2 needs b' = 3pi/4). Standard settings are used below.
+A. local shared phase (fixed at creation):   S = 1.999   (Bell bound 2)
+   best over 200 random measurement settings: S = 2.000  (never above 2)
+B. nonlocal cord + quantum rule put in by hand: S = 2.829   (Tsirelson 2*sqrt2 = 2.828)
+C. same nonlocal cord + different rule:        S = 4.000   (above any quantum system)
+
+Conclusions
+ - A phase relation fixed at pair creation and carried locally (the '3D phase rigidity' version)
+   is a local hidden-variable model: S <= 2. It cannot explain the measured Bell violations.
+ - An instantaneous cord through a 'bulk' is a NONLOCAL hidden-variable model, like Bohmian
+   mechanics with a preferred frame. Bell's theorem allows such models, and a substrate with a
+   rest frame could host one. That part of the idea is not ruled out.
+ - But the cord picture does not by itself give -cos(a-b) or the value 2*sqrt2: model C uses the
+   same cord and gives 4. The quantum prediction has to be supplied by quantum mechanics, which
+   is exactly what the USRT scripts do (E = -cos is typed in).
+ - 'ER = EPR' (Maldacena-Susskind 2013) is a conjecture about entangled black holes/wormholes in
+   quantum gravity; it does not say entangled particles are joined by fluid vortex tubes.

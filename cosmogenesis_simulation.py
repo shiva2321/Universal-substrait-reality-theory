@@ -167,7 +167,7 @@ def plot_cosmogenesis(data):
              ha='center', fontsize=9.2, bbox=dict(boxstyle="round,pad=0.4", fc="#fef9e7", ec="#f39c12", alpha=0.9))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\cosmogenesis_simulation.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'cosmogenesis_simulation.png')
     plt.savefig(output_path, dpi=300)
     print(f"Cosmogenesis plot successfully saved to: {output_path}")
     

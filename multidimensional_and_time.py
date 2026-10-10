@@ -5,6 +5,7 @@ Mathematical and Numerical Exploration of:
 3. Quantum Entanglement as Higher-Dimensional Substrate Wormholes / Vortex Tubes (ER = EPR)
 """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -154,7 +155,7 @@ def plot_combined_investigation(t_vals, p_up, p_down, n_modes, mass_spectra, x_3
                    bbox=dict(boxstyle="round,pad=0.8", fc="#f8f9fa", ec="#ced4da", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\relational_time_and_entanglement.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'relational_time_and_entanglement.png')
     plt.savefig(output_path, dpi=300)
     print(f"Relational time & entanglement figure saved to: {output_path}")
 

@@ -20,6 +20,7 @@ Key Physics Proven:
 ================================================================================
 """
 
+import os
 import numpy as np
 import scipy.constants as const
 import matplotlib.pyplot as plt
@@ -60,19 +61,21 @@ E_ground_derived_eV = - (m_e * e_charge**4) / (2.0 * (4.0 * np.pi * eps_0)**2 * 
 print("\n--- [1] SUB-MOLECULAR GROUND STATE DERIVATIONS ---")
 print(f"Derived Bohr Radius a_0        : {a_0_derived * 1e10:.9f} Angstrom (CODATA: {a_bohr * 1e10:.9f} A)")
 print(f"Derived Ground Energy E_1s     : {E_ground_derived_eV:.6f} eV (Rydberg Target: -{Rydberg_eV:.6f} eV)")
-print(f"Ground State Derivation Match  : 100.000000%")
+print(f"Ground State Derivation Match  : 100.000000%  (textbook Bohr/Schrodinger result from CODATA constants)")
 
 # -----------------------------------------------------------------------------
 # 3. MOLECULAR POTENTIAL CURVE: HYDROGEN MOLECULE (H_2) LCAO & MORSE
 # -----------------------------------------------------------------------------
-# Empirical benchmarks for H_2:
-# Equilibrium bond length R_e = 0.7414 Angstrom = 0.07414 nm
-# Dissociation energy D_e = 4.520 eV (436.0 kJ/mol)
+# Empirical benchmarks for H_2 (these are INPUTS from spectroscopy, not USRT outputs):
+# Equilibrium bond length R_e = 0.74144 Angstrom
+# Well depth D_e = 4.7474 eV (spectroscopic; D_0 = D_e - ZPE = 4.4781 eV)
+#   Audit fix (2026-10): the previous version used 4.520 eV, which is the 298 K bond ENTHALPY
+#   (436 kJ/mol), not the Morse well depth; that error caused the 2.5% miss in nu_0 below.
 # Morse parameter a = 1.942 Angstrom^-1
-# Force constant k_bond = 2 * D_e * a^2 ~ 575 N/m
+# Force constant k_bond = 2 * D_e * a^2 ~ 573 N/m
 
 R_e_angstrom = 0.74144
-D_e_eV       = 4.520
+D_e_eV       = 4.7474
 a_morse      = 1.942
 
 R_vals_ang = np.linspace(0.25, 4.0, 500) # Internuclear distance in Angstroms
@@ -90,7 +93,8 @@ V_antibonding_eV = D_e_eV * ( 0.5 * np.exp(-2.0 * a_morse * (R_vals_ang - R_e_an
 V_pauli_wall = 10.0 * (0.4 / R_vals_ang)**12
 
 # Harmonic vibrational frequency in the well:
-mu_H2 = (m_p * m_p) / (m_p + m_p) # Reduced mass ~ m_p / 2
+m_H_atom = 1.00782503207 * 1.66053906660e-27  # hydrogen ATOM mass (proton + electron)
+mu_H2 = m_H_atom / 2.0                         # reduced mass of H2
 k_bond_Nm = 2.0 * (D_e_eV * eV_to_J) * (a_morse * 1e10)**2 # N/m
 omega_vib = np.sqrt(k_bond_Nm / mu_H2)
 freq_vib_Hz = omega_vib / (2.0 * np.pi)
@@ -99,9 +103,11 @@ E_ZPE_eV = 0.5 * h_planck * freq_vib_Hz / eV_to_J # Zero-point energy ~ 0.27 eV
 
 print("\n--- [2] HYDROGEN MOLECULE (H_2) MOLECULAR DYNAMICS ---")
 print(f"Equilibrium Bond Length R_e    : {R_e_angstrom:.5f} Angstrom (Observed: 0.74144 A)")
-print(f"Bond Dissociation Energy D_e   : {D_e_eV:.3f} eV (Observed: 4.520 eV = 436.0 kJ/mol)")
+print(f"Morse Well Depth D_e           : {D_e_eV:.4f} eV (spectroscopic input; D_0 = 4.4781 eV, 298 K enthalpy 4.52 eV)")
 print(f"Molecular Spring Constant k_e  : {k_bond_Nm:.2f} N/m")
-print(f"Vibrational Wavenumber nu_0    : {wavenumber_cm1:.1f} cm^-1 (Observed: 4401.2 cm^-1)")
+print(f"Harmonic Wavenumber omega_e    : {wavenumber_cm1:.1f} cm^-1 (Observed omega_e: 4401.2 cm^-1)")
+print("Note: all numbers in this section are standard quantum chemistry with measured inputs;")
+print("      none of them involves the substrate model.")
 print(f"Zero-Point Energy E_ZPE        : {E_ZPE_eV:.4f} eV")
 
 # -----------------------------------------------------------------------------
@@ -182,7 +188,7 @@ ax1.plot(R_vals_ang, V_antibonding_eV, color='#ff7b72', lw=2.5, ls='--',
          label=r'Anti-Bonding State $\sigma_u^*$ (Destructive Nodal Plane)')
 ax1.axhline(0.0, color='#8b949e', ls=':', alpha=0.7, label='Dissociated Free Atoms (E = 0)')
 ax1.plot(R_e_angstrom, -D_e_eV, 'o', color='#58a6ff', markersize=10, 
-         label=f'Stable Well: $R_e = {R_e_angstrom:.3f}\ \AA$, $D_e = {D_e_eV:.2f}$ eV')
+         label=f'Stable Well: $R_e = {R_e_angstrom:.3f}\\ \\AA$, $D_e = {D_e_eV:.2f}$ eV')
 
 # Annotate quantized vibrational levels
 for n in range(4):
@@ -260,16 +266,16 @@ ax4 = fig.add_subplot(gs[1, 1])
 format_dark_ax(ax4)
 
 ax4.plot(xi_coord, V_reaction_path, color='#d2a8ff', lw=3.0, label='Chemical Reaction Path (Substrate Deformation)')
-ax4.plot(0.0, E_barrier, '^', color='#ff7b72', markersize=12, label=f'Transition State $[A\cdots B\cdots C]^\ddagger$ ($E_a = {E_barrier:.2f}$ eV)')
+ax4.plot(0.0, E_barrier, '^', color='#ff7b72', markersize=12, label=f'Transition State $[A\\cdots B\\cdots C]^\\ddagger$ ($E_a = {E_barrier:.2f}$ eV)')
 ax4.plot(-2.5, E_reactants, 'o', color='#58a6ff', markersize=10, label='Reactants ($A + B-C$, $E = 0.0$ eV)')
-ax4.plot(2.5, E_products, 'o', color='#7ee787', markersize=10, label=f'Products ($A-B + C$, $\Delta H = {E_products:.2f}$ eV)')
+ax4.plot(2.5, E_products, 'o', color='#7ee787', markersize=10, label=f'Products ($A-B + C$, $\\Delta H = {E_products:.2f}$ eV)')
 
 ax4.annotate(f'Activation Energy\n$E_a = {E_barrier:.2f}$ eV ({E_barrier*96.5:.0f} kJ/mol)', 
              xy=(0.0, E_barrier), xytext=(-1.8, 0.4),
              arrowprops=dict(facecolor='#ff7b72', edgecolor='none', shrink=0.08, width=1.5, headwidth=6),
              color='white', fontsize=9.5, fontweight='bold')
 
-ax4.annotate(f'Exothermic Release\n$\Delta H = {E_products:.2f}$ eV', 
+ax4.annotate(f'Exothermic Release\n$\\Delta H = {E_products:.2f}$ eV', 
              xy=(2.3, E_products), xytext=(0.8, -1.0),
              arrowprops=dict(facecolor='#7ee787', edgecolor='none', shrink=0.08, width=1.5, headwidth=6),
              color='white', fontsize=9.5, fontweight='bold')
@@ -282,7 +288,7 @@ ax4.set_title(r'$\mathbf{(d)\ Chemical\ Instability,\ Activation\ Barrier\ &\ Ca
 ax4.legend(facecolor='#21262d', edgecolor='#30363d', labelcolor='white', loc='upper right', fontsize=9)
 
 plt.tight_layout()
-out_png = 'chemical_bonds_and_molecular_physics.png'
+out_png = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'chemical_bonds_and_molecular_physics.png')
 plt.savefig(out_png, dpi=300, facecolor=fig.get_facecolor(), edgecolor='none')
 print(f"\nFigure saved successfully to {out_png}")
 print("="*80)

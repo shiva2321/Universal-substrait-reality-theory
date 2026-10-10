@@ -9,6 +9,7 @@ Evaluates:
    - Quantum Compton Scale: R = hbar / (m*c) ==> F = m^2 * c^3 / hbar ~ m^2 (Quadratic!).
 """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -161,7 +162,7 @@ def plot_cavity_wall_force(data):
                    bbox=dict(boxstyle="round,pad=0.8", fc="#e8f8f5", ec="#1abc9c", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\cavity_wall_force.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'cavity_wall_force.png')
     plt.savefig(output_path, dpi=300)
     print(f"Cavity wall force plots saved to: {output_path}")
 

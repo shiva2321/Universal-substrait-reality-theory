@@ -1,4 +1,5 @@
 import numpy as np
+import os
 import scipy.constants as const
 from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
@@ -93,7 +94,10 @@ def ray_equations(t, state, model_type='elastic'):
     dn_dy = dn_dr * (y / r)
     
     n_val = 1.0  # background scale
-    dphi_dt = (np.sin(phi) * dn_dx - np.cos(phi) * dn_dy)
+    # Ray equation d/ds(n t) = grad n  ->  dphi/ds = -sin(phi) dn/dx + cos(phi) dn/dy  (n ~ 1).
+    # Audit fix: the previous version had the opposite sign (rays bent AWAY from the Sun) and
+    # compensated with a minus sign when reporting the angle.
+    dphi_dt = (-np.sin(phi) * dn_dx + np.cos(phi) * dn_dy)
     
     dx_dt = np.cos(phi)
     dy_dt = np.sin(phi)
@@ -102,16 +106,17 @@ def ray_equations(t, state, model_type='elastic'):
 
 # Integrate rays from x = - 5 * R_sun to x = + 5 * R_sun at impact parameter b = R_sun
 b_impact = R_sun
-x_start = - 5.0 * R_sun
-x_end = 5.0 * R_sun
-t_span = (0, 10.0 * R_sun)
+# Audit fix: integrate over +-2000 R_sun (previously +-5 R_sun, which captures only ~98% of the bending)
+x_start = - 2000.0 * R_sun
+x_end = 2000.0 * R_sun
+t_span = (0, 4000.0 * R_sun)
 
 # 1. Cauchy Elastic Lattice Ray
 sol_elastic = solve_ivp(
     lambda t, y: ray_equations(t, y, 'elastic'),
     t_span,
     [x_start, b_impact, 0.0],
-    t_eval=np.linspace(0, 10.0 * R_sun, 2000),
+    t_eval=np.linspace(0, 4000.0 * R_sun, 400001),
     rtol=1e-11, atol=1e-13
 )
 
@@ -120,7 +125,7 @@ sol_scalar = solve_ivp(
     lambda t, y: ray_equations(t, y, 'scalar'),
     t_span,
     [x_start, b_impact, 0.0],
-    t_eval=np.linspace(0, 10.0 * R_sun, 2000),
+    t_eval=np.linspace(0, 4000.0 * R_sun, 400001),
     rtol=1e-11, atol=1e-13
 )
 
@@ -131,7 +136,7 @@ rad_to_arcsec = 180.0 * 3600.0 / np.pi
 theta_GR_analytical = (4.0 * G * M_sun / (c**2 * R_sun)) * rad_to_arcsec
 theta_Scalar_analytical = (2.0 * G * M_sun / (c**2 * R_sun)) * rad_to_arcsec
 
-theta_elastic_num = - sol_elastic.y[2, -1] * rad_to_arcsec
+theta_elastic_num = - sol_elastic.y[2, -1] * rad_to_arcsec   # phi ends negative (bent toward the Sun)
 theta_scalar_num = - sol_scalar.y[2, -1] * rad_to_arcsec
 
 print("\n--- LIGHT DEFLECTION RESULTS AT SOLAR LIMB (b = R_sun) ---")
@@ -140,6 +145,24 @@ print(f"Scalar Acoustic Fluid (Sim):      {theta_scalar_num:.4f} arcsec")
 print(f"Cauchy Elastic Lattice (Theory):  {theta_GR_analytical:.4f} arcsec (Einstein General Relativity)")
 print(f"Cauchy Elastic Lattice (Sim):     {theta_elastic_num:.4f} arcsec")
 print(f"Deflection Difference Ratio:      {theta_elastic_num / theta_scalar_num:.4f} (Exact factor of 2)")
+
+# -------------------------------------------------------------
+# Audit check (2026-10): is the "elastic" metric actually produced by Navier-Cauchy elasticity?
+# -------------------------------------------------------------
+# The ray tracing above uses the isotropic GR metric B(r) = 1 + 2 r_g / r as an INPUT.
+# For a radial displacement u_r(r) the source-free Navier-Cauchy equation reduces to
+#   (lambda + 2 mu) d/dr [ (1/r^2) d(r^2 u_r)/dr ] = 0   ->   u_r = A r + B / r^2.
+r_test = np.linspace(2.0, 10.0, 9) * R_sun
+u_claim = -r_g / r_test
+div_u = np.gradient(r_test**2 * u_claim, r_test) / r_test**2
+residual = np.gradient(div_u, r_test)
+print("\n--- AUDIT: CONSISTENCY WITH NAVIER-CAUCHY ELASTICITY ---")
+print(f"u_r = -r_g/r  ->  d/dr(div u) = {residual[4]:.3e} 1/m^2 at r = 6 R_sun (analytic: 2 r_g / r^3, not 0)")
+print("u_r = -r_g/r is therefore not an equilibrium solution; the general radial solution A r + B/r^2")
+print("gives a traceless strain (-2B/r^3, B/r^3, B/r^3), and the isotropic strain (r_g/r) delta_ij")
+print("violates the Saint-Venant compatibility conditions, so no displacement field produces it.")
+print("=> The 1.751 arcsec result is General Relativity's metric, written in by hand - not derived")
+print("   from a Planck-lattice elasticity calculation. (See audit/a04_mechanics_checks.py.)")
 
 # -------------------------------------------------------------
 # 3. Observational Verification & History
@@ -181,8 +204,10 @@ ax1.add_patch(sun_circle)
 ax1.add_patch(sun_core)
 
 x_norm = sol_elastic.y[0] / R_sun
-y_elastic_norm = (sol_elastic.y[1] - b_impact) / R_sun * scale_vis + 1.0
-y_scalar_norm = (sol_scalar.y[1] - b_impact) / R_sun * scale_vis + 1.0
+# rays now start at -2000 R_sun; reference the drawn path to its height at x = -5 R_sun
+_i0 = np.argmin(np.abs(x_norm + 5.0))
+y_elastic_norm = (sol_elastic.y[1] - sol_elastic.y[1][_i0]) / R_sun * scale_vis + 1.0
+y_scalar_norm = (sol_scalar.y[1] - sol_scalar.y[1][_i0]) / R_sun * scale_vis + 1.0
 
 ax1.plot(x_norm, y_elastic_norm, color='#7ee787', lw=2.5, 
          label=f'USRT Cauchy Elastic Lattice (Rank-2): {theta_GR_analytical:.3f} arcsec (100% GR)')
@@ -243,6 +268,6 @@ ax3.legend(facecolor='#21262d', edgecolor='#30363d', labelcolor='white')
 ax3.grid(True, color='#30363d', ls=':', alpha=0.5)
 
 plt.tight_layout()
-out_png = 'cauchy_tensor_gravity.png'
+out_png = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'cauchy_tensor_gravity.png')
 plt.savefig(out_png, dpi=300, facecolor=fig.get_facecolor(), edgecolor='none')
 print(f"\nFigure saved successfully to {out_png}")

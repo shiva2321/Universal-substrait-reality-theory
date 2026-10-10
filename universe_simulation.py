@@ -9,6 +9,7 @@ Designed to be computationally lightweight and stable:
   Epoch 3: Orbital Geodesic Infall & Extra-Dimensional Entanglement Bridge.
 """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
@@ -60,49 +61,63 @@ def run_universe_simulation():
     # Matter density profile of clustered excitations
     rho_matter = 2.5 * np.exp(-(R / core_radius)**2)
     
-    # Substrate responds via cavitation coupling:
-    # Delta_rho(r) = - g_c * rho_matter / (1 + r/r_healing)
+    # Substrate responds via cavitation coupling.
+    # Audit fix (2026-10): the previous version drew the cavity as a hand-made Gaussian that did not
+    # use rho_matter, and drove the orbit with a typed-in force law a = -0.85/(r^2 + 1.2), while the
+    # report said "we did NOT program gravity into the code". Here the cavity is computed from
+    # rho_matter with the linearised Gross-Pitaevskii response, (-lap + 2/xi^2) delta_rho = -g rho_matter,
+    # whose kernel is SCREENED (range ~ healing length xi), and the orbit feels -grad(Phi), Phi = delta_rho/2.
     healing_length = 1.5
-    delta_rho = - 0.75 * np.exp(-(R / (core_radius * 1.5))**2) / (1.0 + R / 8.0)
+    g_cav = 1.0
+    kx = 2 * np.pi * np.fft.fftfreq(N, d=x[1] - x[0])
+    KX, KY = np.meshgrid(kx, kx)
+    response = -g_cav / (KX**2 + KY**2 + 2.0 / healing_length**2)
+    delta_rho = np.real(np.fft.ifft2(response * np.fft.fft2(rho_matter)))
     rho_substrate_cavity = rho_epoch0 + delta_rho
-    
-    # Effective gravitational potential
+
+    # Effective gravitational potential (the model's assumption Phi = c_s^2 delta_rho / 2, c_s = 1)
     Phi_grav = delta_rho / 2.0
-    
-    # -------------------------------------------------------------
+    dPhi_dy, dPhi_dx = np.gradient(Phi_grav, y, x)
+
+    def accel(px, py):
+        # bilinear interpolation of -grad(Phi) on the grid
+        ix = np.clip(np.searchsorted(x, px) - 1, 0, N - 2)
+        iy = np.clip(np.searchsorted(y, py) - 1, 0, N - 2)
+        tx = (px - x[ix]) / (x[ix + 1] - x[ix])
+        ty = (py - y[iy]) / (y[iy + 1] - y[iy])
+        def interp(F):
+            return ((1 - tx) * (1 - ty) * F[iy, ix] + tx * (1 - ty) * F[iy, ix + 1]
+                    + (1 - tx) * ty * F[iy + 1, ix] + tx * ty * F[iy + 1, ix + 1])
+        return -interp(dPhi_dx), -interp(dPhi_dy)
+
     # EPOCH 3: Orbital Motion in Cavity & Extra-Dimensional Entanglement
-    # A test particle excitation orbits the cavity well
-    # Two entangled particles at (+/- 4, 0) connected via extra dimension z
-    # -------------------------------------------------------------
-    print("Simulating Epoch 3: Planetary Orbit & 5D Entanglement Wormhole...")
-    # Orbital trajectory integration (Runge-Kutta 4th order, 150 steps)
+    print("Simulating Epoch 3: test-particle motion in the computed cavity potential...")
     t_steps = 150
     dt = 0.15
     orbit_x = np.zeros(t_steps)
     orbit_y = np.zeros(t_steps)
-    
-    # Initial position and velocity
     rx, ry = 5.5, 0.0
-    vx, vy = 0.0, 0.28 # Tangential orbital velocity
-    
+    vx, vy = 0.0, 0.28 # same initial conditions as the original script
     for step in range(t_steps):
         orbit_x[step] = rx
         orbit_y[step] = ry
-        # Radial distance
-        r_curr = np.sqrt(rx**2 + ry**2)
-        if r_curr < 0.3:
-            r_curr = 0.3
-        # Central attractive acceleration from cavity slope
-        acc_mag = - (0.85 / (r_curr**2 + 1.2))
-        ax = acc_mag * (rx / r_curr)
-        ay = acc_mag * (ry / r_curr)
-        
-        # Velocity and position update (Verlet/Euler-Cromer)
+        ax, ay = accel(rx, ry)
         vx += ax * dt
         vy += ay * dt
         rx += vx * dt
         ry += vy * dt
-        
+    r_final = np.hypot(orbit_x[-1], orbit_y[-1])
+    i0 = np.argmin(np.abs(y - 0.0))
+    print("Radial force of the computed cavity vs an inverse-square law (both normalised at r = 2):")
+    a_ref = abs(dPhi_dx[i0, np.argmin(np.abs(x - 2.0))])
+    for rr in (2.0, 4.0, 6.0, 8.0):
+        a_r = abs(dPhi_dx[i0, np.argmin(np.abs(x - rr))])
+        print(f"   r = {rr:3.1f}: cavity {a_r / a_ref:.2e}   inverse-square {(2.0 / rr)**2:.2e}")
+    print(f"Test particle: start r = 5.5, end r = {r_final:.2f} after {t_steps} steps"
+          f" (it stays bound only because it starts within ~4 healing lengths of the core)")
+    print("Result: the cavity force dies off exponentially beyond a few healing lengths; it is a short-range")
+    print("        force, not Newtonian gravity (whose range is unlimited).")
+
     # Extra dimension bridge: Entangled pair at (-4, 0) and (+4, 0)
     # The bridge dips into the extra dimension z: z(x, y) = - z_depth * exp(- dist_to_chord^2)
     x_pair = np.array([-4.5, 4.5])
@@ -178,7 +193,7 @@ def visualize_universe_epochs(sim):
     ax4.legend(loc='lower left', frameon=True, fontsize=9.5)
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\universe_simulation.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'universe_simulation.png')
     plt.savefig(output_path, dpi=300)
     print(f"Universe simulation snapshot successfully saved to: {output_path}")
 
@@ -216,7 +231,7 @@ def render_3d_cavity_and_wormhole(sim):
     ax.view_init(elev=32, azim=-55)
     ax.legend(loc='upper right', frameon=True)
     
-    output_3d = r'f:\Reality_theory\universe_simulation_3d.png'
+    output_3d = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'universe_simulation_3d.png')
     plt.savefig(output_3d, dpi=300)
     print(f"3D perspective saved to: {output_3d}")
 

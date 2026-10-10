@@ -1,0 +1,61 @@
+
+==============================================================================
+1. Navier-Cauchy elasticity and the claimed 'rank-2 metric'
+==============================================================================
+equilibrium residual for u = -r_g/r      : 2*r_g*(lambda + 2*mu)/r**3   (must be 0; it is not)
+equilibrium residual for u = A r + B/r^2 : 0   (general radial solution)
+strain of u = B/r^2: eps_rr = -2*B/r**3, eps_thth = eps_phph = B/r**3
+  -> traceless and anisotropic (pure shear), falling like 1/r^3: not (GM/c^2 r) delta_ij.
+compatibility of eps_ij = (1/r) delta_ij: f_xx + lap f = (2*x**2 - y**2 - z**2)/(x**2 + y**2 + z**2)**(5/2)  (must vanish identically)
+  -> it does not vanish, so NO displacement field u can produce the isotropic strain needed
+     for g_ij = (1 + 2GM/(c^2 r)) delta_ij. The documents (and cauchy_tensor_gravity.py) simply
+     write down the isotropic GR metric and ray-trace it; the 1.751 arcsec is GR's number.
+
+==============================================================================
+2. Range of the 'cavitation' attraction in a superfluid (Gross-Pitaevskii)
+==============================================================================
+solver converged: True;  tail fit: |delta_rho| * r ~ exp(-1.4142 r)
+linearised theory predicts exp(-sqrt2 r) = exp(-1.4142 r) in healing-length units
+=> The density dip around a 'cluster' is screened (Yukawa-like), with range ~ the healing length.
+   If the healing length is ~ the Planck length, the force is gone beyond ~1e-35 m.
+   Newton's 1/r needs a massless (gapless) mediator. In a superfluid the gapless mode is the
+   phase/flow (sound) field, so a long-range force has to come from flow - e.g. sources/sinks or
+   pulsating bodies (Bjerknes forces) - not from a static density dent. The repo's own
+   cavity_simulation.py produces exactly this exponential tail. The ORIGINAL universe_simulation.py
+   did not use the cavity at all - its orbit was driven by a typed-in force a = -0.85/(r^2 + 1.2);
+   the audited version derives the force from the screened cavity and prints how it falls off.
+
+==============================================================================
+3. Units and the three incompatible parameter sets in the documents
+==============================================================================
+c^4/G = 1.2103e+44  -> units kg m s^-2 = NEWTON (a force), not N/m as the chat's
+        'k_spring = c^4/G N/m = Einstein's coupling constant' claim states.
+Preprint sec.1 (V0 = M0c^2/7.2, FCC)       rho=7.290e+96 kg/m^3  k=7.488e+79 N/m  mu=6.552e+113 Pa  sqrt(mu/rho)=1.0000 c
+Treatise sec.13 (V0 = E_P, mu = 3K/5)      rho=7.290e+96 kg/m^3  k=7.488e+78 N/m  mu=3.931e+113 Pa  sqrt(mu/rho)=0.7746 c
+ironclad script (rho = m/l^3, mu = k/l)    rho=5.155e+96 kg/m^3  k=7.488e+78 N/m  mu=4.633e+113 Pa  sqrt(mu/rho)=1.0000 c
+The treatise sec.13 states mu = (3/5)K with K = rho0 c^2 and then 'c = sqrt(mu/rho0)'; that
+arithmetic gives 0.7746 c. The documents also use V0 = M0c^2/7.2 (sec.1) and V0 = E_P (sec.13),
+and k = 7.49e79 N/m (sec.1) vs 7.49e78 N/m (sec.13). planckion_properties_and_physics.py hard-codes
+Lambda* = 2.6833 ('lambda_de_boer_corrected = 2.6833'), although its own formula gives 1.0000.
+
+==============================================================================
+4. Smaller checks
+==============================================================================
+MIT bag (3 quarks, x=2.04, B=55 MeV/fm^3): minimum at R = 1.150 fm, M = 1401 MeV.
+  The chat claimed R = 0.841 fm and then subtracted an unexplained 635 MeV to reach 938 MeV.
+Light-loop electron: r_C * (E/c) = 1.000 hbar (the chat inserted a factor 1/2 to get hbar/2);
+  a circulating charge has gyromagnetic factor g = 1, but the electron has g = 2.00232, so a
+  loop cannot give both spin hbar/2 and moment ~ mu_B. (Known objection to Zitterbewegung models.)
+Kaluza-Klein: extra dimension of radius l_P gives first mode m = hbar/(R c) = 1.000 m_P = 1.221e+19 GeV, not an electron.
+Static Coulomb field with E = -du/dt (MacCullagh identification): a constant E needs u growing
+  linearly in time without bound - unbounded strain of the 'solid'. Charges are not described.
+de Boer parameter in the paper's convention Lambda* = hbar/(r_min sqrt(m eps)):
+  He-4  Lambda* = 0.380  (liquid to T=0)
+  H2    Lambda* = 0.245  (solid below 14 K)
+  Ne    Lambda* = 0.084  (solid below 25 K)
+  Ar    Lambda* = 0.026  (solid below 84 K)
+  The documents quote 0.28 for He-4. In this convention He-4 is ~0.38 (0.43 using sigma instead of
+  r_min), while H2 - which DOES freeze - is ~0.25-0.28. The threshold idea (~0.3) is roughly right;
+  the problem is that the Planckion value is set by the fitted constant (Lambda* = sqrt(7.2)).
+Black-hole threshold r_s = hbar/(Mc) -> M = m_P/sqrt2: correct, but standard GR+QM dimensional
+  analysis; it does not involve the substrate.

@@ -5,6 +5,7 @@ Simulation and Mathematical Modeling of:
 3. Spacetime from Quantum Information (Ryu-Takayanagi Entanglement Distance).
 """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -132,7 +133,7 @@ def plot_origin_of_substrate(a_vals, V_a, a_0, phi_vals, F_hot, F_crit, F_cold, 
                    bbox=dict(boxstyle="round,pad=0.8", fc="#fdfefe", ec="#bdc3c7", lw=1.5))
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\origin_of_substrate.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'origin_of_substrate.png')
     plt.savefig(output_path, dpi=300)
     print(f"Origin of substrate plots saved to: {output_path}")
 

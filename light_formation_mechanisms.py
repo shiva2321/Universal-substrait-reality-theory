@@ -152,7 +152,7 @@ def plot_light_formation(data):
     ax4.legend(loc='upper right', frameon=True, fontsize=8.5)
     
     plt.tight_layout()
-    output_path = r'f:\Reality_theory\light_formation_mechanisms.png'
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'light_formation_mechanisms.png')
     plt.savefig(output_path, dpi=300)
     print(f"Light formation plots successfully saved to: {output_path}")
     
