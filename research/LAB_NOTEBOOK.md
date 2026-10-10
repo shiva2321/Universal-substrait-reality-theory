@@ -31,6 +31,13 @@ This is the running record of every question, calculation, plot and conclusion i
 | [E13](#e13) | 2026-10-10 | How a particle affects the substrate far away (gapless vs gapped modes) | r09 |
 | [E14](#e14) | 2026-10-10 | Measurable predictions: lattice light delays, black-hole shadows | r10 |
 | [E15](#e15) | 2026-10-10 | Brainstorm and current formulation: mass and gravity in the substrate | — |
+| [E16](#e16) | 2026-10-10 | What measurements demand of the substrate's gravity mode | r11 |
+| [E17](#e17) | 2026-10-10 | Building the graviton: tensor-gauge substrate on the lattice | r12 |
+| [E18](#e18) | 2026-10-10 | Gravity induced by the substrate's jiggling (Sakharov) and the graviton-speed problem | r13 |
+| [E19](#e19) | 2026-10-10 | Gravity from entanglement: area law → Bekenstein–Hawking → G | r14 |
+| [E20](#e20) | 2026-10-10 | Mass as a defect of the substrate (world crystal, cosmic strings) | r15 |
+| [E21](#e21) | 2026-10-10 | Gravity and quantum mechanics: one thing at different scales? | r16 |
+| [E22](#e22) | 2026-10-10 | Synthesis: the graviton and gravity–quantum unification (USRT v2.2) | — |
 
 ---
 
@@ -327,8 +334,17 @@ Under a constant push the speed went 0.375 → 0.700 → 0.850 → 0.900c. Newto
 - [ ] (added 2026-10-10, from E12) 2D/3D version of r08 with eps = mu: verify the factor-2 light bending emerges in a simulation, not just in the ray integral.
 - [ ] (added 2026-10-10, from E14) Quasi-normal modes / echo times for the exponential (horizonless) completion, to compare with LIGO-Virgo-KAGRA ringdowns.
 - [ ] (added 2026-10-10, from E14) Fit published TeV-photon arrival delays from several GRBs/blazars for an isotropic + l = 4 (cubic) pattern; current data give upper limits only.
+- [ ] (added 2026-10-10, from E22) Causal-set (Poisson-sprinkled) substrate: redo the E18 Sakharov calculation with a Lorentz-invariant random discreteness (e.g. the Sorkin / Benincasa–Dowker d'Alembertian) and check whether c_g = c comes out without tuning.
+- [ ] (added 2026-10-10, from E17) A Hamiltonian lattice model whose cells obey a local energy constraint (local Page–Wootters): does the helicity-0 graviton of E17's M3 disappear dynamically?
+- [ ] (added 2026-10-10, from E18) Extend E18 to fermions and gauge fields, the × polarisation and [111] propagation (lattice gravitational-wave birefringence).
+- [ ] (added 2026-10-10, from E19) Area law with the same Pauli–Villars regulator as E18, to verify S = A/(4G_induced) on the lattice as μa → 0.
+- [ ] (added 2026-10-10, from E21) Decoherence budget of a quantum substrate for the gravity-mediated entanglement experiment.
 
 > **Note (2026-10-10, later):** E10 gives the layered version of this picture, with parameter ranges and the new Coulomb-phase constraint α < α_c ≈ 0.079. Nothing in E9 is retracted.
+
+> **Note (2026-10-10, later, from E16–E22):**
+> - **Open problem 1 (emergent spin-2)** has been worked through four routes. G and the geometry of gravity follow from the substrate (E18–E20). What remains is the substrate's absolute time: a *local* Hamiltonian constraint and Lorentz invariance at the cell scale (E17, E18, E22).
+> - **Open problem 2 (one light cone)** is now quantified: an unprotected rest-frame substrate gives c_g = 0.72 c (E18).
 
 ---
 
@@ -409,6 +425,13 @@ A gauge lattice has only even-order dispersion and no birefringence, so the data
 - **Data:** Planck 2018 (Ω_Λ = 0.6847, H₀ = 67.36); PDG 2024 (α(M_Z))
 
 **Files:** [`r06_substrate_structure.py`](r06_substrate_structure.py), [results](results/r06_substrate_structure.txt), ![layers](figures/r06_substrate_structure_layers.png)
+
+> **Note (2026-10-10, later, from E20):** the "cubic arrangement" option for the substrate is now strongly disfavoured.
+> - A substrate with discrete rotation symmetry has quantised disclination lines. These would be cosmic strings with Gμ = 0.04–0.08, which is 3–6×10⁵ times above the CMB bound.
+> - Only these options survive:
+>   - no fixed lattice (continuous rotation symmetry at large scales);
+>   - a Lorentz-invariant random discreteness (E22);
+>   - confined disclinations.
 
 ---
 
@@ -567,6 +590,11 @@ If "trapped energy lowers the wave speed" compounds multiplicatively (n = e^(2GM
 
 **Files:** [`r10_testable_predictions.py`](r10_testable_predictions.py), [results](results/r10_testable_predictions.txt), ![predictions](figures/r10_testable_predictions_predictions.png)
 
+> **Note (2026-10-10, later, from E18 and E22):** the TeV-delay prediction assumes cells large enough to see (above ~10⁻²⁸ m).
+> - E18 shows that if gravity is induced by the substrate and GW170817 is to hold, a Lorentz-invariant cutoff with μa < 3×10⁻⁸ is needed. That puts the cells far below l_P and makes the 3:1 pattern unobservable.
+> - So the TeV prediction stands only for substrates in which gravity is *not* induced this way.
+> - The strong-field prediction (the black-hole shadow) is unaffected.
+
 ---
 
 <a id="e15"></a>
@@ -610,3 +638,434 @@ If "trapped energy lowers the wave speed" compounds multiplicatively (n = e^(2GM
 - **EHT Collaboration**, ApJL 930, L17 (2022)
 - **STAR Collaboration**, PRL 127, 052302 (2021)
 - **Leefer et al.**, PRL 111, 060801 (2013)
+
+> **Note (2026-10-10, later, from E16–E22):**
+> - **Point 4 (the spin-2 / range problem)** is worked through in E16–E22.
+> - **Point 5 (why gravity is weak)** gets a partial answer. With G ≈ a²c³/(4Nηħ) (E18, E19), α_G = G m_p²/ħc = (a/λ_p)²/(4Nη), where λ_p = ħ/(m_p c). Gravity's weakness is therefore the statement that the proton is ~10¹⁹ times larger than the substrate's cells (for N ~ 1). The hierarchy problem becomes "why is the proton so much bigger than a cell?".
+> - The formulation is extended to USRT v2.2 in E22.
+
+---
+
+<a id="e16"></a>
+## E16 — What measurements demand of the substrate's gravity mode (2026-10-10)
+
+**Question (user):** "Let's research, brainstorm and give it a few out-of-the-box and field-established and measured ways, and see if we can solve it or not, based on our theory as well." (On deriving the protected spin-2 mode, the open core problem of E13 and E15.)
+
+**Method:** before building a graviton from the substrate (E17–E20), fix what any candidate must do, using measured numbers only.
+- One-particle exchange between two static masses, and between a mass and a light pulse, for spin 0, 1 and 2 (massless and massive), with numerical tensor contractions. The ratio of the two amplitudes is 1 + γ, which is compared with Cassini's γ.
+- Graviton mass, speed, polarisation and universality bounds from gravitational-wave and equivalence-principle experiments.
+
+**Results (computed here):**
+
+| Mediator | Mass–mass | γ | Distance from Cassini |
+|---|---|---|---|
+| spin 0 (couples to T) | attracts | −1 (no light bending) | 8.7×10⁴ σ |
+| spin 1 (couples to p^μ) | **repels** | — | apples would fall up |
+| spin 2, massive (any mass > 0) | attracts | 1/2 (vDVZ discontinuity) | 2.2×10⁴ σ |
+| **spin 2, massless** | attracts | **1** | **0.9 σ** |
+| medium with only ε changed (E12) | attracts | 0 | 4.3×10⁴ σ |
+| **medium with ε = μ (E12)** | attracts | **1** | **0.9 σ** |
+| Brans–Dicke, ω = 40,000 | attracts | 0.999975 | 2.0 σ |
+
+Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
+
+- **Gap:** LVK GWTC-3 gives m_g c² < 1.27×10⁻²³ eV, i.e. a Compton wavelength above 9.8×10¹⁶ m (3.2 pc). That is **10⁻⁵¹ of the Planck energy (10⁻¹⁰² in m², the quantity a stiffness sets)**.
+- **Speed:** GW170817/GRB 170817A give −3×10⁻¹⁵ ≤ (v_gw − c)/c ≤ +7×10⁻¹⁶.
+- **Polarisation:** GW170814 prefers pure tensor over pure vector (Bayes factor ~200) and pure scalar (~1000).
+- **Universality:** MICROSCOPE gives η(Ti, Pt) = (−1.5 ± 2.7)×10⁻¹⁵.
+
+**Interpretation:**
+- **Only a massless, pure helicity-±2 mode passes.** In E12's medium language, this is exactly the ε = μ substrate.
+- **A gap 51 orders below the substrate's natural scale cannot be an accident.** A symmetry must enforce it: linearised diffeomorphism invariance, the spin-2 analogue of the gauge symmetry that keeps light massless (E5, E13).
+- **Light and gravity must share one light cone to 10⁻¹⁵.** This strongly suggests that both are excitations of one structure.
+- **Weinberg (1964)** shows that a massless spin-2 mode must couple equally to all energy, giving the equivalence principle for free. **Deser (1970)** shows that its self-coupling is forced to be full GR. So the whole problem reduces to one requirement: **a gapless helicity-±2 mode of the substrate that couples to T^μν.**
+- **Weinberg–Witten (1980)** forbids getting that mode as an ordinary composite particle in flat spacetime. The loopholes become the routes tried next:
+  - gauge (E17);
+  - induced (E18);
+  - entanglement (E19);
+  - defects (E20);
+  - emergent Lorentz symmetry or an extra dimension.
+
+**Status:** **established** (inputs are measurements, and the exchange algebra is standard); the σ values are **computed here**.
+
+**References:**
+- **Bertotti, Iess & Tortora**, Nature 425, 374 (2003)
+- **LIGO–Virgo–KAGRA**, "Tests of GR with GWTC-3", arXiv:2112.06861 (2021)
+- **Abbott et al.**, ApJL 848, L13 (2017)
+- **Abbott et al.**, PRL 119, 141101 (2017)
+- **Touboul et al.** (MICROSCOPE), PRL 129, 121102 (2022)
+- **Fierz & Pauli**, Proc. R. Soc. A 173, 211 (1939)
+- **van Dam & Veltman**, Nucl. Phys. B 22, 397 (1970)
+- **Zakharov**, JETP Lett. 12, 312 (1970)
+- **Vainshtein**, Phys. Lett. B 39, 393 (1972)
+- **Weinberg**, Phys. Rev. 135, B1049 (1964)
+- **Deser**, Gen. Rel. Grav. 1, 9 (1970)
+- **Weinberg & Witten**, Phys. Lett. B 96, 59 (1980)
+
+**Files:** [`r11_graviton_requirements.py`](r11_graviton_requirements.py), [results](results/r11_graviton_requirements.txt), ![requirements](figures/r11_graviton_requirements_requirements.png)
+
+---
+
+<a id="e17"></a>
+## E17 — Building the graviton: the gauge route on the lattice (2026-10-10)
+
+**Question (user):** as E16, the field-established route: can the substrate carry a protected spin-2 mode the way it carries light (E5)?
+
+**Method:** the substrate's long-wavelength strain is a symmetric tensor h_ij on the cubic lattice, with each difference replaced by i d_a, d_a = 2 sin(k_a/2).
+- For every k we build the 6×6 kinetic matrix (the DeWitt metric with parameter λ; GR has λ = 1) and stiffness matrix.
+- We impose the gauge constraints, solve for the modes, and resolve helicities inside degenerate subspaces.
+- Five substrates:
+  - **M1** elastic tensor medium, with no gauge symmetry;
+  - **M2** spatial gauge symmetry (moving cells is unphysical) with curvature-squared stiffness (Xu 2006);
+  - **M3** spatial gauge symmetry with Einstein stiffness −(√g R)⁽²⁾ and an **absolute time** (projectable Hořava), which is what a substrate with a rest frame naturally gives;
+  - **M4** M3 plus the Blas–Pujolàs–Sibiryakov term α(∇ ln N)²;
+  - **M5** full GR, which adds the local Hamiltonian constraint (time-reparametrisation gauge).
+
+**Results (computed here):**
+- **Mode count** at k = (0.13, 0.31, 0.47):
+
+  | Model | Modes |
+  |---|---|
+  | M1 | 6 (helicities 0, 0, 1, 1, 2, 2) |
+  | M2 | 3, all with ω ∝ k² (2 helicity-2, 1 helicity-0) |
+  | M3 (λ = 1.2) | 2 helicity-2 waves with ω² = k², plus a helicity-0 mode with ω²/k² = −0.077 (unstable) |
+  | M4 (α = 0.5) | the same helicity-0 mode at ω²/k² = +0.231 (healthy) |
+  | **M5** | **exactly 2, both helicity 2** |
+- **The lattice graviton has exactly the lattice photon's dispersion.** Over 200 random k in the Brillouin zone, max |ω² − 4Σ sin²(k/2)| = 3.6×10⁻¹⁵. The group-velocity deficit at ka = 0.03 is 1.125×10⁻⁴ along [100] and 3.750×10⁻⁵ along [111]: the same (1/8)(ka)²Σn⁴ law as light (E14).
+- **Curvature-squared stiffness confines.** On a 128³ lattice the static potential of a k⁴ stiffness grows linearly, with slope −0.0407 against −1/(8π) = −0.0398. The masses would be confined rather than attracted as 1/r.
+- **Absolute-time substrate:** the extra scalar has ω²/k² = −(λ−1)/(3λ−1) and kinetic sign (1−3λ)/(1−λ). This is reproduced to 4 digits at 10 values of λ. **It is never healthy:** it is unstable for λ < 1/3 or λ > 1, and a ghost for 1/3 < λ < 1. At λ = 1 it freezes but becomes strongly coupled.
+- **Healthy extension (M4):** the lattice gives ω²/k² = (2−α)/α · (λ−1)/(3λ−1), matching the analytic BPS result. The scalar is healthy for λ > 1 and 0 < α < 2.
+- **Double copy:** (±1) ⊗ (±1) gives helicities +2, −2, 0, 0, i.e. a graviton plus a dilaton plus an axion. A gravity-strength dilaton is excluded beyond 38.6 μm (Eöt-Wash), so it must weigh more than 5.1 meV.
+
+**Interpretation:**
+- **The gauge route works for gravity exactly as it did for light, with one crucial extra ingredient.**
+  - The spatial gauge symmetry ("moving the cells changes nothing") removes 3 of the 6 strain modes.
+  - Getting down to the observed **2** also needs the **local Hamiltonian constraint**: "the energy at each place is a constraint, not a clock".
+- **USRT's substrate has an absolute time (a rest frame),** so it naturally lands on M3, i.e. projectable Hořava gravity, with a pathological extra scalar.
+  - The BPS extension cures the scalar, but then it exists, and preferred-frame tests (|α₁| ≲ 4×10⁻⁵, |α₂| ≲ 2×10⁻⁹) plus GW170817 squeeze its couplings to ≲10⁻⁵.
+- **Out of the box:** the missing constraint is a *local* version of Page–Wootters. Time would be relational (HΨ = 0) at every cell, not just globally (E7, E10). This is **speculative**.
+- **A bonus:** if light and gravity are gauge modes of the same lattice, they share the dispersion exactly. GW170817 is then satisfied at all energies, provided the two fields' stiffness-to-inertia ratios are one number.
+
+**Status:** **computed here.** The lattice reproduces the known Hořava/BPS results and the GR mode count. The microscopic origin of the tensor gauge structure and of the local Hamiltonian constraint is **open**.
+
+**References:**
+- **Arnowitt, Deser & Misner** (1962), "The dynamics of general relativity"
+- **Gu & Wen**, arXiv:gr-qc/0606100
+- **Gu & Wen**, Nucl. Phys. B 863, 90 (2012)
+- **Xu**, PRB 74, 224433 (2006)
+- **Pretko**, PRD 96, 024051 (2017)
+- **Hořava**, PRD 79, 084008 (2009)
+- **Charmousis, Niz, Padilla & Saffin**, JHEP 08 (2009) 070
+- **Blas, Pujolàs & Sibiryakov**, JHEP 10 (2009) 029
+- **Blas, Pujolàs & Sibiryakov**, PRL 104, 181302 (2010)
+- **Koyama & Arroja**, JHEP 03 (2010) 061
+- **Shao & Wex**, CQG 29, 215018 (2012)
+- **Shao et al.**, CQG 30, 165019 (2013)
+- **Gümrükçüoğlu, Saravani & Sotiriou**, PRD 97, 024032 (2018)
+- **Kawai, Lewellen & Tye**, Nucl. Phys. B 269, 1 (1986)
+- **Bern, Carrasco & Johansson**, PRD 78, 085011 (2008)
+- **Bern, Carrasco & Johansson**, PRL 105, 061602 (2010)
+- **Lee et al.**, PRL 124, 101101 (2020)
+- **Page & Wootters**, PRD 27, 2885 (1983)
+
+**Files:** [`r12_tensor_gauge_graviton.py`](r12_tensor_gauge_graviton.py), [results](results/r12_tensor_gauge_graviton.txt), ![dispersion](figures/r12_tensor_gauge_graviton_dispersion.png) ![scalar](figures/r12_tensor_gauge_graviton_scalar_mode.png)
+
+---
+
+<a id="e18"></a>
+## E18 — Gravity induced by the substrate's jiggling (Sakharov), and the graviton-speed problem (2026-10-10)
+
+**Question (user):** as E16, the out-of-the-box but established route: can spacetime's stiffness 1/(16πG) come from the zero-point fluctuations of the fields living in the substrate (Sakharov 1967)? If so, how big are the cells, and does the induced graviton travel at c?
+
+**Method:**
+- **Setup:** scalar fields on the cubic substrate lattice, strained by a transverse-traceless "+" wave h_xx = −h_yy = h(t) cos(qz).
+- **Second-order vacuum energy:**
+  - the static stiffness is β, from E(q) − E(0) = (h²/16) β q²;
+  - the inertia M comes from the adiabatic mass, L = ½ M ḣ², with M = ∫ g²/(32ω⁵) and vertex g = d_x² − d_y².
+- **What follows:**
+  - the graviton speed is c_g² = β/(4M);
+  - Newton's constant is G = 1/(16πM).
+- **Checks:**
+  - the formula against exact diagonalisation;
+  - a Lorentz-invariant regulator (Pauli–Villars, weights 1, −2, 1, masses 0, μ, √2μ), which must give c_g = c and Sakharov's heat-kernel G.
+
+**Results (computed here):**
+- **Formula vs exact diagonalisation** (12³ lattice, mass 0.3, h = 0.02): they agree to 3×10⁻⁵ relative. The energy rises with q, so strained space is stiff.
+- **Pauli–Villars** (Lorentz-invariant regulator):
+  - **c_g² = 0.999999994**;
+  - M = 7.3156763×10⁻⁴ μ², equal to Sakharov's heat-kernel value μ² ln 2/(96π²).
+  - **This validates the method.**
+- **Hard momentum cutoff:** c_g² = 11/7, so c_g = 1.254 c.
+- **The substrate lattice itself** (one scalar):
+  - M = 2.632×10⁻³/a² and β = 5.439×10⁻³/a²;
+  - **c_g² = 0.5165, so c_g = 0.719 c**: 28 % slower than light;
+  - **excluded by GW170817 by a factor of ~10¹⁴.**
+- **Cell size that gives the measured G:** a = 0.364 √N l_P (from the inertia) or 0.261 √N l_P (from the stiffness), for N scalar fields.
+- **Lattice plus a Lorentz-invariant cutoff at μ:**
+  - c_g² − 1 = −0.211, −0.099, −0.037, −0.012, −0.0037 for μa = 0.8, 0.4, 0.2, 0.1, 0.05;
+  - fit: −0.411 (μa)² ln(1.91/μa);
+  - GW170817 then needs **μa < 2.8×10⁻⁸**. This is extrapolated with the fitted form, an assumption over 6–7 decades.
+  - Matching G needs μ = √(6π/(N ln 2)) m_P, which gives **cells a < 5.5×10⁻⁹ l_P (N = 1) to 5.5×10⁻⁸ l_P (N = 100)**.
+
+**Interpretation:**
+- **G does not need to be fundamental.** The substrate's quantum jiggling produces it, and with cells of about the Planck length the size is right.
+- **But a substrate with a rest frame leaks O(1) Lorentz violation into the induced graviton.** In our lattice it moves at 0.72 c. This is the general effect of Collins et al. (2004), computed here concretely for the graviton.
+- **The only cure found is a Lorentz-invariant cutoff far below the cell scale** (μa < 3×10⁻⁸). The Planck scale is then set by μ rather than by the cells, and E14's lattice TeV delays become unobservable. Which physical mechanism provides that cutoff is **open**: ordinary fermions do not, because they *add* to 1/G.
+- **The rest frame is the common enemy.** It causes both this problem and E17's extra scalar.
+
+**Status:** **computed here.** Limits:
+- scalar fields only (fermions and gauge fields have their own weights, and gauge fields have Kabat contact terms);
+- one polarisation and one direction;
+- the metric is an external strain. Sakharov explains its stiffness, not why a metric variable exists (E17 does).
+
+**References:**
+- **Sakharov**, Dokl. Akad. Nauk SSSR 177, 70 (1967), reprinted in Gen. Rel. Grav. 32, 365 (2000)
+- **Visser**, Mod. Phys. Lett. A 17, 977 (2002)
+- **Pauli & Villars**, Rev. Mod. Phys. 21, 434 (1949)
+- **Collins, Perez, Sudarsky, Urrutia & Vucetich**, PRL 93, 191301 (2004)
+- **Groot Nibbelink & Pospelov**, PRL 94, 081601 (2005)
+- **Polchinski**, CQG 29, 088001 (2012)
+- **Kabat**, Nucl. Phys. B 453, 281 (1995)
+
+**Files:** [`r13_induced_gravity.py`](r13_induced_gravity.py), [results](results/r13_induced_gravity.txt), ![speed](figures/r13_induced_gravity_graviton_speed.png)
+
+---
+
+<a id="e19"></a>
+## E19 — Gravity from the substrate's entanglement: area law → Bekenstein–Hawking → G (2026-10-10)
+
+**Question (user):**
+- "We also need to see if we can unify gravity and quantum mechanics, since they are one and the same thing, just at a different magnitude scale."
+- With E16: the entanglement route to the graviton.
+
+**Method:**
+- **What is computed:** the ground-state entanglement entropy of a free scalar field across a closed surface. It comes from the correlators X = ⟨φφ⟩ and P = ⟨ππ⟩ restricted to the region: ν = eig √(X_A P_A), S = Σ (ν+½) ln(ν+½) − (ν−½) ln(ν−½) (Peschel; Srednicki).
+- **Two lattices:**
+  - **(A)** Srednicki's radial lattice (60 shells, partial waves up to l = 6000), as validation;
+  - **(B)** the cubic substrate lattice of E18, with cubes of side 2–12 cells in 48³ and 64³ antiperiodic boxes.
+- **From entropy to G:** Bekenstein–Hawking S = A/(4 l_P²) and Jacobson (1995) turn the area-law coefficient η into G = 1/(4η).
+
+**Results (computed here):**
+- **Srednicki's lattice:** S = 0.2952 (R/a)², against his published 0.30. The method is validated.
+- **Cubic substrate lattice:** S = η_a × (area/a²) + edge term, with **η_a = 0.02421 per cell face**.
+  - The value is robust: 0.02425 with a log term, and 0.02420 in the 48³ box.
+  - The radial lattice gives κ/4π = 0.02349.
+- **Cell size that gives the measured G:** a = 2√(N η_a) l_P = **0.311 √N l_P**.
+  - Sakharov (E18) gives 0.364 √N (inertia) and 0.261 √N (stiffness).
+  - **The two independent quantum routes agree within 17 %.**
+  - With a Lorentz-invariant cutoff they agree exactly: S_ent = A/(4G_induced) (Susskind & Uglum 1994; Jacobson 1994).
+- **A curiosity, noticed after the fact (one comparison tried):** η_a lies within 2 % of the geometric mean of the two E18 values of 1/(4G). This may be a coincidence; it is not derived.
+
+**Interpretation:**
+- **G is not an independent constant in this picture.** It is fixed by quantum properties of the substrate: G ≈ a²c³/(4Nη ħ) with η ≈ 0.024 per cell face. The Planck length is then about 3.2 × (cell size)/√N.
+- **Black-hole entropy becomes the entanglement of the substrate across the horizon,** counted with the same fields that set G.
+- **Einstein's equations become an equation of state** of that entanglement (Jacobson 1995, 2016). Gravity is then the large-scale thermodynamics of the quantum substrate, just as elasticity is the large-scale quantum mechanics of atoms.
+- **This is the precise, established sense in which "gravity and quantum mechanics are one thing at different scales".**
+
+**Status:** the area-law coefficients and the cell size are **computed here**. The Jacobson and Susskind–Uglum links are **established**. The graviton's quantum dynamics at the cell scale is **open**.
+
+**References:**
+- **Bombelli, Koul, Lee & Sorkin**, PRD 34, 373 (1986)
+- **Srednicki**, PRL 71, 666 (1993)
+- **Peschel**, J. Phys. A 36, L205 (2003)
+- **Bekenstein**, PRD 7, 2333 (1973)
+- **Hawking**, Commun. Math. Phys. 43, 199 (1975)
+- **Jacobson**, PRL 75, 1260 (1995)
+- **Jacobson**, PRL 116, 201101 (2016)
+- **Jacobson**, arXiv:gr-qc/9404039
+- **Susskind & Uglum**, PRD 50, 2700 (1994)
+- **Ryu & Takayanagi**, PRL 96, 181602 (2006)
+- **Van Raamsdonk**, Gen. Rel. Grav. 42, 2323 (2010)
+
+**Files:** [`r14_entanglement_gravity.py`](r14_entanglement_gravity.py), [results](results/r14_entanglement_gravity.txt), ![area law](figures/r14_entanglement_gravity_area_law.png)
+
+---
+
+<a id="e20"></a>
+## E20 — Mass as a defect of the substrate: the world-crystal route (2026-10-10)
+
+**Question (user):** as E16, "based on our theory as well". The original USRT substrate was a crystal; crystals have an exact, decades-old dictionary with gravity (Kröner; Kleinert; Katanaev & Volovich).
+
+**Method:**
+- **(A)** Symbolic check (sympy) of the core identity linking the Einstein tensor and the crystal's incompatibility.
+- **(B)** Lensing by a wedge disclination, computed by unfolding the cone.
+- **(C)** Quantised Frank angles of crystal disclination lines, compared with cosmic-string bounds.
+
+**Results (computed here):**
+- **Kröner = Einstein:** the linearised 3D Einstein tensor of g = δ + h is **G_ij = ½ inc(h)_ij**, with inc = ε_ikl ε_jmn ∂_k ∂_m h_ln. This is verified symbolically for every component.
+  - With h = 2ε (strain), **G_ij = inc(ε)_ij**, which is Kröner's incompatibility, i.e. the crystal's **defect density**.
+  - For a weak-field mass (g_ij = (1 − 2Φ)δ_ij, i.e. γ = 1), the spatial curvature is R³ = 4∇²Φ = 16πGρ.
+- **A wedge disclination lenses like a mass.**
+  - Ω = 60° with D_ls = D_o gives images 30° apart.
+  - With D_o = 3 D_ls they are 14.74° apart, against 15° from the small-angle formula Ω D_ls/D_s. The two agree exactly for small Ω.
+  - This is the same geometry as a cosmic string (Ω = 8πGμ) and as a 2+1D point mass (Ω = 8πGm).
+- **A crystal substrate's disclination lines would be cosmic strings:**
+
+  | Lattice axis | Frank angle | Gμ | Ratio to CMB bound (Gμ < 1.5×10⁻⁷) |
+  |---|---|---|---|
+  | cubic/FCC (original USRT), 4-fold | 90° | 0.0625 | 4.2×10⁵ |
+  | hexagonal, 6-fold | 60° | 0.0417 | 2.8×10⁵ |
+  | cubic [111], 3-fold | 120° | 0.0833 | 5.6×10⁵ |
+
+  The allowed Frank angle is below 3.8×10⁻⁶ rad (0.78″).
+
+**Interpretation:**
+- **Mass = density of disclinations in the substrate's strain.** This supplies exactly the spatial ("μ") half of the metric that E12 needed for the full light bending. Particles as defects (E11) and mass as defect density are one idea.
+- **A substrate with discrete rotation symmetry is excluded** unless its disclination lines never formed or are confined in our visible universe. One such line would double large parts of the sky.
+  - So the substrate's rotation symmetry must be continuous at large scales: a quantum liquid (a crystal melted by dislocations, Zaanen et al.) or no lattice at all.
+  - This independently agrees with the audit's verdict against a rigid crystal and with E10's "no fixed lattice" option.
+- **A negative (7-fold) disclination is an excess angle,** i.e. a negative mass in 2+1D, which defocuses. That is the closest thing to "antigravity" in this dictionary (compare E1). Real crystals bind ± disclinations into dislocations.
+- **Dislocations correspond to torsion,** which couples to spin (Einstein–Cartan). Torsion is unobserved, so the substrate's dislocations must be condensed or absent.
+- **Isolated disclinations cannot move:** they are "fractons" (Pretko & Radzihovsky 2018), and Pretko (2017) linked their environment-dependent mobility to Mach's principle. Free particles do move, so particles can at most be bound defect clusters.
+- **Limit:** the dictionary gives the geometry of gravity (curvature = defects), not its dynamics. Kleinert needs a special second-gradient elasticity to obtain the Einstein action.
+
+**Status:** **computed here** (identity, lensing, bound). The dictionary is **established**, and the measured cosmic-string bound **rules out** a crystal substrate with free disclination lines. The dynamics of the defects is **open**.
+
+**References:**
+- **Kröner**, "Continuum theory of defects", Les Houches XXXV (1980), North-Holland (1981)
+- **Kleinert**, Ann. Phys. (Leipzig) 44, 117 (1987)
+- **Kleinert**, *Multivalued Fields* (World Scientific, 2008)
+- **Katanaev & Volovich**, Ann. Phys. 216, 1 (1992)
+- **Pretko & Radzihovsky**, PRL 120, 195301 (2018)
+- **Pretko**, PRD 96, 024051 (2017)
+- **Beekman et al.**, Phys. Rep. 683, 1 (2017)
+- **Deser, Jackiw & 't Hooft**, Ann. Phys. 152, 220 (1984)
+- **Vilenkin**, PRD 23, 852 (1981)
+- **Gott**, ApJ 288, 422 (1985)
+- **Planck Collaboration**, A&A 571, A25 (2014)
+- **Hehl, von der Heyde, Kerlick & Nester**, Rev. Mod. Phys. 48, 393 (1976)
+
+**Files:** [`r15_defects_as_mass.py`](r15_defects_as_mass.py), [results](results/r15_defects_as_mass.txt), ![lensing](figures/r15_defects_as_mass_disclination_lensing.png)
+
+---
+
+<a id="e21"></a>
+## E21 — Gravity and quantum mechanics: one thing at different scales? (2026-10-10)
+
+**Question (user):** "We also need to see if we can unify gravity and quantum mechanics as well, since they are one and the same thing, just at a different magnitude scale."
+
+**Method:**
+- **Scale by scale:** the size of the quantum correction to gravity, from gravity treated as an effective quantum field theory (Bjerrum-Bohr, Donoghue & Holstein 2003).
+- **Where the two already meet in the lab:** the published experiments, with the computable numbers worked out.
+- **The decisive test:** the entangling phase of a gravity-mediated entanglement experiment, in the Bose et al. 2017 geometry.
+
+**Results (computed here):**
+- **The quantum correction to Newton's law is (41/10π)(l_P/r)²:**
+
+  | Scale | Correction |
+  |---|---|
+  | 1 m | 3.4×10⁻⁷⁰ |
+  | 52 μm (torsion balance) | 1.3×10⁻⁶¹ |
+  | an atom | 3.4×10⁻⁵⁰ |
+  | a proton | 3.4×10⁻⁴⁰ |
+  | an LHC collision (10⁻¹⁹ m) | 3.4×10⁻³² |
+  | **the Planck length** | **1.3** |
+- **Measured overlaps of gravity and quantum mechanics:**
+  - **COW neutron interference:** the gravitational phase is 2πλ g m² A/h² = 57 rad for λ = 1.445 Å and A = 10 cm². It is observed, and agrees to ~1 % with a debated ~1 % residual.
+  - **Quantised neutron bouncing:** E₁–E₄ = 1.407, 2.460, 3.321 and 4.083 peV, at heights 13.7, 24.0, 32.4 and 39.8 μm. The 1→3 transition is at 463.0 Hz (observed: Nesvizhevsky 2002; qBounce).
+  - **Page–Geilker 1981:** gravity follows actual quantum outcomes, not expectation values.
+  - **Donadi et al. 2021:** the parameter-free Diósi–Penrose collapse is ruled out.
+  - **Analogue Hawking radiation** has been observed from sonic horizons in BECs.
+- **Gravity-mediated entanglement** (d = 450 μm, Δx = 250 μm, t = 2.5 s):
+
+  | Mass | Entangling phase | Concurrence |
+  |---|---|---|
+  | 3×10⁻¹⁵ kg | 0.028 rad | 0.014 |
+  | 1×10⁻¹⁴ kg | 0.314 rad | 0.156 |
+  | 3×10⁻¹⁴ kg | 2.825 rad | 0.988 |
+
+  Maximal entanglement is reached after 25 s (10⁻¹⁴ kg) or 2.8 s (3×10⁻¹⁴ kg).
+
+**Interpretation:**
+- **The user's intuition is right in a precise sense.** Below the Planck scale, gravity and quantum mechanics are already one consistent theory (an effective quantum field theory). The quantum part of gravity grows as (l_P/r)² and only becomes O(1) at the Planck length, which in USRT terms is where the substrate's cells show (0.3 √N l_P, E18 and E19).
+- **What a "unified theory" must add is the physics at the cell scale.** In the substrate picture all three constants come from the same cells:
+  - **ħ** is the quantum of action of the cells (E10);
+  - **c** is their signal speed (E8);
+  - **G** is their stiffness or entanglement (E18, E19).
+- **The experiment that can decide it is gravity-mediated entanglement.**
+  - **USRT v2** (a quantum network substrate, with G from its entanglement) predicts **entanglement**.
+  - The original classical-superfluid USRT, or any classical "dent", predicts **none**.
+  - Classical-gravity alternatives must instead show intrinsic spacetime diffusion (Oppenheim et al. 2023).
+  - What a positive result proves exactly is debated (Martín-Martínez & Perche 2023), but it would rule out every classical-substrate version.
+
+**Status:** the EFT and the experiments are **established**; the numbers are **computed here**; the entanglement outcome is a **prediction** of USRT v2.
+
+**References:**
+- **Donoghue**, PRD 50, 3874 (1994)
+- **Bjerrum-Bohr, Donoghue & Holstein**, PRD 67, 084033 (2003)
+- **Colella, Overhauser & Werner**, PRL 34, 1472 (1975)
+- **Littrell, Allman & Werner**, PRA 56, 1767 (1997)
+- **Nesvizhevsky et al.**, Nature 415, 297 (2002)
+- **Jenke et al.**, Nature Phys. 7, 468 (2011)
+- **Cronenberg et al.**, Nature Phys. 14, 1022 (2018)
+- **Page & Geilker**, PRL 47, 979 (1981)
+- **Diósi**, Phys. Lett. A 120, 377 (1987)
+- **Penrose**, Gen. Rel. Grav. 28, 581 (1996)
+- **Donadi et al.**, Nature Phys. 17, 74 (2021)
+- **Steinhauer**, Nature Phys. 12, 959 (2016)
+- **Muñoz de Nova et al.**, Nature 569, 688 (2019)
+- **Bose et al.**, PRL 119, 240401 (2017)
+- **Marletto & Vedral**, PRL 119, 240402 (2017)
+- **Oppenheim et al.**, Nature Commun. 14, 7910 (2023)
+- **Martín-Martínez & Perche**, PRD 108, L101702 (2023)
+
+**Files:** [`r16_quantum_gravity_bridge.py`](r16_quantum_gravity_bridge.py), [results](results/r16_quantum_gravity_bridge.txt), ![scales and test](figures/r16_quantum_gravity_bridge_scales_and_test.png)
+
+---
+
+<a id="e22"></a>
+## E22 — Synthesis: can the substrate produce the graviton, and does it unify gravity with quantum mechanics? (2026-10-10)
+
+**Questions (user):**
+- "Let's research, brainstorm and give it a few out-of-the-box and field-established and measured ways, and see if we can solve it or not, based on our theory as well."
+- "We also need to see if we can unify gravity and quantum mechanics as well, since they are one and the same thing, just at a different magnitude scale."
+
+**Routes tried and verdicts:**
+
+| Route | What was computed | Verdict |
+|---|---|---|
+| Measured requirements (E16) | exchange amplitudes; γ against Cassini; gap, speed and polarisation bounds | target fixed: a **gapless helicity-±2 mode, γ = 1, c_g = c to 10⁻¹⁵** |
+| Gauge: the strain as a tensor gauge field (E17) | lattice spectra of 5 substrates | **2 gravitons with exactly light's dispersion, if and only if the local Hamiltonian constraint holds.** With an absolute time: an extra scalar (ghost or unstable), unless the BPS extension is added and then tuned to ≲10⁻⁵ |
+| Induced: Sakharov (E18) | G and graviton speed on the lattice; PV check | **G: ✓** (cells ≈ 0.3 √N l_P). **Speed: ✗**, c_g = 0.72 c, unless a Lorentz-invariant cutoff with μa < 3×10⁻⁸ |
+| Entanglement: Jacobson (E19) | area law on the substrate lattice | **G: ✓**, within 17 % of Sakharov. Einstein's equations as an equation of state; Bekenstein–Hawking entropy = substrate entanglement |
+| Defects: world crystal (E20) | Kröner = Einstein identity; disclination lensing; cosmic strings | **Geometry: ✓** (mass = disclination density, giving the "μ" half). **Crystal with discrete rotations: ✗** (strings 3–6×10⁵ too heavy) |
+| Double copy (E17) | helicity algebra | graviton = twist ⊗ twist ✓ (as amplitudes); the extra dilaton must weigh more than 5 meV |
+| Gravity–quantum bridge (E21) | EFT corrections by scale; lab overlaps; entanglement test | **already one consistent theory below the Planck scale.** The entanglement experiment decides between a quantum and a classical substrate |
+
+**Answer to "can we solve it?" — partly, and the remaining gap is now sharp.**
+- **Solved within the substrate picture** (each step established physics, the numbers computed here):
+  - why gravity must be a massless spin-2 mode;
+  - where G comes from: the stiffness or entanglement of the substrate's quantum fluctuations, with cells of ~0.3 √N l_P;
+  - how mass shapes the substrate: defect density = spatial curvature;
+  - that a 2-polarisation graviton sharing light's exact dispersion can live on the same lattice as light.
+- **Not solved:** a microscopic reason for two things, which turn out to be one problem, **the substrate's absolute time (rest frame)**:
+  - **(a)** the *local* Hamiltonian constraint, which removes the third graviton (E17);
+  - **(b)** Lorentz invariance at the cell scale, which makes c_g = c (E18).
+- **Out-of-the-box candidates for that one problem:**
+  1. **A local Page–Wootters condition.** Time would be relational at every cell, so "energy here" is a constraint rather than a clock. It would supply (a) directly. **Speculative**; no model yet.
+  2. **A random, Lorentz-invariant discreteness instead of a lattice** (causal sets: Bombelli, Lee, Meyer & Sorkin 1987). A Poisson sprinkling picks out no rest frame (Bombelli, Henson & Sorkin 2009), so the E18 leakage and the E20 cosmic strings would be absent by construction. The cost is non-locality. **The most promising next test** (queued).
+  3. **A Lorentz-invariant cutoff far below the cell scale,** μa < 3×10⁻⁸ (E18). This works numerically but has no known mechanism.
+
+**Current formulation (USRT v2.2, the gravity–quantum sector, extending E15):**
+1. **Substrate:** a quantum network. ħ is the quantum of action per cell, and c is the cells' signal (Lieb–Robinson) speed (E8, E10).
+2. **Gravity's field:** the substrate's long-wavelength strain h_ij, a tensor **gauge** field (moving cells is unphysical). Its Einstein stiffness is **induced** by the vacuum fluctuations of everything living in the substrate: G ≈ a²c³/(4Nη ħ), with η ≈ 0.024 per cell face (E18, E19).
+3. **Mass:** defect density, G_ij = inc(ε)_ij. Particles are defects or knots (E11, E20). Light bending is complete because the spatial strain carries the "μ" half (E12, E20).
+4. **Exactly two graviton polarisations** require that local energy is a constraint (time is relational cell by cell). Otherwise a scalar graviton appears, and that is testable through preferred-frame α₁ and α₂ and extra GW polarisations (E17).
+5. **Unification:** ħ, c and G are all properties of the same cells; l_P ≈ 3.2 a/√N. Quantum mechanics is the substrate's short-distance dynamics, and gravity is its long-distance elasticity and entanglement thermodynamics (E19, E21).
+6. **Tests:**
+   - gravity-mediated entanglement: **yes** (USRT v2);
+   - no cosmic-string disclinations;
+   - c_g = c;
+   - no scalar polarisation;
+   - and, if gravity is induced and Lorentz-protected, **no** observable lattice dispersion.
+
+**Correction to the earlier picture:** E14's distinctive TeV-delay prediction (3:1 pattern) and E18's protection mechanism pull in opposite directions. If gravity is induced *and* GW170817 is to hold, the cells must be ≪ l_P and the TeV pattern is unobservable. Both cannot be the substrate's signature at once. This is recorded as a dated note under E14.
+
+**Status:** synthesis of E16–E21. The core problem has been reduced from "derive the graviton" to "**explain local time-reparametrisation symmetry (Lorentz invariance) of the substrate**". That remains **open**.
+
+**References:** as in E16–E21, plus:
+- **Bombelli, Lee, Meyer & Sorkin**, PRL 59, 521 (1987)
+- **Bombelli, Henson & Sorkin**, Mod. Phys. Lett. A 24, 2579 (2009)
+- **Dowker, Henson & Sorkin**, Mod. Phys. Lett. A 19, 1829 (2004)
+
+**Files:** synthesis entry (no new script); see E16–E21.

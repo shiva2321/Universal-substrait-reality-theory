@@ -250,7 +250,7 @@ All 45 scripts run cleanly (tested with Python 3.13, NumPy, SciPy, Matplotlib, S
 ├── research/
 │   ├── LAB_NOTEBOOK.md                           dated record of every question, method, result
 │   ├── lab.py   run_all.py                       shared helpers; re-run everything
-│   ├── r01 ... r10_*.py                          one script per question
+│   ├── r01 ... r16_*.py                          one script per question
 │   ├── results/   figures/                       text output and plots of each script
 └── audit/
     ├── USRT_AUDIT_REPORT.md                      findings, provenance, before/after fixes, errata
@@ -361,6 +361,12 @@ Exploration after the audit lives in [`research/`](research/). Each question bec
 | [`r08`](research/r08_gravity_from_wave_speed.py) | How would gravity arise and behave in the substrate? | **If trapped energy lowers the local wave speed, everything made of waves falls the same way.** Two species with a 3:1 mass ratio end within 4×10⁻³ after an 11.6-unit fall: the equivalence principle emerges. Light is delayed as predicted (0.520 vs 0.507). Two lumps attract with a₁/a₂ = 2.97 vs E₂/E₁ = 2.96. **Full light bending (1.7512″) needs the electric and magnetic stiffness to change together (ε = μ);** ε alone gives half. |
 | [`r09`](research/r09_long_range_influence.py) | How does a particle affect the substrate far away? | **A defect of a gapless, gauge-protected mode reaches to infinity as 1/r**, the same in every direction within 0.4% by 10 cells (128³ lattice). **A gapped mode dies off as Yukawa e^(−mr)/r.** So 1/r² gravity needs a protected massless spin-2 mode, which is still the open core problem. |
 | [`r10`](research/r10_testable_predictions.py) | What could be measured? | **A cubic substrate predicts a 3:1 axis-to-diagonal pattern in TeV photon delays** (sky pattern isotropic + ℓ = 4). This is visible only if cells are larger than ~10⁻²⁸ m. **A compounding (exponential-metric) response passes all weak-field tests** (γ = β = 1) but gives a **4.6% larger black-hole shadow with no horizon**. That is 1.0–1.4σ from the EHT Sgr A* values, so it is testable with the next generation. |
+| [`r11`](research/r11_graviton_requirements.py) | What must the substrate's gravity mode do? | **Only a massless spin-2 mode passes:** γ = 1 is 0.9σ from Cassini. A massive one gives γ = ½ for any mass, 2.2×10⁴σ off. Its gap must sit **51 orders below the Planck scale** (LVK), so a symmetry must protect it, and it must share light's speed to 10⁻¹⁵. |
+| [`r12`](research/r12_tensor_gauge_graviton.py) | Can the substrate carry a graviton the way it carries light? | **Yes, as a tensor gauge field:** exactly 2 helicity-2 waves with light's lattice dispersion (to 4×10⁻¹⁵). That holds **only if local energy is a constraint**. A substrate with an absolute time gets an extra scalar graviton that is a ghost or unstable for every λ (Hořava's problem, reproduced). |
+| [`r13`](research/r13_induced_gravity.py) | Can G come from the substrate's quantum jiggling (Sakharov)? | **G yes:** cells ≈ 0.3√N Planck lengths. **But the induced graviton moves at 0.72 c** on a lattice, against GW170817's 10⁻¹⁵. A Lorentz-invariant cutoff fixes it, but only if μa < 3×10⁻⁸. Validated: Pauli–Villars gives c_g² = 0.999999994 and Sakharov's G exactly. |
+| [`r14`](research/r14_entanglement_gravity.py) | Gravity from entanglement? Gravity and quantum mechanics as one thing? | **The substrate vacuum's entanglement follows an area law** (0.0242 per cell face; Srednicki's 0.30 reproduced). Bekenstein–Hawking/Jacobson then give **the same cell size as Sakharov within 17 %**. G is the entanglement of the quantum cells. |
+| [`r15`](research/r15_defects_as_mass.py) | Is mass a defect of the substrate? | **Kröner = Einstein:** curvature is the density of disclinations (verified symbolically), and a disclination lenses like a mass. **A crystal substrate is ruled out:** its defect lines would be cosmic strings **3–6×10⁵ times heavier** than the CMB allows. |
+| [`r16`](research/r16_quantum_gravity_bridge.py) | Are gravity and quantum mechanics the same thing at different scales? | **Yes, below the Planck scale:** the quantum correction to Newton's law is (41/10π)(l_P/r)², 10⁻⁷⁰ at 1 m and O(1) only at l_P. **Decisive test:** gravity-mediated entanglement. A quantum substrate predicts it (concurrence 0.99 for 3×10⁻¹⁴ kg after 2.5 s); a classical substrate predicts exactly 0. |
 
 <table>
 <tr>
@@ -382,7 +388,20 @@ Exploration after the audit lives in [`research/`](research/). Each question bec
 </tr>
 </table>
 
-The current best "surviving" picture and the ranked open problems are in [notebook entry E9](research/LAB_NOTEBOOK.md#e9) and, layer by layer, in [E10](research/LAB_NOTEBOOK.md#e10). The mass-and-gravity sector ("USRT v2.1") and the brainstorm verdicts are in [E15](research/LAB_NOTEBOOK.md#e15).
+<table>
+<tr>
+<td width="50%"><img src="research/figures/r12_tensor_gauge_graviton_scalar_mode.png" width="100%"><br><sub><b>r12:</b> a substrate with an absolute time carries an extra scalar graviton that is unstable or a ghost for every λ. The stiffness must be Einstein-like for a 1/r pull (<a href="research/LAB_NOTEBOOK.md#e17">E17</a>).</sub></td>
+<td width="50%"><img src="research/figures/r13_induced_gravity_graviton_speed.png" width="100%"><br><sub><b>r13:</b> gravity induced by the substrate's quantum jiggling moves at c only with a Lorentz-invariant cutoff. On the bare lattice it moves at 0.72 c (<a href="research/LAB_NOTEBOOK.md#e18">E18</a>).</sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="research/figures/r14_entanglement_gravity_area_law.png" width="100%"><br><sub><b>r14:</b> the substrate vacuum is entangled in proportion to area. Through Bekenstein–Hawking this gives the same cell size as Sakharov, within 17 % (<a href="research/LAB_NOTEBOOK.md#e19">E19</a>).</sub></td>
+<td width="50%"><img src="research/figures/r16_quantum_gravity_bridge_scales_and_test.png" width="100%"><br><sub><b>r16:</b> quantum gravity effects grow as (l_P/r)². Gravity-mediated entanglement separates a quantum substrate from a classical one (<a href="research/LAB_NOTEBOOK.md#e21">E21</a>).</sub></td>
+</tr>
+</table>
+
+<p align="center"><img src="research/figures/r15_defects_as_mass_disclination_lensing.png" width="92%"><br><sub><b>r15:</b> a defect in the substrate bends light like a mass. In a crystal, defect lines would be cosmic strings far heavier than observed (<a href="research/LAB_NOTEBOOK.md#e20">E20</a>).</sub></p>
+
+The current best "surviving" picture and the ranked open problems are in [notebook entry E9](research/LAB_NOTEBOOK.md#e9) and, layer by layer, in [E10](research/LAB_NOTEBOOK.md#e10). The mass-and-gravity sector ("USRT v2.1") and the brainstorm verdicts are in [E15](research/LAB_NOTEBOOK.md#e15). The graviton and gravity–quantum unification ("USRT v2.2"), with a verdict on each route, are in [E22](research/LAB_NOTEBOOK.md#e22). In short, G and the geometry of gravity follow from the substrate. The one open problem is the substrate's absolute time: a local Hamiltonian constraint, or Lorentz invariance at the cell scale.
 
 ---
 
