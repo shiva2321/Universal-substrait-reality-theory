@@ -50,11 +50,9 @@ def navier_cauchy(p):
     p("     write down the isotropic GR metric and ray-trace it; the 1.751 arcsec is GR's number.")
 
 
-def gp_cavity(p):
-    p(banner("2. Range of the 'cavitation' attraction in a superfluid (Gross-Pitaevskii)"))
+def solve_gp_cavity(V0=3.5, r0=1.2):
+    """Radial GP ground state around a repulsive source (healing-length units)."""
     # dimensionless GP with a repulsive source: psi'' + 2psi'/r = (psi^2 - 1 + V(r)) psi
-    V0, r0 = 3.5, 1.2
-
     def ode(rr, y):
         return np.vstack((y[1], -2 / rr * y[1] + (y[0] ** 2 - 1 + V0 * np.exp(-(rr / r0) ** 2)) * y[0]))
 
@@ -63,7 +61,12 @@ def gp_cavity(p):
 
     rr = np.linspace(1e-3, 40, 2000)
     guess = np.vstack((1 - 0.7 * np.exp(-(rr / 3) ** 2), np.zeros_like(rr)))
-    sol = solve_bvp(ode, bc, rr, guess, max_nodes=100000, tol=1e-8)
+    return solve_bvp(ode, bc, rr, guess, max_nodes=100000, tol=1e-8)
+
+
+def gp_cavity(p):
+    p(banner("2. Range of the 'cavitation' attraction in a superfluid (Gross-Pitaevskii)"))
+    sol = solve_gp_cavity()
     rs = np.linspace(5, 18, 200)
     drho = sol.sol(rs)[0] ** 2 - 1
     slope = np.polyfit(rs, np.log(-drho * rs), 1)[0]

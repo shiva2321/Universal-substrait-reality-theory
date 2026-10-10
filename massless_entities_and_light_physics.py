@@ -270,7 +270,7 @@ ax3.plot(k_frac, omega_T_rel, color='#2ca02c', lw=2.2, label=r'Transverse $\lamb
 ax3.plot(k_frac, omega_L_rel, color='#d62728', lw=2.2, label=r'Longitudinal $\lambda=0$ ($c_L=\sqrt{3}\,c_T$)')
 ax3.axhline(c_L_rel*(2.0/np.pi), color='gray', ls=':', lw=1.2)
 ax3.text(0.03, c_L_rel*(2.0/np.pi)*1.03, r"band top $\hbar\omega_{max}$ (mislabelled 'gap' = 4.2e19 GeV)", fontsize=8.5, color='gray')
-ax3.annotate("gapless: $\\omega_L \\to 0$ as $k \\to 0$", xy=(0.02, 0.03), xytext=(0.25, 0.35),
+ax3.annotate("gapless: $\\omega_L \\to 0$ as $k \\to 0$", xy=(0.02, 0.03), xytext=(0.42, 0.26),
              arrowprops=dict(arrowstyle='->', color='#d62728'), color='#d62728', fontsize=9.5, fontweight='bold')
 ax3.set_xlim(0, 1.0)
 ax3.set_ylim(0, 1.35)

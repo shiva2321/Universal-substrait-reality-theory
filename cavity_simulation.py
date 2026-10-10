@@ -133,33 +133,34 @@ def plot_results(r_eval, rho_substrate, delta_rho, Phi_eff, x_traj, y_traj):
     # Asymptote: - G M / r
     r_fit = r_eval[r_eval > 5.0]
     Phi_fit = Phi_eff[r_eval > 5.0]
-    # Estimate effective GM
-    GM_est = - np.mean(Phi_fit * r_fit)
+    # Audit: a fit at r > 5 gives GM ~ 0 because the potential is exponentially small
+    # there. Instead normalise a 1/r curve to the cavity at r = 2 xi to compare shapes.
+    GM_est = - np.interp(2.0, r_eval, Phi_eff) * 2.0
     
     axs[0, 1].plot(r_eval, Phi_eff, 'r-', lw=2.5, label=r'Cavity Potential $\Phi_{\mathrm{eff}}(r)$')
-    axs[0, 1].plot(r_eval[r_eval > 2.0], - GM_est / r_eval[r_eval > 2.0], 'k--', lw=1.8, label=r'Newtonian Asymptote $-GM_{\mathrm{eff}}/r$')
+    axs[0, 1].plot(r_eval[r_eval > 2.0], - GM_est / r_eval[r_eval > 2.0], 'k--', lw=1.8, label=r'Newtonian $-GM/r$ (matched at $r = 2\xi$)')
     axs[0, 1].set_xlim(0, 25)
     axs[0, 1].set_xlabel('Radial Distance $r / \\xi$', fontsize=12)
     axs[0, 1].set_ylabel('Effective Gravitational Potential', fontsize=12)
-    axs[0, 1].set_title('Figure 2: Effective Gravitational Potential Well', fontsize=13, fontweight='bold')
+    axs[0, 1].set_title('Figure 2: Cavity potential vs Newtonian 1/r', fontsize=13, fontweight='bold')
     axs[0, 1].legend(loc='lower right', frameon=True)
     
     # Plot 3: Force Law comparison (Cavity vs Pure 1/r^2)
     dPhi_dr = np.gradient(Phi_eff, r_eval)
     axs[1, 0].loglog(r_eval[r_eval > 0.5], dPhi_dr[r_eval > 0.5], 'g-', lw=2.5, label=r'Cavity Attractive Force $|F_{\mathrm{eff}}(r)|$')
-    axs[1, 0].loglog(r_eval[r_eval > 2.0], GM_est / (r_eval[r_eval > 2.0]**2), 'k--', lw=1.8, label=r'Pure Inverse Square $1/r^2$')
+    axs[1, 0].loglog(r_eval[r_eval > 2.0], GM_est / (r_eval[r_eval > 2.0]**2), 'k--', lw=1.8, label=r'Inverse square $1/r^2$ (matched at $r = 2\xi$)')
     axs[1, 0].set_xlabel('Distance $r / \\xi$ (Log Scale)', fontsize=12)
     axs[1, 0].set_ylabel('Attractive Force (Log Scale)', fontsize=12)
-    axs[1, 0].set_title('Figure 3: Force Law Scaling (Transition to $1/r^2$)', fontsize=13, fontweight='bold')
+    axs[1, 0].set_title('Figure 3: Force falls exponentially (screened), not as $1/r^2$', fontsize=13, fontweight='bold')
     axs[1, 0].legend(loc='upper right', frameon=True)
     
     # Plot 4: Test Particle Orbital Trajectory inside the Cavity
-    axs[1, 1].plot(x_traj, y_traj, 'm-', lw=1.8, label='Bound Precessing Orbit')
+    axs[1, 1].plot(x_traj, y_traj, 'm-', lw=1.8, label='Test-particle path (short integration)')
     axs[1, 1].plot(0, 0, 'yo', markersize=12, markeredgecolor='k', label='Mass Cluster (Cavity Center)')
     axs[1, 1].set_aspect('equal')
     axs[1, 1].set_xlabel('$x / \\xi$', fontsize=12)
     axs[1, 1].set_ylabel('$y / \\xi$', fontsize=12)
-    axs[1, 1].set_title('Figure 4: Geodesic Orbit in Cavity Well', fontsize=13, fontweight='bold')
+    axs[1, 1].set_title('Figure 4: Test particle in the cavity well', fontsize=13, fontweight='bold')
     axs[1, 1].legend(loc='upper right', frameon=True)
     
     plt.tight_layout()

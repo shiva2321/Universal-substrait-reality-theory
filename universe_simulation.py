@@ -180,14 +180,14 @@ def visualize_universe_epochs(sim):
     ax4 = fig.add_subplot(2, 2, 4)
     im4 = ax4.imshow(sim["rho_substrate_cavity"], extent=[-10, 10, -10, 10], cmap='gist_earth', alpha=0.6)
     # Plot orbital trajectory
-    ax4.plot(sim["orbit_x"], sim["orbit_y"], 'r-', lw=2.2, label='Bound Orbit in Cavity Well')
+    ax4.plot(sim["orbit_x"], sim["orbit_y"], 'r-', lw=2.2, label='Test particle in computed (screened) cavity')
     ax4.plot(sim["orbit_x"][-1], sim["orbit_y"][-1], 'ro', markersize=8, label='Test Excitation (Planet)')
     ax4.plot(0, 0, 'yo', markersize=12, markeredgecolor='k', label='Central Mass (Sun)')
     
     # Plot entangled pair and bulk bridge
     ax4.plot(sim["x_pair"], sim["y_pair"], 'mo', markersize=10, label='Entangled Pair (A & B)')
     ax4.plot([-4.5, 4.5], [0, 0], 'm--', lw=2.5, label='Vortex Thread across Bulk (z > 0)')
-    ax4.set_title("Epoch 3: Bound Keplerian Orbit & Bulk Entanglement", fontsize=13, fontweight='bold')
+    ax4.set_title("Epoch 3: Test Particle in the Cavity (short-range, not Keplerian)", fontsize=13, fontweight='bold')
     ax4.set_xlabel("Dimension X", fontsize=11)
     ax4.set_ylabel("Dimension Y", fontsize=11)
     ax4.legend(loc='lower left', frameon=True, fontsize=9.5)

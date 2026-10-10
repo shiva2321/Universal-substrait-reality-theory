@@ -61,9 +61,9 @@ def simulate_dark_energy_cosmology():
     # Standard Lambda-CDM Hubble parameter: H(z) = H_0 * sqrt(Omega_M*(1+z)^3 + Omega_Lambda)
     H_LCDM = np.sqrt(Omega_M * (1 + z)**3 + Omega_Lambda)
     
-    # Substrate dynamic vacuum (varying slightly at high z):
-    # w_substrate(z) = -1 + 0.05 * z / (1 + z)
-    # Matches observations while explaining why Lambda is not 10^120!
+    # "Substrate" curve: Omega_Lambda = 0.7 is the observed value put in by hand
+    # and w = -0.98 is an arbitrary choice (the old comment claimed a z-dependent w
+    # that the code never used). Nothing here computes the size of dark energy.
     H_Substrate = np.sqrt(Omega_M * (1 + z)**3 + Omega_Lambda * (1 + z)**(3 * (1 - 0.98)))
     
     return z, H_LCDM, H_Substrate
@@ -118,17 +118,17 @@ def plot_dark_sector_and_vortex(r, rho_sub, rho_nfw, v_sub, v_nfw, z, H_lcdm, H_
     axs[0, 0].set_ylim(1e-4, 2.0)
     
     # Subplot 2: Dark Energy & Cosmological Expansion
-    axs[0, 1].plot(z, H_sub, 'g-', lw=2.5, label='Substrate Dynamic Vacuum ($P_{\\mathrm{vac}} = 0$ Regulated)')
+    axs[0, 1].plot(z, H_sub, 'g-', lw=2.5, label=r'Assumed $w = -0.98$ with observed $\Omega_\Lambda = 0.7$ put in')
     axs[0, 1].plot(z, H_lcdm, 'k--', lw=2.0, label=r'Standard $\Lambda\mathrm{CDM}$ Cosmological Model')
     axs[0, 1].set_xlabel('Cosmic Redshift $z$', fontsize=12)
     axs[0, 1].set_ylabel('Hubble Expansion Rate $H(z) / H_0$', fontsize=12)
-    axs[0, 1].set_title(r'Figure 2: Dark Energy: Resolution of $10^{120}$ Vacuum Catastrophe', fontsize=13, fontweight='bold')
+    axs[0, 1].set_title(r'Figure 2: Expansion history ($\Omega_\Lambda$ is an input, not derived)', fontsize=13, fontweight='bold')
     axs[0, 1].legend(loc='upper left', frameon=True)
-    axs[0, 1].text(0.5, 1.5, "Substrate Gibbs-Duhem Law:\nBulk pressure strictly 0 at T=0.\nNo $10^{120}$ explosion!",
+    axs[0, 1].text(0.5, 1.5, "Volovik (prior art): equilibrium vacuum\npressure is 0, so no $10^{120}$ term.\nThe observed 0.7 is NOT computed here.",
                    bbox=dict(boxstyle="round,pad=0.5", fc="#e8f8f5", ec="#1abc9c", alpha=0.9), fontsize=10.5)
     
     # Subplot 3: Entanglement Correlation Function (Vortex Phase Locking)
-    axs[1, 0].plot(th_diff * 180 / np.pi, corr_sub, 'm-', lw=2.5, label=r'Substrate Vortex Phase Correlation $-\cos(\Delta\theta)$')
+    axs[1, 0].plot(th_diff * 180 / np.pi, corr_sub, 'm-', lw=2.5, label='Simulated local vortex-phase model (triangle)')
     axs[1, 0].plot(th_diff * 180 / np.pi, corr_class, 'k:', lw=2.0, label='Classical Local Bound (Bell Limit)')
     axs[1, 0].set_xlabel('Measurement Angle Difference $\\Delta\\theta$ [degrees]', fontsize=12)
     axs[1, 0].set_ylabel('Quantum Correlation $E(a, b)$', fontsize=12)

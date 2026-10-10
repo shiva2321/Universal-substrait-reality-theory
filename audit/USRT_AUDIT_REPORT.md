@@ -57,6 +57,7 @@ python3 audit/run_all.py        # runs a01..a04, writes audit/results/*.txt
 | `audit/a02_numerology.py` | Electron formula, look-elsewhere enumeration, Koide/δ, proton ratio, DM ratio, n−p difference |
 | `audit/a03_bell_models.py` | Monte-Carlo CHSH test of local and nonlocal "vortex cord" models |
 | `audit/a04_mechanics_checks.py` | Symbolic Navier–Cauchy and compatibility checks, GP cavity tail, units, MIT bag, loop electron, Kaluza–Klein, de Boer table |
+| `audit/make_figures.py` | Draws the audit figures in `audit/figures/` (used in the README) from the modules above |
 
 **How σ is computed.** Every "nσ" figure compares a prediction with the measured value *and its measurement uncertainty*. For any formula of the form m_P × f(α), the uncertainty is set by Newton's G: 2.2e-5 relative, so 1.1e-5 on m_P. That is far looser than the uncertainty of m_e itself, so the σ values are deliberately generous to the formulas.
 
@@ -231,16 +232,16 @@ All 45 scripts now run with exit code 0. `python3 -W error::SyntaxWarning` repor
 | `foundational_substrate_potential.py` | Wrong C11/C12/C44; calibration 7.2; "gap" | Correct Cauchy–Born algebra; X = 28.8; band-top wording; directional speeds | Λ* 2.6833 → **5.3666 = √28.8**; "gap" → band top; isotropy → Zener ratio 2 |
 | `planckion_properties_and_physics.py` | Hard-coded `lambda_de_boer_corrected = 2.6833`; μg unit bug | Uses the computed value; prints sqrt(μ/ρ) | 2.6833 → 1.0000 (its own formula); 0.7746 c shown |
 | `rigorous_electron_mass_derivation.py` | "(0.0000054!)" annotation not produced by the formula; % metric | Honest σ comparison; Nottale credit | "99.999 %" → **42σ** |
-| `exact_three_generation_lepton_spectrum.py` | m_e hard-coded; τ out of date | Computes m_e; PDG 2024 τ; prints σ | μ +452σ; τ +0.61σ; Q = 0.6666645 measured |
+| `exact_three_generation_lepton_spectrum.py` | m_e hard-coded; τ out of date; figure showed the input electron as a "100 % match" and Q = 2/3 as "predicted" | Computes m_e; PDG 2024 τ; prints σ; figure panels now show σ and the measured Q with its error bar | μ +452σ; τ +0.61σ; Q = 0.6666645 measured |
 | `quark_sector_and_baryon_physics.py` | Tuned n−p inputs | Lenz credit; σ; BMW 2015 values | "exact" → **5,523σ**; n−p 1.52 ± 0.3 MeV |
 | `mathematical_proof_5th_color_and_dark_sector.py` | Eigenvalue hard-coded −0.6922; DM ratio from a mis-entered input | Shooting solver; Planck Ω h² values with errors | V(0) −0.6922 → **0.0814**; 5.3753 → 5.3643 ± 0.0646 |
 | `cauchy_tensor_gravity.py` | Ray-equation sign; path too short | Fixed sign; ±2000 R☉ path; Navier–Cauchy audit printout | −1.7172″ → **+1.7513″** (analytic 1.7512″) |
 | `phenomenology_proofs.py` | Invented 4/6 factor for scalar precession | PPN (2 + 2γ − β)/3 | 28.65″ → **14.33″** per century |
-| `dark_sector_and_vortex.py` | Typed-in QM correlation shown as "vortex simulation" | Simulates the local shared-phase model | S 2.828 → **2.000** |
+| `dark_sector_and_vortex.py` | Typed-in QM correlation shown as "vortex simulation"; "resolution of the 10¹²⁰ catastrophe" curve was ΛCDM with Ω_Λ = 0.7 typed in | Simulates the local shared-phase model; relabels the expansion-history panel as an input | S 2.828 → **2.000** |
 | `ironclad_theory_refinements.py` | μ₀ × 8; CHSH angle sign slip | Prints computed S with paper angles and with correct angles | S 2.828 → 0 (paper angles) / 2.828 (QM, b′ = 3π/4) |
 | `advanced_four_proofs.py` | Claims stated as proofs | Audit notes on each "proof" | (text) |
-| `universe_simulation.py` | Orbit driven by a typed-in force | Force from the computed screened cavity | Force at r = 8 is 8e-3 vs 6.25e-2 (1/r²) |
-| `cavity_simulation.py` | — | Prints the tail fit | e^{−1.414 r} |
+| `universe_simulation.py` | Orbit driven by a typed-in force; titled "Bound Keplerian Orbit" | Force from the computed screened cavity; retitled | Force at r = 8 is 8e-3 vs 6.25e-2 (1/r²) |
+| `cavity_simulation.py` | Figure titled "Transition to 1/r²"; "Newtonian asymptote" fitted where the potential is ~0 | Prints the tail fit; 1/r and 1/r² references matched at r = 2ξ; retitled | e^{−1.414 r} (no 1/r² regime) |
 | `chemical_bonds_and_molecular_physics.py` | D_e = 4.52 eV (a 298 K enthalpy); wrong reduced mass | D_e = 4.7474 eV; μ = m_H/2 | ω_e 4290.5 → **4395.9 cm⁻¹** (obs. 4401.2) |
 | `hcp_planck_lattice_analysis.py` | Isotropy plot was `np.ones` with an invented ripple; Winterberg claim | Computed HCP dynamical-matrix speeds vs angle | Circle → transverse speeds **0.94–1.12 c** (script's normalisation) |
 | `massless_entities_and_light_physics.py` | "Freeze-out" gap; "100 %" identities | Computes gapless acoustic branches; labels identities | "frozen out" → E_long(500 nm) ≈ **4.3 eV** |

@@ -55,8 +55,8 @@ def section_electron(p):
     p("  '# Notice: 51.528 is remarkably close to (3/8) / alpha = 0.375 * 137.036 = 51.388 !'")
 
 
-def look_elsewhere(p):
-    p(banner("2. Look-elsewhere test: how special is a 4.8e-4 match in ln(m_P/m)?"))
+def formula_family():
+    """The look-elsewhere family S = (p/q)/alpha + T1 + T2 (see look_elsewhere)."""
     a = alpha[0]
     rat = sorted({Fraction(pp, qq) for qq in range(1, 17) for pp in range(1, 25) if pp / qq <= 1.5})
     lead = np.array([float(r) / a for r in rat])
@@ -72,20 +72,31 @@ def look_elsewhere(p):
     T1 = np.array(sorted(T1))
     T2 = np.array(sorted({(a / (k * math.pi)) * math.sqrt(n) * s
                           for k in (1, 2, 3, 4) for n in range(1, 25) for s in (1, -1)} | {0.0}))
+    base = (lead[:, None] + T1[None, :]).ravel()
+    base.sort()
+    return lead, T1, T2, base
+
+
+def count_hits(base, T2, target, win=4.8e-4):
+    """Number of family members within +-win of target."""
+    n = 0
+    for t2 in T2:
+        lo = np.searchsorted(base, target - t2 - win)
+        hi = np.searchsorted(base, target - t2 + win)
+        n += hi - lo
+    return int(n)
+
+
+def look_elsewhere(p):
+    p(banner("2. Look-elsewhere test: how special is a 4.8e-4 match in ln(m_P/m)?"))
+    lead, T1, T2, base = formula_family()
     N = len(lead) * len(T1) * len(T2)
     p(f"Formula family  S = (p/q)/alpha + [-ln(sqrt(n)/d) or ln(n)/d] +- (alpha/(k pi)) sqrt(m):")
     p(f"  {len(lead)} leading rationals x {len(T1)} prefactor logs x {len(T2)} radiative terms = {N:,} formulas")
     p("  (the USRT formula is one member: p/q = 3/8, -ln(sqrt3/2), +(alpha/2pi) sqrt12)")
-    base = (lead[:, None] + T1[None, :]).ravel()
-    base.sort()
 
     def hits(target, win=4.8e-4):
-        n = 0
-        for t2 in T2:
-            lo = np.searchsorted(base, target - t2 - win)
-            hi = np.searchsorted(base, target - t2 + win)
-            n += hi - lo
-        return n
+        return count_hits(base, T2, target, win)
 
     mP, _ = planck_mass()
     MeV = 1.602176634e-13 / c**2

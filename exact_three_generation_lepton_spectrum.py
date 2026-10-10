@@ -114,6 +114,11 @@ def derive_complete_lepton_spectrum():
         "m_e_measured": m_e_measured, "m_mu_measured": m_mu_measured, "m_tau_measured": m_tau_measured,
         "m_e_pred": m_e_codata, "m_mu_pred": m_mu_codata, "m_tau_pred": m_tau_codata,
         "err_mu": err_mu, "err_tau": err_tau, "Q_koide": Q_koide,
+        "pull_mu": (m_mu_codata - m_mu_measured) / dm_mu, "pull_tau": (m_tau_codata - m_tau_measured) / dm_tau,
+        "Q_measured": Q_measured,
+        "dQ_measured": abs((m_e_measured + m_mu_measured + m_tau_measured + dm_tau)
+                           / (np.sqrt(m_e_measured) + np.sqrt(m_mu_measured) + np.sqrt(m_tau_measured + dm_tau))**2
+                           - Q_measured),
         "delta": delta, "v0": v0_codata
     }
 
@@ -168,34 +173,44 @@ def plot_lepton_spectrum_proof(data):
     ax2.set_xticks(x_pos)
     ax2.set_xticklabels(particles, fontsize=11, fontweight='bold')
     ax2.set_ylabel('Rest Mass [MeV] (Log Scale)', fontsize=12)
-    ax2.set_title('2. Complete Lepton Mass Spectrum (CODATA Match)', fontsize=13, fontweight='bold')
+    ax2.set_title('2. Lepton masses (electron = INPUT, delta = 2/9)', fontsize=13, fontweight='bold')
     ax2.legend(loc='upper left', facecolor='#161b22', edgecolor='#30363d', labelcolor='white')
     
-    # 3. Precision Match Scorecard
+    # 3. Distance from measurement in standard deviations (audit: replaces "% match")
     ax3 = axs[1, 0]
-    accuracies = [100.0, 100.0 - data["err_mu"], 100.0 - data["err_tau"]]
-    bars3 = ax3.bar(particles, accuracies, color=['#58a6ff', '#ffa657', '#f85149'], width=0.45, edgecolor='white')
-    ax3.set_ylim(99.98, 100.005)
-    ax3.set_ylabel('Prediction Accuracy [%]', fontsize=12)
-    ax3.set_title('3. Mass Precision: All 3 Leptons > 99.99% Match', fontsize=13, fontweight='bold')
-    for b in bars3:
-        h = b.get_height()
-        ax3.text(b.get_x() + b.get_width()/2.0, h + 0.001, f'{h:.4f}%',
+    pulls = [abs(data["pull_mu"]), abs(data["pull_tau"])]
+    bars3 = ax3.bar(['Muon ($\\mu$)', 'Tau ($\\tau$)'], pulls, color=['#f85149', '#7ee787'], width=0.45, edgecolor='white')
+    ax3.set_yscale('log')
+    ax3.set_ylim(0.1, 3000)
+    ax3.axhline(1.0, color='#7ee787', ls='--', lw=1.2)
+    ax3.axhline(5.0, color='#f85149', ls='--', lw=1.2)
+    ax3.text(1.45, 1.1, '1 sigma', color='#7ee787', ha='right', fontsize=10)
+    ax3.text(1.45, 5.5, '5 sigma (excluded above)', color='#f85149', ha='right', fontsize=10)
+    ax3.set_ylabel('|prediction - measured| / sigma', fontsize=12)
+    ax3.set_title('3. Muon with delta = 2/9 is 452 sigma off; tau (Koide relation) fine', fontsize=13, fontweight='bold')
+    for b, v in zip(bars3, pulls):
+        ax3.text(b.get_x() + b.get_width()/2.0, v * 1.25, f'{v:,.2f} sigma' if v < 10 else f'{v:,.0f} sigma',
                  ha='center', color='white', fontweight='bold', fontsize=11)
-        
-    # 4. Koide Relation Q Parameter Exactness
+    ax3.text(-0.35, 1500, 'electron: used as INPUT (not a prediction)', color='white', fontsize=10)
+
+    # 4. Koide Q: measured value vs 2/3 (Q = 2/3 holds for ANY delta in this parametrisation)
     ax4 = axs[1, 1]
-    cats = ['Koide Ratio $Q$\n(Predicted from $\\delta=2/9$)', 'Exact Theoretical\nBound (2/3)']
-    vals = [data["Q_koide"], 2.0 / 3.0]
-    bars4 = ax4.bar(cats, vals, color=['#7ee787', '#2ea043'], width=0.45, edgecolor='white')
-    ax4.set_ylim(0.65, 0.68)
+    ax4.errorbar([0], [data["Q_measured"]], yerr=[data["dQ_measured"]], fmt='o', color='#58a6ff',
+                 ms=10, capsize=8, lw=2, label='Measured (PDG 2024 masses)')
+    ax4.axhline(2.0 / 3.0, color='#7ee787', ls='--', lw=2, label='Q = 2/3')
+    ax4.set_xlim(-1, 1)
+    ax4.set_xticks([])
+    ax4.set_ylim(2.0 / 3.0 - 2.5e-5, 2.0 / 3.0 + 1.5e-5)
+    ax4.ticklabel_format(axis='y', useOffset=False)
     ax4.set_ylabel('Koide Ratio $Q$', fontsize=12)
-    ax4.set_title(r'4. Koide Parameter: $Q = 2/3 \equiv 0.6666666667$', fontsize=13, fontweight='bold')
-    for b in bars4:
-        h = b.get_height()
-        ax4.text(b.get_x() + b.get_width()/2.0, h + 0.002, f'{h:.8f}',
-                 ha='center', color='white', fontweight='bold', fontsize=11)
-        
+    ax4.set_title('4. Koide Q: real empirical regularity (Koide 1981), not derived', fontsize=13, fontweight='bold')
+    ax4.text(0.05, data["Q_measured"] - 1.3e-5,
+             f'Q = {data["Q_measured"]:.7f} +- {data["dQ_measured"]:.7f}\n'
+             f'({(data["Q_measured"] - 2/3)/data["dQ_measured"]:+.2f} sigma from 2/3)\n'
+             'The parametrisation gives Q = 2/3 for ANY delta,\nso it cannot predict Q.',
+             color='white', fontsize=11)
+    ax4.legend(loc='upper right', facecolor='#161b22', edgecolor='#30363d', labelcolor='white')
+
     plt.tight_layout()
     output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'exact_three_generation_lepton_spectrum.png')
     plt.savefig(output_path, dpi=300)
