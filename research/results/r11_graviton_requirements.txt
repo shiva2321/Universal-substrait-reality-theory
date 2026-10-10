@@ -1,0 +1,76 @@
+
+==============================================================================
+A. Which spin? One-particle exchange: mass-mass vs mass-light
+==============================================================================
+static sources: T^00 = m;  light pulse along x: T^00 = T^0x = T^xx = E (trace 0)
+Newton's constant is fixed by the mass-mass amplitude; light bending is then set by the ratio
+R = (light-mass amplitude)/(slow-particle-mass amplitude) at equal energy. PPN: 1 + gamma = R.
+  spin-0 (scalar, couples to T)        mass-mass +1.000 (attracts)  light-mass +0.000  R = 0.000  gamma = -1.000  ->   8.7e+04 sigma from Cassini
+  spin-1 (vector, couples to p^mu)     mass-mass -1.000 (REPELS)  light-mass -1.000  R = 1.000  gamma = +0.000
+  spin-2 massive (any m > 0)           mass-mass +0.667 (attracts)  light-mass +1.000  R = 1.500  gamma = +0.500  ->   2.2e+04 sigma from Cassini
+  spin-2 massless (Fierz-Pauli, m=0)   mass-mass +0.500 (attracts)  light-mass +1.000  R = 2.000  gamma = +1.000  ->   9.1e-01 sigma from Cassini
+  extra candidates from earlier entries:
+  medium with eps changed only (r08)             gamma = +0.000000  ->  4.3e+04 sigma
+  medium with eps = mu (r08)                     gamma = +1.000000  ->  9.1e-01 sigma
+  Brans-Dicke omega = 40,000 (spin 2 + scalar)   gamma = +0.999975  ->  2.0e+00 sigma
+Cassini: gamma - 1 = (2.1e-05 +- 2.3e-05).
+=> spin 1 is out (like 'charges' repel: apples would fall up). Spin 0 is out (no light bending).
+   A massive spin 2 is out for ANY mass, however small (gamma = 1/2: the van Dam-Veltman-Zakharov
+   discontinuity), unless non-linear Vainshtein screening hides the extra mode. Only a MASSLESS,
+   pure helicity-+-2 mode gives gamma = 1. In r08's language: that is exactly the eps = mu medium.
+
+==============================================================================
+B. How massless? The gap the substrate must protect
+==============================================================================
+graviton mass bound (LVK GWTC-3, 90%): m_g c^2 < 1.27e-23 eV -> Compton wavelength > 9.76e+16 m (3.2 pc)
+substrate's natural energy scale ~ Planck energy 1.221e+28 eV
+ratio m_g / m_P < 1.0e-51: the gap must be suppressed by 51 orders of magnitude (102 in m^2, which is what a stiffness sets)
+(for scale: hbar H0 = 1.44e-33 eV, the energy of a wave as long as the visible universe)
+=> no accident or tuning can do this: the zero must be enforced by a SYMMETRY, as gauge
+   invariance keeps the photon massless (r02, r09). For spin 2 the symmetry is (linearised)
+   diffeomorphism invariance h -> h + d xi + d xi.
+
+==============================================================================
+C. Same speed as light?
+==============================================================================
+GW170817 + GRB 170817A (1.7 s apart after 130 million light years): -3e-15 <= (v_gw - c)/c <= 7e-16
+=> the gravity mode and the light mode must share ONE light cone to 1 part in 10^15.
+   In a substrate, each mode's speed is sqrt(stiffness/inertia). Two unrelated modes would have
+   to be tuned equal; two modes that are the same kind of excitation of the same cells are equal
+   automatically. This is a strong hint that light and gravity must come from ONE structure.
+
+==============================================================================
+D. Polarisations and universal coupling
+==============================================================================
+GW170814 (3 detectors): pure tensor polarisation preferred over pure vector and pure scalar
+  (Bayes factors ~200 and ~1000; Abbott et al., PRL 119, 141101 (2017)).
+MICROSCOPE: Eotvos eta(Ti,Pt) = (-1.5e-15 +- 2.7e-15): everything falls alike to ~10^-15.
+Weinberg (1964): a massless spin-2 field MUST couple equally to all energy (soft-graviton
+  theorem). So getting a massless spin-2 mode would give the equivalence principle for free.
+Deser (1970) (after Gupta 1954, Kraichnan 1955, Feynman 1962): a massless spin-2 field coupled
+  to all energy, including its own, is forced to become full non-linear General Relativity.
+=> the whole problem reduces to ONE thing: a gapless helicity-+-2 mode of the substrate that
+   couples to T^{mu nu}. The rest (Newton, bending, black holes, waves) follows.
+
+==============================================================================
+E. The obstacle and its loopholes
+==============================================================================
+Weinberg-Witten (1980): a theory with a Lorentz-covariant, conserved T^{mu nu} cannot contain a
+  massless particle of helicity |h| > 1 that carries energy-momentum. So the graviton cannot
+  be an ordinary bound state (e.g. two photons) living in a pre-existing flat spacetime.
+Loopholes, each tried in the next scripts:
+  1. gauge route (r12): the graviton is a gauge mode; its own T is not gauge-covariant (as in GR).
+  2. induced route (r13): Sakharov 1967 - the substrate's quantum jiggling gives spacetime stiffness.
+  3. entanglement route (r14): Jacobson 1995 - Einstein's equations from entanglement area law.
+  4. defect route (r15): Kroener/Kleinert world crystal - curvature = density of disclinations.
+  5. Lorentz symmetry only emergent (lattice), or an extra dimension (holography) - both evade the
+     theorem's assumptions.
+
+==============================================================================
+Requirement sheet for the substrate's gravity mode (all from measurement)
+==============================================================================
+  helicity           +-2 only (tensor)                        [GW170814 polarisations; gamma = 1]
+  gap                < 1.3e-23 eV  (10^-51 of Planck)         [GWTC-3]
+  speed              = c to 10^-15                            [GW170817]
+  coupling           to all energy equally, to 10^-15         [MICROSCOPE; Weinberg 1964]
+  gamma (eps = mu)   1 to 2 x 10^-5                           [Cassini]

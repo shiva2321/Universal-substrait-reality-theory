@@ -1,0 +1,91 @@
+
+==============================================================================
+A. Mode count and helicities at a generic wavevector (k = (0.13, 0.31, 0.47))
+==============================================================================
+M1 elastic tensor medium, no gauge symmetry
+     6 modes -> h=0: w^2/D^2=+2.000, h=0: w^2/D^2=+1.000, h=1: w^2/D^2=+1.500, h=1: w^2/D^2=+1.500, h=2: w^2/D^2=+1.000, h=2: w^2/D^2=+1.000
+M2 spatial gauge, curvature^2 stiffness (Xu 2006)
+     3 modes -> h=0: w^2/D^2=+0.329, h=2: w^2/D^2=+0.329, h=2: w^2/D^2=+0.329
+M3 spatial gauge, Einstein stiffness, absolute time (lambda = 1.2)
+     3 modes -> h=0: w^2/D^2=-0.077, h=2: w^2/D^2=+1.000, h=2: w^2/D^2=+1.000
+M4 M3 + healthy extension (alpha = 0.5)
+     3 modes -> h=0: w^2/D^2=+0.231, h=2: w^2/D^2=+1.000, h=2: w^2/D^2=+1.000
+M5 full GR: + local Hamiltonian constraint
+     2 modes -> h=2: w^2/D^2=+1.000, h=2: w^2/D^2=+1.000
+Read: M1 has 6 waves (helicity 0, 0, 1, 1, 2, 2) -- like r02's elastic lattice, too many.
+      The gauge redundancy removes 3 (h = 0, 1, 1). What is left is 2 helicity-2 waves
+      PLUS one helicity-0 wave, except in M5, where the Hamiltonian constraint removes it.
+
+==============================================================================
+B. The helicity-2 waves of M3-M5 have EXACTLY the lattice photon's dispersion
+==============================================================================
+200 random k in the Brillouin zone: max |omega^2 - 4 sum sin^2(k/2)| = 3.6e-15
+=> graviton and photon (r02) on the same lattice share the SAME dispersion relation, including
+   the lattice corrections: one light cone at all energies, as GW170817 demands (r11), PROVIDED
+   the overall stiffness/inertia ratio of both fields is the same number (one input, not two).
+   group-velocity deficit along [100] at ka = 0.03: 1 - v_g/c = 1.125e-04  (light, r10: (1/8)(ka)^2 sum n^4 = 1.125e-04)
+   group-velocity deficit along [111] at ka = 0.03: 1 - v_g/c = 3.750e-05  (light, r10: (1/8)(ka)^2 sum n^4 = 3.750e-05)
+
+==============================================================================
+C. Curvature-squared stiffness (M2): gravitons with omega ~ k^2 -> a CONFINING force
+==============================================================================
+   k = 0.02: omega = [0.0004 0.0004 0.0004]  (omega/k^2 = [1. 1. 1.])
+   k = 0.04: omega = [0.0016 0.0016 0.0016]  (omega/k^2 = [1. 1. 1.])
+   k = 0.08: omega = [0.006397 0.006397 0.006397]  (omega/k^2 = [0.999 0.999 0.999])
+static potential of a point source, stiffness ~ k^4 (128^3 lattice, fit a + b r + c r^2 for the box): b = -0.0407 (continuum -r/(8 pi): -0.0398)
+=> a k^4 ('curvature squared') stiffness gives a potential ~ r: masses would be CONFINED, not
+   attracted by 1/r. Newton's law needs the Einstein stiffness ~ k^2 (models M3-M5).
+
+==============================================================================
+D. A substrate with an absolute time (M3): the extra helicity-0 'scalar graviton'
+==============================================================================
+Analytic (linearised projectable Horava gravity): omega^2 = -k^2 (lambda-1)/(3 lambda-1), kinetic sign (1-3lambda)/(1-lambda)
+   lambda = -0.50: lattice omega^2/D^2 = -0.6000 (analytic -0.6000), norm +1 -> UNSTABLE (omega^2 < 0)
+   lambda =  0.00: lattice omega^2/D^2 = -1.0000 (analytic -1.0000), norm +1 -> UNSTABLE (omega^2 < 0)
+   lambda =  0.20: lattice omega^2/D^2 = -2.0000 (analytic -2.0000), norm +1 -> UNSTABLE (omega^2 < 0)
+   lambda =  0.50: lattice omega^2/D^2 = +1.0000 (analytic +1.0000), norm -1 -> GHOST (negative energy)
+   lambda =  0.80: lattice omega^2/D^2 = +0.1429 (analytic +0.1429), norm -1 -> GHOST (negative energy)
+   lambda =  0.95: lattice omega^2/D^2 = +0.0270 (analytic +0.0270), norm -1 -> GHOST (negative energy)
+   lambda =  1.05: lattice omega^2/D^2 = -0.0233 (analytic -0.0233), norm +1 -> UNSTABLE (omega^2 < 0)
+   lambda =  1.20: lattice omega^2/D^2 = -0.0769 (analytic -0.0769), norm +1 -> UNSTABLE (omega^2 < 0)
+   lambda =  2.00: lattice omega^2/D^2 = -0.2000 (analytic -0.2000), norm +1 -> UNSTABLE (omega^2 < 0)
+   lambda =  3.00: lattice omega^2/D^2 = -0.2500 (analytic -0.2500), norm +1 -> UNSTABLE (omega^2 < 0)
+healthy values of lambda found: NONE
+=> with only spatial gauge symmetry (cells can be moved, but time is absolute), the substrate
+   ALWAYS carries a third, helicity-0 graviton that is either a ghost or unstable. At lambda = 1
+   (the GR value) its kinetic coefficient diverges: it freezes, but becomes strongly coupled.
+   This is the known pathology of projectable Horava gravity (Charmousis, Niz, Padilla & Saffin
+   2009; Blas, Pujolas & Sibiryakov 2009; Koyama & Arroja 2010) -- reproduced here on the lattice.
+
+==============================================================================
+E. Two ways out
+==============================================================================
+(i) healthy extension (M4): let the lapse vary in space with stiffness alpha (grad ln N)^2:
+   lambda = 1.20, alpha = 0.5: omega^2/D^2 = +0.2308 (BPS analytic +0.2308) -> healthy
+   lambda = 1.05, alpha = 0.1: omega^2/D^2 = +0.4419 (BPS analytic +0.4419) -> healthy
+   lambda = 2.00, alpha = 1.5: omega^2/D^2 = +0.0667 (BPS analytic +0.0667) -> healthy
+   lambda = 1.20, alpha = 2.5: omega^2/D^2 = -0.0154 (BPS analytic -0.0154) -> UNSTABLE
+   healthy for lambda > 1, 0 < alpha < 2. But the extra scalar then exists and must be hidden:
+   preferred-frame tests (|alpha_1| < ~4e-5 pulsars, |alpha_2| < ~2e-9 solar spin/pulsars; Shao & Wex
+   2012, Shao et al. 2013) and GW170817 squeeze the extra couplings to the 1e-5 level or below
+   (Gumrukcuoglu, Saravani & Sotiriou 2018).
+(ii) the local Hamiltonian constraint (M5): exactly 2 helicity-2 modes, as observed. It says
+   'the energy at each place is a constraint, not a clock': time reparametrisation is a gauge
+   symmetry. A substrate with an absolute time does not have it automatically. It is the
+   spacetime version of Page-Wootters (time = correlations; H Psi = 0) -- but LOCAL, at each cell.
+
+==============================================================================
+F. Out of the box: graviton = photon x photon (the double copy)
+==============================================================================
+Tree-level gravity amplitudes are squares of gauge amplitudes (Kawai-Lewellen-Tye 1986; Bern,
+Carrasco & Johansson 2008-10). In polarisation language, twist (x) twist:
+   photon +1 x photon +1: helicity +2
+   photon +1 x photon -1: helicity +0
+   photon -1 x photon +1: helicity +0
+   photon -1 x photon -1: helicity -2
+   => helicity +2, -2 (graviton) + two helicity-0 states (dilaton = trace, axion = antisymmetric).
+   The dilaton couples to T like a scalar: it would make gamma != 1 and violate the equivalence
+   principle unless massive. Torsion balances exclude a gravity-strength Yukawa beyond ~39 um
+   (Lee et al., PRL 124, 101101 (2020)) -> dilaton mass > hbar c / 39 um = 5.1 meV.
+   So 'gravity = light squared' fits the substrate idea (r02 gives the twist), but the extra
+   scalars must be gapped, and it is a relation between amplitudes, not a construction.
