@@ -1,0 +1,70 @@
+
+==============================================================================
+A. Creating particles by concentrating energy in a calm substrate (phi^4 field)
+==============================================================================
+particle (kink) rest energy M = 4/3 = 1.3333; a pair needs at least 2M = 2.667
+E_in =   1.44 (0.54 x 2M): particles created = 0
+E_in =   1.69 (0.63 x 2M): particles created = 0
+E_in =   1.96 (0.73 x 2M): particles created = 0
+E_in =   2.25 (0.84 x 2M): particles created = 0
+E_in =   2.56 (0.96 x 2M): particles created = 0
+E_in =   2.89 (1.08 x 2M): particles created = 0
+E_in =   3.24 (1.21 x 2M): particles created = 0
+E_in =   3.61 (1.35 x 2M): particles created = 0
+E_in =   4.00 (1.50 x 2M): particles created = 2, outer pair speed 0.27c, energy in that pair  69%
+E_in =   4.41 (1.65 x 2M): particles created = 2, outer pair speed 0.35c, energy in that pair  64%
+E_in =   4.84 (1.81 x 2M): particles created = 0
+E_in =   5.29 (1.98 x 2M): particles created = 0
+E_in =   5.76 (2.16 x 2M): particles created = 2, outer pair speed 0.37c, energy in that pair  50%
+E_in =   6.25 (2.34 x 2M): particles created = 2, outer pair speed 0.63c, energy in that pair  55%
+E_in =   6.76 (2.53 x 2M): particles created = 2, outer pair speed 0.30c, energy in that pair  41%
+E_in =   7.29 (2.73 x 2M): particles created = 0
+E_in =   7.84 (2.94 x 2M): particles created = 2, outer pair speed 0.55c, energy in that pair  41%
+E_in =   8.41 (3.15 x 2M): particles created = 4, outer pair speed 0.23c, energy in that pair  33%
+E_in =   9.00 (3.38 x 2M): particles created = 4, outer pair speed 0.22c, energy in that pair  30%
+E_in =   9.61 (3.60 x 2M): particles created = 0
+E_in =  10.24 (3.84 x 2M): particles created = 0
+E_in =  10.89 (4.08 x 2M): particles created = 0
+E_in =  11.56 (4.33 x 2M): particles created = 4, outer pair speed 0.47c, energy in that pair  26%
+E_in =  12.25 (4.59 x 2M): particles created = 2, outer pair speed 0.19c, energy in that pair  22%
+E_in =  12.96 (4.86 x 2M): particles created = 4, outer pair speed 0.66c, energy in that pair  27%
+E_in =  13.69 (5.13 x 2M): particles created = 4, outer pair speed 0.57c, energy in that pair  24%
+E_in =  14.44 (5.42 x 2M): particles created = 8, outer pair speed 0.57c, energy in that pair  22%
+E_in =  15.21 (5.70 x 2M): particles created = 4, outer pair speed 0.25c, energy in that pair  18%
+E_in =  16.00 (6.00 x 2M): particles created = 2, outer pair speed 0.78c, energy in that pair  27%
+lowest energy that created a lasting pair: 4.00 = 1.50 x 2M (never below 2M = 2.67)
+every outcome has an EVEN number of particles: True (topological charge is conserved, so particles appear as particle + antiparticle)
+N particles never appear with less than N x M of energy: True
+Some energies make nothing: the substrate 'rings' and the bubble re-collapses (known resonance
+windows of kink-antikink dynamics). The leftover energy always leaves as ordinary waves (radiation).
+
+==============================================================================
+B. Why trapped energy IS mass: light in a box
+==============================================================================
+A pulse of light (energy E) bouncing between two mirrors:
+  * push the box: the forward-moving mirror reflects blue-shifted light, the back mirror red-shifted;
+    the net momentum of the trapped light is P = gamma E v / c^2 -> inertial mass = E/c^2.
+  * hang it in gravity g: light at the bottom has energy higher by a factor (1 + g L/c^2), so the
+    bottom mirror is pushed harder: net weight = (E/c^2) g -> gravitational mass = E/c^2.
+  1 joule of trapped light adds 1.11e-17 kg to the box, and weighs exactly that much.
+
+==============================================================================
+C. Real-world evidence that mass is trapped energy
+==============================================================================
+deuteron: m_p + m_n - m_d = 2.224566 MeV  (CODATA 2022 masses)
+  = the energy released (2.2246 MeV gamma) when a neutron is captured by a proton: binding the two
+  traps less energy, so the bound system weighs less, exactly by E/c^2.
+  Direct test: Rainville et al., Nature 438, 1096 (2005) confirmed E = mc^2 to 4 parts in 10^7.
+proton: quark rest masses 2 m_u + m_d = 9.0 MeV vs proton 938.3 MeV -> 99% of the proton's mass is trapped field energy
+  (lattice QCD reproduces hadron masses from this trapped energy: Durr et al., Science 322, 1224 (2008)).
+So ordinary matter is overwhelmingly trapped energy: this part of the user's intuition is exactly
+how nature works.
+
+==============================================================================
+D. Where large mass ratios come from: dimensional transmutation
+==============================================================================
+one-loop QCD scale: Lambda = M_Z exp(-2 pi / (b0 alpha_s)), b0 = 23/3, alpha_s(M_Z) = 0.118 +- 0.0009
+  -> Lambda = 88 MeV  (range 83-93 MeV); two-loop MS-bar value ~210 MeV
+  an O(0.1) coupling gives a scale 1038x below M_Z through an EXPONENTIAL; the proton mass
+  (~4-5 x the two-loop Lambda) is set this way. The original USRT electron formula m_e ~ m_P exp(-3/(8 alpha))
+  imitated this mechanism, but here the exponent comes from a measured running coupling, not a fit.

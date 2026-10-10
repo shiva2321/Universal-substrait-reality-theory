@@ -250,7 +250,7 @@ All 45 scripts run cleanly (tested with Python 3.13, NumPy, SciPy, Matplotlib, S
 ├── research/
 │   ├── LAB_NOTEBOOK.md                           dated record of every question, method, result
 │   ├── lab.py   run_all.py                       shared helpers; re-run everything
-│   ├── r01 ... r06_*.py                          one script per question
+│   ├── r01 ... r10_*.py                          one script per question
 │   ├── results/   figures/                       text output and plots of each script
 └── audit/
     ├── USRT_AUDIT_REPORT.md                      findings, provenance, before/after fixes, errata
@@ -357,6 +357,10 @@ Exploration after the audit lives in [`research/`](research/). Each question bec
 | [`r04`](research/r04_entanglement_extra_dimension.py) | Is entanglement one object seen from two dimensions? | **"Seen twice" gives S = 2.00.** A bulk channel must be faster than 10⁴ c and non-signalling. **RS2's bulk is no shortcut.** |
 | [`r05`](research/r05_speed_of_light.py) | Can the substrate fix the speed of light? | **A lattice has a built-in speed limit, 2Ja/ħ.** With only ħ and G, every value of c is consistent, so the number needs one measured substrate property. |
 | [`r06`](research/r06_substrate_structure.py) | So what is the substrate's structure now? | **A quantum network of uncharged units whose ground state is a loop condensate.** Light is its twist, particles are its defects, and c is its built-in signal speed. Our α sits **10.8× below** the photon-phase threshold (α_c ≈ 0.079). Gravity and the cell size remain open. |
+| [`r07`](research/r07_particle_creation_and_mass.py) | How does a particle come into existence and get its mass? Is mass trapped energy? | **Kicking a calm substrate makes particles only above 2M**, and always in pairs (2, 4, 8). The first lasting pair appears at 1.5 × 2M; the rest leaves as radiation. **Mass is trapped energy:** light in a box has inertia and weight E/c². The deuteron's mass defect is 2.2246 MeV, and 99% of the proton is field energy. |
+| [`r08`](research/r08_gravity_from_wave_speed.py) | How would gravity arise and behave in the substrate? | **If trapped energy lowers the local wave speed, everything made of waves falls the same way.** Two species with a 3:1 mass ratio end within 4×10⁻³ after an 11.6-unit fall: the equivalence principle emerges. Light is delayed as predicted (0.520 vs 0.507). Two lumps attract with a₁/a₂ = 2.97 vs E₂/E₁ = 2.96. **Full light bending (1.7512″) needs the electric and magnetic stiffness to change together (ε = μ);** ε alone gives half. |
+| [`r09`](research/r09_long_range_influence.py) | How does a particle affect the substrate far away? | **A defect of a gapless, gauge-protected mode reaches to infinity as 1/r**, the same in every direction within 0.4% by 10 cells (128³ lattice). **A gapped mode dies off as Yukawa e^(−mr)/r.** So 1/r² gravity needs a protected massless spin-2 mode, which is still the open core problem. |
+| [`r10`](research/r10_testable_predictions.py) | What could be measured? | **A cubic substrate predicts a 3:1 axis-to-diagonal pattern in TeV photon delays** (sky pattern isotropic + ℓ = 4). This is visible only if cells are larger than ~10⁻²⁸ m. **A compounding (exponential-metric) response passes all weak-field tests** (γ = β = 1) but gives a **4.6% larger black-hole shadow with no horizon**. That is 1.0–1.4σ from the EHT Sgr A* values, so it is testable with the next generation. |
 
 <table>
 <tr>
@@ -367,7 +371,18 @@ Exploration after the audit lives in [`research/`](research/). Each question bec
 
 <p align="center"><img src="research/figures/r06_substrate_structure_layers.png" width="92%"><br><sub><b>r06:</b> the structure of the substrate after the audit and research, layer by layer, coloured by how well each layer is supported (<a href="research/LAB_NOTEBOOK.md#e10">E10</a>).</sub></p>
 
-The current best "surviving" picture and the ranked open problems are in [notebook entry E9](research/LAB_NOTEBOOK.md#e9) and, layer by layer, in [E10](research/LAB_NOTEBOOK.md#e10).
+<table>
+<tr>
+<td width="50%"><img src="research/figures/r07_particle_creation_and_mass_pair_creation.png" width="100%"><br><sub><b>r07:</b> a concentrated kick of energy turns into a particle–antiparticle pair that flies apart. Particles only appear above 2M and always in pairs (<a href="research/LAB_NOTEBOOK.md#e11">E11</a>).</sub></td>
+<td width="50%"><img src="research/figures/r08_gravity_from_wave_speed_emergent_gravity.png" width="100%"><br><sub><b>r08:</b> when trapped energy slows waves, light and heavy wave-particles fall together, light is delayed, and full light bending needs ε = μ (<a href="research/LAB_NOTEBOOK.md#e12">E12</a>).</sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="research/figures/r09_long_range_influence_coulomb_vs_yukawa.png" width="100%"><br><sub><b>r09:</b> a defect of a gapless gauge mode reaches everywhere as 1/r. A gapped mode's influence dies beyond 1/m (<a href="research/LAB_NOTEBOOK.md#e13">E13</a>).</sub></td>
+<td width="50%"><img src="research/figures/r10_testable_predictions_predictions.png" width="100%"><br><sub><b>r10:</b> the measurable predictions. A 3:1 sky pattern in TeV photon delays for a cubic substrate, the delay vs cell size, and a 4.6% larger black-hole shadow if the response compounds (<a href="research/LAB_NOTEBOOK.md#e14">E14</a>).</sub></td>
+</tr>
+</table>
+
+The current best "surviving" picture and the ranked open problems are in [notebook entry E9](research/LAB_NOTEBOOK.md#e9) and, layer by layer, in [E10](research/LAB_NOTEBOOK.md#e10). The mass-and-gravity sector ("USRT v2.1") and the brainstorm verdicts are in [E15](research/LAB_NOTEBOOK.md#e15).
 
 ---
 

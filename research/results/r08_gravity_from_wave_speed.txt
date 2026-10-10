@@ -1,0 +1,44 @@
+
+==============================================================================
+A. Universal free fall in a region where the substrate's wave speed is lower
+==============================================================================
+slow region: c^2 = 1 + 2 Phi, Phi = -0.01 exp(-x^2 / 2 20^2)  (imposed here)
+species w0 = 1 (rest energy 8, mass ratio 1): position at t = 300: 18.3581
+species w0 = 3 (rest energy 24, mass ratio 3): position at t = 300: 18.3540
+largest difference between the two species' paths: 4.2e-03  (fall distance 11.64)
+point particle with acceleration -dPhi/dx: position at t = 300: 18.3185
+=> every particle made of substrate waves falls the same way, whatever its mass: the
+   equivalence principle EMERGES, because a particle's energy and its inertia both scale with c(x).
+   The effective potential is Phi = (c(x)^2 - c^2)/2, i.e. gravity = a map of the local wave speed.
+
+==============================================================================
+B. A massless pulse crossing the slow region arrives late
+==============================================================================
+arrival without / with the slow region: 200.020 / 200.540 -> delay 0.520; prediction int(1/c - 1)dx = 0.507
+   (1D analogue of the Shapiro delay; in 3D the same idea gives the measured 247 us for Mars radar, r01)
+
+==============================================================================
+C. Gravity between two particles: each particle slows the substrate around itself
+==============================================================================
+kernel strength kappa = 0.2, range L = 60 (put in by hand), initial separation 40
+particle 1 (rest energy 7.74): acceleration +3.28e-04  (prediction from particle 2's energy: +3.26e-04)
+particle 2 (rest energy 22.87): acceleration -1.11e-04  (prediction from particle 1's energy: -1.10e-04)
+each is pulled TOWARD the other; a1/a2 = 2.97 vs E2/E1 = 2.96  (Newton: the pull on
+each body is set by the OTHER body's mass);  M1 a1 + M2 a2 = +7.6e-06 (action = reaction)
+Honest limits: the long-range kernel is imposed (a gapless mediator is needed, r09), and this is a
+scalar model: it gives Newtonian gravity and clock slowing, not spin-2 waves (r03) or the factor 2 below.
+
+==============================================================================
+D. 3D: the full light bending requires eps = mu (impedance matching)
+==============================================================================
+eps = mu = K = 1 + 2GM/rc^2 -> n = K:        deflection 1.7512 arcsec (GR: 1.7512; VLBI confirms GR to ~1e-4)
+eps = K, mu = 1           -> n = sqrt(K):  deflection 0.8756 arcsec (half: excluded)
+local impedance Z = Z0 sqrt(mu/eps): unchanged if eps = mu, so local physics (alpha = e^2 Z0/2h) is
+identical everywhere -- that IS the equivalence principle for electromagnetically bound matter.
+if eps != mu: alpha would track the Sun's potential at Earth, which changes by 3.3e-10 over the year;
+  atomic-clock comparisons bound that coupling at the ~1e-6 level or below (e.g. Leefer et al. 2013),
+  so a mismatched response (coupling ~1) is excluded by about a million.
+=> requirement on the substrate: trapped energy must change its electric and magnetic stiffness
+   equally. Conjecture: this is automatic if the loop condensate is symmetric between electric and
+   magnetic loops (electric-magnetic duality). In GR the same fact is Plebanski's (1960) result that
+   gravity acts on light like a medium with eps_ij = mu_ij.

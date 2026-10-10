@@ -1,0 +1,43 @@
+
+==============================================================================
+A. Gapless gauge mode: field of a Gauss-law defect on a 128^3 cubic lattice
+==============================================================================
+periodic-box constant C = 0.00175  (fitted once, on the axis)
+  [100] axis           r =  1.00: lattice 0.08430   1/(4 pi r) form 0.07783   difference 8.1e-02 of the 1/r term
+  [100] axis           r =  3.00: lattice 0.02578   1/(4 pi r) form 0.02478   difference 3.8e-02 of the 1/r term
+  [100] axis           r = 10.00: lattice 0.00622   1/(4 pi r) form 0.00622   difference 5.5e-04 of the 1/r term
+  [110] face diagonal  r =  1.41: lattice 0.05343   1/(4 pi r) form 0.05452   difference 1.9e-02 of the 1/r term
+  [110] face diagonal  r =  2.83: lattice 0.02629   1/(4 pi r) form 0.02639   difference 3.4e-03 of the 1/r term
+  [110] face diagonal  r =  9.90: lattice 0.00628   1/(4 pi r) form 0.00630   difference 2.6e-03 of the 1/r term
+  [111] body diagonal  r =  1.73: lattice 0.04181   1/(4 pi r) form 0.04420   difference 5.2e-02 of the 1/r term
+  [111] body diagonal  r =  3.46: lattice 0.02089   1/(4 pi r) form 0.02123   difference 1.5e-02 of the 1/r term
+  [111] body diagonal  r = 10.39: lattice 0.00589   1/(4 pi r) form 0.00592   difference 3.7e-03 of the 1/r term
+=> the defect's field becomes Coulomb's 1/r, the same in every direction to within 0.4% by 10 cells
+   (the residue is lattice/box corrections that fall off faster than 1/r): a particle that is a
+   Gauss-law defect disturbs the substrate out to infinity.
+
+==============================================================================
+B. Gapped (massive) mode: the same defect, but the substrate mode has a gap m
+==============================================================================
+  r =  1: lattice 6.479e-02   Yukawa e^(-mr)/(4 pi r) 5.895e-02
+  r =  5: lattice 3.682e-03   Yukawa e^(-mr)/(4 pi r) 3.551e-03
+  r = 10: lattice 4.049e-04   Yukawa e^(-mr)/(4 pi r) 3.962e-04
+  r = 20: lattice 1.013e-05   Yukawa e^(-mr)/(4 pi r) 9.863e-06
+=> range ~ 1/m = 3.3 cells; beyond that the influence is gone (the superfluid-dent
+   gravity of the original USRT is this case, with m ~ 1/healing length).
+
+==============================================================================
+C. What this means for mass and gravity
+==============================================================================
+* The reach of a particle's influence = 1/(gap of the substrate mode it disturbs).
+* Electric charge reaches to infinity because it sources the gapless TWIST mode, and the gap is
+  forbidden by gauge symmetry: charge conservation <-> Gauss's law <-> massless photon.
+* A superfluid's own gapless sound mode is a Goldstone mode: it couples through gradients, so two
+  static lumps feel no 1/r force from it (only motion/pulsation forces, Bjerknes). So a static 1/r
+  pull needs a gauge-protected massless mode, not just any gapless one.
+* Gravity reaches to infinity and is sourced by ENERGY. The analogue is a massless mode protected
+  by the conservation of energy-momentum: a spin-2 gauge field. Weinberg (1964) showed that any
+  massless spin-2 field must couple to all energy equally -- the universal free fall found in r08.
+* So in the substrate: mass = trapped energy (r07); trapped energy disturbs the spin-2 'stiffness'
+  mode (r08: lowers wave speed, eps = mu); that mode must be gapless and gauge-protected (here) for
+  1/r^2 gravity. Deriving that protected spin-2 mode from the substrate is the open core problem.

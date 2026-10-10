@@ -26,6 +26,11 @@ This is the running record of every question, calculation, plot and conclusion i
 | [E8](#e8) | 2026-10-10 | Brainstorm: can the substrate fix the speed of light? | r05 |
 | [E9](#e9) | 2026-10-10 | Synthesis: the current best substrate picture and open problems | — |
 | [E10](#e10) | 2026-10-10 | The structure of the substrate, layer by layer (USRT v2) | r06 |
+| [E11](#e11) | 2026-10-10 | How a particle comes into existence and gets its mass | r07 |
+| [E12](#e12) | 2026-10-10 | How gravity could arise: trapped energy lowers the substrate's wave speed | r08 |
+| [E13](#e13) | 2026-10-10 | How a particle affects the substrate far away (gapless vs gapped modes) | r09 |
+| [E14](#e14) | 2026-10-10 | Measurable predictions: lattice light delays, black-hole shadows | r10 |
+| [E15](#e15) | 2026-10-10 | Brainstorm and current formulation: mass and gravity in the substrate | — |
 
 ---
 
@@ -313,11 +318,15 @@ Under a constant push the speed went 0.375 → 0.700 → 0.850 → 0.900c. Newto
 5. **Dark energy:** Volovik's equilibrium argument removes the 10¹²⁰, but the observed value is still an input.
 
 **Next steps (queue):**
-- [ ] Classical lattice gauge simulation: show emergent Coulomb 1/r between two Gauss-law defects on a cubic lattice (light *and* a long-range force from the same medium).
+- [x] Classical lattice gauge simulation: show emergent Coulomb 1/r between two Gauss-law defects on a cubic lattice (light *and* a long-range force from the same medium). *Done 2026-10-10 in E13 (r09).*
 - [ ] Compute the emergent α for a simple compact U(1) lattice model as a function of the coupling ratio, and see what ratio gives 1/137.
 - [ ] Bjerknes test: two pulsating sources in a compressible fluid; force law and sign vs phase.
 - [ ] Toy Weyl-metric "gravity": a texture in the Weyl vector bends all species' cones equally. Check against Shapiro delay scaling.
 - [ ] (added 2026-10-10, from E10) Confinement threshold and photon speed for a Hamiltonian, spin-ice-type lattice model, to compare with the Wilson-action threshold α_c ≈ 0.079 used in E10.
+- [ ] (added 2026-10-10, from E12) Replace the hand-imposed long-range kernel of r08 with a dynamical gapless field sourced by energy, and check that Newton's law, universal free fall and light delay survive.
+- [ ] (added 2026-10-10, from E12) 2D/3D version of r08 with eps = mu: verify the factor-2 light bending emerges in a simulation, not just in the ray integral.
+- [ ] (added 2026-10-10, from E14) Quasi-normal modes / echo times for the exponential (horizonless) completion, to compare with LIGO-Virgo-KAGRA ringdowns.
+- [ ] (added 2026-10-10, from E14) Fit published TeV-photon arrival delays from several GRBs/blazars for an isotropic + l = 4 (cubic) pattern; current data give upper limits only.
 
 > **Note (2026-10-10, later):** E10 gives the layered version of this picture, with parameter ranges and the new Coulomb-phase constraint α < α_c ≈ 0.079. Nothing in E9 is retracted.
 
@@ -400,3 +409,204 @@ A gauge lattice has only even-order dispersion and no birefringence, so the data
 - **Data:** Planck 2018 (Ω_Λ = 0.6847, H₀ = 67.36); PDG 2024 (α(M_Z))
 
 **Files:** [`r06_substrate_structure.py`](r06_substrate_structure.py), [results](results/r06_substrate_structure.txt), ![layers](figures/r06_substrate_structure_layers.png)
+
+---
+
+<a id="e11"></a>
+## E11 — How a particle comes into existence and gets its mass (2026-10-10)
+
+**Question (user):** "How would a particle come into existence and get the mass … I think the energy trapped in a well would give some insights, because trapped energy at a point in space is mass, since mass and energy are proportional."
+
+**Method:**
+- Simulated a 1D substrate field with two equal ground states (φ⁴). Its "particles" are kinks: stable, knotted lumps of trapped energy with exact rest energy M = 4/3.
+- Kicked the calm substrate with 29 different localized energies E_in. Let the radiation escape through absorbing edges and counted the particles left.
+- Checked trapped-energy-as-mass against real data: the light box (analytic), the deuteron (CODATA 2022), the proton versus its quark masses (PDG 2024), and one-loop dimensional transmutation (PDG α_s).
+
+**Results (computed here):**
+- **Particles appear only above twice their rest energy.** No particle ever appeared below E_in = 2M = 2.67. The lowest lasting pair came at 4.00 (1.5 × 2M).
+- **Particles always come in pairs.** Every outcome has an even number (2, 4, 8): topological charge is conserved, like particle + antiparticle.
+- **The energy budget always holds.** N particles never appear with less than N·M of energy. In a typical run 30–70 % of the energy ends up in the pair; the rest radiates as waves.
+- **Some energies make nothing.** The bubble rings and re-collapses (known kink–antikink resonance windows).
+- **Light in a box** has inertial mass E/c² and weighs (E/c²)g. One joule of trapped light adds 1.1×10⁻¹⁷ kg.
+- **Deuteron:** m_p + m_n − m_d = **2.224566 MeV**, exactly the γ-ray energy released when the two bind. E = mc² has been confirmed directly to 4×10⁻⁷ (Rainville et al. 2005).
+- **Proton:** the quark rest masses add up to 9.0 MeV of 938.3 MeV. **99 % of the proton's mass is trapped field energy** (reproduced by lattice QCD; Dürr et al. 2008).
+- **Large mass ratios from an exponential:** with α_s(M_Z) = 0.1180, the one-loop QCD scale is Λ ≈ 88 MeV (83–93), about 1000× below M_Z. This is the real mechanism behind exponential mass hierarchies.
+
+**Interpretation:**
+- **The user's trapped-energy intuition is right, and it is how nature actually works.** A particle is a self-sustaining knot of substrate energy, and its mass *is* that energy divided by c².
+- **Creation needs concentrated energy of at least 2Mc², and makes pairs.** It succeeds only if the knot is topologically stable.
+- **The original USRT electron formula** tried to mimic dimensional transmutation. The honest version uses a running coupling and derives the exponent rather than fitting it.
+
+**Status:** **computed here / established.** What fixes the *values* of the masses (M in substrate units) remains **open**.
+
+**Files:** [`r07_particle_creation_and_mass.py`](r07_particle_creation_and_mass.py), [results](results/r07_particle_creation_and_mass.txt), ![creation](figures/r07_particle_creation_and_mass_pair_creation.png)
+
+---
+
+<a id="e12"></a>
+## E12 — How gravity could arise: trapped energy lowers the substrate's wave speed (2026-10-10)
+
+**Question (user):** "How would gravity be happening and come into existence and behave in our universal substrate?"
+
+**Hypothesis tested:** trapped energy makes the substrate locally softer, lowering its wave speed: c(x)² = c²(1 + 2Φ/c²).
+
+**Method:** a 1D sine-Gordon substrate.
+- Two particle species (internal frequency 1 and 3, so rest energies 8 and 24) are released in a slow region.
+- A massless pulse is sent through the same region.
+- A self-consistent run: each particle's energy lowers c around itself through a long-range kernel, which is imposed by hand.
+- In 3D, light bending for an impedance-matched (ε = μ = K) versus a mismatched (ε = K, μ = 1) response.
+
+**Results (computed here):**
+
+- **A. Universal free fall emerges.** The two species fall along the same path to 4×10⁻³ over an 11.6-unit fall, and match a point particle with a = −dΦ/dx.
+  - *Reason:* a particle's energy (8ω₀c) and its inertia (8ω₀/c) both scale with the local c, so its acceleration −c c′ does not depend on its mass.
+  - *Consequence:* gravity = a map of the local wave speed.
+- **B. Light is delayed.** A pulse crossing the slow region arrives 0.520 late, against the prediction ∫(1/c − 1)dx = 0.507. This is the 1D Shapiro delay.
+- **C. Newtonian mutual attraction emerges.**
+  - Accelerations: +3.28×10⁻⁴ and −1.11×10⁻⁴, against predictions of 3.26×10⁻⁴ and 1.10×10⁻⁴.
+  - Each body is pulled by the *other* body's energy: a₁/a₂ = 2.97, against E₂/E₁ = 2.96.
+  - Action equals reaction: M₁a₁ + M₂a₂ = 7.6×10⁻⁶, about 0 compared with each term (~2.5×10⁻³).
+- **D. The factor 2 of light bending needs ε = μ.**
+  - ε = μ = K gives **1.7512″** (GR; VLBI confirms to ~10⁻⁴).
+  - ε = K, μ = 1 gives 0.8756″.
+  - The mismatched case would also make α track the gravitational potential: the Sun's potential at Earth changes by 3.3×10⁻¹⁰ over the year, and atomic clocks bound the coupling at ≲10⁻⁶. So the mismatched case is excluded by about 10⁶.
+
+**Interpretation:**
+- **What the substrate must do.** In a substrate whose particles are waves, *gravity = trapped energy lowering the local wave speed, equally for the electric and the magnetic stiffness*. That single statement reproduces universal free fall, Newton's mutual attraction, clock and light slowing, and the full light bending.
+- **This is GR's weak field in medium language.** Gravity acts on light like a medium with ε_ij = μ_ij (Plebanski 1960), so it is a reinterpretation, not new physics.
+- **Conjecture:** ε = μ is automatic if the loop condensate is symmetric between electric and magnetic loops (duality).
+- **Limits:** the long-range kernel is imposed, and the model is scalar (no spin-2 waves).
+
+**Status:** emergence of the equivalence principle, Newton's law and light delay: **computed here**. Impedance matching: **required by data**. Its origin (duality): **conjecture, open**.
+
+**Files:** [`r08_gravity_from_wave_speed.py`](r08_gravity_from_wave_speed.py), [results](results/r08_gravity_from_wave_speed.txt), ![gravity](figures/r08_gravity_from_wave_speed_emergent_gravity.png)
+
+---
+
+<a id="e13"></a>
+## E13 — How a particle affects the substrate far away (2026-10-10)
+
+**Question (user):** "… and how it would affect the substrate."
+
+**Method:** exact lattice Green's functions on a 128³ cubic lattice (FFT), for a point defect:
+- in a gapless gauge (twist) mode;
+- in a gapped mode (m = 0.3).
+
+Sampled along [100], [110] and [111].
+
+**Results (computed here):**
+- **Gapless mode: Coulomb's 1/r, the same in every direction.** It matches 1/r to within 0.4 % by 10 cells (3.8 % at 3 cells along the axis), and [100], [110] and [111] agree. *A Gauss-law defect disturbs the substrate out to infinity.*
+- **Gapped mode: Yukawa e^(−mr)/(4πr).** It matches to a few % (e.g. 4.05×10⁻⁴ vs 3.96×10⁻⁴ at r = 10). The influence dies beyond 1/m ≈ 3.3 cells. The original USRT's superfluid-dent gravity is this case.
+
+**Interpretation:**
+- **The reach of a particle's influence equals 1/(gap of the substrate mode it disturbs).**
+- **Why charge reaches to infinity:** its mode's gap is forbidden by gauge symmetry, which ties charge conservation to the massless photon.
+- **A superfluid's own gapless sound is a Goldstone mode.** It couples through gradients, so it gives no static 1/r pull between lumps (only motion and pulsation forces).
+- **What gravity therefore needs:** gravity is long-range and sourced by energy, so it needs a massless mode protected by energy-momentum conservation, i.e. a spin-2 gauge field. Weinberg (1964) showed that such a field must couple equally to all energy, which is exactly the universal free fall seen in E12.
+
+**Status:** **computed here.** It completes the classical part of the E9 queue item. Deriving the protected spin-2 mode remains the **open** core problem.
+
+**Files:** [`r09_long_range_influence.py`](r09_long_range_influence.py), [results](results/r09_long_range_influence.txt), ![range](figures/r09_long_range_influence_coulomb_vs_yukawa.png)
+
+---
+
+<a id="e14"></a>
+## E14 — Measurable predictions (2026-10-10)
+
+**Question (user):** "… see if our testing helps something emerge that is promising, measurable and experimentable."
+
+**A. A cubic substrate's fingerprint on high-energy light (computed here).**
+
+The exact lattice dispersion gives a group-velocity deficit of 1 − v_g/c = (1/8)(ka)² Σnᵢ⁴. Measured coefficients:
+
+| Direction | Coefficient |
+|---|---|
+| axis | 0.12500 |
+| face diagonal | 0.06250 |
+| body diagonal | 0.04167 |
+
+All match the formula exactly. The predicted signature:
+- **quadratic** in energy;
+- high energies arrive **late**;
+- **no polarisation** dependence;
+- a fixed **sky pattern**: axis to diagonal 3:1, i.e. isotropic plus an ℓ = 4 cubic harmonic.
+
+Delay for a 10 TeV photon over 1 Gpc:
+
+| Cell size | Delay |
+|---|---|
+| Planck length | 5×10⁻¹⁵ s |
+| 10 Planck lengths | 5×10⁻¹³ s |
+| 10⁻³⁰ m | 2×10⁻⁵ s |
+| 10⁻²⁸ m | 0.2 s |
+| 2×10⁻²⁷ m (current bound) | 79 s |
+
+LHAASO and CTA could see it only if the substrate is much coarser than Planck (cells > ~10⁻²⁸ m). If a delay is seen, the 3:1 direction pattern is the distinctive test.
+
+**B. Strong gravity: GR versus a multiplicative substrate response (computed here).**
+
+If "trapped energy lowers the wave speed" compounds multiplicatively (n = e^(2GM/rc²), the exponential metric of Yilmaz and Dicke):
+- **Solar-system tests are identical to GR.** The symbolic PPN expansion gives γ = β = 1 for both.
+- **Shadows are larger.** The shadow radius is 2e = 5.4366 GM/c², against GR's 3√3 = 5.1962: **+4.63 %**. The Event Horizon Telescope (Sgr A*) measures δ = −0.08 ± 0.09 (VLTI) and −0.04 (+0.09/−0.10, Keck), so +0.046 is 1.4σ and 1.0σ away: **allowed today**. ngEHT / space VLBI aim for a few percent.
+- **There is no horizon.** Instead there is a throat of areal radius e·GM/c². That predicts ringdown echoes; LIGO-Virgo-KAGRA ringdowns agree with GR so far, so this option is under pressure.
+- **Second-order light bending** has coefficient C₂ = 12.5663 (exponential) vs 11.7809 (GR). The exact ray integrals reproduce the analytic 4π and 15π/4. The difference at the Sun's edge is 0.73 μas, below current reach.
+
+**C. Scorecard.**
+
+| Prediction | Kind | Decides it |
+|---|---|---|
+| universal free fall for anything made of substrate waves | shared with GR | MICROSCOPE ✓, ALPHA-g ✓, next 10⁻¹⁷–10⁻¹⁸ |
+| α independent of gravitational potential (ε = μ) | shared with GR | atomic clocks ✓ |
+| 2 polarisations, no vacuum birefringence | shared with GR + SM | GRB/CMB polarisation ✓ |
+| **quadratic, late, polarisation-blind, 3:1-patterned TeV delays** | **distinctive (cubic substrate)** | LHAASO/CTA, only if cells > ~10⁻²⁸ m |
+| our α below the photon-phase threshold 0.079 | consistency | ✓ (10.8×) |
+| **shadow +4.6 %, no horizon, echoes, 2nd-order bending +π/4** | **distinctive (strong field)** | EHT now ±9 % (allowed); ngEHT; LVK ringdowns |
+| pairs only above 2Mc²; mass = trapped energy | shared with QFT | Breit–Wheeler (STAR 2021) ✓, E = mc² to 4×10⁻⁷ ✓ |
+
+**Status:** two distinctive, falsifiable predictions identified (**computed here**); both are allowed by current data.
+
+**Files:** [`r10_testable_predictions.py`](r10_testable_predictions.py), [results](results/r10_testable_predictions.txt), ![predictions](figures/r10_testable_predictions_predictions.png)
+
+---
+
+<a id="e15"></a>
+## E15 — Brainstorm and current formulation: mass and gravity in the substrate (2026-10-10)
+
+**Question (user):** "Let's brainstorm and research and see if we can come up with new supportive concepts, calculations and formulations … give it your all."
+
+**Ideas considered and their verdicts:**
+
+| Idea | Verdict | Where |
+|---|---|---|
+| Mass = energy trapped in a well / knot | **supported**: simulated (pair creation, E = mc² dynamics) and matches nature (proton 99 %, deuteron) | E4, E11 |
+| Gravity = density dent of a superfluid | ruled out: short range | E1, E3, E13 |
+| Gravity = pulsation / Bjerknes forces | possible long range, but the sign depends on phase, which would threaten universal free fall | E1 (open) |
+| Gravity = trapped energy lowers the local wave speed | **supported**: equivalence principle, Newton's law and light delay emerge | E12 |
+| … changing only the electric stiffness | ruled out: half the light bending, and α would vary (×10⁶ excluded) | E12 |
+| … changing electric and magnetic stiffness equally (ε = μ) | **supported**: full bending, local physics unchanged (= GR's optical medium) | E12 |
+| Mediator of gravity is gapless and gauge-protected (spin-2) | required (range, universal coupling); derivation **open** | E13 |
+| Strong field: linear (GR) vs multiplicative (exponential) | **testable**: shadow +4.6 %, horizon, echoes | E14 |
+| Coarse cubic substrate | **testable**: 3:1-patterned TeV delays | E14 |
+
+**Current formulation (USRT v2.1, mass and gravity sector):**
+
+1. **Particle:** a topologically stable knot or defect of the substrate. It is created only in particle–antiparticle pairs, from concentrated energy E ≥ 2Mc².
+2. **Mass:** m = (trapped energy)/c². Inertia and E = γmc² follow automatically for any knot of waves.
+3. **Gravity:** trapped energy density ρ_E lowers the substrate's local wave speed, c(x)² = c²(1 + 2Φ/c²), with ∇²Φ = 4πG ρ_E/c², and changes the electric and magnetic stiffness equally: ε = μ = 1 − 2Φ/c².
+   - Universal free fall, Newton's law, clock slowing and full light bending all follow.
+   - This is GR's weak field written as a medium, so it is a reinterpretation, not a new weak-field theory.
+4. **Range:** the field carrying Φ must be gapless and protected by energy-momentum conservation (spin-2). Deriving that mode from the substrate is the open core problem; the Weinberg–Witten loopholes are noted in E9.
+5. **Why gravity is so weak:** the substrate's stiffness against energy-sourced deformation, c⁴/8πG, is enormous. For a proton, α_G = G m_p²/ħc = 5.9×10⁻³⁹ compared with α = 1/137. That ratio is the hierarchy problem restated as a ratio of two substrate stiffnesses. **Open.**
+6. **Where USRT v2.1 can be proved wrong:** the strong-field completion (shadow +4.6 % and no horizon if the response compounds) and coarse-grain TeV delays with a 3:1 sky pattern.
+
+**References:**
+- **Einstein** (1905, 1907)
+- **Rainville et al.**, Nature 438, 1096 (2005)
+- **Dürr et al.**, Science 322, 1224 (2008)
+- **Plebanski**, Phys. Rev. 118, 1396 (1960)
+- **Weinberg**, Phys. Rev. 135, B1049 (1964)
+- **Yilmaz**, Phys. Rev. 111, 1417 (1958)
+- **Dicke**, Rev. Mod. Phys. 29, 363 (1957)
+- **EHT Collaboration**, ApJL 930, L17 (2022)
+- **STAR Collaboration**, PRL 127, 052302 (2021)
+- **Leefer et al.**, PRL 111, 060801 (2013)

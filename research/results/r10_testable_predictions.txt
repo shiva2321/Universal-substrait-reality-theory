@@ -1,0 +1,57 @@
+
+==============================================================================
+A. A cubic substrate's fingerprint on high-energy light
+==============================================================================
+  lattice axis [100]    : (1 - v_g/c)/(ka)^2 = 0.12500   predicted (1/8) sum n^4 = 0.12500
+  face diagonal [110]   : (1 - v_g/c)/(ka)^2 = 0.06250   predicted (1/8) sum n^4 = 0.06250
+  body diagonal [111]   : (1 - v_g/c)/(ka)^2 = 0.04167   predicted (1/8) sum n^4 = 0.04167
+  random direction      : (1 - v_g/c)/(ka)^2 = 0.06312   predicted (1/8) sum n^4 = 0.06312
+  => delay of the axis direction : body diagonal = 3 : 1 exactly; both polarisations identical
+     (r02), and higher energies arrive later. The sky-average coefficient is 3/40.
+arrival delay of a 10 TeV photon after travelling 1 Gpc (sky average, 3/40 coefficient):
+  cell size Planck length            a = 1.6e-35 m: delay 5.2e-15 s
+  cell size 10 Planck lengths        a = 1.6e-34 m: delay 5.2e-13 s
+  cell size 1e-30 m                  a = 1.0e-30 m: delay 2.0e-05 s
+  cell size 1e-28 m                  a = 1.0e-28 m: delay 2.0e-01 s
+  cell size 2e-27 m (current bound)  a = 2.0e-27 m: delay 7.9e+01 s
+  Gamma-ray bursts and blazar flares resolve delays of ~1-10 s at these energies (LHAASO, CTA):
+  visible only if cells are larger than ~1e-28 m, i.e. if the substrate is much coarser than Planck.
+  Distinctive test, if a delay is ever seen: compare many sources across the sky; a cubic substrate
+  predicts the specific 3:1 direction pattern (a fixed mix of isotropic + l = 4 harmonic).
+
+==============================================================================
+B. Strong gravity: GR vs a multiplicative ('exponential') substrate response
+==============================================================================
+  Schwarzschild (GR)   isotropic coords: PPN gamma = 1, beta = 1  -> solar-system tests identical
+  exponential          isotropic coords: PPN gamma = 1, beta = 1  -> solar-system tests identical
+  photon-capture impact parameter (shadow radius), units GM/c^2: GR 5.1962 (= 3 sqrt3), exponential 5.4366 (= 2e)
+  => shadow +4.63% larger than GR for the same mass and distance
+  Event Horizon Telescope, Sgr A* (2022): fractional deviation delta = -0.08 +- 0.09 (VLTI mass) and
+  -0.04 +0.09/-0.10 (Keck mass): the exponential value +0.046 is 1.4 and 1.0 sigma away
+  -> allowed today; ngEHT / space VLBI aim for a few percent.
+  Horizon: GR has one at r = 2GM/c^2; the exponential metric has none (g_tt = -e^{-2GM/rc^2} never
+  vanishes) and a throat of areal radius e*GM/c^2 instead: a horizonless object, which predicts
+  ringdown 'echoes'. LIGO-Virgo-KAGRA ringdowns agree with GR black holes so far; echoes are not
+  robustly seen. This makes the multiplicative completion testable and under pressure.
+  light bending = 4 (GM/bc^2) + C2 (GM/bc^2)^2: C2(GR) = 11.7809
+  light bending = 4 (GM/bc^2) + C2 (GM/bc^2)^2: C2(exponential) = 12.5663
+  analytic: GR 15 pi/4 = 11.7810; exponential 4 pi = 12.5664
+  at the Sun's edge the 2nd-order difference is 0.73 micro-arcseconds: below current reach (future sub-uas astrometry).
+
+==============================================================================
+C. Scorecard: predictions of the revised substrate
+==============================================================================
+  [shared with GR              ] Universal free fall for anything made of substrate waves (incl. antimatter, trapped light)
+                                 test: MICROSCOPE 1e-15 OK; ALPHA-g OK; next: 1e-17-1e-18 tests
+  [shared with GR              ] alpha does not change with gravitational potential (eps = mu)
+                                 test: atomic clocks: coupling < ~1e-6 OK
+  [shared with GR+SM           ] Photons: 2 polarisations, no vacuum birefringence even at Planck energies
+                                 test: GRB/CMB polarisation OK
+  [DISTINCTIVE (cubic substrate)] Quadratic, late, polarisation-blind, 3:1 direction-patterned delay of TeV photons
+                                 test: LHAASO/CTA: only if cells > ~1e-28 m
+  [consistency check           ] Our alpha below the photon-phase threshold 0.079 (r06)
+                                 test: satisfied (10.8x)
+  [DISTINCTIVE (strong field)  ] Shadow +4.6%, no horizon, echoes, 2nd-order bending +pi/4 (if response compounds)
+                                 test: EHT now +-9% (allowed); ngEHT; LVK ringdowns
+  [shared with QFT             ] Particles appear only in pairs above 2Mc^2; mass = trapped energy
+                                 test: Breit-Wheeler (STAR 2021), E = mc^2 to 4e-7 OK
