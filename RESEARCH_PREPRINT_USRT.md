@@ -33,7 +33,7 @@ We present the Unified Substrate Reality Theory (USRT), an ontological, non-pert
 ## Visual Architecture of the Theory
 
 ### Figure 1: The Master Architectural Ontology of Reality in USRT
-![Figure 1: Master Architectural Ontology of Reality in USRT](file:///F:/Reality_theory/hyperdimensional_reality_view.jpg)
+![Figure 1: Master Architectural Ontology of Reality in USRT](./hyperdimensional_reality_view.jpg)
 
 * **Figure 1 Caption & Physical Anatomy:**  
   * **The 3D Membrane Universe:** The upper luminous surface represents the effective 3-dimensional manifold accessible to low-energy electromagnetic and baryonic probes ($\lambda \gg \ell_P$).
@@ -45,7 +45,7 @@ We present the Unified Substrate Reality Theory (USRT), an ontological, non-pert
 ---
 
 ### Figure 2: Microscopic HCP Lattice Geometry and Emergent Acoustic Isotropy
-![Figure 2: Microscopic HCP Lattice Geometry and Emergent Acoustic Isotropy](file:///F:/Reality_theory/hcp_planck_lattice_analysis.png)
+![Figure 2: Microscopic HCP Lattice Geometry and Emergent Acoustic Isotropy](./hcp_planck_lattice_analysis.png)
 
 * **Figure 2 Caption & Mathematical Verification:**  
   * **Panel 1 (Top Left):** The 3D 12-neighbor Hexagonal Close-Packed (HCP) coordination shell showing the central Planckion (red) connected to 6 coplanar in-plane neighbors at $Z = 0$ (cyan), 3 top-layer neighbors at $Z = +c/2$ (magenta), and 3 bottom-layer neighbors at $Z = -c/2$ (blue).
