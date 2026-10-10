@@ -250,7 +250,7 @@ All 45 scripts run cleanly (tested with Python 3.13, NumPy, SciPy, Matplotlib, S
 ├── research/
 │   ├── LAB_NOTEBOOK.md                           dated record of every question, method, result
 │   ├── lab.py   run_all.py                       shared helpers; re-run everything
-│   ├── r01 ... r05_*.py                          one script per question
+│   ├── r01 ... r06_*.py                          one script per question
 │   ├── results/   figures/                       text output and plots of each script
 └── audit/
     ├── USRT_AUDIT_REPORT.md                      findings, provenance, before/after fixes, errata
@@ -356,6 +356,7 @@ Exploration after the audit lives in [`research/`](research/). Each question bec
 | [`r03`](research/r03_medium_from_waves.py) | Can we infer the medium from its waves? | **Light needs twist-only stiffness** of strength α = 1/137. **Gravity needs a separate spin-2 stiffness** of c⁴/8πG = 4.8×10⁴² N; this predicts GW150914's strain (9.5×10⁻²² vs ~10⁻²¹). |
 | [`r04`](research/r04_entanglement_extra_dimension.py) | Is entanglement one object seen from two dimensions? | **"Seen twice" gives S = 2.00.** A bulk channel must be faster than 10⁴ c and non-signalling. **RS2's bulk is no shortcut.** |
 | [`r05`](research/r05_speed_of_light.py) | Can the substrate fix the speed of light? | **A lattice has a built-in speed limit, 2Ja/ħ.** With only ħ and G, every value of c is consistent, so the number needs one measured substrate property. |
+| [`r06`](research/r06_substrate_structure.py) | So what is the substrate's structure now? | **A quantum network of uncharged units whose ground state is a loop condensate.** Light is its twist, particles are its defects, and c is its built-in signal speed. Our α sits **10.8× below** the photon-phase threshold (α_c ≈ 0.079). Gravity and the cell size remain open. |
 
 <table>
 <tr>
@@ -364,7 +365,9 @@ Exploration after the audit lives in [`research/`](research/). Each question bec
 </tr>
 </table>
 
-The current best "surviving" picture and the ranked open problems are in [notebook entry E9](research/LAB_NOTEBOOK.md#e9).
+<p align="center"><img src="research/figures/r06_substrate_structure_layers.png" width="92%"><br><sub><b>r06:</b> the structure of the substrate after the audit and research, layer by layer, coloured by how well each layer is supported (<a href="research/LAB_NOTEBOOK.md#e10">E10</a>).</sub></p>
+
+The current best "surviving" picture and the ranked open problems are in [notebook entry E9](research/LAB_NOTEBOOK.md#e9) and, layer by layer, in [E10](research/LAB_NOTEBOOK.md#e10).
 
 ---
 

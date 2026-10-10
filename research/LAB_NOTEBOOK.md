@@ -25,6 +25,7 @@ This is the running record of every question, calculation, plot and conclusion i
 | [E7](#e7) | 2026-10-10 | Can a higher dimension explain entanglement? | r04 |
 | [E8](#e8) | 2026-10-10 | Brainstorm: can the substrate fix the speed of light? | r05 |
 | [E9](#e9) | 2026-10-10 | Synthesis: the current best substrate picture and open problems | — |
+| [E10](#e10) | 2026-10-10 | The structure of the substrate, layer by layer (USRT v2) | r06 |
 
 ---
 
@@ -316,3 +317,86 @@ Under a constant push the speed went 0.375 → 0.700 → 0.850 → 0.900c. Newto
 - [ ] Compute the emergent α for a simple compact U(1) lattice model as a function of the coupling ratio, and see what ratio gives 1/137.
 - [ ] Bjerknes test: two pulsating sources in a compressible fluid; force law and sign vs phase.
 - [ ] Toy Weyl-metric "gravity": a texture in the Weyl vector bends all species' cones equally. Check against Shapiro delay scaling.
+- [ ] (added 2026-10-10, from E10) Confinement threshold and photon speed for a Hamiltonian, spin-ice-type lattice model, to compare with the Wilson-action threshold α_c ≈ 0.079 used in E10.
+
+> **Note (2026-10-10, later):** E10 gives the layered version of this picture, with parameter ranges and the new Coulomb-phase constraint α < α_c ≈ 0.079. Nothing in E9 is retracted.
+
+---
+
+<a id="e10"></a>
+## E10 — The structure of the substrate, layer by layer (USRT v2) (2026-10-10)
+
+**Question (user):** "So what's the structure of the substrate based on the improvements and modifications to the Universal Substrate Theory?"
+
+**Method:** a synthesis of E1–E8, with no new assumptions. On top of that, three new calculations in `r06`:
+1. the allowed range of cell size, coupling and tick;
+2. whether our α puts the substrate in the phase that has photons;
+3. the vacuum-energy bookkeeping.
+
+**Result: the layers.** Each layer emerges from the one below it.
+
+| # | Layer | Structure | Status | From |
+|---|---|---|---|---|
+| 0 | Units | Uncharged *quantum* units (spins or rotors, not hard balls), on a cubic lattice or no fixed lattice | open (size) | E5 |
+| 1 | Couplings | Each unit talks only to its neighbours (energy J). This gives a built-in speed limit **c = 2Ja/ħ**: one cell per tick | computed here | E8 |
+| 2 | Vacuum state | A frictionless condensate of closed flux loops (Levin–Wen string-net), in its **Coulomb phase**; equilibrium pressure zero (Volovik) | established + computed here | E5, r06 |
+| 3 | Light | The *twist* of that condensate: exactly 2 polarisations, isotropic on a cubic lattice, massless by gauge symmetry, strength α | computed here | E5, E6 |
+| 4 | Matter | Defects of the condensate: string ends = charges (can be fermions); Weyl points (massless by topology); trapped ripples (mass = confined energy, relativity automatic). **Mass values are not derived.** | computed here (mechanisms) / open (values) | E4, E5 |
+| 5 | Gravity | A collective **metric** shared by every excitation: spin-2, infinite range, stiffness c⁴/8πG = 4.8×10⁴² N. *Not* a density dent | open | E3, E6 |
+| 6 | Extra dimension (optional) | Curled up or warped. Entanglement needs an instant, non-signalling link (ER = EPR-like); the RS2 bulk is no shortcut | open | E3, E7 |
+
+Time is the substrate's own ticking (relational; Page–Wootters).
+
+**Result: numbers (computed here).**
+
+*Cell size a, coupling J = ħc/2a, and tick a/c:*
+
+| Case | a (m) | J (GeV) | tick (s) |
+|---|---|---|---|
+| Planck length | 1.6×10⁻³⁵ | 6.1×10¹⁸ | 5.4×10⁻⁴⁴ |
+| induced gravity, N ≈ 100 fields | 1.6×10⁻³⁴ | 6.1×10¹⁷ | 5.4×10⁻⁴³ |
+| largest allowed by order-2 dispersion data | ~2×10⁻²⁷ | 5×10¹⁰ | 6.6×10⁻³⁶ |
+
+A gauge lattice has only even-order dispersion and no birefringence, so the data allow cells far larger than the Planck length. Gravity's strength (Sakharov) points to a few Planck lengths.
+
+*Photon phase:*
+- In the simplest lattice gauge substrate (compact U(1), Wilson action), photons exist only for β = 1/e² > 1.0111, i.e. **α < α_c = 0.0787**. Below that coupling the photon is confined and gets a gap.
+- Our α(0) = 1/137.036 is **10.8× below** the threshold, and α(M_Z) = 1/127.95 is 10.1× below. So the substrate sits comfortably in the photon phase.
+- Quantum spin ice's emergent α ≈ 0.08 sits right at the threshold.
+
+*Vacuum energy:*
+- Observed dark-energy density: 5.8×10⁻²⁷ kg/m³, which is 1.1×10⁻¹²³ of the Planck density.
+- Volovik's equilibrium argument removes the naive 10¹²⁰ term, but the observed small value is still an input.
+
+*Scale (fun fact):* with Planck-size cells, the observable universe holds about 2×10¹⁸⁴ of them.
+
+**What was dropped from the original USRT:**
+- Planck-mass balls joined by springs, and the close-packed HCP crystal;
+- light as an elastic shear wave, and the 4.2×10¹⁹ GeV "gap";
+- gravity as a density dent;
+- the electron, proton and muon formulas;
+- local vortex entanglement;
+- c "derived" from ħ and G.
+
+**What it still needs as measured inputs:** c (which fixes J·a), α, G, and the dark-energy density.
+
+**Interpretation:** The revised substrate is no longer a *crystal of tiny balls*. It is a *quantum network* whose ground state is a loop condensate. Light is that condensate's twist, particles are its defects, and c is its built-in signal speed. Every layer is individually prior art: Lieb–Robinson, Levin–Wen, Volovik, Sakharov, Page–Wootters, Randall–Sundrum, ER = EPR. What would be *new* is a single model where all the layers come out together. In particular it would need to give gravity as a shared spin-2 metric and derive α = 1/137 rather than take it as input.
+
+**Status:**
+- the layered structure is consistent with every check so far;
+- layers 1–3 and the matter mechanisms: **computed here / established**;
+- layer 0 size, layer 5 (gravity) and layer 6 (entanglement): **open**.
+
+**References:**
+- **Lieb & Robinson**, Commun. Math. Phys. 28, 251 (1972)
+- **Levin & Wen**, Rev. Mod. Phys. 77, 871 (2005)
+- **Volovik**, *The Universe in a Helium Droplet* (2003)
+- **Arnold, Lippert, Neuhaus & Schilling**, "Compact QED under scrutiny: it's first order", Nucl. Phys. B Proc. Suppl. 119, 864 (2003); β_c = 1.0111331
+- **Pace, Morampudi, Moessner & Laumann**, PRL 127, 117205 (2021)
+- **Sakharov**, Dokl. Akad. Nauk SSSR 177, 70 (1967)
+- **Page & Wootters**, PRD 27, 2885 (1983)
+- **Randall & Sundrum**, PRL 83, 4690 (1999)
+- **Maldacena & Susskind**, arXiv:1306.0533
+- **Data:** Planck 2018 (Ω_Λ = 0.6847, H₀ = 67.36); PDG 2024 (α(M_Z))
+
+**Files:** [`r06_substrate_structure.py`](r06_substrate_structure.py), [results](results/r06_substrate_structure.txt), ![layers](figures/r06_substrate_structure_layers.png)

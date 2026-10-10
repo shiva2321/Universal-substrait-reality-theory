@@ -1,0 +1,49 @@
+
+==============================================================================
+1. Cell size, coupling and tick of the substrate (allowed ranges)
+==============================================================================
+cell size a                                               a (m)   coupling J = hbar c/2a   tick a/c (s)
+Planck length                                          1.62e-35          6.10e+18 GeV       5.39e-44
+induced gravity, N = 100 fields (a ~ sqrt(N) l_P)      1.62e-34          6.10e+17 GeV       5.39e-43
+largest allowed by order-2 dispersion bound            1.97e-27          5.00e+10 GeV       6.58e-36
+A twist-only (gauge) lattice is symmetric under k -> -k, so its leading dispersion is order 2
+and both polarisations stay degenerate at every k (r02): no vacuum birefringence. Data therefore
+allow cells up to ~2e-27 m; gravity's strength (Sakharov) points to a few Planck lengths.
+cells in the observable universe if a = l_P: (R/a)^3 = 2.0e+184
+
+==============================================================================
+2. Is the substrate in the phase that has photons? (Coulomb vs confined)
+==============================================================================
+simplest lattice gauge substrate (compact U(1), Wilson action): photons exist only for
+  beta = 1/e^2 > 1.0111, i.e. alpha = e^2/(4 pi) < alpha_c = 0.0787  (about 1/12.7)
+our alpha(0) = 1/137.036 is 10.8x below the threshold; alpha(M_Z) = 1/127.95 is 10.1x below
+=> the substrate must sit in its Coulomb (deconfined) phase, comfortably. Quantum spin ice's emergent
+   alpha ~ 0.08 (Pace et al. 2021) sits right at that threshold; ours is an order of magnitude weaker.
+   Why 1/137 exactly is still open.
+
+==============================================================================
+3. Vacuum energy
+==============================================================================
+observed dark-energy density (Planck 2018): 5.84e-27 kg/m^3 = 5.24e-10 J/m^3
+Planck density c^5/(hbar G^2): 5.15e+96 kg/m^3 -> ratio 1.1e-123
+Volovik (Gibbs-Duhem): a substrate in equilibrium has zero vacuum pressure, so the naive 1e120 term
+is absent. The small observed value then has to come from the universe being slightly out of
+equilibrium; its size is still an input, not derived.
+
+==============================================================================
+4. The layers (USRT v2) and their status
+==============================================================================
+  6  Extra dimension (optional)  [open] (E3, E7)
+                                 curled up or warped (RS2 bulk is no shortcut); entanglement needs an instant, non-signalling link (ER = EPR-like)
+  5  Gravity                     [open] (E3, E6)
+                                 a collective METRIC shared by every excitation: spin-2, infinite range, stiffness c^4/8piG = 4.8e42 N (not a density dent)
+  4  Matter                      [computed here] (E4, E5)
+                                 defects of the condensate: string ends = charges (can be fermions), Weyl points (massless by topology), trapped ripples (mass = confined energy, obey relativity); mass VALUES not derived
+  3  Light                       [computed here] (E5, E6)
+                                 the twist of the loop condensate: exactly 2 polarisations, isotropic on a cubic lattice, massless by gauge symmetry, strength alpha
+  2  Vacuum state                [established] (E5, r06)
+                                 a frictionless condensate of closed flux loops (string-net), in its Coulomb phase (alpha < 0.079); equilibrium pressure zero
+  1  Couplings                   [computed here] (E8)
+                                 each unit coupled only to its neighbours (energy J): built-in speed limit c = 2Ja/hbar, one cell per tick
+  0  Units                       [open] (E5, r06)
+                                 uncharged quantum units (spins/rotors, not hard balls) on a cubic lattice or no fixed lattice; cell between the Planck length and ~2e-27 m
