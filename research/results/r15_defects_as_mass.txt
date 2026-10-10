@@ -1,0 +1,59 @@
+
+==============================================================================
+A. Kroener = Einstein: curvature of the strain is the density of defects
+==============================================================================
+linearised 3D Einstein tensor G_ij(h) = +1/2 inc(h)_ij, inc = eps_ikl eps_jmn d_k d_m h_ln:  True
+   inc(eps) is exactly Kroener's incompatibility: in a crystal it equals the DEFECT DENSITY
+   (disclinations, plus gradients of dislocations). With h = 2 eps:  G_ij = inc(eps)_ij = defect density.
+weak-field mass (space part g_ij = (1 - 2 Phi) delta_ij, i.e. gamma = 1): spatial curvature R3 = 4 lap(Phi) = 16 pi G rho
+=> a static mass is a cloud of disclination density in the substrate's strain, of strength
+   16 pi G rho. This is precisely the SPATIAL half of the metric -- the 'mu' half that r08 needed
+   (eps = mu) for the full light bending. The world-crystal picture supplies it automatically.
+
+==============================================================================
+B. A wedge disclination lenses like a mass: double images
+==============================================================================
+Unfold the cone (deficit Omega): straight lines in the unfolded plane are the light rays.
+   Omega = 60 deg, D_ls = 1.0, D_o = 1.0: image separation 30 deg; small-angle formula Omega D_ls/D_s = 30 deg
+   Omega = 60 deg, D_ls = 1.0, D_o = 3.0: image separation 14.7385 deg; small-angle formula Omega D_ls/D_s = 15 deg
+   Omega = 0.001 deg, D_ls = 1.0, D_o = 1.0: image separation 0.0005 deg; small-angle formula Omega D_ls/D_s = 0.0005 deg
+   Omega = 0.001 deg, D_ls = 1.0, D_o = 3.0: image separation 0.00025 deg; small-angle formula Omega D_ls/D_s = 0.00025 deg
+=> two images, separated by Omega D_ls/D_s for small Omega: identical to the cosmic-string lens
+   (Vilenkin 1981, Gott 1985) with Omega = 8 pi G mu, and to a 2+1D point mass (Deser, Jackiw &
+   't Hooft 1984) with Omega = 8 pi G m. Space around the defect is locally FLAT; the effect is
+   global (missing angle) -- in 2+1D a point mass exerts no local force at all, only this.
+   A negative disclination (7-fold, extra wedge) is an EXCESS angle: in 2+1D that is a negative
+   mass, which defocuses -- the closest thing to 'antigravity' in this dictionary. Real crystals
+   make +-disclinations in bound pairs (a pair = a dislocation).
+
+==============================================================================
+C. Measured test of a CRYSTAL substrate: its disclination lines would be cosmic strings
+==============================================================================
+   cubic / FCC lattice (original USRT), 4-fold axis   Omega =  90.0 deg -> G mu = 0.0625 -> 4.2e+05 x the CMB bound
+   hexagonal lattice, 6-fold axis                     Omega =  60.0 deg -> G mu = 0.0417 -> 2.8e+05 x the CMB bound
+   cubic lattice, 3-fold [111] axis                   Omega = 120.0 deg -> G mu = 0.0833 -> 5.6e+05 x the CMB bound
+CMB bound (Planck 2013 XXV): G mu < 1.5e-07  ->  allowed Frank angle < 3.8e-06 rad = 0.78 arcsec
+   (pulsar-timing and LIGO-Virgo-KAGRA bounds are stronger still for most string-loop models)
+=> a substrate with DISCRETE rotation symmetry would have quantised disclinations, each a cosmic
+   string with a 60-120 degree deficit: one inside our horizon would double large parts of the
+   sky. None is seen. So either the substrate has no free disclination lines anywhere in the
+   visible universe (confined or never formed), or its rotation symmetry is CONTINUOUS at large
+   scales -- a quantum liquid (crystal melted by dislocations, Zaanen et al.; or no lattice at all),
+   where curvature can take any value, as GR requires. This independently agrees with the audit's
+   verdict against a rigid crystal and with r06's 'no fixed lattice' option.
+
+==============================================================================
+D. Brainstorm: what the defect picture adds, and its limits
+==============================================================================
+* Particles as defects (r07) and mass as defect density (A) are the SAME idea: trapped energy
+  that cannot unwind is a topological defect; its gravitational field is the curvature it imposes.
+* Dislocations = torsion: in the same dictionary the substrate's dislocations are torsion, which
+  couples to spin (Einstein-Cartan; Hehl et al. 1976). Torsion is unobserved so far: another sign
+  the substrate's dislocations must be condensed or absent at accessible scales.
+* Fracton-elasticity duality (Pretko & Radzihovsky 2018): an isolated disclination cannot move
+  (a 'fracton'); it moves only together with other defects. Pretko (2017) noted this gives a
+  Mach-like inertia from the environment. Free particles DO move, so particles cannot be bare
+  disclinations -- at most bound clusters.
+* Limit: the dictionary gives the GEOMETRY of gravity (curvature = defects), not its DYNAMICS.
+  Kleinert's world crystal needs a special 'second-gradient' elasticity for the defect fluctuations
+  to produce the Einstein action; the graviton count and speed are again the questions of r12-r13.
