@@ -1,0 +1,47 @@
+
+==============================================================================
+Q1/Q3  Superfluid dent around a source (Gross-Pitaevskii, healing-length units)
+==============================================================================
+source   0.5: converged=True  centre density 0.807  max density 1.000000  tail ~ exp(-1.414 r)/r  displaced amount 4.72
+source   3.5: converged=True  centre density 0.191  max density 1.000000  tail ~ exp(-1.414 r)/r  displaced amount 28.43
+source  20.0: converged=True  centre density 0.000  max density 1.000000  tail ~ exp(-1.414 r)/r  displaced amount 81.92
+=> density never exceeds the background (no 'high point'); the displaced substrate spreads to
+   infinity. A stronger source makes the dent DEEPER, but its range (healing length) is unchanged.
+
+==============================================================================
+Q2  Flexible superfluid of Planck-mass grains: Bogoliubov dispersion
+==============================================================================
+green light 500 nm  : speed excess over c = 5.2e-57  (identical in every direction)
+100 GeV gamma ray   : speed excess over c = 8.4e-36  (identical in every direction)
+BUT a superfluid carries only compression (longitudinal) waves: no transverse light. See r02.
+
+Density dent needed for light to slow/bend exactly as in GR (wave speed ~ sqrt(density)):
+  Sun surface   : delta_rho/rho = -4GM/(r c^2) = -8.49e-06  (must fall as 1/r)
+  Earth surface : delta_rho/rho = -4GM/(r c^2) = -2.78e-09  (must fall as 1/r)
+Shapiro delay, Earth-Mars radar grazing the Sun (round trip): 247 microseconds (measured effect)
+
+==============================================================================
+Q3  Range: healing length needed for long-range gravity, and extra dimensions
+==============================================================================
+range >= 1 kiloparsec               (3.1e+19 m) -> grain mass <= 8.1e-63 kg = 4.5e-27 eV (4e-55 x Planck mass)
+range >= 1 megaparsec               (3.1e+22 m) -> grain mass <= 8.1e-66 kg = 4.5e-30 eV (4e-58 x Planck mass)
+range >= LIGO graviton-mass bound   (1.6e+16 m) -> grain mass <= 1.6e-59 kg = 9.0e-24 eV (7e-52 x Planck mass)
+D = 3 space dimensions: force ~ 1/r^2; stable planetary orbits: yes
+D = 4 space dimensions: force ~ 1/r^3; stable planetary orbits: no (Ehrenfest 1917)
+D = 5 space dimensions: force ~ 1/r^4; stable planetary orbits: no (Ehrenfest 1917)
+
+==============================================================================
+Q4  Particles as trapped ripples obey special relativity (sine-Gordon chain, c = 1)
+==============================================================================
+v = 0.00c: measured speed 0.000  width shrink 1.000  Lorentz gamma 1.000  energy/8 1.000
+v = 0.30c: measured speed 0.300  width shrink 1.048  Lorentz gamma 1.048  energy/8 1.048
+v = 0.60c: measured speed 0.600  width shrink 1.250  Lorentz gamma 1.250  energy/8 1.250
+v = 0.80c: measured speed 0.800  width shrink 1.667  Lorentz gamma 1.667  energy/8 1.667
+v = 0.90c: measured speed 0.900  width shrink 2.296  Lorentz gamma 2.294  energy/8 2.294
+v = 0.95c: measured speed 0.948  width shrink 3.226  Lorentz gamma 3.203  energy/8 3.201
+v = 0.99c: measured speed 0.984  width shrink 6.055  Lorentz gamma 7.089  energy/8 7.073
+(at 0.99c the kink is ~3 grains wide and lattice effects appear: the graininess shows)
+constant push, t = 10.0: speed 0.375c   Newton 0.39c   relativity 0.366c
+constant push, t = 25.0: speed 0.700c   Newton 0.98c   relativity 0.701c
+constant push, t = 40.0: speed 0.850c   Newton 1.57c   relativity 0.844c
+constant push, t = 55.0: speed 0.900c   Newton 2.16c   relativity 0.907c

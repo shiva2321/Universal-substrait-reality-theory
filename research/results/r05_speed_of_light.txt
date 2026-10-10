@@ -1,0 +1,54 @@
+
+==============================================================================
+1. A speed limit emerges from local coupling (Lieb-Robinson), simulated
+==============================================================================
+numerical vs exact Bessel solution |J_n(2Jt)|^2: max difference 6.9e-16
+late-time speeds: threshold front 2.073, leading peak 1.956 sites per unit time; Lieb-Robinson 2Ja/hbar = 2.000
+  (the edge has an Airy-type precursor whose width grows ~ t^(1/3): a threshold front runs slightly
+   fast, the peak slightly slow; both converge to 2Ja/hbar as t grows)
+probability found more than 20% beyond the front at t = 40: 3.4e-09 (exponentially small)
+=> any lattice of locally coupled units has a maximum signal speed  c = 2 J a / hbar  (up to geometry
+   factors). For grains one Planck length apart, reproducing c needs a coupling
+   J = hbar c / (2 l_P) = 9.78e+08 J = 6.10e+18 GeV  (half the Planck energy)
+
+==============================================================================
+2. The free knob: three natural substrate rules hold for ANY value of c
+==============================================================================
+rules:  (i) c = 2 J a / hbar   (ii) hbar = M a c  (grain's quantum size = spacing)   (iii) G = c^2 a / M
+  chosen c (m/s)  spacing a (m)  grain mass M (kg)  coupling J (J)  residuals (i),(ii),(iii)
+               1      8.390e-23          1.257e-12       6.285e-13  +0e+00, +2e-16, +0e+00
+       2.998e+08      1.616e-35          2.176e-08       9.780e+08  +0e+00, +0e+00, +0e+00
+           1e+12      8.390e-41          1.257e-06       6.285e+17  +2e-16, +0e+00, -2e-16
+=> with only hbar and G as inputs, every value of c is equally consistent. To 'derive' 299,792,458 m/s
+   the theory needs ONE independently measured substrate property (spacing, coupling or grain mass),
+   e.g. from the energy at which light starts to disperse (r03: not seen up to ~1.5e19 GeV).
+   And since 1983 the metre is DEFINED from c, so the number is partly our unit choice.
+
+==============================================================================
+3. What a substrate theory can aim to derive instead: pure numbers
+==============================================================================
+  alpha (vacuum's stiffness for light, r03)              1/137.035999   computable in emergent-photon models (spin ice ~0.08)
+  alpha_G = G m_p^2/(hbar c) (gravity vs proton)             5.91e-39   why gravity is so weak: the hierarchy problem
+  v_gravity / v_light                                      1 +- 1e-15   natural only if both ride on ONE emergent light cone
+  v_light by direction                             isotropic to 1e-17   needs symmetry protection (cubic, r02) or no lattice
+  m_p / m_e                                               1836.152673   a target, but audit/a02 shows fitted formulas are cheap
+
+==============================================================================
+4. Candidate routes (brainstorm) and their status
+==============================================================================
+  [                sound] c = grain spacing / grain tick (a/tau)
+                          Exact restatement; explains why c is universal and a limit, not its value in m/s.
+  [    sound, needs data] c = Lieb-Robinson speed 2Ja/hbar of the substrate
+                          Mechanism for the speed LIMIT; needs J or a measured independently.
+  [                 open] One shared emergent light cone for all fields (Volovik Weyl points, r02)
+                          Explains universality; open problem: why species agree to 1e-15 (fine-tuning, Collins 2004).
+  [              partial] Lorentz invariance as a low-energy attractor (Chadha & Nielsen 1983)
+                          Different speeds flow together at low energy, but only logarithmically: too slow alone.
+  [          speculative] Supersymmetry protecting the shared cone (Groot Nibbelink & Pospelov 2005)
+                          Suppresses the dangerous low-energy Lorentz violation; SUSY not yet seen at LHC.
+  [testable in principle] Induced gravity (Sakharov 1967): G from substrate fluctuations
+                          Links grain size to the number N of particle fields: a ~ sqrt(N) l_P (N ~ 100 -> a ~ 10 l_P).
+  [         experimental] Measure the grain: energy-dependent light speed, birefringence
+                          Would supply the missing number; current bounds a < ~l_P (order-1) or ~1e-27 m (order-2).
+  [                 open] Derive alpha = 1/137 from substrate couplings
+                          The real prize: a dimensionless prediction. Shown possible in principle (spin ice gives ~1/12).

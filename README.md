@@ -15,6 +15,7 @@ It ships with an **independent audit** that recomputes every headline claim agai
 [**Preprint**](RESEARCH_PREPRINT_USRT.md) ·
 [**Audit report**](audit/USRT_AUDIT_REPORT.md) ·
 [**Gallery**](#gallery) ·
+[**Research log**](#research-log) ·
 [**Run it**](#quick-start)
 
 </div>
@@ -245,6 +246,12 @@ All 45 scripts run cleanly (tested with Python 3.13, NumPy, SciPy, Matplotlib, S
 ├── RESEARCH_PREPRINT_USRT.md                     preprint draft, Section 1 (+ errata banner)
 ├── hyperdimensional_reality_view.jpg             AI-generated concept illustration
 ├── *.py  /  *.png                                45 simulation scripts, each with its figure
+├── CLAUDE.md                                     working rules: every calculation is saved and pushed
+├── research/
+│   ├── LAB_NOTEBOOK.md                           dated record of every question, method, result
+│   ├── lab.py   run_all.py                       shared helpers; re-run everything
+│   ├── r01 ... r05_*.py                          one script per question
+│   ├── results/   figures/                       text output and plots of each script
 └── audit/
     ├── USRT_AUDIT_REPORT.md                      findings, provenance, before/after fixes, errata
     ├── common.py                                 CODATA 2022 / PDG 2024 / Planck 2018 values with σ
@@ -335,6 +342,29 @@ All 45 scripts run cleanly (tested with Python 3.13, NumPy, SciPy, Matplotlib, S
 | `master_theory_synthesis.py` | Ten-pillar dashboard | Statuses computed or labelled |
 
 </details>
+
+---
+
+## Research log
+
+Exploration after the audit lives in [`research/`](research/). Each question becomes a script, a results file, figures and a dated entry in [**`research/LAB_NOTEBOOK.md`**](research/LAB_NOTEBOOK.md). Re-run all of it with `python3 research/run_all.py`.
+
+| Script | Question | What the calculation showed |
+|---|---|---|
+| [`r01`](research/r01_dent_range_relativity.py) | Does the gravity dent create an anti-gravity "high point"? Does more energy reach further? | **No high point:** density never exceeds the background. **More energy, deeper dent, same range:** the tail is always e^(−1.414 r). **Particles made of trapped ripples obey special relativity exactly**, with c as the limit. |
+| [`r02`](research/r02_emergent_light.py) | Can a substrate make real light (Levin–Wen, Volovik)? | **A "twist-only" (gauge) medium gives exactly 2 polarisations**, isotropic on a cubic lattice. An elastic medium always has a 3rd wave. **Weyl points stay massless** under perturbation (topological charge +1). |
+| [`r03`](research/r03_medium_from_waves.py) | Can we infer the medium from its waves? | **Light needs twist-only stiffness** of strength α = 1/137. **Gravity needs a separate spin-2 stiffness** of c⁴/8πG = 4.8×10⁴² N; this predicts GW150914's strain (9.5×10⁻²² vs ~10⁻²¹). |
+| [`r04`](research/r04_entanglement_extra_dimension.py) | Is entanglement one object seen from two dimensions? | **"Seen twice" gives S = 2.00.** A bulk channel must be faster than 10⁴ c and non-signalling. **RS2's bulk is no shortcut.** |
+| [`r05`](research/r05_speed_of_light.py) | Can the substrate fix the speed of light? | **A lattice has a built-in speed limit, 2Ja/ħ.** With only ħ and G, every value of c is consistent, so the number needs one measured substrate property. |
+
+<table>
+<tr>
+<td width="50%"><img src="research/figures/r01_dent_range_relativity_relativity_from_ripples.png" width="100%"><br><sub><b>r01:</b> a trapped twist in a chain of pendulums contracts and speeds up exactly as Einstein's relativity says, and never reaches the chain's wave speed.</sub></td>
+<td width="50%"><img src="research/figures/r02_emergent_light_elastic_vs_gauge.png" width="100%"><br><sub><b>r02:</b> an elastic lattice has 3 waves that depend on direction. A gauge ("twist-only") lattice has exactly 2, the same in every direction, like real light.</sub></td>
+</tr>
+</table>
+
+The current best "surviving" picture and the ranked open problems are in [notebook entry E9](research/LAB_NOTEBOOK.md#e9).
 
 ---
 

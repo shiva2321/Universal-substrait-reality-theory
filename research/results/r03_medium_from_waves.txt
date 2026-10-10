@@ -1,0 +1,59 @@
+
+==============================================================================
+1. Light: what its speed, impedance and polarisations say about the medium
+==============================================================================
+measured wave speed c = 299792458 m/s, impedance Z0 = 376.730313 ohm
+for any wave: speed = sqrt(stiffness/inertia), impedance = sqrt(stiffness*inertia)
+  -> 'inertia'  mu0     = Z0/c = 1.256637e-06 H/m
+  -> 'stiffness' 1/eps0 = Z0*c = 1.129409e+11 m/F
+In units that do not depend on how we define charge: Z0 = 4*pi*alpha*hbar/e^2 = 376.730313 ohm
+  => the medium's dimensionless 'stiffness' for light is alpha = 1/137.035999.
+     Explaining 1/137 from the substrate would be a real derivation (cf. emergent alpha ~ 0.08 in
+     quantum spin ice, r02).
+Only 2 polarisations, both transverse: a medium whose energy depends ONLY on twist (curl u) has
+  wave matrix |k|^2 I - k k^T with eigenvalues [0. 1. 1.] x |k|^2:
+  two transverse waves and no longitudinal one. This is MacCullagh's 1839 'rotational aether', which
+  is mathematically the modern gauge field. An ordinary solid (resisting stretch too) gives 3 waves.
+
+==============================================================================
+2. Gravitational waves: the stiffness of spacetime
+==============================================================================
+stiffness (tension) of spacetime c^4/(8 pi G) = 4.82e+42 N  (a force: c^4/G is a tension, not N/m)
+GW150914: peak luminosity 3.6e+49 W at 410 Mpc -> flux at Earth 17.9 mW/m^2
+  predicted strain from that stiffness: h = sqrt(16 pi G F / (c^3 w^2)) = 9.5e-22; LIGO measured ~1e-21
+  A flux several times brighter than full moonlight stretches space by only 1e-21: spacetime is extremely stiff.
+
+==============================================================================
+3. Polarisation patterns: light, gravity and a 'slowing medium' are different kinds of wave
+==============================================================================
+light (vector)   : pattern repeats after rotation by 360 degrees
+gravity (tensor) : pattern repeats after rotation by 180 degrees
+scalar breathing : pattern is unchanged by ANY rotation (helicity 0)
+LIGO/Virgo (GW170814, three detectors) strongly favoured pure tensor over pure scalar or vector
+polarisations. A medium that only 'slows light' (Dicke 1957, Puthoff's polarizable vacuum) carries
+helicity-0 waves, so it cannot be the whole story: the medium needs a tensor (spin-2) stiffness.
+
+==============================================================================
+4. Other properties fixed by observation
+==============================================================================
+same speed for light and gravity: -3e-15 < (v_gw - c)/c < +7e-16 (GW170817 + GRB 170817A)
+isotropy of light speed: < ~1e-17 to 1e-18 (rotating optical resonators)
+no birefringence in vacuum: ~1e-32 or tighter (polarisation of distant gamma-ray bursts / CMB)
+energy-dependent speed of order 1: E_QG,1 > 1.5e+19 GeV -> grain size a < ~1.3e-35 m (8.3e-01 Planck lengths)
+energy-dependent speed of order 2: E_QG,2 > 1.0e+11 GeV -> grain size a < ~2.0e-27 m (1.2e+08 Planck lengths)
+  (n = 1 from Fermi-LAT GRB 090510; n = 2 bound order-of-magnitude from several GRB analyses.
+   Lattices and superfluids are symmetric under k -> -k, so their leading correction is n = 2.)
+lossless: light from galaxies ~13 billion years away arrives with sharp spectral lines; the medium
+  has no measurable friction or absorption over ~1e26 m.
+no detectable rest frame: Michelson-Morley-type experiments are null to the precision above.
+
+==============================================================================
+Inferred profile of any vacuum medium
+==============================================================================
+* frictionless and lossless (superfluid-like),
+* no detectable rest frame: every probe made of the medium must share its single light cone,
+* twist-only ('gauge') stiffness for light, dimensionless strength alpha = 1/137.036,
+* a separate tensor (spin-2) stiffness for gravity, c^4/(8 pi G) = 4.8e42 N,
+* both waves travel at the same speed to 1 part in 1e15,
+* grains (if any) smaller than ~1e-35 m (order-1) or ~1e-27 m (order-2 dispersion),
+* isotropic: if it is a lattice, its symmetry must protect isotropy (cubic, for gauge light; r02).

@@ -1,0 +1,50 @@
+
+==============================================================================
+A. Elastic medium vs gauge ('twist-only') medium on a simple cubic lattice
+==============================================================================
+elastic, tuned springs k2 = k1     : Zener ratio 1.000; transverse 1.000c-1.000c; longitudinal 1.732c-1.732c
+elastic, generic springs k2 = k1/2 : Zener ratio 0.667; transverse 0.918c-1.124c; longitudinal 1.676c-1.835c
+=> tuning the springs CAN make an elastic lattice isotropic, but it always keeps 3 propagating
+   waves, including a longitudinal one at ~1.7c. The generic case is used below.
+elastic: long-wave transverse speeds 0.918c - 1.124c (spread 20.6%), longitudinal 1.676c - 1.836c
+elastic: largest speed difference between the two transverse waves (birefringence): 0.206c
+gauge:   long-wave transverse speeds 1.00000000c - 1.00000000c (both polarisations)
+gauge:   third ('longitudinal') mode frequency: max 2.2e-12 -> zero at EVERY wavelength
+         a zero-frequency mode has no restoring force: it is a pure relabelling ('gauge') of the field,
+         and Gauss's law (div E = 0 away from charges) removes it. => exactly 2 polarisations.
+gauge lattice with Planck spacing, 500 nm light      : direction dependence (qa)^2/36 = 1.1e-57
+gauge lattice with Planck spacing, 100 GeV gamma ray : direction dependence (qa)^2/36 = 1.9e-36
+Charges = places where Gauss's law is violated (ends of flux strings in Levin-Wen); in string-net
+models those ends can be fermions. Emergent fine-structure constant in quantum spin ice is
+computable from lattice couplings: ~0.08 (Pace, Morampudi, Moessner, Laumann, PRL 127, 117205 (2021)).
+
+==============================================================================
+B. Symmetry decides isotropy: group-average random response tensors
+==============================================================================
+group sizes: cubic O_h = 48, hexagonal D_6h = 24
+cubic     rank-2 (dielectric/magnetic, i.e. gauge light): eigenvalues [0.482038 0.482038 0.482038] -> ISOTROPIC
+hexagonal rank-2 (dielectric/magnetic, i.e. gauge light): eigenvalues [-1.730426  1.58827   1.58827 ] -> uniaxial (birefringent)
+cubic     rank-4 (elasticity, i.e. 'light = shear wave'): distance from isotropic = 0.265  -> anisotropic
+hexagonal rank-4 (elasticity, i.e. 'light = shear wave'): distance from isotropic = 0.262  -> anisotropic
+=> On a CUBIC lattice, gauge-type light is automatically isotropic at long wavelengths (symmetry
+   forces it). Elastic-type light is isotropic only if the couplings are tuned (symmetry does not
+   protect it), and it keeps a third wave. On a hexagonal (HCP) lattice even gauge light is
+   birefringent unless the couplings are tuned.
+
+==============================================================================
+C. Volovik: Weyl point (superfluid helium-3 A-phase type)
+==============================================================================
+anisotropic emergent light cone: E = sqrt(c_par^2 p_z^2 + c_perp^2 p_perp^2), c_par/c_perp = 10
+random perturbation moves the node to p = (+0.005, -0.141, -0.007)
+smallest band gap on the grid: unperturbed 0.0000, perturbed 0.0049; exactly at the moved node 3.5e-18
+topological charge (Berry flux / 2pi) around the node: +1.000 before, +1.000 after (around the moved node)
+=> the perturbation only MOVES the massless point; it cannot give it a mass while the charge is +/-1.
+   Masslessness is protected by topology (Volovik's explanation of massless fermions/photons).
+In He-3 A-phase the emergent 'speeds of light' are roughly v_F ~ 55 m/s along the axis and a few
+cm/s across it (Volovik 2003): hugely anisotropic, yet every quasiparticle near the node feels the
+SAME cone. Rescaling z -> z c_perp/c_par makes it isotropic for all of them: internal observers
+would measure the same c in every direction. Anisotropy is only detectable if species differ:
+   species ratios c_par/c_perp = 10 and 10: Michelson-Morley-type signal 0.0e+00
+   species ratios c_par/c_perp = 10 and 10.00001: Michelson-Morley-type signal 1.0e-06
+Real experiments bound such species differences at ~1e-17 or better, so all species must share one
+cone to that precision (the Collins et al. 2004 fine-tuning problem in its modern form).

@@ -1,0 +1,30 @@
+
+==============================================================================
+A. One higher-dimensional object seen from two places (local, shared state)
+==============================================================================
+CHSH at the standard settings: S = 2.000;  best over 300 random settings: S = 2.000
+=> however the object is shaped or oriented, if each outcome depends only on the object's state
+   and the LOCAL setting, S <= 2 (Bell's theorem). Experiments give 2.4-2.8. 'Seen twice' alone fails.
+
+==============================================================================
+B. The object reacts to the far detector via the bulk at finite speed v
+==============================================================================
+simultaneity 5.0 ns over 18 km: quantum correlations need v > d/(c tau) = 1.2e+04 c
+simultaneity 0.5 ns over 18 km: quantum correlations need v > d/(c tau) = 1.2e+05 c
+published lower bounds on such a 'speed of spooky action': > 1e4 c (Salart et al. 2008),
+> 1.38e4 c (Yin et al., PRL 110, 260407 (2013)), in the frames those experiments test.
+Bancal et al. (Nature Physics 8, 867 (2012)): ANY finite-speed hidden influence that reproduces
+quantum correlations would also allow faster-than-light messaging, which is never seen.
+=> a bulk channel must act effectively instantaneously and must never let a message through.
+   ER = EPR (Maldacena & Susskind 2013) has exactly this property: its wormholes are NON-traversable.
+   The same cord picture with another rule gives S = 4 (audit/a03): the bulk must also explain why
+   nature stops at 2*sqrt(2) (Tsirelson's bound). That part is still missing.
+
+==============================================================================
+C. Is the 5D bulk a shortcut?  Null paths in warped geometries
+==============================================================================
+RS2 (same warp for space and time): best bulk path / brane path = 1.0000 (never < 1: no shortcut)
+asymmetric toy warp (bulk light speed up to 1.05): best ratio = 0.9618 at height 1.95/k -> shortcut
+Asymmetrically warped brane-worlds do allow shortcuts (Csaki, Erlich & Grojean 2001), but GW170817:
+gravity and light from 130 million light years arrived within 1.7 s -> bulk speed-up for gravity
+< ~1e-15. And a shortcut is still a finite speed, so part B applies to it.

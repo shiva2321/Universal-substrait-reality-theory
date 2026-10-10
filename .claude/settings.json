@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/require_saved_work.py\"",
+            "timeout": 30,
+            "statusMessage": "Checking that research work is committed and pushed"
+          }
+        ]
+      }
+    ]
+  }
+}
