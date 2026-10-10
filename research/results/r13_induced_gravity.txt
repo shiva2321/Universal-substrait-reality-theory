@@ -1,0 +1,68 @@
+
+==============================================================================
+A. Check the method: second-order vacuum energy vs exact diagonalisation
+==============================================================================
+12^3 lattice, mass 0.3, strain h = 0.02, q = 2 pi 1/12: exact -0.0069858, formula -0.0069856  (rel. diff 3.5e-05)
+12^3 lattice, mass 0.3, strain h = 0.02, q = 2 pi 2/12: exact -0.0068487, formula -0.0068484  (rel. diff 3.1e-05)
+12^3 lattice, mass 0.3, strain h = 0.02, q = 2 pi 3/12: exact -0.0066786, formula -0.0066783  (rel. diff 3.6e-05)
+=> the formula is right; the energy rises with q, so strained space is STIFF (beta > 0).
+
+==============================================================================
+B. Continuum: a Lorentz-invariant regulator gives c_g = c and Sakharov's G
+==============================================================================
+hard momentum cutoff Lambda = 1: M = 1.0000 Lambda^2/(480 pi^2),  beta = 1.0000 x 11 Lambda^2/(840 pi^2)
+   -> c_g^2 = beta/(4M) = 1.57143 = 11/7: the graviton would be 1.254 c
+Pauli-Villars (masses 0, mu, sqrt2 mu; weights 1, -2, 1): M = 7.3156763e-04 mu^2, Sakharov heat kernel mu^2 ln2/(96 pi^2) = 7.3156763e-04
+   -> c_g^2 = 0.999999994
+=> with a Lorentz-invariant cutoff the induced graviton moves at exactly c and the induced G is
+   Sakharov's. With a cutoff that singles out a rest frame, c_g is off by O(1).
+
+==============================================================================
+C. The substrate lattice itself (one scalar field, cell size a)
+==============================================================================
+inertia M = 2.63231e-03/a^2, stiffness beta = 5.43875e-03/a^2 (24-point rule: 2.63231e-03, 5.43875e-03)
+=> c_g^2 = 0.5165: the induced graviton travels at 0.719 c, 28% slower than light
+   GW170817 allows 3e-15: excluded by a factor ~9e+13.
+   (known in general: Collins, Perez, Sudarsky, Urrutia & Vucetich, PRL 93, 191301 (2004) -- a
+    rest-frame cutoff leaks O(1) Lorentz violation into low energies; here for the graviton.)
+   cell size that reproduces the measured G with N =   1 scalar fields: a = 0.36 l_P (from inertia), 0.26 l_P (from stiffness)
+   cell size that reproduces the measured G with N =  10 scalar fields: a = 1.15 l_P (from inertia), 0.83 l_P (from stiffness)
+   cell size that reproduces the measured G with N = 100 scalar fields: a = 3.64 l_P (from inertia), 2.61 l_P (from stiffness)
+   -> Sakharov on a lattice puts the cells at about the Planck length (0.3 sqrt(N) l_P), but the
+      two numbers disagree because the induced gravity is not Lorentz invariant.
+
+==============================================================================
+D. Can the substrate protect c_g = c? A Lorentz-invariant cutoff below the cell scale
+==============================================================================
+Add to the lattice two regulator fields of mass mu and sqrt2 mu with weights -2, +1 (the Pauli-
+Villars pattern). They are FORMAL: negative weight means they are not ordinary particles. They
+stand for any mechanism that cuts the fluctuations off Lorentz-invariantly at a scale mu below
+the cell scale 1/a. (Ordinary fermions do not do this: they ADD to 1/G like ~2 scalars each.)
+   mu a = 0.80: c_g^2 - 1 = -2.112e-01,  M / Sakharov = 1.1283
+   mu a = 0.40: c_g^2 - 1 = -9.875e-02,  M / Sakharov = 1.1083
+   mu a = 0.20: c_g^2 - 1 = -3.705e-02,  M / Sakharov = 1.0465
+   mu a = 0.10: c_g^2 - 1 = -1.213e-02,  M / Sakharov = 1.0162
+   mu a = 0.05: c_g^2 - 1 = -3.699e-03,  M / Sakharov = 1.0052
+   fit (mu a <= 0.2): c_g^2 - 1 = -0.411 (mu a)^2 ln(1.91/(mu a))  [the (scale ratio)^2
+   suppression expected when Lorentz violation enters only through higher-dimension operators:
+   Groot Nibbelink & Pospelov, PRL 94, 081601 (2005) (via supersymmetry); Polchinski, CQG 29,
+   088001 (2012)]
+   GW170817 (|c_g^2 - 1| < 6e-15) needs mu a < 2.8e-08 (extrapolating the fitted form
+   from mu a = 0.05 down -- an assumption, not a computation, over those 6-7 decades)
+   N =   1: measured G needs partner mass mu = 5.21 m_P -> cells a < 5.5e-09 l_P
+   N =  10: measured G needs partner mass mu = 1.65 m_P -> cells a < 1.7e-08 l_P
+   N = 100: measured G needs partner mass mu = 0.52 m_P -> cells a < 5.5e-08 l_P
+=> a substrate CAN induce gravity with c_g = c, but only if (i) something cuts its fluctuations
+   off Lorentz-invariantly (what physical mechanism does this is OPEN), and (ii) its cells are
+   ~10^7-10^8 times SMALLER than the Planck length. The Planck scale is then set by mu, not by
+   the cell size, and the r10 lattice signatures (TeV photon delays) become unobservable.
+
+==============================================================================
+Status
+==============================================================================
+* computed here: Sakharov's G and the induced graviton speed on the substrate lattice;
+  c_g = 0.72 c without protection (excluded); a Lorentz-invariant cutoff at mu restores c_g = c
+  if mu a < 3e-8, i.e. cells far below the Planck length.
+* limits: scalar fields only (fermions and gauge fields add with their own weights; gauge fields
+  have Kabat contact-term subtleties); one polarisation and direction; the metric is put in as an
+  external strain -- Sakharov explains its STIFFNESS, not why a metric variable exists (r12 does).
