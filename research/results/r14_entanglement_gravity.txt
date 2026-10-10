@@ -1,0 +1,63 @@
+
+==============================================================================
+A. Validation: Srednicki's radial lattice (60 shells, partial waves l <= 6000)
+==============================================================================
+   sphere of radius  10.5 a: S =    32.50   S/(R/a)^2 = 0.2948
+   sphere of radius  14.5 a: S =    62.03   S/(R/a)^2 = 0.2950
+   sphere of radius  18.5 a: S =   101.01   S/(R/a)^2 = 0.2951
+   sphere of radius  22.5 a: S =   149.43   S/(R/a)^2 = 0.2952
+   sphere of radius  26.5 a: S =   207.29   S/(R/a)^2 = 0.2952
+   sphere of radius  30.5 a: S =   274.57   S/(R/a)^2 = 0.2952
+fit S = kappa (R/a)^2 + const: kappa = 0.2952   (Srednicki, PRL 71, 666 (1993): 0.30)
+=> entanglement entropy grows like the AREA of the boundary, not the volume.
+
+==============================================================================
+B. The cubic substrate lattice (same lattice as r13), cubes of side l
+==============================================================================
+   cube  2^3 cells: boundary   24 a^2, S =   0.472   S/boundary = 0.0197
+   cube  3^3 cells: boundary   54 a^2, S =   1.123   S/boundary = 0.0208
+   cube  4^3 cells: boundary   96 a^2, S =   2.061   S/boundary = 0.0215
+   cube  5^3 cells: boundary  150 a^2, S =   3.289   S/boundary = 0.0219
+   cube  6^3 cells: boundary  216 a^2, S =   4.806   S/boundary = 0.0223
+   cube  7^3 cells: boundary  294 a^2, S =   6.615   S/boundary = 0.0225
+   cube  8^3 cells: boundary  384 a^2, S =   8.713   S/boundary = 0.0227
+   cube  9^3 cells: boundary  486 a^2, S =  11.102   S/boundary = 0.0228
+   cube 10^3 cells: boundary  600 a^2, S =  13.782   S/boundary = 0.0230
+   cube 11^3 cells: boundary  726 a^2, S =  16.753   S/boundary = 0.0231
+   cube 12^3 cells: boundary  864 a^2, S =  20.014   S/boundary = 0.0232
+fit S = eta_a (area/a^2) + b l + c (l >= 4): eta_a = 0.02421 per face of a cell  (edges b = -0.0804)
+   robustness: + log term 0.02425;  box 48^3 0.02420;  radial lattice kappa/4pi = 0.02349
+
+==============================================================================
+C. Jacobson / Bekenstein-Hawking: which cell size gives the measured G?
+==============================================================================
+Bekenstein-Hawking: S = A / (4 l_P^2). Substrate with N scalar fields: S = N eta_a A / a^2.
+Setting them equal (Jacobson 1995: then Einstein's equations follow): a = 2 sqrt(N eta_a) l_P.
+   entanglement, cubic lattice:   a = 0.311 sqrt(N) l_P
+   entanglement, radial lattice:  a = 0.307 sqrt(N) l_P
+   Sakharov (r13), from inertia:  a = 0.364 sqrt(N) l_P
+   Sakharov (r13), from stiffness: a = 0.261 sqrt(N) l_P
+=> two completely different quantum calculations -- how much the vacuum RESISTS straining
+   (Sakharov) and how much it is ENTANGLED across a surface (Bekenstein-Hawking/Jacobson) --
+   give the same cell size to within 17%: cells of ~0.3 sqrt(N) Planck lengths.
+   With a Lorentz-invariant cutoff the two agree EXACTLY: S_ent = A / (4 G_induced) (Susskind &
+   Uglum 1994; Jacobson 1994). The lattice spread is the same rest-frame effect found in r13.
+   (Noticed after the fact, one comparison tried: eta_a = 0.0242 is within 2% of the geometric mean
+    of the two Sakharov values of 1/(4G). Possibly a coincidence; not derived.)
+   N =   1 fields: a = 0.31 l_P = 5.0e-36 m
+   N =  10 fields: a = 0.98 l_P = 1.6e-35 m
+   N = 100 fields: a = 3.11 l_P = 5.0e-35 m
+
+==============================================================================
+D. What this says about 'gravity and quantum mechanics are one thing at different scales'
+==============================================================================
+* Gravity's strength G is NOT an independent constant here. It is fixed by quantum quantities of
+  the substrate: the number of fields N, the cell size a, and hbar:  G ~ a^2 c^3 / (4 N eta_a hbar).
+  The Planck length l_P = sqrt(hbar G / c^3) is then ~3.2 x (cell size) / sqrt(N).
+* Black-hole entropy A/4 l_P^2 becomes the entanglement of the substrate across the horizon,
+  counted with the same fields that set G: one consistent quantum origin for both.
+* Einstein's equations become an equation of state: the thermodynamics of substrate entanglement
+  (Jacobson 1995). Gravity is then quantum mechanics of the substrate seen at large scales,
+  like elasticity is the quantum mechanics of atoms seen at large scales.
+* What this does NOT give: the graviton's quantum dynamics at the Planck scale, and why the
+  emergent equations are exactly Einstein's (Lorentz invariance again: r12, r13).
