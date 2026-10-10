@@ -1,0 +1,78 @@
+
+==============================================================================
+A. The size of quantum gravity, scale by scale
+==============================================================================
+Newton's potential with its leading corrections (Bjerrum-Bohr, Donoghue & Holstein, PRD 67, 084033 (2003)):
+  V(r) = -G m1 m2 / r [ 1 + 3 G (m1+m2)/(r c^2)  +  (41/10pi) G hbar/(r^2 c^3) ]
+                              classical GR             QUANTUM (graviton loops)
+   between two people, 1 m        quantum correction   3.4e-70
+   torsion-balance test, 52 um    quantum correction   1.3e-61
+   bouncing neutrons, 10 um       quantum correction   3.4e-60
+   an atom, 0.1 nm                quantum correction   3.4e-50
+   a proton, 1 fm                 quantum correction   3.4e-40
+   LHC collision, 1e-19 m         quantum correction   3.4e-32
+   Planck length                  quantum correction   1.3e+00
+=> the user's intuition, made quantitative: gravity and quantum mechanics are ALREADY one
+   consistent theory at every scale ever probed (gravity as an effective quantum field theory).
+   The quantum part grows as (l_P / r)^2 and is O(1) only near the Planck length: the two look
+   different only because of the scale. What is missing is the theory AT that scale -- in USRT
+   terms, the substrate's cells (0.3 sqrt(N) l_P from r13/r14).
+
+==============================================================================
+B. Where quantum mechanics and gravity already meet in measurements
+==============================================================================
+1. COW (Colella, Overhauser & Werner, PRL 34, 1472 (1975)): a neutron's quantum phase shifts in
+   Earth's gravity: phi = 2 pi lambda g m^2 A / h^2 = 57 rad for lambda = 1.445 A, A = 10 cm^2.
+   Observed; precision versions agree to ~1% (with a debated ~1% residual: Littrell, Allman &
+   Werner, PRA 56, 1767 (1997)). Note m^2: gravity enters the Schroedinger phase, not just m.
+2. Neutrons bouncing on a mirror have QUANTISED heights (Nesvizhevsky et al., Nature 415, 297 (2002)):
+   state 1: E = 1.407 peV, classical turning height 13.7 um
+   state 2: E = 2.460 peV, classical turning height 24.0 um
+   state 3: E = 3.321 peV, classical turning height 32.4 um
+   state 4: E = 4.083 peV, classical turning height 39.8 um
+   transition 1 -> 3: 463.0 Hz; driven and resolved by qBounce resonance spectroscopy
+   (Jenke et al., Nature Phys. 7, 468 (2011); Cronenberg et al., Nature Phys. 14, 1022 (2018)).
+3. Page & Geilker, PRL 47, 979 (1981): a Cavendish balance whose masses were placed by a quantum
+   random event. The pull followed the ACTUAL outcome, not the quantum average -> rules out
+   'semiclassical gravity sourced by expectation values' without wavefunction collapse.
+4. Diosi-Penrose gravity-induced collapse (tau = hbar / E_G): the parameter-free version is ruled out
+   by the absence of the predicted spontaneous radiation (Donadi et al., Nature Phys. 17, 74 (2021)).
+5. Hawking radiation from a horizon IN A MEDIUM: sonic horizons in Bose-Einstein condensates emit
+   a thermal, entangled phonon spectrum (Steinhauer, Nature Phys. 12, 959 (2016); Munoz de Nova
+   et al., Nature 569, 688 (2019)). The closest lab realisation of 'spacetime = medium' physics.
+
+==============================================================================
+C. The decisive experiment: can gravity entangle two masses?
+==============================================================================
+Two masses, each in a superposition of two places dx apart, centres d apart, for time t. Gravity
+gives each branch a phase G m^2 t/(hbar r). If gravity is a QUANTUM field (any quantum substrate),
+the four phases differ and the masses become entangled. A CLASSICAL field cannot entangle them
+(local operations + classical communication cannot create entanglement).
+   m = 3e-15 kg, d = 450 um, dx = 250 um, t = 2.5 s: entangling phase 0.028 rad, concurrence |sin(phase/2)| = 0.014
+   m = 1e-14 kg, d = 450 um, dx = 250 um, t = 2.5 s: entangling phase 0.314 rad, concurrence |sin(phase/2)| = 0.156
+   m = 3e-14 kg, d = 450 um, dx = 250 um, t = 2.5 s: entangling phase 2.825 rad, concurrence |sin(phase/2)| = 0.988
+   (geometry of Bose et al., PRL 119, 240401 (2017); see also Marletto & Vedral, PRL 119, 240402.)
+   the phase grows as m^2 t: maximal entanglement (phase = pi) for m = 1e-14 kg after 25 s, for 3e-14 kg after 2.8 s
+   Hard parts: keeping 1e-14 kg crystals coherent for seconds; screening Casimir forces.
+PREDICTIONS:
+   USRT v2 (quantum network substrate, G from its entanglement, r06/r14): ENTANGLEMENT appears.
+   Original USRT (classical superfluid continuum) or any classical 'dent': NO entanglement.
+   Classical-gravity alternatives must instead show intrinsic spacetime diffusion (Oppenheim et al.,
+   Nature Commun. 14, 7910 (2023)), testable with precision mass measurements.
+   (What a positive result proves exactly is debated: e.g. Martin-Martinez & Perche, PRD 108,
+   L101702 (2023). It would still rule out every classical-substrate version.)
+
+==============================================================================
+D. What 'unifying' gravity and quantum mechanics means in the substrate picture
+==============================================================================
+* hbar: the quantum of action of the substrate's cells (r06: a quantum network).
+* c:    the cells' maximum signal speed (Lieb-Robinson, r05); light and gravity share it only if
+        Lorentz symmetry is protected (r12, r13).
+* G:    NOT a separate constant: it is the stiffness / entanglement of the same quantum cells,
+        G ~ a^2 c^3 / (4 N eta hbar) with eta = 0.024 per cell face (r13, r14).
+* Planck length = ~3 x (cell size)/sqrt(N): the scale where the cells show and the two
+  descriptions merge (A). Quantum mechanics is the substrate's short-distance dynamics; gravity
+  is its long-distance elasticity/thermodynamics -- the same object at different magnifications.
+* Status: a CONSISTENT picture (each step is established physics: Sakharov, Bekenstein-Hawking,
+  Jacobson, effective field theory), not yet a derived one: the graviton's protection (local
+  Hamiltonian constraint) and exact Lorentz invariance at the cell scale remain the open problem.
