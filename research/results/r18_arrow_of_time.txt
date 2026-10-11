@@ -1,0 +1,53 @@
+
+==============================================================================
+A. Reversible substrate + low-entropy start (exact bit arithmetic, HPP lattice gas)
+==============================================================================
+128x128 lattice, 4 velocity channels, 16245 particles, all in the left half at t = 0
+micro-rule: head-on pairs scatter by 90 degrees, then everything streams -- a BIJECTION (reversible)
+coarse-grained entropy (8x8 blocks): t = 0: 22272.6   t = 600: 35432.7   (maximum for this density ~ 35969) nats
+reverse every velocity at t = 600 and run the SAME law 600 more steps:
+   returns bit-for-bit to the initial state: True;  entropy back to 22272.6
+   with ONE of the 65536 bits flipped at the turn-around: 11231 bits differ at the end; entropy ends at 31647.1
+entropy rise Delta S = 13160 nats: of all microstates looking like the mixed state, a fraction
+   exp(-Delta S) = 10^(-5715) would un-mix by themselves.
+=> the substrate's LAW has no arrow (exact reversal works). The arrow comes from the START (low
+   entropy) plus coarse-graining, and 'going back' needs control of every bit: one wrong bit fails.
+   (HPP is only weakly chaotic, so the flipped run partly un-mixes; a fully chaotic law is worse.)
+
+==============================================================================
+B. A growing substrate: one-way order, but no universal 'now' (causal-set growth)
+==============================================================================
+transitive percolation (Rideout & Sorkin, PRD 61, 024002 (2000)), 14 elements, p = 0.18:
+   23 causal relations; acyclic (nothing precedes itself, no loops): True
+   number of birth orders that produce exactly this causal set: 9539712 (out of 87178291200 orderings)
+=> 'one way' is built into the substrate: the relation 'is to the past of' has no loops, so no
+   chain of influences can return to its start. Yet the order of birth is not physical --
+   9539712 different sequences give the same universe (discrete general covariance). There is a
+   direction of becoming, but no global moment 'now': simultaneity is relative, as in relativity.
+   checks: a 6-chain has 1 birth order (fully ordered); a 6-antichain has 720 = 6!
+
+==============================================================================
+C. Measured arrows of time, smallest to largest
+==============================================================================
+   1e-15 m  kaon T violation (CPLEAR 1998)               A_T = (6.6 +- 1.3 +- 1.0)e-3 -> 4.0 sigma  [Phys. Lett. B 444, 43]
+   1e-15 m  B-meson T violation (BaBar 2012)             observed directly at 14 sigma  [PRL 109, 211801]
+   1e-13 m  electron EDM (T-odd), JILA 2023              |d_e| < 4.1e-30 e cm: no new T violation  [Science 381, 46]
+     0.1 m  quantum switch (indefinite causal order)     order of two operations put in superposition, never a loop  [Procopio et al., Nat. Commun. 6, 7913 (2015)]
+       1 m  thermodynamics, radiation, records           no exception ever observed  [second law]
+     2e5 m  black-hole area theorem (GW150914)           area increase at 97% credibility  [Isi et al., PRL 127, 011103 (2021)]
+    1e26 m  low-entropy early universe                   S_now ~ 3e104 k_B vs maximum ~ 2.6e122 k_B  [Egan & Lineweaver, ApJ 710, 1825 (2010)]
+=> nature has ONE microscopic arrow (the weak interaction's T violation, tiny but 14 sigma; CPT
+   holds, so it is not a 'flow') and one huge macroscopic arrow (the low-entropy beginning). Every
+   everyday arrow follows from the second. No closed causal loop (time travel to the past) has ever
+   been seen; quantum experiments can make the ORDER of two events indefinite, but not circular.
+
+==============================================================================
+D. What this means for the substrate
+==============================================================================
+* If the substrate's law is reversible (a unitary quantum network, USRT v2), the arrow must come
+  from its initial state (as in A): the substrate started extremely ordered. That is an INPUT.
+* If the substrate GROWS (causal-set substrate, r19), 'one way' is fundamental: the past is
+  fixed, the future is being added, no loops are possible -- exactly the user's 'cannot go back'.
+  It still does not explain the low-entropy start; both ingredients are needed.
+* The tiny weak-interaction arrow must be a property of how matter-knots sit in the substrate
+  (it distinguishes matter from antimatter); its origin is open in every theory.
