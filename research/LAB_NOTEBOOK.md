@@ -38,6 +38,11 @@ This is the running record of every question, calculation, plot and conclusion i
 | [E20](#e20) | 2026-10-10 | Mass as a defect of the substrate (world crystal, cosmic strings) | r15 |
 | [E21](#e21) | 2026-10-10 | Gravity and quantum mechanics: one thing at different scales? | r16 |
 | [E22](#e22) | 2026-10-10 | Synthesis: the graviton and gravity–quantum unification (USRT v2.2) | — |
+| [E23](#e23) | 2026-10-11 | Time in the substrate: relational, relative to motion and gravity | r17 |
+| [E24](#e24) | 2026-10-11 | The one-way arrow of time at the substrate level | r18 |
+| [E25](#e25) | 2026-10-11 | Testing a causal-set substrate: discreteness without a rest frame | r19 |
+| [E26](#e26) | 2026-10-11 | The constants of nature and the substrate: how, why and whether they relate | r20 |
+| [E27](#e27) | 2026-10-11 | Synthesis: time, the causal-set substrate, and the constants (USRT v2.3) | — |
 
 ---
 
@@ -334,11 +339,16 @@ Under a constant push the speed went 0.375 → 0.700 → 0.850 → 0.900c. Newto
 - [ ] (added 2026-10-10, from E12) 2D/3D version of r08 with eps = mu: verify the factor-2 light bending emerges in a simulation, not just in the ray integral.
 - [ ] (added 2026-10-10, from E14) Quasi-normal modes / echo times for the exponential (horizonless) completion, to compare with LIGO-Virgo-KAGRA ringdowns.
 - [ ] (added 2026-10-10, from E14) Fit published TeV-photon arrival delays from several GRBs/blazars for an isotropic + l = 4 (cubic) pattern; current data give upper limits only.
-- [ ] (added 2026-10-10, from E22) Causal-set (Poisson-sprinkled) substrate: redo the E18 Sakharov calculation with a Lorentz-invariant random discreteness (e.g. the Sorkin / Benincasa–Dowker d'Alembertian) and check whether c_g = c comes out without tuning.
+- [x] (added 2026-10-10, from E22) Causal-set (Poisson-sprinkled) substrate: redo the E18 Sakharov calculation with a Lorentz-invariant random discreteness (e.g. the Sorkin / Benincasa–Dowker d'Alembertian) and check whether c_g = c comes out without tuning. *Done in part 2026-10-11 in E25 (r19): the mean wave operator is exactly Lorentz invariant, so waves (and, by E18's Pauli–Villars result, an induced graviton) travel at c. The full induced-gravity sum on a causal set is still open (new item below).*
 - [ ] (added 2026-10-10, from E17) A Hamiltonian lattice model whose cells obey a local energy constraint (local Page–Wootters): does the helicity-0 graviton of E17's M3 disappear dynamically?
 - [ ] (added 2026-10-10, from E18) Extend E18 to fermions and gauge fields, the × polarisation and [111] propagation (lattice gravitational-wave birefringence).
 - [ ] (added 2026-10-10, from E19) Area law with the same Pauli–Villars regulator as E18, to verify S = A/(4G_induced) on the lattice as μa → 0.
 - [ ] (added 2026-10-10, from E21) Decoherence budget of a quantum substrate for the gravity-mediated entanglement experiment.
+- [ ] (added 2026-10-11, from E25) Induced gravity on a causal set: compute the E18 inertia and stiffness with Sorkin's operator (and its non-local smearing), and check c_g = c and the induced G directly.
+- [ ] (added 2026-10-11, from E25) Fluctuations against the non-locality scale: how large must ℓ_k/ℓ be for single-realisation waves to behave, and what bounds exist on ℓ_k?
+- [ ] (added 2026-10-11, from E25) "Swerves": simulate a particle hopping along a sprinkling and measure its Lorentz-invariant momentum diffusion; compare with published bounds.
+- [ ] (added 2026-10-11, from E23) Quantum time dilation (Smith & Ahmadi 2020): a clock in a superposition of speeds; compute the predicted signal for atom interferometers.
+- [ ] (added 2026-10-11, from E26) Two-loop running with thresholds: the value of the single coupling at the cell scale, if any; and the proton-lifetime window.
 
 > **Note (2026-10-10, later):** E10 gives the layered version of this picture, with parameter ranges and the new Coulomb-phase constraint α < α_c ≈ 0.079. Nothing in E9 is retracted.
 
@@ -504,6 +514,11 @@ A gauge lattice has only even-order dispersion and no birefringence, so the data
 
 **Files:** [`r08_gravity_from_wave_speed.py`](r08_gravity_from_wave_speed.py), [results](results/r08_gravity_from_wave_speed.txt), ![gravity](figures/r08_gravity_from_wave_speed_emergent_gravity.png)
 
+> **Correction (2026-10-11, from E23):** the r08 medium, φ_tt = ∂(c²∂φ) − ω₀² sin φ, gives universal free fall but **no gravitational redshift**. A clock at the bottom of its well ticks at the far-away rate (1.0002 at N₀ = 0.8).
+> - Galileo 5 & 6 exclude this at 4×10⁴σ.
+> - The fix is the covariant medium, φ_tt = N∂(N∂φ) − N² sin φ: every internal rate scales with the local rate N(x) = c(x)/c. This keeps free fall universal and gives the redshift exactly (0.8005 at N₀ = 0.8).
+> - The free-fall results above stand. The statement "only the wave speed changes" is replaced by "the wave speed and every internal rate change together".
+
 ---
 
 <a id="e13"></a>
@@ -594,6 +609,8 @@ If "trapped energy lowers the wave speed" compounds multiplicatively (n = e^(2GM
 > - E18 shows that if gravity is induced by the substrate and GW170817 is to hold, a Lorentz-invariant cutoff with μa < 3×10⁻⁸ is needed. That puts the cells far below l_P and makes the 3:1 pattern unobservable.
 > - So the TeV prediction stands only for substrates in which gravity is *not* induced this way.
 > - The strong-field prediction (the black-hole shadow) is unaffected.
+
+> **Note (2026-10-11, from E25 and E27):** for a causal-set substrate (now the leading candidate), the mean wave operator is exactly Lorentz invariant, so the prediction becomes **no** energy-dependent or anisotropic delay at any energy. The 3:1 pattern remains the signature of a *lattice* substrate only.
 
 ---
 
@@ -1069,3 +1086,372 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 - **Dowker, Henson & Sorkin**, Mod. Phys. Lett. A 19, 1829 (2004)
 
 **Files:** synthesis entry (no new script); see E16–E21.
+
+> **Note (2026-10-11, from E25 and E27):** the "one problem" identified here, the substrate's absolute time, is removed in a causal-set substrate.
+> - There is no rest frame, and waves are exactly Lorentz invariant on average. By E18's Pauli–Villars result, an induced graviton would move at c.
+> - There is no foliation, so there is no Hořava scalar.
+> - There are no discrete rotations, so there are no cosmic strings.
+> - Of the out-of-the-box candidates above, number 2 (random, Lorentz-invariant discreteness) passes the tests run so far. Its 4D dynamics remain open.
+
+---
+
+<a id="e23"></a>
+## E23 — Time in the substrate: relational, and relative to motion and gravity (2026-10-11)
+
+**Question (user):** "Time is relational, but it is not absolute either. It can vary based on how fast something is moving in relation to something else. But it is one way only, it can't go back. Even at the substrate level. We also need tests and experiments on this, from the smallest to the highest magnitudes." The user also asked that everything be mathematically exact. (The one-way part is E24; causal sets are E25.)
+
+**Method:**
+- **(A) Page–Wootters, exactly.** A 16-level clock and a qubit obey the constraint J Ψ = (H_clock + H_system) Ψ = 0. We condition on the clock reading.
+- **(B) A moving clock made of substrate waves.** A sine-Gordon breather (internal frequency 0.6) moves at v. We read its tick rate at its energy centre, on lattices with h = 0.1, 0.05, 0.025, and on a coarse lattice with h = 0.5.
+- **(C) The same clock in a gravity well.** It sits at the bottom of a well where the local substrate rate N(x) is lower. Two media are compared:
+  - **covariant:** φ_tt = N∂(N∂φ) − N² sin φ, so every internal rate scales with N;
+  - **r08's medium:** φ_tt = ∂(N²∂φ) − sin φ, so only the wave speed changes.
+- **(D)** GPS clock shifts, computed.
+- **(E)** A ladder of published time-dilation tests.
+
+**Results (computed here):**
+- **(A) Time is a relation.** |JΨ| = 5.7×10⁻¹⁶. The whole universe does not change, to machine precision. Yet the system read against the clock follows Schrödinger's equation, with a maximum infidelity of 7.8×10⁻¹⁶ over 16 readings.
+- **(B) Moving clocks tick slower by exactly γ** in the continuum. The error T/(γT_rest) − 1 falls as h²:
+  - at v = 0.5 it is −1.9×10⁻⁴, −3.8×10⁻⁵ and −8.9×10⁻⁶ on the three lattices;
+  - at v = 0.8 it is −8.0×10⁻³, −1.2×10⁻³ and −2.5×10⁻⁴.
+
+  **On the coarse lattice (h = 0.5) time dilation fails:** the error is −0.46 % at v = 0.3 and −21.5 % at v = 0.8.
+- **(C) Only the covariant medium redshifts clocks.**
+
+  | Local rate N₀ | Covariant medium (tick rate seen from far away) | r08 medium |
+  |---|---|---|
+  | 0.9 | 0.90026 | 1.0002 |
+  | 0.8 | 0.80051 | 1.0002 |
+  | 0.7 | 0.70076 | 1.0003 |
+
+  The covariant medium's small residual comes from the well's curvature across the clock's size. Galileo 5 & 6 measure the redshift violation α = (0.19 ± 2.48)×10⁻⁵:
+  - the covariant medium (α = 0) sits **0.08σ** away;
+  - **r08's medium (α = −1) is 4×10⁴σ away: excluded.**
+- **(D) GPS:** −7.21 μs/day from motion, +45.65 μs/day from height, **net +38.44 μs/day** (11.5 km of ranging error per day if uncorrected).
+- **(E) The measured ladder**, from a millimetre to the Hubble scale:
+
+  | Test (scale) | Measured / predicted |
+  |---|---|
+  | Chou 2010 (33 cm) | 1.14 ± 0.44 |
+  | Pound–Snider (22.5 m) | 0.9990 ± 0.0076 |
+  | Ives–Stilwell (2×10⁻⁸) | consistent |
+  | Gravity Probe A (7×10⁻⁵) | consistent |
+  | Galileo | 1.0000019 ± 0.000025 |
+  | Hafele–Keating (west) | 0.99 ± 0.08 |
+  | S2 star | 0.90 ± 0.17 |
+  | supernovae | 1.003 ± 0.005 |
+  | quasars | 1.28 ± 0.28 |
+
+  Bothwell et al. 2022 resolved the redshift inside a 1 mm sample. **All agree with relativity.**
+
+**Interpretation:**
+- **The user's three statements about time are correct and each is computed:**
+  - **relational:** time is a correlation between parts (A);
+  - **not absolute:** a substrate clock's rate depends on its motion (B) and on the local state of the substrate (C).
+- **A substrate clock slows down when it moves** because the wave equation is Lorentz invariant: moving uses part of the clock's fixed signal-speed budget. Nobody has to impose it.
+- **Correction to r08 (E12):** trapped energy must lower the wave speed **and every internal rate by the same factor N(x)** (the lapse). Free fall stays universal, and clocks now redshift correctly. "Time runs at the local rate of the substrate."
+- **A coarse lattice breaks time dilation at momenta ~ħ/a.** Ultra-high-energy cosmic rays (γ ~ 10¹¹) see no such effect: Coleman–Glashow bound speed differences to ≲10⁻²³.
+
+**Status:** **computed here.** Page–Wootters, time dilation and the redshift are exact in the continuum and verified to the stated precision. The r08 medium is **ruled out** in its original form and **corrected**.
+
+**References:**
+- **Page & Wootters**, PRD 27, 2885 (1983)
+- **Moreva et al.**, PRA 89, 052122 (2014)
+- **Delva et al.**, PRL 121, 231101 (2018)
+- **Vessot et al.**, PRL 45, 2081 (1980)
+- **Chou et al.**, Science 329, 1630 (2010)
+- **Pound & Snider**, Phys. Rev. 140, B788 (1965)
+- **Hafele & Keating**, Science 177, 168 (1972)
+- **Botermann et al.**, PRL 113, 120405 (2014)
+- **Bothwell et al.**, Nature 602, 420 (2022)
+- **GRAVITY Collaboration**, A&A 615, L15 (2018)
+- **White et al.** (DES), MNRAS (2024)
+- **Lewis & Brewer**, Nature Astron. 7, 1265 (2023)
+- **Coleman & Glashow**, PRD 59, 116008 (1999)
+
+**Files:** [`r17_relational_time.py`](r17_relational_time.py), [results](results/r17_relational_time.txt), ![time](figures/r17_relational_time_relational_time.png)
+
+---
+
+<a id="e24"></a>
+## E24 — The one-way arrow of time at the substrate level (2026-10-11)
+
+**Question (user):** as E23, "… but it is one way only, it can't go back either, even at the substrate level."
+
+**Method:**
+- **(A)** An exactly reversible substrate: the HPP lattice gas on 128², updated with bit arithmetic. We track the coarse-grained Boltzmann entropy (8×8 blocks) and reverse all velocities at t = 600, with and without flipping one bit.
+- **(B)** Causal-set sequential growth (transitive percolation): we check that the order is acyclic and count, exactly, the birth orders that give the same causal set.
+- **(C)** Measured arrows of time, from the smallest scale to the largest.
+
+**Results (computed here):**
+- **(A)**
+  - The entropy rises from 22,273 to 35,433 nats (the maximum is ~35,969).
+  - **Reversing every velocity returns the gas bit-for-bit to its initial state.**
+  - With **one** of the 65,536 bits flipped at the turn-around, 11,231 bits are wrong at the end.
+  - The fraction of mixed states that would un-mix spontaneously is e^(−ΔS) = 10^(−5715).
+- **(B)**
+  - A 14-element grown causal set has 23 relations and is acyclic.
+  - **9,539,712 different birth orders produce exactly the same universe.**
+  - Checks: a 6-element chain has 1 birth order and a 6-element antichain has 720 = 6!.
+- **(C)**
+
+  | Arrow | Measurement |
+  |---|---|
+  | Kaon T violation (CPLEAR) | A_T = (6.6 ± 1.6)×10⁻³, 4.0σ |
+  | B-meson T violation (BaBar) | 14σ |
+  | Electron EDM | below 4.1×10⁻³⁰ e·cm (no new T violation) |
+  | Black-hole area theorem | 97 % |
+  | Low-entropy early universe | S ≈ 3×10¹⁰⁴ k now, against a maximum of ~2.6×10¹²² k |
+  | Quantum-switch experiments | the order of two events can be indefinite, but never a loop |
+
+**Interpretation:**
+- **If the substrate's law is reversible** (a unitary network, USRT v2), "one way" comes from a low-entropy start plus coarse-graining. The law alone allows exact return, but only with control of every bit. The low-entropy start is an **input**.
+- **If the substrate grows** (a causal set), "one way" is **fundamental**:
+  - the relation "is to the past of" has no loops, so nothing can return to its own past;
+  - yet the order of birth is not observable, so there is a direction of becoming but **no universal "now"**.
+
+  This matches the user's statement exactly. It still does not explain the low-entropy start.
+- **Nature has one tiny microscopic arrow** (weak-interaction T violation) **and one huge cosmological one.**
+
+**Status:** the arrow's mechanics are **computed here**; the measured arrows are **established**; the origin of the low-entropy start is **open** in every theory.
+
+**References:**
+- **Boltzmann** (1877)
+- **Hardy, de Pazzis & Pomeau** (HPP), PRA 13, 1949 (1976)
+- **Rideout & Sorkin**, PRD 61, 024002 (2000)
+- **CPLEAR**, Phys. Lett. B 444, 43 (1998)
+- **BaBar**, PRL 109, 211801 (2012)
+- **Roussy et al.**, Science 381, 46 (2023)
+- **Isi et al.**, PRL 127, 011103 (2021)
+- **Egan & Lineweaver**, ApJ 710, 1825 (2010)
+- **Procopio et al.**, Nat. Commun. 6, 7913 (2015)
+- **Penrose**, *The Emperor's New Mind* (1989)
+
+**Files:** [`r18_arrow_of_time.py`](r18_arrow_of_time.py), [results](results/r18_arrow_of_time.txt), ![gas](figures/r18_arrow_of_time_reversible_gas.png) ![growth](figures/r18_arrow_of_time_growth_and_measured.png)
+
+---
+
+<a id="e25"></a>
+## E25 — Testing a causal-set substrate: discreteness without a rest frame (2026-10-11)
+
+**Question (user):** "Random, frame-free discreteness instead of a lattice (causal sets) … test this one too." Also: "make sure we are mathematically exact".
+
+**Method:** a substrate made only of elements and the one-way relation "is to the past of", sprinkled with Poisson density ρ (Bombelli, Lee, Meyer & Sorkin 1987). Closed forms are used wherever possible; Monte Carlo and quadrature check them.
+- **(A)** Links of an element: their number and their rapidities.
+- **(B)** Dimension from the order alone (Myrheim–Meyer).
+- **(C)** Proper time as the longest chain, and the twin paradox, against Baik–Deift–Johansson asymptotics.
+- **(D)** Sorkin's 2D discrete d'Alembertian on plane waves.
+  - The exact mean is derived. The inner integral is (c−β)²/c³ = −k_v²/(β − ik_v)³, which gives E[B]/φ = 4ρ(I(ζ) − ½), with I(ζ) = −∫₀^∞ e^{iζs}(s−i)⁻³ ds and ζ = 2k_u k_v/ρ.
+  - I(ζ) is evaluated on a contour rotated by ±π/4 (Cauchy's theorem), which avoids the failure of oscillatory quadrature at small ζ.
+  - Checks: brute-force 2D quadrature, and 600,000 sprinklings in each of two frames.
+- **(E)** Curvature from counting in 2D de Sitter, using exact interval volumes and the substitution w = ρV, which removes catastrophic cancellation.
+- **(F)** The cosmological constant as a counting fluctuation.
+
+**Results (computed here):**
+- **(A) Links point in every boost direction.**
+  - Links from an element: 2.866 ± 0.019, 5.199 ± 0.030 and 7.60 ± 0.09 for N = 10, 100 and 1000. The exact formula Ein(N) = ln N + γ_E + E₁(N) gives 2.880, 5.182 and 7.485.
+  - The link density is flat in rapidity: (ρ/2)e^{−ρs/2} ds dη, independent of η.
+- **(B) The order alone knows its dimension.**
+  - Exact ordering fractions: f(2) = 1/2, f(3) = 8/35, f(4) = 1/10.
+  - Dimension recovered from sprinklings: 2.005 ± 0.008, 3.000 ± 0.011 and 3.998 ± 0.023.
+- **(C) The twin paradox comes out of counting.** Longest-chain ratio of the travelling twin to the stay-at-home twin (200,000 elements):
+
+  | v | Counted ratio | 1/γ | Exact finite-N prediction |
+  |---|---|---|---|
+  | 0.3 | 0.9403 ± 0.0026 | 0.954 | 0.9446 |
+  | 0.6 | 0.7947 ± 0.0047 | 0.800 | 0.7896 |
+  | 0.8 | 0.5855 ± 0.0033 | 0.600 | 0.5886 |
+
+- **(D) The wave operator is exactly Lorentz invariant on average.**
+  - Sympy gives I(0) = ½ exactly and I′(0) = ½ exactly, so E[Bφ] → −□φ in the continuum (signature +,−).
+  - The mean depends on the wave only through ζ ∝ k², so it is **exactly Lorentz invariant**.
+  - In boosted frames (λ = 1, 2, 4), brute-force quadrature converges to the same exact value, 0.287870 + 0.086639i.
+  - The exact region values for the two Monte Carlo frames are identical (difference 0). The Monte Carlo agrees with χ² = 3.0 for 4 degrees of freedom.
+  - The lattice operator on the same three waves gives 0.2448, 0.2391 and 0.2102: **it depends on the frame**.
+  - Off the light cone, |E[B]|/min(2|ζ|, 2) ≥ 0.415, so **the only real zero is k² = 0**.
+  - **Price:** one sprinkling's spread is ~11, against a signal of ~0.3. The operator is non-local.
+- **(E) Curvature from counting converges exactly.** E[B·1] = −0.961402, −0.993895, −0.999160 and −0.999893 for ρ = 10², 10³, 10⁴ and 10⁵, approaching **−R/2 = −1**. Two independent formulations agree to 5 digits.
+- **(F) The cosmological constant has the right order of magnitude.** The observable 4-volume is 5.2×10²⁴³ Planck units, so Λ ~ 1/√N = 1.4×10⁻¹²² against the observed 2.8×10⁻¹²².
+
+**Interpretation — the verdict on the causal-set substrate:**
+- **It passes all three tests that killed the lattice** (E17, E18, E20):
+  - there is no rest frame;
+  - waves travel at exactly c at every energy, so c_g = c and there is no 3:1 TeV pattern;
+  - there are no discrete rotations, so no cosmic-string disclinations;
+  - there is no foliation, so no absolute time and no Hořava scalar.
+- **It delivers the user's picture of time:**
+  - **relational:** time is counting;
+  - **relative:** the twin paradox appears by counting;
+  - **one way:** the order is acyclic (E24);
+  - **gravity from counting:** curvature, and the Benincasa–Dowker action (E).
+- **Open:**
+  - the non-locality and large fluctuations; physical fields need a non-locality scale ℓ_k ≫ ℓ, which is a new measurable length;
+  - 4D dynamics: non-manifold-like orders dominate the path sum unless suppressed;
+  - "swerves", a Lorentz-invariant momentum diffusion that is already constrained by observations.
+
+**Status:** **computed here.** Every mean is in closed form and checked by quadrature and Monte Carlo. The causal set is now **the leading substrate candidate** in this programme. Its dynamics is **open**.
+
+**References:**
+- **Bombelli, Lee, Meyer & Sorkin**, PRL 59, 521 (1987)
+- **Bombelli, Henson & Sorkin**, Mod. Phys. Lett. A 24, 2579 (2009)
+- **Myrheim**, CERN-TH-2538 (1978)
+- **Meyer**, PhD thesis, MIT (1988)
+- **Brightwell & Gregory**, PRL 66, 260 (1991)
+- **Baik, Deift & Johansson**, J. AMS 12, 1119 (1999)
+- **Sorkin**, arXiv:gr-qc/0703099
+- **Benincasa & Dowker**, PRL 104, 181301 (2010)
+- **Aslanbeigi, Saravani & Sorkin**, JHEP 06 (2014) 024
+- **Ahmed, Dodelson, Greene & Sorkin**, PRD 69, 103523 (2004)
+- **Dowker, Henson & Sorkin**, Mod. Phys. Lett. A 19, 1829 (2004)
+
+**Files:** [`r19_causal_set_substrate.py`](r19_causal_set_substrate.py), [results](results/r19_causal_set_substrate.txt), ![causal set](figures/r19_causal_set_substrate_causal_set_tests.png)
+
+---
+
+<a id="e26"></a>
+## E26 — The constants of nature and the substrate: how, why and whether they relate (2026-10-11)
+
+**Question (user):** "I think all the constants of reality have something to do with the universal substrate too. They all have relations which we might be missing field-wide, and nobody has made the connections yet. Let's explore them too and see what, how and why they relate and contribute."
+
+**Method:** the audit's rules apply: σ against measurements, inputs kept separate from outputs, and the look-elsewhere effect counted.
+- **(A)** Units versus pure numbers.
+- **(B)** Structure scales built from α, α_G and m_e/m_p.
+- **(C)** One-loop running of the three gauge couplings, SM against MSSM.
+- **(D)** Dimensional transmutation.
+- **(E)** Dirac's large numbers, the test of G ∝ 1/t, and the constancy of α.
+- **(F)** A null test: are the measured constants closer to the 59,049 formulas 2^a 3^b 5^c π^d e^f (|exponents| ≤ 4) than 20,000 random numbers are?
+
+**Results (computed here):**
+- **(A) Only pure numbers carry physics.** c, ħ and G are unit conversions; in the substrate they are the cells' signal speed, action and size. The world is built from pure numbers: α = 7.297×10⁻³, α_G = G m_p²/ħc = 5.906×10⁻³⁹, m_e/m_p = 5.446×10⁻⁴, α_s = 0.118, Λ l_P² = 2.8×10⁻¹²², η = 6.1×10⁻¹⁰. About 31 such numbers in total.
+- **(B) These numbers set the size of everything:**
+
+  | Quantity | Formula | Value |
+  |---|---|---|
+  | atom size | a₀ = ħ/(m_e c α) | 5.29×10⁻¹¹ m |
+  | atom energy | α² m_e c²/2 | 13.606 eV |
+  | star mass | α_G^(−3/2) m_p | 1.85 M_⊙ (Chandrasekhar limit 1.435 M_⊙) |
+  | largest cold planet | (α/α_G)^(3/2) m_p | 1.21 Jupiter masses |
+  | protons in a star | α_G^(−3/2) | 2.2×10⁵⁷ |
+- **(C) The three forces' strengths run toward each other.**
+  - At M_Z the inverse couplings are 1/α₁ = 59.02, 1/α₂ = 29.58 and 1/α₃ = 8.475.
+  - **SM:** the pairs meet at 1.0×10¹³, 9.7×10¹⁶ and 2.4×10¹⁴ GeV, a spread of ×9,300.
+  - **MSSM:** they meet at 2.0, 2.3 and 2.1 ×10¹⁶ GeV, with unified 1/α = 24.3. That is ~10³ below the Planck energy (1.22×10¹⁹ GeV).
+  - Super-Kamiokande finds τ(p → e⁺π⁰) > 2.4×10³⁴ yr, which excludes minimal SU(5).
+- **(D) Gravity is weak because of an exponential.**
+  - The strong coupling at the Planck energy is 1/α_s(M_P) ≈ 52.4.
+  - d ln m_p / d(1/α_s(M_P)) = −2π/7: a 10 % change in it changes m_p by ×110 and α_G by ×10⁴.
+- **(E) Dirac's coincidences, and whether the constants change.**
+  - N₁ = 2.27×10³⁹, N₂ = 4.63×10⁴⁰, and N_b = 2.7×10⁷⁸, against N₁² = 5.1×10⁷⁸.
+  - Dirac's G ∝ 1/t predicts Ġ/G = −7.2×10⁻¹¹ per year. Lunar laser ranging gives (4 ± 9)×10⁻¹³ per year: **Dirac is excluded at 81σ**.
+  - Atomic clocks give α̇/α = (1.0 ± 1.1)×10⁻¹⁸ per year.
+- **(F) The null test finds nothing special.**
+  - The percentile of each constant among random numbers (how often a random number lies closer to a formula) is:
+
+    | Constant | Percentile |
+    |---|---|
+    | 1/α | 30.6 % |
+    | m_p/m_e | 94.9 % |
+    | m_μ/m_e | 89.0 % |
+    | m_τ/m_e | 53.0 % |
+    | m_n/m_p | 34.6 % |
+    | 1/α_s | 56.7 % |
+    | sin²θ_W | 40.7 % |
+    | m_W/m_Z | 8.3 % |
+
+    These are spread like random numbers.
+  - The precisely measured constants are fitted within 1σ by **no** formula; the best misses are 4.4×10⁵σ (1/α) and 2.0×10⁷σ (m_p/m_e).
+  - The imprecise ones are "fitted" by many: 48 formulas for 1/α_s, 3 for sin²θ_W.
+  - Lenz's m_p/m_e = 6π⁵ is off by 1.1×10⁶σ.
+
+**Interpretation — how the constants relate and contribute:**
+1. **c, ħ and G are not "constants of nature" in the deep sense; they are the substrate's units.** In the causal-set version (E25), c is the cone structure itself, the discreteness length sets l_P, and G = a²c³/(4Nηħ) (E19).
+2. **Real relations exist, and they come from mechanisms, not formulas.**
+   - **(B)** α and α_G fix the sizes of atoms, planets and stars. A star has ~10⁵⁷ protons *because* gravity is 10³⁹ times weaker.
+   - **(C)** The three couplings run and nearly meet near 10¹⁶ GeV. If they meet, the substrate may have **one** stiffness for its twist modes at the cell scale, with α, α_w and α_s as its low-energy shadows. This is testable through proton decay.
+   - **(D)** The 10⁻³⁹ is an exponential of a modest number. The hierarchy is explained by running, not fitted.
+   - **(E19, E25)** Λ ~ 1/√N, a fluctuation of the substrate's element count.
+3. **"Hidden numerical relations nobody has noticed" are almost certainly not there in simple-formula form.** The constants are no more formula-like than random numbers, and the classic candidates fail by 10⁴–10⁷σ.
+   - A genuine new connection must beat the look-elsewhere baseline, hit within the measurement error, and come from a mechanism.
+   - The most promising place to look is where mechanisms exist: what the couplings are at the cell scale (C) and the counting statistics of the substrate (E25).
+4. **The constants are frozen:** α varies by less than ~4×10⁻⁸ over cosmic history. Whatever sets them in the substrate has not drifted since the Big Bang.
+
+**Status:** the mechanisms in B–D are **established** and computed here. The null test is **computed here**. A numerical relation between the mass ratios is **ruled out** as found by search. The substrate origin of the coupling values is **open**.
+
+**References:**
+- **Duff, Okun & Veneziano**, JHEP 03 (2002) 023
+- **Tegmark, Aguirre, Rees & Wilczek**, PRD 73, 023505 (2006)
+- **Carr & Rees**, Nature 278, 605 (1979)
+- **Press & Lightman**, Phil. Trans. R. Soc. A 310, 323 (1983)
+- **Chandrasekhar**, ApJ 74, 81 (1931)
+- **Georgi & Glashow**, PRL 32, 438 (1974)
+- **Amaldi, de Boer & Fürstenau**, Phys. Lett. B 260, 447 (1991)
+- **Super-Kamiokande**, PRD 102, 112011 (2020)
+- **Gross & Wilczek**, PRL 30, 1343 (1973)
+- **Politzer**, PRL 30, 1346 (1973)
+- **Dirac**, Nature 139, 323 (1937)
+- **Dicke**, Nature 192, 440 (1961)
+- **Williams, Turyshev & Boggs**, PRL 93, 261101 (2004)
+- **Lange et al.**, PRL 126, 011102 (2021)
+- **Lenz**, Phys. Rev. 82, 554 (1951)
+- the audit's numerology section (`audit/a02_numerology.py`)
+
+**Files:** [`r20_constants_and_substrate.py`](r20_constants_and_substrate.py), [results](results/r20_constants_and_substrate.txt), ![constants](figures/r20_constants_and_substrate_constants.png)
+
+---
+
+<a id="e27"></a>
+## E27 — Synthesis: time, the causal-set substrate, and the constants (USRT v2.3) (2026-10-11)
+
+**Questions (user):** time is relational, relative and one-way, "even at the substrate level", tested from the smallest to the largest scales (E23, E24); test causal sets (E25); be mathematically exact; "think out of the box or invent the box itself"; how the constants relate to the substrate (E26).
+
+**What changed:**
+
+| Before (E22) | Now |
+|---|---|
+| The open core problem: the substrate's absolute time (rest frame), which caused the third graviton, c_g ≠ c and the cosmic-string disclinations | **A causal-set substrate removes all three** (E25): no rest frame, exactly Lorentz-invariant waves on average, no discrete rotations, no foliation |
+| r08's medium: free fall from a lowered wave speed | **Corrected** (E23): every internal rate must scale with the local rate N(x); otherwise there is no gravitational redshift (excluded at 4×10⁴σ) |
+| Time: "Page–Wootters, global only" | Time is the **order itself**: relational (counting), relative (the twin paradox appears by counting), one way (acyclic growth), with curvature measured by counting (E23–E25) |
+| Constants: ħ, c, G and α treated alike | c, ħ and G are the substrate's units. α_G, Λ and the structure scales follow from mechanisms. Mass ratios remain inputs. Formula-hunting fails the null test (E26) |
+
+**Inventing the box — USRT v2.3 (current formulation):**
+1. **The substrate is a growing causal order:**
+   - elements plus the relation "is to the past of";
+   - one element per Planck-scale 4-volume (number = volume);
+   - no lattice, no rest frame, no universal "now".
+   - **The flow of time is the growth; the arrow is the order** (E24, E25).
+2. **Time is counted:** proper time is the length of the longest chain. Moving and gravitating clocks run slow because they contain fewer elements along their chains (E23, E25).
+3. **Geometry is counted:**
+   - dimension from the ordering fraction;
+   - curvature from layer counts, with E[B·1] → −R/2;
+   - the Einstein–Hilbert action as a count (Benincasa–Dowker).
+   - **Gravity is the dynamics of the count** (E25).
+4. **Fields live on the order:** light as the twist mode (E5), matter as knots or defects (E11, E20), and the graviton from the strain of the order (E17), with waves at exactly c (E25).
+5. **Constants:**
+   - c is the cone;
+   - l_P ~ the discreteness length;
+   - G = (discreteness)² × c³/(4Nηħ) (E19);
+   - Λ ~ 1/√(number of elements) (E25);
+   - α_G comes from the running of the couplings (E26);
+   - the gauge couplings may share one value at the discreteness scale (E26).
+   - Mass ratios and mixing angles remain **inputs**.
+6. **Predictions and tests:**
+
+   | Prediction | Status |
+   |---|---|
+   | No energy-dependent or anisotropic photon delays | **replaces** E14's 3:1 pattern for this substrate |
+   | Gravity-mediated entanglement occurs | E21 |
+   | Λ fluctuates at the 1/√N level (everpresent Λ) | testable cosmologically |
+   | Momentum "swerves" and a non-locality scale ℓ_k | new, constrained by observations |
+   | No cosmic-string disclinations; GW speed = c; no scalar polarisation | consistent with current data |
+
+**Open:**
+- the 4D quantum dynamics of the growing order, i.e. why manifold-like orders dominate;
+- the non-locality and fluctuations;
+- the origin of the low-entropy start;
+- the values of the couplings and mass ratios.
+
+**Status:** synthesis of E23–E26. The causal-set substrate is **promoted to the leading candidate**: it passes every test the lattice failed (computed here). Its dynamics are **open**.
+
+**References:** as in E23–E26.
+
+**Files:** synthesis entry (no new script).

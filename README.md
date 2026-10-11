@@ -250,7 +250,7 @@ All 45 scripts run cleanly (tested with Python 3.13, NumPy, SciPy, Matplotlib, S
 ├── research/
 │   ├── LAB_NOTEBOOK.md                           dated record of every question, method, result
 │   ├── lab.py   run_all.py                       shared helpers; re-run everything
-│   ├── r01 ... r16_*.py                          one script per question
+│   ├── r01 ... r20_*.py                          one script per question
 │   ├── results/   figures/                       text output and plots of each script
 └── audit/
     ├── USRT_AUDIT_REPORT.md                      findings, provenance, before/after fixes, errata
@@ -367,6 +367,10 @@ Exploration after the audit lives in [`research/`](research/). Each question bec
 | [`r14`](research/r14_entanglement_gravity.py) | Gravity from entanglement? Gravity and quantum mechanics as one thing? | **The substrate vacuum's entanglement follows an area law** (0.0242 per cell face; Srednicki's 0.30 reproduced). Bekenstein–Hawking/Jacobson then give **the same cell size as Sakharov within 17 %**. G is the entanglement of the quantum cells. |
 | [`r15`](research/r15_defects_as_mass.py) | Is mass a defect of the substrate? | **Kröner = Einstein:** curvature is the density of disclinations (verified symbolically), and a disclination lenses like a mass. **A crystal substrate is ruled out:** its defect lines would be cosmic strings **3–6×10⁵ times heavier** than the CMB allows. |
 | [`r16`](research/r16_quantum_gravity_bridge.py) | Are gravity and quantum mechanics the same thing at different scales? | **Yes, below the Planck scale:** the quantum correction to Newton's law is (41/10π)(l_P/r)², 10⁻⁷⁰ at 1 m and O(1) only at l_P. **Decisive test:** gravity-mediated entanglement. A quantum substrate predicts it (concurrence 0.99 for 3×10⁻¹⁴ kg after 2.5 s); a classical substrate predicts exactly 0. |
+| [`r17`](research/r17_relational_time.py) | Is time relational, and relative to motion? | **Page–Wootters, exact:** a static universe (|JΨ| ~ 10⁻¹⁶) whose parts see Schrödinger evolution (infidelity < 10⁻¹⁵). **A clock made of substrate waves slows by exactly γ** (error falls as h², 2.5×10⁻⁴ at v = 0.8). On a coarse lattice the slowing is wrong by 22 % at v = 0.8. **Correction to r08:** clocks redshift only if *every* internal rate scales with the local substrate rate; r08's medium is excluded at 4×10⁴σ by Galileo. |
+| [`r18`](research/r18_arrow_of_time.py) | Why is time one-way, even for the substrate? | **An exactly reversible substrate returns bit-for-bit** when every velocity is reversed. Flip one of its 65,536 bits and it never does: un-mixing has odds of 10⁻⁵⁷¹⁵. The arrow comes from the low-entropy start. **A growing (causal-set) substrate is one-way by construction**, yet 9.5 million birth orders give the same universe, so there is no universal "now". |
+| [`r19`](research/r19_causal_set_substrate.py) | Test a causal set: discreteness with no rest frame | **It passes everything the lattice failed.** Links point in every boost direction (Ein(N) exact). Dimension comes from order alone (2.005, 3.000, 3.998). **The twin paradox appears by counting elements.** The mean wave operator is a closed-form function of k² only: **exactly Lorentz invariant**, with c at every energy (MC χ² = 3.0/4). **Curvature from counting → −R/2** (to 1×10⁻⁴). Λ ~ 1/√N gives 1.4×10⁻¹²² against an observed 2.8×10⁻¹²². |
+| [`r20`](research/r20_constants_and_substrate.py) | How do the constants of nature relate to the substrate? | **c, ħ, G are the substrate's units.** α and α_G set the sizes of atoms, stars (α_G^(−3/2) m_p = 1.85 M_⊙) and planets (1.2 Jupiters). The three couplings nearly meet at 2×10¹⁶ GeV (MSSM). Gravity's weakness is an exponential of the strong coupling's running. **Dirac's G ∝ 1/t is excluded at 81σ.** **Null test:** the constants are no closer to simple formulas than random numbers are. |
 
 <table>
 <tr>
@@ -401,7 +405,18 @@ Exploration after the audit lives in [`research/`](research/). Each question bec
 
 <p align="center"><img src="research/figures/r15_defects_as_mass_disclination_lensing.png" width="92%"><br><sub><b>r15:</b> a defect in the substrate bends light like a mass. In a crystal, defect lines would be cosmic strings far heavier than observed (<a href="research/LAB_NOTEBOOK.md#e20">E20</a>).</sub></p>
 
-The current best "surviving" picture and the ranked open problems are in [notebook entry E9](research/LAB_NOTEBOOK.md#e9) and, layer by layer, in [E10](research/LAB_NOTEBOOK.md#e10). The mass-and-gravity sector ("USRT v2.1") and the brainstorm verdicts are in [E15](research/LAB_NOTEBOOK.md#e15). The graviton and gravity–quantum unification ("USRT v2.2"), with a verdict on each route, are in [E22](research/LAB_NOTEBOOK.md#e22). In short, G and the geometry of gravity follow from the substrate. The one open problem is the substrate's absolute time: a local Hamiltonian constraint, or Lorentz invariance at the cell scale.
+<table>
+<tr>
+<td width="50%"><img src="research/figures/r17_relational_time_relational_time.png" width="100%"><br><sub><b>r17:</b> relational time (Page–Wootters), moving and gravitating substrate clocks, and time-dilation tests from 33 cm to the Hubble scale (<a href="research/LAB_NOTEBOOK.md#e23">E23</a>).</sub></td>
+<td width="50%"><img src="research/figures/r19_causal_set_substrate_causal_set_tests.png" width="100%"><br><sub><b>r19:</b> a causal-set substrate. It has no rest frame, gives the twin paradox by counting, waves that are Lorentz invariant in every frame, and curvature from counting (<a href="research/LAB_NOTEBOOK.md#e25">E25</a>).</sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="research/figures/r18_arrow_of_time_reversible_gas.png" width="100%"><br><sub><b>r18:</b> an exactly reversible substrate still shows an arrow of time. It comes from the low-entropy start (<a href="research/LAB_NOTEBOOK.md#e24">E24</a>).</sub></td>
+<td width="50%"><img src="research/figures/r20_constants_and_substrate_constants.png" width="100%"><br><sub><b>r20:</b> how the constants build the world and nearly unify, Dirac's drift excluded, and a look-elsewhere test of "hidden relations" (<a href="research/LAB_NOTEBOOK.md#e26">E26</a>).</sub></td>
+</tr>
+</table>
+
+The current best "surviving" picture and the ranked open problems are in [notebook entry E9](research/LAB_NOTEBOOK.md#e9) and, layer by layer, in [E10](research/LAB_NOTEBOOK.md#e10). The mass-and-gravity sector ("USRT v2.1") and the brainstorm verdicts are in [E15](research/LAB_NOTEBOOK.md#e15). The graviton and gravity–quantum unification ("USRT v2.2"), with a verdict on each route, are in [E22](research/LAB_NOTEBOOK.md#e22). In short, G and the geometry of gravity follow from the substrate. The one open problem is the substrate's absolute time: a local Hamiltonian constraint, or Lorentz invariance at the cell scale. **Update ([E27](research/LAB_NOTEBOOK.md#e27), "USRT v2.3"):** a *causal-set* substrate removes that problem. It is a growing random order with no rest frame, it passed every test the lattice failed, and it is now the leading candidate. Time there is the order itself: relational, relative and one-way.
 
 ---
 
