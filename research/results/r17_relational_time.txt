@@ -1,0 +1,72 @@
+
+==============================================================================
+A. Relational time (Page-Wootters): a static universe whose parts see time pass
+==============================================================================
+clock: 16 evenly spaced levels; system: a qubit; constraint J = H_clock + H_system
+physical states (J Psi = 0): 2-dimensional;  |J Psi| = 5.7e-17
+the WHOLE universe does not change: max | |<Psi|exp(-iJs)|Psi>| - 1 | = 4.4e-16
+but the system, read relative to the clock, evolves exactly by Schroedinger's equation:
+   max infidelity over 16 clock readings = 7.8e-16
+=> time is a RELATION between parts (clock reading <-> system state), not an external
+   parameter. Realised with entangled photons: Moreva et al., PRA 89, 052122 (2014).
+
+==============================================================================
+B. Relative to motion: a clock made of substrate waves (sine-Gordon breather)
+==============================================================================
+breather internal frequency 0.6 (rest period 10.4720); continuum prediction T(v) = gamma T_rest
+   v = 0.0 (gamma 1.0000): T/(gamma T_rest) - 1 = -7.14e-05 (h=0.1), -1.79e-05 (h=0.05), -4.48e-06 (h=0.025); h->0 extrapolation -8.2e-09
+   v = 0.3 (gamma 1.0483): T/(gamma T_rest) - 1 = -3.88e-05 (h=0.1), -8.39e-06 (h=0.05), -2.03e-06 (h=0.025); h->0 extrapolation +9.3e-08
+   v = 0.5 (gamma 1.1547): T/(gamma T_rest) - 1 = -1.90e-04 (h=0.1), -3.78e-05 (h=0.05), -8.86e-06 (h=0.025); h->0 extrapolation +8.0e-07
+   v = 0.7 (gamma 1.4003): T/(gamma T_rest) - 1 = -1.88e-03 (h=0.1), -3.35e-04 (h=0.05), -7.56e-05 (h=0.025); h->0 extrapolation +1.1e-05
+   v = 0.8 (gamma 1.6667): T/(gamma T_rest) - 1 = -8.00e-03 (h=0.1), -1.23e-03 (h=0.05), -2.53e-04 (h=0.025); h->0 extrapolation +7.1e-05
+=> the deviation falls as h^2: in the continuum the substrate clock obeys time dilation EXACTLY
+   (the wave equation is Lorentz invariant). Nobody tells the clock to slow down: moving costs
+   the internal oscillation part of its fixed budget of signal speed.
+   COARSE lattice (h = 0.5): v = 0.0: T(v)/(gamma T(0)) - 1 = +0.000e+00
+   COARSE lattice (h = 0.5): v = 0.3: T(v)/(gamma T(0)) - 1 = -4.642e-03
+   COARSE lattice (h = 0.5): v = 0.5: T(v)/(gamma T(0)) - 1 = -1.600e-02
+   COARSE lattice (h = 0.5): v = 0.7: T(v)/(gamma T(0)) - 1 = -4.216e-02
+   COARSE lattice (h = 0.5): v = 0.8: T(v)/(gamma T(0)) - 1 = -2.147e-01
+=> on a lattice whose cells are not small compared with the clock, time dilation is broken
+   (here 22% at v = 0.8). A real lattice substrate shows this at momenta ~ hbar/a: tested by
+   the highest-gamma particles (cosmic rays, gamma ~ 1e11), which see no such effect
+   (Coleman & Glashow, PRD 59, 116008 (1999): speed differences < ~1e-23).
+
+==============================================================================
+C. Relative to gravity: the same clock at the bottom of a substrate well
+==============================================================================
+   well depth A = 0.0 (local rate N0 = 1.000): tick rate seen from far away: covariant medium 1.00002, r08 medium 1.00002
+   well depth A = 0.1 (local rate N0 = 0.900): tick rate seen from far away: covariant medium 0.90026, r08 medium 1.00016
+   well depth A = 0.2 (local rate N0 = 0.800): tick rate seen from far away: covariant medium 0.80051, r08 medium 1.00025
+   well depth A = 0.3 (local rate N0 = 0.700): tick rate seen from far away: covariant medium 0.70076, r08 medium 1.00029
+=> covariant medium: clocks deep in the well tick slower by exactly N0 (residual ~3e-4 from the
+   well's curvature over the clock's size) = the gravitational redshift. r08's medium (only
+   the wave speed lowered): NO redshift. Measurement (Galileo 5 & 6, Delva et al. 2018):
+   redshift violation alpha = (1.90e-06 +- 2.48e-05)
+   covariant medium alpha = 0: 0.08 sigma; r08 medium alpha = -1: 4.0e+04 sigma -> EXCLUDED
+   Correction to r08/E12: trapped energy must lower the wave speed AND every internal rate by the
+   same factor N(x) (the lapse). Free fall stays universal (Killing energy 8 m N(x)), and now
+   clocks redshift correctly. 'Time runs at the local rate of the substrate.'
+
+==============================================================================
+D. GPS: both effects in daily life (computed)
+==============================================================================
+orbit radius 26562 km, speed 3.874 km/s
+   motion (special relativity): -7.21 us/day;  height (gravity): +45.65 us/day;  net +38.44 us/day
+   uncorrected, that is 11.5 km of ranging error per day: GPS corrects for it.
+
+==============================================================================
+E. The measured ladder of time dilation, smallest to largest scale
+==============================================================================
+      1e-03 m  Bothwell et al. 2022 (Sr lattice clock)      redshift resolved inside a 1 mm atomic sample (Nature 602, 420)
+      3e-01 m  Chou et al. 2010 (Al+ clocks, 33 cm)         measured/predicted = 1.13942 +- 0.44  (0.3 sigma)  [(4.1 +- 1.6)e-17 measured vs 3.6e-17 predicted (Science 329, 1630)]
+      2e+01 m  Pound & Snider 1965 (22.5 m tower)           measured/predicted = 0.999 +- 0.0076  (0.1 sigma)  [Phys. Rev. 140, B788]
+      1e+02 m  Ives-Stilwell, Li+ at 0.34c (storage ring)   consistent at the 2e-08 level  [Botermann et al., PRL 113, 120405 (2014)]
+      1e+07 m  Gravity Probe A 1976 (10,000 km)             consistent at the 7e-05 level  [agreement to 7e-5 (Vessot et al., PRL 45, 2081)]
+      3e+07 m  Galileo 5 & 6 (eccentric orbits)             measured/predicted = 1 +- 2.5e-05  (0.1 sigma)  [Delva et al., PRL 121, 231101 (2018)]
+      4e+07 m  Hafele & Keating 1971 (westward flight)      measured/predicted = 0.992727 +- 0.08  (0.1 sigma)  [+273 +- 7 ns measured vs +275 +- 21 ns predicted (Science 177, 168)]
+      2e+13 m  S2 star at the Galactic Centre               measured/predicted = 0.9 +- 0.17  (0.6 sigma)  [GRAVITY Collab., A&A 615, L15 (2018)]
+      1e+26 m  Type Ia supernovae (DES), z to 1.2           measured/predicted = 1.003 +- 0.005  (0.6 sigma)  [light curves stretched by (1+z)^b (White et al. 2024)]
+      2e+26 m  Quasar variability, z to 4.3                 measured/predicted = 1.28 +- 0.28  (1.0 sigma)  [Lewis & Brewer, Nature Astron. 7, 1265 (2023)]
+=> every test, from a millimetre to across the universe, agrees with relativistic time
+   dilation. Any substrate must reproduce all of them: the covariant medium (B, C) does.
