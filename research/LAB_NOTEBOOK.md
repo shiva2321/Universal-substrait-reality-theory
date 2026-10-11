@@ -59,6 +59,7 @@ This is the running record of every question, calculation, plot and conclusion i
 | [E41](#e41) | 2026-10-11 | Review of the parallel memory-kernel (r25) and dark-matter (r28) entries, and the hand-off list for the next session | — |
 | [E42](#e42) | 2026-10-11 | Outside review of the whole repository, and a re-test by calculation of R15–R17 (r25, r26, r28) | r31 |
 | [E43](#e43) | 2026-10-11 | Why gravity and quantum physics are not yet united, and why light has a dual nature: are there answers? | — |
+| [E44](#e44) | 2026-10-11 | Time without an outside clock, space as a stiff fluid, and whether light's lumps are in the light or in the detector | r32 |
 
 ---
 
@@ -2380,3 +2381,50 @@ Cubes l = 2–12; area-law fit S = η·6l² + b·l + c for l ≥ 4, exactly as f
 - Web check (summaries only): Snowmass 2021 white paper on tabletop tests, arXiv:2203.11846; arXiv:2602.19306 (two interacting Stern–Gerlach interferometers, February 2026); "Fundamental Physics in 2025: Status, Decisive Targets, and Path Forward", arXiv:2512.21445
 
 **Files:** pure reasoning; no script.
+
+---
+
+<a id="e44"></a>
+## E44 — Time without an outside clock, space as a stiff fluid, and whether light's lumps are in the light or in the detector (2026-10-11)
+
+**Question (user):** three replies to E43, quoted in part.
+- *On time:* "if we assume that time [is] a concept we humans created to measure change then still everything is going to happen as it was supposed to anyway.... lets say there is no observer in the universe and no concept of time then would the universe cease to exist ? or everything would still work as it is?? ... a superier being who is in another higher dimention who has a third person's perspective like view of the universe then for that being the concept of time is irrelivent ... no past no future ... a broken vase cant be undone ... unless the vase is converted to a pure energy and then that needs to converted into vase again ... the required energy would be astronomical".
+- *On space:* "the concept of space and reality fabric is something maliable yet rigit enough that the breaking it requires astronomical energy ... breaking it is possible maybe like in black hole .... which requires 10^19 magnitude of energy ... its elasticity needs to be almost infinity but not infinity ... when matter is create in it it isolates a section/area of it to exist and trapp that energy ... its behavioure seems like fluid ... matter either creates cavity or a bubble in/on the space ... we also need mathematics and machenisums and reallife observations experiment results to back it ... our physics break at singularity at blackhole becuse there is nothing beyond it ... what do you say ??"
+- *On light:* "it could be that one is light's property and other is its causlaity because it interacts with the surrounding space and matter..."
+
+**Method:** pure reasoning from established physics for the time and space points; one calculation (r32) for the light point and for the numbers quoted. Two web searches checked the 1986 beam-splitter experiment and the Lamb–Scully semiclassical model (read as summaries, not as papers).
+
+**Results:**
+
+*Time*
+- **"Time is a human concept for measuring change" is relational time**: time is how parts of the universe change relative to one another (Leibniz; Page & Wootters 1983; Barbour; Rovelli). E23/r17 computed it: a total state that is static (|JΨ| ~ 10⁻¹⁶) in which a subsystem sees ordinary Schrödinger evolution (infidelity < 10⁻¹⁵). The view from outside has no time, the view from inside has it. Whether time is *only* relational is **open** (Smolin argues it is fundamental).
+- **No observers.** The universe ran for 13.8 Gyr before there were observers. In physics an "observer" is anything that interacts and leaves a record (decoherence), not a person, and any process that changes is a clock. That is the mainstream reading; what a measurement is remains **open**.
+- **A being outside, seeing "the current state"** needs a single "now" for the whole universe, which relativity does not have (relativity of simultaneity). The natural reading is the *block universe*: all moments equally real, nothing flowing. Interpretive, **open**.
+- **The broken vase.** The arrow of time is statistical: the microscopic laws are almost time-symmetric, and a broken vase is one of vastly more arrangements than a whole one. E24/r18: a reversible gas returns exactly when every velocity is reversed, but flip one of 65,536 bits and the odds of un-mixing are 10⁻⁵⁷¹⁵. The origin is the low-entropy start.
+- **The energy (r32).** 1 kg as pure energy is 8.99×10¹⁶ J = 21.5 megatons of TNT = 1,432 Hiroshima bombs. Energy alone comes back as equal matter and antimatter, not as an ordinary vase, and the exact atom-by-atom arrangement is lost. Gluing the pieces needs no such energy but cannot undo the heat and scatter.
+
+*Space*
+- **Right:** space-time reacts to the energy and mass present; it is three-dimensional, not a sheet (the rubber sheet is a teaching picture); and it is extremely stiff but can ripple. Stiffness c⁴/8πG = 4.8×10⁴² N (r03); the whole Sun bends starlight at its edge by only 1.751″ (r32); gravitational waves are ripples of it (LIGO strain ~10⁻²¹). "Elasticity almost infinite, not infinite" is a huge stiffness.
+- **"10¹⁹ breaks space".** The Planck energy is 1.96×10⁹ J, 58 litres of petrol or 9.0×10¹⁴ LHC collisions: large *per particle*, not in joules (a 1 kg vase holds 4.6×10⁷ Planck energies). A black hole forms by squeezing mass inside r_s = 2GM/c² (vase 1.5×10⁻²⁷ m, Earth 8.87 mm, Sun 2.95 km). The horizon is not a break; the singularity is where the *equations* give infinite density, and what happens there is **open** (most expect quantum gravity to replace it).
+- **The fluid and cavity picture** is a real research programme as an analogy (Unruh 1981; Volovik 2003; sonic black holes in water, Weinfurtner et al. 2011, and in cold atoms, Steinhauer 2016). **This repository has tested the literal version.** Survives: mass as trapped energy (E11); a trapped twist obeys special relativity exactly (E4/r01); light as the twist of a medium (E5); no drag on a body at rest in a superfluid below a critical speed (Landau). Fails: gravity as a density cavity is short-range, falling as e^(−1.41 r) rather than 1/r (a04, r01); a crystal-like medium makes the speed of light depend on direction by 17–33 % and adds a third polarisation (a01). Open: long-range 1/r gravity needs a protected massless spin-2 mode (E13, E17).
+- **Right again:** quantum gravitational effects are negligible (gravity is about 10³⁶ times weaker than electromagnetism between protons) and nothing near the Planck scale can be reached (E43).
+
+*Light*
+- **The idea:** the wave is light's own property, and the lumps come from its interaction with matter. This is the semiclassical picture (Lamb & Scully 1969: a classical wave acting on quantised matter), which reproduces the photoelectric effect. A pilot-wave reading (de Broglie–Bohm) keeps a real wave and a real particle riding on it.
+- **r32, a test that separates them.** Heralded beam-splitter: with N_G gates and counts N_T, N_R, N_TR, α = N_G N_TR/(N_T N_R). Any smooth wave of intensity I with clicks proportional to I gives α = ⟨I²⟩/⟨I⟩² ≥ 1; simulated 1.00, 1.26, 1.97 for constant, gamma (k = 4) and thermal intensity (expected 1, 1 + 1/k, 2). Single photons give 0.036 ± 0.002 (exact 0.039 for efficiency 0.1 and 10⁻³ dark counts). Real experiments (typed in from search summaries): the 1986 atomic cascade violates α ≥ 1 by about 13σ; a modern teaching laboratory finds 0.0188 ± 0.0067.
+- **Verdict:** the lumps are in the light itself. "Smooth wave plus lumpy detector" explains the photoelectric effect but cannot make two detectors avoid clicking together. Lamb and Scully's own claim was narrower: other effects, such as blackbody radiation, Compton scattering and spontaneous emission, need the quantised field.
+
+**Interpretation, in plain English:**
+- Each of the three instincts is close to something real. Time as change measured against other change is relational time, and the repository has already computed a toy universe in which the whole is frozen while the parts see time pass. Space as a stiff fluid that trapped energy dents is the whole USRT project; the literal cavity and crystal versions have failed specific tests, the twist-and-trapped-energy parts have survived. Light's two sides as "property" and "interaction" is nearly a real interpretation, but single-photon experiments put the lumpiness in the light.
+- The numbers matter: "10¹⁹" is a per-particle scale and a vase's energy is far larger; black holes come from squeezing, and un-breaking a vase needs gluing, not annihilation.
+- None of this is new physics; it shows which of the intuitions have been tested and how.
+
+**Status:** relational time: **established** as a formalism (E23), whether it is all there is: **open**. Block universe, singularities, measurement: **open**. Arrow of time from the low-entropy start: **established**. Space as a stiff medium: stiffness **computed** (r03, r32); cavity gravity **ruled out** as a simple density dip; the protected long-range mode **open**. Light: lumps in the light itself **established** (r32 toy plus the experiments cited).
+
+**References** (from memory, except the web check at the end):
+- **Page & Wootters**, PRD 27, 2885 (1983); **Barbour**, *The End of Time* (1999); **Rovelli**, *The Order of Time* (2018); **Smolin**, *Time Reborn* (2013); **Zurek**, Rev. Mod. Phys. 75, 715 (2003); **Albert**, *Time and Chance* (2000)
+- **Unruh**, PRL 46, 1351 (1981); **Volovik**, *The Universe in a Helium Droplet* (2003); **Weinfurtner et al.**, PRL 106, 021302 (2011); **Steinhauer**, Nature Phys. 12, 959 (2016)
+- **Lamb & Scully**, in *Polarisation, Matière et Rayonnement* (1969); **Grangier, Roger & Aspect**, Europhys. Lett. 1, 173 (1986); **Kimble, Dagenais & Mandel**, PRL 39, 691 (1977); **Bohm**, Phys. Rev. 85, 166 and 180 (1952)
+- Web check (summaries only): the Reed College page on the Grangier experiment (people.reed.edu/~beckm/QM/grangier), arXiv:2209.06136 ("Testing the existence of single photons") and Physics Today, "The concept of the photon"
+
+**Files:** [`r32_light_lumps_and_energy_scales.py`](r32_light_lumps_and_energy_scales.py), [results](results/r32_light_lumps_and_energy_scales.txt), ![scales](figures/r32_light_lumps_and_energy_scales_lumps_and_scales.png)

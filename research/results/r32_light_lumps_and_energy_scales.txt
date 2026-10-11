@@ -1,0 +1,56 @@
+
+==============================================================================
+A. Is the lumpiness in the light, or only in the detector?
+==============================================================================
+Setup: heralded beam-splitter experiment (Grangier, Roger & Aspect 1986).  alpha = N_G N_TR / (N_T N_R);
+alpha = 1 means the two detectors click independently, alpha < 1 means they avoid clicking together.
+Every model below has the same mean click probability per detector (0.050) and dark counts (0.001);
+4,000,000 gate windows each.
+Classical wave of intensity I per window, clicks proportional to I: alpha = <I^2> / <I>^2 >= 1 (Cauchy-Schwarz),
+whatever the intensity pattern; a smooth wave can never make the detectors avoid each other.
+
+    model                                         alpha simulated  alpha expected
+    smooth wave, constant intensity                   1.003 +- 0.010           1.000
+    smooth wave, gamma-fluctuating (k = 4)            1.256 +- 0.012           1.250
+    smooth wave, thermal light (k = 1)                1.974 +- 0.015           2.000
+    single photons, one per window                    0.036 +- 0.002           0.039
+
+Real experiments (typed in, from search summaries, not re-checked against the papers):
+    1986 atomic cascade: classical bound alpha >= 1 violated by about 13 standard deviations;
+    a modern teaching-laboratory down-conversion source: alpha = 0.0188 +- 0.0067
+    (alpha equals the second-order coherence g2(0) of the light).
+What the toy shows: the 'smooth wave + lumpy detector' picture explains the photoelectric effect (Lamb & Scully 1969:
+a classical wave acting on quantum matter) but cannot make two detectors avoid clicking together; single photons can.
+So the lumpiness is in the light itself.  Lamb and Scully's own claim was narrower: other effects, such as blackbody
+radiation, Compton scattering and spontaneous emission, do need the quantised field (per search summaries).
+A pilot-wave reading (de Broglie-Bohm) keeps a real wave AND a real particle riding on it: the closest standing
+version of 'one is the light's property, the other what we meet when it interacts'; its predictions equal quantum theory's.
+
+==============================================================================
+B. Numbers behind the vase, the Planck energy and the black hole
+==============================================================================
+Vase (1 kg) turned entirely into energy, E = m c^2:
+    8.988e+16 J = 21.5 megatons of TNT = 1,432 Hiroshima-size bombs.
+    Turning pure energy back into matter makes equal amounts of matter and antimatter, not an ordinary vase, and the
+    exact atom-by-atom arrangement is gone; gluing the pieces needs no such energy but cannot undo the heat and scatter.
+Planck energy ('10^19'):
+    E_P = sqrt(hbar c^5 / G) = 1.956e+09 J = 1.22e+19 GeV = 58 litres of petrol,
+    9.0e+14 times one LHC collision (2.18e-06 J).  It is large per particle, not in joules:
+    a 1 kg vase holds 4.6e+07 Planck energies, spread over about 1e26 atoms.
+Black holes form by squeezing, not by a special energy: r_s = 2 G M / c^2.
+    1 kg vase    M = 1.000e+00 kg  ->  squeeze to r_s = 1.485e-27 m
+    Earth        M = 5.972e+24 kg  ->  squeeze to r_s = 8.870e-03 m (8.87 mm)
+    Sun          M = 1.988e+30 kg  ->  squeeze to r_s = 2.953e+03 m (2.95 km)
+    Planck mass  M = 2.176e-08 kg  ->  squeeze to r_s = 3.233e-35 m
+Stiffness of space:
+    c^4 / (8 pi G) = 4.82e+42 N (r03); the whole Sun bends starlight at its edge by only 1.751 arcseconds.
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   Light's lumpiness is only in the detector (smooth wave + quantum matter)   -> NOT ENOUGH: any smooth wave gives alpha >= 1 (simulated minimum 1.00); single photons give 0.04; real experiments find alpha far below 1
+   The photoelectric effect needs photons                                     -> NOT BY ITSELF (Lamb & Scully 1969 reproduce it with a classical wave and quantum matter); other effects do
+   Un-breaking a vase needs it turned into energy                             -> NOT NEEDED, and not sufficient: 21.5 Mt TNT per kg, and energy alone returns matter plus antimatter
+   '10^19' is the energy that breaks space                                    -> IT IS A PER-PARTICLE SCALE: 1.96e+09 J (58 litres of petrol); black holes form by squeezing
+   Space is extremely stiff but not infinitely                                -> c^4 / 8 pi G = 4.8e+42 N; the Sun bends starlight by 1.75 arcseconds
+   runtime 0 s
