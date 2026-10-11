@@ -54,6 +54,7 @@ This is the running record of every question, calculation, plot and conclusion i
 | [E36](#e36) | 2026-10-11 | Where the Λ mechanism fails, in plain English: the reasons and possible fixes | — |
 | [E37](#e37) | 2026-10-11 | Independent audit of the parallel work: fermion spin and g = 2 (r23), causal-set growth and the Kleitman–Rothschild cure (r24) | r27 |
 | [E38](#e38) | 2026-10-11 | Neutral topological knot solitons and the dark-to-baryon cosmic coincidence | r28 |
+| [E39](#e39) | 2026-10-11 | How much does a gauge field count? The Maxwell field's entanglement on the substrate, and the check of r26 | r29 |
 
 ---
 
@@ -365,6 +366,8 @@ Under a constant push the speed went 0.375 → 0.700 → 0.850 → 0.900c. Newto
 - [ ] (added 2026-10-11, from E31) The fermion weight for other lattice fermions (staggered, domain-wall) and on a causal set, to see how universal the 'Λ measures the fine structure' reading is.
 - [ ] (added 2026-10-11, from E37) Redo the Kleitman–Rothschild analysis with the sign convention fixed, the whole layered family and the nonlocally smeared BD action: at which coupling and discretisation scale are layered posets suppressed at large N (Carlip–Carlip–Surya)?
 - [ ] (added 2026-10-11, from E37) Can the toroidal-energy fraction f of a ribbon/Hopfion be *derived* from its energy functional? Without it g = 1/f is not a prediction and "g = 2" is an assumption.
+- [ ] (added 2026-10-11, from E39) Decide whether the classical flux-sector entropy counts: compute the photon's induced stiffness/inertia on the lattice (an r13-style Sakharov calculation) and compare it with the entanglement coefficient with and without flux sectors (1.03 against about 50–100 scalars).
+- [ ] (added 2026-10-11, from E39) Non-Abelian edge sectors: the flux-sector entropy of SU(2) and SU(3) (flux in representations; ln dim R terms) and the gauge couplings at the cell scale, to replace the Abelian g² = 0.09–1 range.
 
 > **Note (2026-10-10, later):** E10 gives the layered version of this picture, with parameter ranges and the new Coulomb-phase constraint α < α_c ≈ 0.079. Nothing in E9 is retracted.
 
@@ -1635,8 +1638,9 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 | R13 | **Framed ribbon fermion rule:** a particle is a framed ribbon defect (Lk = Tw + Wr). The 4π Dirac belt period gives spin S = ħ/2; equipartition between toroidal circulation and poloidal twist doubles μ/S, yielding g = 2 identically at tree level | g_tree = 2.0000; Schwinger 1-loop 2(1 + α/2π) = 2.00232; electron CODATA residual 3.5×10⁻⁶ (1.76 ppm, 99.85% explained) | electron & muon g-2 (CODATA 2022 / PDG 2024 / Fermilab) | **NEW** geometric model & derivation (E32; CWF theorem; Finkelstein–Rubinstein) **[downgraded 2026-10-11, see E37: Lk = Tw + Wr verified; g = 2 not derived; knot mapping is a labelling]** |
 | R14 | **Causal set growth & KR suppression rule:** the path sum is regularized against the Kleitman–Rothschild non-manifold catastrophe ($S_{\text{KR}} = \frac{\ln 2}{4} N^2$, links $N_1 = N^2/8$, height $L \equiv 3$) by the Link Action $S_{\text{link}} = \beta N_1$ with critical coupling $\beta_c = 2\ln 2 \approx 1.3863$; for $\beta > \beta_c$, KR posets are crushed by $\exp(-(\beta - \beta_c) N^2/8)$, curing the $-N_1$ conformal instability of the Benincasa–Dowker action and selecting $3+1$ dimensions | $\beta_c \to 1.3863$; KR suppression factor $10^{-404}$ at $N=256$, $10^{-6172}$ at $N=1000$; 4D height scales dynamically as $L \sim N^{1/4}$ | Lorentzian manifold emergence; tests of spacetime dimensionality | **NEW** (E33; Loomis–Carlip; Mathur–Singh–Surya) **[downgraded 2026-10-11, see E37: KR facts reproduced; β_c and 3+1 selection not established]** |
 | R15 | **Causal horizon memory rule:** past-cone horizon discretization $N_{\text{patches}}(z) = 1 + 4[d_C(z) a(z) H(z)]^2$ suppresses volume noise by $1/\sqrt{N_{\text{patches}}}$, giving $|\Omega_\Lambda| \sim 10^{-8}$ at BBN while preserving $\Omega_\Lambda \approx 0.685$ today and yielding $100\%$ pass rates | $N_{\text{patches}} = 3.7\times 10^{15}$ at BBN; suppression $1.6\times 10^{-8}$; BBN $|\Omega_\Lambda| \approx 1.4\times 10^{-28} \ll 0.046$; CMB $|\Omega_\Lambda| \approx 0.011 < 0.050$; today $N_{\text{patches}} = 1 \implies \Omega_\Lambda = 0.685$ | BBN ($T \sim 1\text{ MeV}$), CMB ($z \sim 1100$), DESI DR2 ($z < 2$) | **NEW** (E34; Sorkin 1991; Das et al. 2023) |
-| R16 | **Complete Standard Model substrate ledger rule:** bulk gauge bosons contribute $w_V = 2.0$ real scalars each ($24$ across $SU(3)\times SU(2)\times U(1)$), resolving Kabat's negative Euclidean term via Donnelly–Wall edge modes; with canonical Wilson fermions ($r=1.0$), the Standard Model's $N_{\text{eff}} = 233.4$ (minimal) and $247.1$ ($\nu_R$) lands directly inside the cosmological constant band $N_{\text{needed}} \in [180.2, 360.4]$, yielding an exact match for $\kappa = 0.648 \pm 0.04$ | $N_{\text{eff}} = 233.4$ vs $[180, 360]$; scalar $4$ ($1.7\%$), quarks $164.3$ ($70.4\%$), leptons $41.1$ ($17.6\%$), gauge $24$ ($10.3\%$); cell size $\ell_{\text{cs}} = 4.75\,\ell_P$ | Planck 2018 ($A_{\text{obs}} = 0.720$), PDG 2024 particle spectrum | **NEW** (E35; Donnelly & Wall 2015; Casini et al. 2014) |
+| R16 | **Complete Standard Model substrate ledger rule:** bulk gauge bosons contribute $w_V = 2.0$ real scalars each ($24$ across $SU(3)\times SU(2)\times U(1)$), resolving Kabat's negative Euclidean term via Donnelly–Wall edge modes; with canonical Wilson fermions ($r=1.0$), the Standard Model's $N_{\text{eff}} = 233.4$ (minimal) and $247.1$ ($\nu_R$) lands directly inside the cosmological constant band $N_{\text{needed}} \in [180.2, 360.4]$, yielding an exact match for $\kappa = 0.648 \pm 0.04$ | $N_{\text{eff}} = 233.4$ vs $[180, 360]$; scalar $4$ ($1.7\%$), quarks $164.3$ ($70.4\%$), leptons $41.1$ ($17.6\%$), gauge $24$ ($10.3\%$); cell size $\ell_{\text{cs}} = 4.75\,\ell_P$ | Planck 2018 ($A_{\text{obs}} = 0.720$), PDG 2024 particle spectrum | **NEW** (E35; Donnelly & Wall 2015; Casini et al. 2014) **[downgraded 2026-10-11, see E39: w_V = 2 not supported (1.03 computed); flux-sector entropy omitted; κ fitted]** |
 | R17 | **Topological soliton dark matter rule:** neutral Hopf knot solitons ($Q_H = 1, Q_{\text{gauge}} = 0$) have mass $M_{\text{sol}} = 5.06\text{ GeV}$; topological equipartition ($n_{\text{sol}} = n_b$) derives $\Omega_{\text{DM}}/\Omega_b = 5.39$ without fine-tuning; core radius $R_{\text{sol}} = 12.2\text{ fm}$ gives $\sigma/M = 0.517\text{ cm}^2/\text{g}$ (safely under Bullet Cluster $< 1.0$ and in SIDM core band $0.1 - 1.0\text{ cm}^2/\text{g}$) | $M_{\text{sol}} = 5.055\text{ GeV}$; $\sigma/M = 0.517\text{ cm}^2/\text{g}$; $R_{\text{sol}} = 12.18\text{ fm}$; $F_{\text{sub}} = 16.2\text{ MeV}$; $\sigma_{\text{SI}} \sim 10^{-49}\text{ cm}^2$ | Planck 2018 ($\Omega_c/\Omega_b = 5.39$), Bullet Cluster 1E 0657-56, LUX-ZEPLIN 2024 | **NEW** (E38; Battye–Sutcliffe; Kaplan et al.) |
+| R18 | **Gauge-field weight rule:** the quantum area-law coefficient of a free Maxwell field is η_sym = 1.030 η_s (not 2); the gauge-invariant boundary also carries a classical electric-flux entropy η_cl = 1.246 + ln(1/g) nats per face (about 51 scalars at flux quantum 1, 79–102 at g² = 0.28–0.09) | η_sym = 0.02495 against η_s = 0.02421 per face; 2+1D dual-scalar agreement 1.4×10⁻¹²; Gauss-law and Bianchi null spaces exact; N_eff(SM) = 222 (quantum only, r = 1) or about 1150 (flux sectors counted) against the 180–360 that Λ needs | Λ band (E29); no direct measurement | **OURS-NUMBER** (E39; method: Casini–Huerta–Rosabal, Donnelly–Wall) |
 
 **Interpretation — what is genuinely ours:**
 - **R6, R7, R13, R14, R15, R16, and R17 are new to our knowledge.** R6 and R7 link the cosmological constant to particle species count through the substrate. R13 derives how spin-½ and the gyromagnetic factor g = 2 emerge geometrically from framed ribbon topology and energy equipartition [see E37 audit note]. R14 establishes how the substrate's causal growth rule regularizes the path integral against the Kleitman–Rothschild entropy catastrophe via the Link Action [see E37 audit note]. R15 solves the cosmological constant early-universe catastrophe via causal horizon patch averaging on the backward lightcone. R16 completes the Standard Model entanglement ledger, establishing that the 118 degrees of freedom of the Standard Model produce $N_{\text{eff}} = 233.4$, matching today's cosmological constant $A_{\text{obs}} = 0.720$ with zero free parameters for unimodular coupling $\kappa = 0.648$. R17 establishes that neutral substrate topological knot solitons ($Q_H = 1, Q_{\text{gauge}} = 0$) with $M_{\text{sol}} = 5.06\text{ GeV}$ explain both the cosmic dark-to-baryon ratio $\Omega_{\text{DM}}/\Omega_b = 5.39$ via topological equipartition and the galactic dwarf core-cusp problem via SIDM self-interaction $\sigma/M = 0.517\text{ cm}^2/\text{g}$, while evading direct detection.
@@ -1656,6 +1660,8 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 > **Note (2026-10-11, later, from E31):** R6 is strengthened. On the cubic substrate a Dirac fermion counts as 16.5, 9.1, 4.3 or 1.8 scalars for Wilson r = 0.5, 1, 2 or 4. With the standard r = 1, the Standard Model's N_eff is 162–234, depending on the gauge-field weight, which overlaps the 180–372 that today's Λ needs. See E31.
 
 > **Note (2026-10-11, later, from E37):** R13 and R14 were added by the parallel (Gemini) session and are **downgraded**; the statement above that they are "new to our knowledge" is **withdrawn** until they are re-derived. R13: the framed-ribbon theorem (Lk = Tw + Wr) is verified, but g = 2 is the assumption f = ½ (g = 1/f), spin ½ is assumed, and the Schwinger term is QED's. R14: the KR facts are reproduced, but the critical coupling β_c = 2 ln 2 omits the Benincasa–Dowker term and the layered family keeps an N² entropy at any finite coupling. R15 and R16 (added after this review began) are being checked in E38 and E40. R1–R12 are unchanged.
+
+> **Note (2026-10-11, later, from E39):** R16 is **downgraded**: its "w_V = 2.0" is not supported (1.03 computed), its ledger omits the flux-sector entropy that its own text includes, and its "0.0 % residual" fits κ. The "new to our knowledge" statement for R16 is withdrawn. R18 replaces it with a computed weight and a clear statement of what decides R6.
 
 ---
 
@@ -1706,6 +1712,8 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 - **Kabat**, Nucl. Phys. B 453, 281 (1995)
 
 **Files:** [`r22_species_weights.py`](r22_species_weights.py), [results](results/r22_species_weights.txt), ![weights](figures/r22_species_weights_species_weights.png)
+
+> **Note (2026-10-11, later, from E39):** the open item "gauge-field weight" is now computed. The quantum part of a vector boson counts as 1.03 scalars (inside the range −4…2 scanned above), so N_eff(SM) = 222 at r = 1 (band 180–360). But the gauge-invariant boundary also carries a classical flux-sector entropy worth about 50–100 scalars per vector boson; counted, N_eff(SM) is about 1150. Which reading is right decides R6. See E39.
 
 ---
 
@@ -1955,6 +1963,14 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 
 **Files:** [`r26_gauge_entanglement_weights.py`](r26_gauge_entanglement_weights.py), [results](results/r26_gauge_entanglement_weights.txt), ![overview](figures/r26_gauge_entanglement_weights_overview.png)
 
+> **Review note (2026-10-11, Claude, from E39/r29):** the entry was re-tested with an actual calculation.
+> - **Not supported — "w_V = 2.0 identically".** The script asserts that the reduced density matrix of the Coulomb-gauge field factors into two scalar copies; nothing is computed. The gauge-invariant (electric-centre) quantum entanglement of a free Maxwell field across a cube face is **1.030 scalars**, not 2 (η_sym = 0.02495 against 0.02421 per face; 2+1D check against an independent dual scalar to 10⁻¹²). Even the naive Coulomb-gauge link entropy gives 1.69 or 1.25 scalars depending on which links are included.
+> - **Inconsistent ledger.** The entry's own text says S_total = 2 S_scalar + S_Shannon(E_⊥) and prints the edge-mode value 1.2455 nats per face (right: 1.246 computed here from whole cubes; about 51 scalars), then leaves it out of the Standard Model ledger. Counted consistently, N_eff(SM) is about 840–1430, 2.3–4 times above the band 180–360, not 233.
+> - **Invented inputs.** Four of the eight Dirac weights (r = 0.75, 1.25, 1.5, 3) are not in r22, and the power-law curve is 17 % off at r = 0.5 (19.3 against 16.5).
+> - **"0.0 % residual" is by construction:** κ = 0.648 is solved from N_eff and A_obs (one parameter fitted to one number), so "zero free parameters" is wrong.
+> - **Kabat/Donnelly–Wall:** "Kabat's term is an artifact" and "Donnelly–Wall proved S ≥ 2 S_scalar > 0" are not established statements.
+> - **Status:** the ledger arithmetic is right for its inputs; the physics claim is not established. See E39.
+
 ---
 
 <a id="e36"></a>
@@ -2125,3 +2141,51 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 
 **Files:** [`r28_topological_dark_matter.py`](r28_topological_dark_matter.py), [results](results/r28_topological_dark_matter.txt), ![overview](figures/r28_topological_dark_matter_overview.png)
 
+---
+
+<a id="e39"></a>
+## E39 — How much does a gauge field count? The Maxwell field's entanglement on the substrate, and the check of r26 (2026-10-11)
+
+**Question (user):** "Gauge fields. The force-carrying particles' entanglement weight isn't computed yet; it needs careful treatment at the region's boundary." (The parallel session's r26/E35 asserts that every gauge boson counts as exactly 2 scalars.)
+
+**Method (r29):** free U(1) lattice gauge field, H = ½ΣE² + ½ΣB² (B = curl A), Gauss law ∇·E = 0, antiperiodic box. In the **electric centre** (Casini–Huerta–Rosabal; Donnelly–Wall) the algebra of a cube of l³ sites is generated by E on every link with at least one end in the cube (links inside, and the 6l² links crossing the boundary) and by B on every plaquette wholly inside. The boundary-crossing E_⊥ commute with everything inside, so they are classical. The state is Gaussian, so S = S_sym + S_cl:
+- **S_sym** is the symplectic entropy of the quantum part (E and B inside), conditioned on E_⊥, with canonical pairs from an SVD of the link–plaquette incidence matrix;
+- **S_cl** is the Shannon entropy of the boundary fluxes, ½ ln det(2πe Γ/δ²) over n − 1 independent integer fluxes (for compact U(1) at coupling g the quantum is δ = g).
+
+Cubes l = 2–12; area-law fit S = η·6l² + b·l + c for l ≥ 4, exactly as for the scalar in E19/E31. Checks: (i) in 2+1D, where Maxwell is dual to a scalar, the pipeline is compared with an independent scalar calculation; (ii) in 3+1D, ranks, null spaces and ν ≥ ½.
+
+**Results (computed here):**
+- **Validation.**
+  - 2+1D, squares l = 2–8: S_sym agrees with the dual-scalar calculation to 1.4×10⁻¹² and S_cl to 1×10⁻¹⁴.
+  - 3+1D, l = 2–6: rank of the E correlator = (#E generators) − l³ (Gauss law at every site) and of the B correlator = (#plaquettes) − (l−1)³ (Bianchi), both exact; the conditional variances outside the symplectic space are ≤ 10⁻¹⁵; every symplectic eigenvalue is ≥ ½.
+  - Box 48³ against 64³: S_sym changes by < 1.3×10⁻⁵.
+- **Quantum part.** η_sym = 0.02495 per face (variants 0.02495–0.02496) against η_s = 0.02421 for a scalar on the same cubes: **1.030 scalars, not 2.** The per-face value is still rising at l = 12 (0.0207) and the limit comes from the fit.
+- **Classical flux part.** η_cl = 1.246 nats per face at flux quantum 1, which is **51 scalars**. For compact U(1) at coupling g it is 1.246 + ln(1/g): 52 scalars at g² = 1, 79 at g² = 0.28 (α = 1/45, near the cell scale), 102 at g² = 0.092 (α = 1/137). The Gaussian form needs the flux spread to exceed the quantum (g ≲ 0.6).
+- **The "two scalars" premise.** The Coulomb-gauge link variables (A^T, E^T) restricted to the cube give 1.69 scalars (links inside) or 1.25 scalars (links inside and crossing). Neither is 2 and they disagree, because the transverse projector is non-local and gauge-fixed links restricted to a region have no unique meaning.
+- **Standard Model ledger** N_eff = 4 (Higgs) + 22.5 w_D + 12 w_V, with w_D from E31 (r = 0.5, 1, 2, 4: 16.48, 9.14, 4.30, 1.79) and the band 180–360 that today's Λ needs (A_obs = 0.7199):
+
+  | reading of a vector boson | w_V | r = 0.5 | r = 1 | r = 2 | r = 4 |
+  |---|---|---|---|---|---|
+  | quantum part only (this work) | 1.03 | 387 | **222** | 113 | 57 |
+  | r26's assumption | 2 | 399 | 234 | 125 | 68 |
+  | with flux sectors, g² = 1 | 52 | 1005 | 840 | 731 | 674 |
+  | with flux sectors, g² = 0.28 | 79 | 1320 | 1155 | 1046 | 990 |
+  | with flux sectors, g² = 0.092 | 102 | 1597 | 1432 | 1323 | 1266 |
+
+- **Check of r26.** The Dirac weights it uses at r = 0.75, 1.25, 1.5 and 3 are not in r22 (invented), its power-law curve is 17 % off at r = 0.5 (19.3 against 16.5), "κ = 0.648 gives 0.0 % residual" is one parameter fitted to one number, and its printed edge-mode value 1.2455 is right but left out of its ledger.
+
+**Interpretation:**
+- **A photon's vacuum entanglement across a surface has two parts.** A quantum part worth one scalar, and a classical "which flux went through each face" register worth about 50–100 scalars per vector boson. The classical register is large because every face's electric flux fluctuates by about one quantum, and it is the term that the choice of centre moves around.
+- **The Standard Model's species count either lands in Λ's band or misses it by a factor 3–6.** It lands (222 at r = 1) if only the quantum part counts; it overshoots (about 1150) if the flux sectors count. Whether it lands is therefore decided by the classical term and by the Wilson regulator, not by 1.03 against 2: the quantum-only ledger is dominated by the fermions (206 of 222).
+- **Which reading is right is the edge-mode question** (Donnelly–Wall; Kabat's contact term; Susskind–Uglum). For a photon that is the substrate's own gauge mode (E5), the flux sectors are real substrate configurations, and string-net models have the analogous area-law term of order ln(quantum dimension) per boundary link; that argues that they count. Then R6 misses by a factor 3–6 for the Standard Model (or needs κ outside ½–1). The decisive calculation is the photon's induced stiffness on the lattice (r13-style); it is queued.
+- **R6 is therefore sharper, not settled:** Λ√V = 2πκ/(Nη) is a near-miss in one reading and a miss in the other.
+
+**Status:** **computed here** and validated (R18). The edge-mode question is **open**. r26's R16 is downgraded in E30. The non-Abelian edge sectors and the couplings at the cell scale are not computed (queued).
+
+**References** (all from memory; arXiv is blocked in this container):
+- **Casini, Huerta & Rosabal**, PRD 89, 085012 (2014); **Donnelly & Wall**, PRD 86, 064014 (2012) and PRL 114, 111603 (2015)
+- **Kabat**, Nucl. Phys. B 453, 281 (1995); **Susskind & Uglum**, PRD 50, 2700 (1994); **Larsen & Wilczek**, Nucl. Phys. B 458, 249 (1996)
+- **Radičević**, arXiv:1404.1391 (2014); **Buividovich & Polikarpov**, Nucl. Phys. B 802, 458 (2008); **Pretko & Senthil**, PRB 94, 125112 (2016)
+- **Kogut & Susskind**, PRD 11, 395 (1975); **Srednicki**, PRL 71, 666 (1993)
+
+**Files:** [`r29_gauge_field_weight.py`](r29_gauge_field_weight.py), [results](results/r29_gauge_field_weight.txt), ![gauge](figures/r29_gauge_field_weight_gauge_weight.png)

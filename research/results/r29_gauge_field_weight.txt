@@ -1,0 +1,104 @@
+
+==============================================================================
+A. Validation in 2+1 D: the Maxwell pipeline against an independent dual-scalar calculation
+==============================================================================
+In 2+1 D, B = pi~ and E = curl^T phi~ for a dual scalar phi~ (H is identical). The gauge algebra of a square
+(E on links inside and crossing, B on inner plaquettes) is the scalar algebra of the inner dual sites with
+the outer ring phi~ treated as classical shifts. Same state, two independent computations:
+     l   S_sym (Maxwell)  S_sym (dual scalar)  difference  S_cl (Maxwell)  S_cl (dual)
+     2      0.0339985873         0.0339985873     1.2e-14      6.31467551   6.31467551
+     3      0.0807085581         0.0807085581     7.6e-14      9.70819176   9.70819176
+     4      0.1254025823         0.1254025823     2.4e-13     13.06698527  13.06698527
+     5      0.1675331021         0.1675331021     4.2e-13     16.40499886  16.40499886
+     6      0.2076751686         0.2076751686     7.5e-13     19.72920133  19.72920133
+     8      0.2839638535         0.2839638535     1.4e-12     26.35057648  26.35057648
+   max |S_sym difference| = 1.4e-12; max |S_cl difference| = 1.1e-14.
+   => the correlators (projector phases, plaquette operators), the incidence/SVD reduction, the conditioning
+      on the classical fluxes and the entropy formula agree with an independent calculation to rounding.
+   (An earlier version used the pseudo-determinant of the boundary-flux covariance, which differs from the
+    determinant over n - 1 independent integer fluxes by 1/2 ln n_boundary; the latter is used here.)
+
+==============================================================================
+B. The free Maxwell field on the cubic substrate (3+1 D): cubes of l^3 sites, electric centre
+==============================================================================
+   box 48^3 done (80 s elapsed)
+   box 64^3 done (82 s elapsed)
+     l  links in  links out  plaquettes      S_sym  S_sym/face  S_cl (delta=1)  S_cl/face
+     2        12         24           6    0.13840     0.00577          27.934     1.1639
+     3        54         54          36    0.56829     0.01052          64.894     1.2017
+     4       144         96         108    1.29527     0.01349         116.855     1.2172
+     5       300        150         240    2.32092     0.01547         183.791     1.2253
+     6       540        216         450    3.64578     0.01688         265.692     1.2301
+     7       882        294         756    5.27001     0.01793         362.551     1.2332
+     8      1344        384        1176    7.19368     0.01873         474.364     1.2353
+     9      1944        486        1728    9.41680     0.01938         601.130     1.2369
+    10      2700        600        2430   11.93935     0.01990         742.846     1.2381
+    11      3630        726        3300   14.76135     0.02033         899.511     1.2390
+    12      4752        864        4356   17.88276     0.02070        1071.125     1.2397
+   structural checks (l = 2..6): rank of the E correlator = (#E generators) - l^3 (Gauss law at every site of the cube);
+   rank of the B correlator = (#plaquettes) - (l-1)^3 (Bianchi identity); conditional variance of the E-combinations
+   outside the symplectic space and of the B-combinations outside it:
+      l = 2: rank E = 28 (expected 28), rank B = 5 (expected 5), null variances 7e-16 and 3e-17, nu in [0.502705, 0.5054] (>= 1/2)
+      l = 3: rank E = 81 (expected 81), rank B = 28 (expected 28), null variances 1e-15 and 5e-17, nu in [0.500008, 0.5128] (>= 1/2)
+      l = 4: rank E = 176 (expected 176), rank B = 81 (expected 81), null variances 5e-16 and 8e-17, nu in [0.500000, 0.5205] (>= 1/2)
+      l = 5: rank E = 325 (expected 325), rank B = 176 (expected 176), null variances 5e-16 and 1e-16, nu in [0.500000, 0.5280] (>= 1/2)
+      l = 6: rank E = 540 (expected 540), rank B = 325 (expected 325), null variances 6e-16 and 1e-16, nu in [0.500000, 0.5350] (>= 1/2)
+
+   area-law fit S = eta (6 l^2) + b l + c, l >= 4:
+      scalar (r14 pipeline, same cubes):  eta_s = 0.02421 per face
+      quantum part of the Maxwell field:  eta_sym = 0.02495   (edge b = -0.3219)
+         robustness: with a log term 0.02496; fit from l >= 3: 0.02495; from l >= 6: 0.02495;
+         box 64^3 against 48^3: max relative change 1.3e-05
+      => eta_sym / eta_s = 1.030  (fit variants 1.030-1.031): the quantum part of a vector
+         boson counts as ONE scalar, not two.
+      classical boundary-flux part, flux quantum 1: eta_cl = 1.2461 nats per face = 51.5 scalars.
+      For compact U(1) at coupling g the flux quantum is g in these units: eta_cl(g) = eta_cl(1) + ln(1/g)
+      (valid when the flux spread exceeds the quantum, g <~ 0.6).
+
+==============================================================================
+C. Where the 'two scalars' claim comes from, and whether it survives
+==============================================================================
+   r26 argues that in Coulomb gauge the two transverse polarizations obey the scalar dispersion, so the reduced density
+   matrix 'factors' into two scalar copies. Direct test: entropy of the Coulomb-gauge link variables (A^T, E^T) in the cube.
+      links inside the cube only:        eta = 0.04085 = 1.69 scalars
+      links inside and crossing:         eta = 0.03030 = 1.25 scalars
+   Neither is 2, and they differ from each other: the transverse projector is non-local, so restricting gauge-fixed link
+   variables to a region has no unique meaning and the density matrix does not factor. The gauge-invariant electric-centre
+   quantum entropy is 1.03 scalars. The statement 'w_V = 2.0 identically' is not supported.
+   r26's own printed edge-mode value (1.2455 nats per face, from the spectral density of the normal flux) agrees with the
+   1.2461 computed here from whole cubes; but r26 then leaves it out of its ledger although its text says S_total = 2 S_scalar + S_Shannon.
+
+==============================================================================
+D. Weights and the Standard Model ledger
+==============================================================================
+   Dirac weights from r22 (computed there): r = 0.5: 16.48, r = 1.0: 9.14, r = 2.0: 4.3, r = 4.0: 1.79
+   today's Lambda needs N = 2 pi kappa / (eta A_obs) = 180 (kappa = 1/2) to 360 (kappa = 1), A_obs = 0.7199
+   reading of a vector boson                               w_V  N_eff(SM), r=0.5     r=1     r=2     r=4
+   quantum part only (this work)                          1.03               387     222     113      57
+   r26's assumption, w_V = 2                              2.00               399     234     125      68
+   with flux sectors, g^2 = 1                            52.49              1005     840     731     674
+   with flux sectors, g^2 = 0.28 (alpha = 1/45)          78.78              1320    1155    1046     990
+   with flux sectors, g^2 = 0.092 (alpha = 1/137)       101.83              1597    1432    1323    1266
+   band needed by Lambda: 180 - 360   (Higgs 4 scalars + 22.5 Dirac x w_D + 12 vectors x w_V)
+   => with the quantum part only, N_eff(SM) = 222 at r = 1: inside the band. r26's 234 is only 5 % higher because the
+      Dirac fermions dominate the quantum-only ledger; what decides the conclusion is the classical term, not 1.03 against 2.
+   => if the classical flux sectors count, N_eff(SM) = 1155 (g^2 = 0.28): 3.2-6.4 times what Lambda needs.
+   Non-Abelian edge sectors (SU(2), SU(3): flux in representations) were not computed; they would add more, not less.
+   r26 additionally uses Dirac weights at r = 0.75, 1.25, 1.5 and 3 that are not in r22 and a power-law curve that is 17 %
+   off at r = 0.5 (19.3 against 16.5); and 'kappa = 0.648 reproduces Lambda with 0.0 % residual' is one parameter fitted
+   to one number, so the residual is zero by construction.
+
+==============================================================================
+Verdict
+==============================================================================
+* COMPUTED HERE: the quantum (bulk) entanglement of the free Maxwell field across a cube face is 1.03 scalars, not 2
+  (eta_sym = 0.02495 against 0.02421); the gauge-invariant boundary also carries a classical flux entropy of
+  1.25 + ln(1/g) nats per face, about 51+ scalars per vector boson at flux quantum 1.
+* VALIDATED: 2+1D agreement with an independent dual-scalar calculation to 1e-13; Gauss-law and Bianchi null spaces exact;
+  box size changes the result by < 1e-4.
+* THE QUESTION THAT DECIDES R6: does the classical flux-sector entropy count towards the gravitational area coefficient?
+  If not: N_eff(SM) = 222 at r = 1 (inside 180-360). If yes: about 1155, 3-6 times too large.
+  For a photon that is the substrate's own gauge mode the flux sectors are real substrate configurations (as in string-net
+  models), which argues that they count. This is open and is the sharpest statement of the species-count relation so far.
+* r26's w_V = 2.0 and its '0.0 % residual' are not supported; its edge-mode number is right but unused.
+   runtime 96 s
