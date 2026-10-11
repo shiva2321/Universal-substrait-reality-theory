@@ -1,0 +1,102 @@
+
+==============================================================================
+A. The relation, and the exact pieces
+==============================================================================
+unimodular conjugacy  Delta V * Delta(Lambda/8 pi G) ~ kappa hbar   ->  Delta Lambda = 8 pi kappa l_P^2 / Delta V
+Poisson substrate     Delta V = l^2 sqrt(V)       (one element per l^4)
+species fix the cell  l^2 = 4 N eta l_P^2         (r14: entanglement area law = A/4G)
+=> Lambda sqrt(V) = 2 pi kappa / (N eta)  ==: A_N    (dimensionless; l_P cancels)
+exact past-light-cone volumes: radiation era V = 8*pi/105 t^4, matter era V = 3*pi/55 t^4
+rms Omega_Lambda per unit A_N:  radiation era 4/(3 sqrt C) = 2.7253;  matter era 3/(4 sqrt C) = 1.8118
+numerical LCDM check deep in radiation era: 2.7253 (exact 2.7253)
+today: V_past H0^4 = 0.1229;  A_obs = Lambda_obs sqrt(V_past) = 0.7199  (Planck 2018 LCDM)
+
+==============================================================================
+B. How many particle species does today's Lambda need?
+==============================================================================
+   eta = 0.02421 (cubic lattice), kappa = 0.5: N_needed = 180
+   eta = 0.02421 (cubic lattice), kappa = 1.0: N_needed = 360
+   eta = 0.02349 (radial lattice), kappa = 0.5: N_needed = 186
+   eta = 0.02349 (radial lattice), kappa = 1.0: N_needed = 372
+   Standard Model: 118 degrees of freedom (28 bosonic + 90 fermionic)
+   eliminating N (no spin weighting needed): cell size l = sqrt(8 pi kappa / A_obs) l_P = 4.18 l_P  (kappa = 0.5)
+   eliminating N (no spin weighting needed): cell size l = sqrt(8 pi kappa / A_obs) l_P = 5.91 l_P  (kappa = 1.0)
+   -> if Lambda is the substrate's counting noise, its cells are 4-6 Planck lengths across.
+=> if every degree of freedom counts once, the SM gives Lambda within a factor 1.5-3.1 of the observed value -- no parameter fitted (the conventions span the range).
+   CAVEAT: how much each spin counts in eta (and in induced 1/G) is regulator-dependent and contested:
+   heat-kernel weights give gauge fields NEGATIVE contributions (Kabat 1995; Larsen & Wilczek 1996),
+   which could push the SM's effective N to O(1). So this is an order-of-magnitude link, not a fit.
+
+==============================================================================
+C. The same mechanism at every epoch
+==============================================================================
+   BBN, T = 1 MeV             z =  4.26e+09: rms Omega_Lambda = 2.725 x A  ->  1.96 with A = A_obs
+   BBN, T = 70 keV            z =  2.98e+08: rms Omega_Lambda = 2.725 x A  ->  1.96 with A = A_obs
+   matter-radiation equality  z =   3.4e+03: rms Omega_Lambda = 2.320 x A  ->  1.67 with A = A_obs
+   recombination              z =   1.1e+03: rms Omega_Lambda = 2.083 x A  ->  1.50 with A = A_obs
+   z = 2                      z =         2: rms Omega_Lambda = 1.729 x A  ->  1.24 with A = A_obs
+   today                      z =         0: rms Omega_Lambda = 0.951 x A  ->  0.68 with A = A_obs
+BBN allows extra energy |Omega_x| < 0.046 (N_eff = 2.99 +- 0.17, 2 sigma)
+=> with today's Lambda as a typical fluctuation, Omega_Lambda during nucleosynthesis is ~2: the
+   expansion rate then would be wrong by tens of percent. The mechanism TRACKS the critical density
+   (rms Omega_Lambda is ~constant: 2.7 A, 1.8 A, 0.95 A), so it cannot be small early and large today.
+
+==============================================================================
+D. Whole histories: Monte Carlo of the Ornstein-Uhlenbeck process X = W(V)/sqrt(V)
+==============================================================================
+X(s), s = ln V, obeys dX = -X/2 ds + dB exactly (unit stationary variance); Omega_Lambda = A X g(z).
+   N =     61 (A = 4.255): P(BBN ok) = 0.0076, P(CMB ok) = 0.0071, P(Omega_L today = 0.685 +- 0.02) = 0.00369, ALL three = 0.00e+00
+   N =    124 (A = 2.093): P(BBN ok) = 0.0159, P(CMB ok) = 0.0147, P(Omega_L today = 0.685 +- 0.02) = 0.00754, ALL three = 5.00e-06
+   N =    358 (A = 0.725): P(BBN ok) = 0.0447, P(CMB ok) = 0.0417, P(Omega_L today = 0.685 +- 0.02) = 0.01426, ALL three = 4.50e-05
+   N =   1037 (A = 0.250): P(BBN ok) = 0.1296, P(CMB ok) = 0.1205, P(Omega_L today = 0.685 +- 0.02) = 0.00111, ALL three = 1.00e-05
+   N =   3000 (A = 0.087): P(BBN ok) = 0.3629, P(CMB ok) = 0.3406, P(Omega_L today = 0.685 +- 0.02) = 0.00000, ALL three = 0.00e+00
+   N =  10365 (A = 0.025): P(BBN ok) = 0.8949, P(CMB ok) = 0.8719, P(Omega_L today = 0.685 +- 0.02) = 0.00000, ALL three = 0.00e+00
+   N =  30000 (A = 0.009): P(BBN ok) = 1.0000, P(CMB ok) = 1.0000, P(Omega_L today = 0.685 +- 0.02) = 0.00000, ALL three = 0.00e+00
+   best N = 510: P(all) = 8.50e-05   (ΛCDM: 1 by construction)
+   (BBN criterion: |mean Omega over 70 keV < T < 1 MeV| < 0.046; CMB: |mean over 1000 < z < 3500| < 0.05,
+    an approximate early-dark-energy bound; fixed LCDM background, no back-reaction.)
+
+==============================================================================
+E. Late-time behaviour of histories that match today's Omega_Lambda: (w0, wa) vs DESI
+==============================================================================
+   N = 360: 2823 histories match today; 93% of them change the sign of Lambda before z = 2
+   the rest: median w0 = 0.10, median wa = -0.53; in DESI's quadrant (w0 > -1, wa < 0): 59%
+   within the 2-sigma box of DESI+CMB+Pantheon+ (w0 = -0.838 +- 0.055, wa = -0.62 +- 0.205): 0.0%
+   within the 2-sigma box of DESI+CMB+Union3 (w0 = -0.667 +- 0.088, wa = -1.09 +- 0.29): 0.0%
+=> the mechanism's dark energy evolves strongly at late times (it tracks V^(-1/2) and fluctuates):
+   it naturally gives w0 > -1 like DESI's hint, but usually far more evolution than measured.
+
+==============================================================================
+F. Inventing the box: can quieter-than-Poisson counting rescue it? (no-go for any power law)
+==============================================================================
+Generalise the substrate's counting statistics: Var(number in V) = (V/l^4)^gamma  (Poisson: gamma = 1;
+gamma < 1 = 'hyperuniform', quieter on large scales). Then Delta V = l^4 (V/l^4)^(gamma/2) and
+   Lambda = 8 pi kappa lam^(2 gamma - 4) V^(-gamma/2)   (Planck units, l = lam l_P),  Omega_Lambda ~ V^((1-gamma)/2) g(z)
+today: V_past = 6.40e+242 Planck 4-volumes, Lambda_obs = 2.845e-122 (Planck units)
+   cell size  1 l_P: today's Lambda needs gamma = 1.0102 (kappa 1/2) - 1.0127 (kappa 1)
+   cell size  4 l_P: today's Lambda needs gamma = 1.0003 (kappa 1/2) - 1.0028 (kappa 1)
+   cell size  6 l_P: today's Lambda needs gamma = 0.9974 (kappa 1/2) - 0.9999 (kappa 1)
+   cell size 10 l_P: today's Lambda needs gamma = 0.9937 (kappa 1/2) - 0.9962 (kappa 1)
+   cell size 30 l_P: today's Lambda needs gamma = 0.9855 (kappa 1/2) - 0.9881 (kappa 1)
+   BBN (|Omega| < 0.046 at T = 1 MeV while Omega_0 = 0.685): gamma <= 0.953   [ln(V_0/V_BBN) = 160.9]
+   near-constancy today: the typical (tracking) part gives w0 = -1 + gamma (dlnV/dlna)/6 with dlnV/dlna = 3.95;
+   the loosest DESI bound w0 < -0.491 (Union3, 2 sigma) needs gamma <= 0.773
+=> NO-GO: today's size needs gamma = 1.00 (to +-0.014 for cells of 1-30 l_P),
+   BBN needs gamma <= 0.953 and today's near-constancy gamma <= 0.77. No power-law counting
+   statistics gives a dark energy that is both the right size and as steady as observed. Counting-
+   noise Lambda needs fluctuations that FREEZE (non-Markovian memory) -- or Lambda has another origin.
+
+==============================================================================
+Verdict
+==============================================================================
+* NEW RELATION (ours): Lambda sqrt(V_past) = 2 pi kappa/(N eta). With every Standard-Model degree of
+  freedom counting once, it gives today's Lambda within a factor ~1.5-3 (N needed 180-372 vs 118).
+* BUT the same counting noise acts at every epoch and tracks the critical density: it makes the
+  early universe fail BBN/CMB unless we are lucky at the ~1e-4 level or worse (D). This agrees with
+  the difficulties reported for everpresent-Lambda models (Das et al. 2023-24) and now quantifies
+  them as a function of the species number.
+* DESIGN RULE for USRT dynamics: Lambda's counting noise must be suppressed in the early universe
+  by a factor >~ 43 relative to white noise in V (BBN), while staying O(1) today.
+* NO-GO (ours, F): quieter-than-Poisson counting with any power law cannot do it -- the size of
+  Lambda pins gamma = 1.00, while BBN and DESI's near-constancy need gamma <= 0.953 and <= 0.77.
+  A working version needs fluctuations with memory that freeze at late times.
