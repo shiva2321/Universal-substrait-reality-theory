@@ -1,0 +1,37 @@
+
+==============================================================================
+A. Method check: 1D free-fermion chain
+==============================================================================
+S(l) slope vs ln l = 0.3333   (exact conformal value c/3 = 1/3 = 0.3333)
+
+==============================================================================
+B. Scalar and Dirac fermion on the same cubic substrate (cubes l = 2..9, 32^3 box)
+==============================================================================
+real scalar: eta_s = 0.02416 per cell face   (r14, 64^3, l = 4..12: 0.02421)
+Dirac fermion, Wilson r = 0.5 (doubler masses 1, 2, 3): eta_D = 0.39809  ->  counts as 16.48 real scalars
+Dirac fermion, Wilson r = 1.0 (doubler masses 2, 4, 6): eta_D = 0.22075  ->  counts as 9.14 real scalars
+Dirac fermion, Wilson r = 2.0 (doubler masses 4, 8, 12): eta_D = 0.10387  ->  counts as 4.30 real scalars
+Dirac fermion, Wilson r = 4.0 (doubler masses 8, 16, 24): eta_D = 0.04327  ->  counts as 1.79 real scalars
+   box check (r = 1, 40^3 box): eta_D = 0.22076 (32^3: 0.22075) -- converged
+=> a Dirac fermion's weight falls steadily with r (16.5, 9.1, 4.3, 1.8 scalars for r = 0.5, 1, 2, 4):
+   light doublers add UV entanglement, and a large Wilson term also stiffens the physical branch. There
+   is no plateau at 'one per degree of freedom': the weight is a property of the substrate's fine structure.
+
+==============================================================================
+C. The Standard Model's effective species number, and what the observed Lambda implies
+==============================================================================
+N_eff = 4 x 1 (Higgs) + 22.5 x w_D (fermions) + 12 x w_V (gauge fields)
+w_V is not computed here: gauge-field entanglement depends on how the edge (boundary) modes are
+treated -- each polarisation like a scalar gives w_V = 2; the heat-kernel contact term (Kabat 1995;
+Donnelly & Wall, PRL 114, 111603 (2015)) can make it negative. We scan w_V from -4 to +2.
+   r = 0.5: N_eff =   327 ...   399   (Lambda needs 180-372) -> overlaps
+   r = 1.0: N_eff =   162 ...   234   (Lambda needs 180-372) -> overlaps
+   r = 2.0: N_eff =    53 ...   125   (Lambda needs 180-372) -> misses
+   r = 4.0: N_eff =    -4 ...    68   (Lambda needs 180-372) -> misses
+inverting: today's Lambda needs a fermion weight w_D between 6.8 and 18.5 scalars
+   -> for Wilson-type fermions: r <~ 1.3 (r = 0.5 still allowed; below it not computed)
+=> the observed Lambda is CONSISTENT with the Standard Model's particle content on this substrate for
+   the standard regulator (r = 1 lies inside r <~ 1.3) -- not a fine-tuned coincidence. Read the
+   other way, R6 turns the cosmological constant into a MEASUREMENT of the substrate's fine structure.
+   Still open: the gauge-field weight (edge modes), and the dynamics that fixes the early-universe
+   problem of E29.
