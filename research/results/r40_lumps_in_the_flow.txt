@@ -1,0 +1,76 @@
+
+==============================================================================
+H1. What a lump costs, against the mass of a real particle (Planck-length medium, xi = alpha l_P)
+==============================================================================
+Units: n0 = (n xi^3) / xi^3 constituents per volume (n xi^3 >= 1 for mean field), c_s = c, so n0 hbar c is an energy per area and
+(n xi^3) hbar c / xi is the energy scale of anything of size xi.  Wall (dark-soliton sheet) energy per area (4/3) n0 hbar c (r38);
+vortex-ring energy 2 pi^2 hbar^2 n0 R [ln(8R/xi) - 2] / m with m = m_P/(sqrt2 alpha) (r33, r38).
+    electron: m_e = 9.109e-31 kg = 4.19e-23 m_P;  Compton wavelength hbar/(m_e c) = 3.86e-13 m = 2.39e+22 l_P.
+                                  lump         size   energy / (m_P c^2)   energy / (m_e c^2)
+    point lump, size xi (alpha=1, n xi^3=1)      1.0e+00             1.00e+00             2.39e+22
+    wall of electron size (alpha=1, n xi^3=1)      3.9e-13             9.56e+45             2.29e+68
+          vortex ring, electron radius      3.9e-13             3.44e+25             8.22e+47
+    point lump, size xi (alpha=1, n xi^3=100)      1.0e+00             1.00e+02             2.39e+24
+    wall of electron size (alpha=1, n xi^3=100)      3.9e-13             9.56e+47             2.29e+70
+          vortex ring, electron radius      3.9e-13             3.44e+27             8.22e+49
+    point lump, size xi (alpha=0.1, n xi^3=1)      1.0e-01             1.00e+01             2.39e+23
+    wall of electron size (alpha=0.1, n xi^3=1)      3.9e-13             9.56e+48             2.29e+71
+          vortex ring, electron radius      3.9e-13             3.60e+27             8.59e+49
+    point lump, size xi (alpha=0.1, n xi^3=100)      1.0e-01             1.00e+03             2.39e+25
+    wall of electron size (alpha=0.1, n xi^3=100)      3.9e-13             9.56e+50             2.29e+73
+          vortex ring, electron radius      3.9e-13             3.60e+29             8.59e+51
+    A wall of energy m_e c^2 (alpha = 1, n xi^3 = 1) would have radius 1.6e-12 l_P, far below the healing length: no such lump exists.
+    The lightest lump of any kind costs >= 2.4e+22 electron masses.  A Planck-scale medium can carry only
+    excitations whose energy is NOT set by the medium's own scale: waves (E = hbar omega, as small as you like) and protected
+    fermion modes (E = c p, masses only through small symmetry breaking, r41); lumps cannot be light.
+
+==============================================================================
+H2a. Falling, measured: sound and a soliton in a 1D medium held in a harmonic trap
+==============================================================================
+Medium at rest in V = omega^2 x^2 / 2 (effective gravity g(x) = omega^2 x pointing to the centre).  A decoupled mass would oscillate
+at omega (acceleration ratio 1).  Plain GP: i psi_t = [-psi''/2 + V + |psi|^2] psi (hbar = m = 1, c_s^2 = n, Gamma = 1).
+    ground state (imaginary-time relaxation): chemical potential 8.018, central density 8.043, Thomas-Fermi radius 40.0;
+      residual of the GP equation 1.1e-02 (relative to mu, |x| < 30).
+    dark soliton released at rest at x = 15: fit x = A cos(Omega t + phi): A = 15.32, Omega/omega = 0.7084  (1/sqrt2 = 0.7071);
+      acceleration relative to a decoupled mass = (Omega/omega)^2 = 0.502   [Busch & Anglin 2000: 1/2 exactly]
+    sound packet, amplitude 0.4 %, width 1.5: speed 2.905 near x = 0 and 2.499 near x = 22 (sqrt(n): 2.836, 2.363) -> Gamma = 0.907
+    sound packet, amplitude 0.4 %, width 3: speed 2.860 near x = 0 and 2.565 near x = 22 (sqrt(n): 2.836, 2.363) -> Gamma = 0.661
+      Gamma = 0.78 +- 0.12 (half the spread between the two widths)   [prediction d ln c_s^2 / d ln rho = 1]
+    logarithmic medium (mu = kappa ln n, c_s^2 = kappa = 8 everywhere, Gamma = 0): exact Gaussian ground state n = exp(-a x^2), a = 6.250e-04;
+      the solver keeps it stationary to 3.3e-06 over t = 5.
+    sound packet, amplitude 0.4 %, width 1.5: speed 2.860 near x = -2 and 2.874 near x = 18 (c_s = 2.828) -> Gamma = -0.056
+    sound packet, amplitude 0.4 %, width 3: speed 2.806 near x = -2 and 2.740 near x = 18 (c_s = 2.828) -> Gamma = 0.255
+      Gamma = 0.10 +- 0.16   [prediction 0]; for comparison a plain-GP medium gives 0.78 with the same method.
+    => inertial-frame fall rates in units of the medium's own acceleration g (flow-gravity reading of the trap):
+       decoupled mass 0 (it stays inertial);  GP sound 1 - Gamma/2 = 0.61;  GP dark soliton 1 - 0.502 = 0.50;  constant-c_s sound 0.95.
+       Only a medium with constant sound speed (P = c_s^2 rho + const, the bag/tension equation of state of r39 G1) lets light fall with the
+       medium; r34's uniform-c flows implicitly assumed it.  In plain GP, light would fall at half the medium's rate.
+
+==============================================================================
+H2b. Falling, 3D: the added-mass table (inviscid, incompressible, body much larger than the healing length)
+==============================================================================
+A sphere of volume V and density x*rho in a flow whose parcels accelerate at g feels the pressure-gradient force rho V g and the
+added-mass reaction C_m rho V (g - a):  x rho V a = rho V g + C_m rho V (g - a)  =>  a / g = (1 + C_m) / (x + C_m).
+    C_m of a sphere from the kinetic energy of its potential flow (numerical quadrature): 0.5000   (exact 1/2).
+      density of the lump / medium  fall rate a / g
+                    cavity (x = 0)            3.000
+                           x = 0.5            1.500
+            neutral parcel (x = 1)            1.000
+                             x = 2            0.600
+                            x = 10            0.143
+                         x = 1e+06            0.000
+    A cavity falls three times as fast as the medium, a heavy lump hardly falls, and only a lump with the density of the medium itself
+    follows the flow.  Fall rate depends on what the object is made of: the equivalence principle fails at order one unless every kind of
+    matter has x = 1 -- i.e. unless matter is not a lump in the medium but an excitation carried by it.
+    Size of the effect if a lump's x tracked its composition only through nuclear binding: Ti vs Pt differ by 0.80 MeV per nucleon = 8.6e-04 of the mass,
+    so delta a / a = |d ln a / dx| delta x = 0.67 x 8.6e-04 = 5.7e-04.  MICROSCOPE (Ti vs Pt): |eta| = (1.5e-15 +- 2.5e-15), typed from memory.
+    The effect would exceed the measurement by a factor ~2e+11.  (Illustration only: it assumes x responds to binding energy at order one.)
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   H1: a lump as big as an electron is as light as an electron        -> NO: wall 2e+68 m_e, ring 8e+47 m_e, even a size-xi lump 2e+22 m_e; a wall of mass m_e would be 2e-12 l_P across
+   H2a: in plain GP, sound falls with the medium                      -> NO: Gamma = 0.78 +- 0.12; sound and the dark soliton fall at 0.61 and 0.50 of the medium's own rate (predictions 0.5, 0.5)
+   H2a': in a constant-sound-speed medium, sound falls with the medium -> YES: Gamma = 0.10 +- 0.16 (prediction 0): the packet keeps its speed c_s and falls at 0.95 of the medium's rate; needs P = c_s^2 rho + const
+   H2b: lumps of any density fall like the medium                     -> NO: a/g = 3 (cavity) ... 1 (x = 1) ... 0 (heavy); composition dependence ~6e-04 vs the measured bound ~3e-15
+   runtime 20 s

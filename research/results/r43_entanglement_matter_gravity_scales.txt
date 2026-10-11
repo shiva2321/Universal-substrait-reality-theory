@@ -1,0 +1,100 @@
+
+==============================================================================
+M1. The ladder: from an electron to the Hubble sphere (arithmetic from constants)
+==============================================================================
+    Constants: l_P = 1.616e-35 m, m_P = 2.176e-08 kg, H0 = 67.4 km/s/Mpc  =>  c / H0 = 1.37e+26 m, mass inside c^3/(2 G H0) = 9.24e+52 kg.
+    Compton = reduced Compton wavelength hbar/(M c);  compactness = 2 G M / (R c^2);  E_G/hbar = G M^2 / (R hbar) is both the self-gravity rate
+    (Diosi-Penrose decoherence time = hbar/E_G) and the rate at which two copies of the object at distance ~R would gain gravitational phase;
+    S_surf = pi R^2 / l_P^2 (nats) is the medium's entanglement across the surface (area law with Bekenstein-Hawking coefficient, E19); S_BH = pi r_s^2 / l_P^2.
+                            object     M (kg)      R (m)  Compton/R  compactness  E_G/hbar (1/s)    S_surf  S_surf/S_BH  (l_P/R)^2
+                          electron   9.11e-31   3.86e-13    1.0e+00      3.5e-45         1.4e-24   1.8e+45      8.1e+88    1.8e-45
+                            proton   1.67e-27   8.40e-16    2.5e-01      3.0e-39         2.1e-15   8.5e+39      1.1e+77    3.7e-40
+                      C60 molecule   1.20e-24   3.50e-10    8.4e-10      5.1e-42         2.6e-15   1.5e+51      3.9e+82    2.1e-51
+      10^-14 kg grain (QGEM scale)   1.00e-14   1.03e-06    3.4e-23      1.4e-35         6.2e+01   1.3e+58      4.8e+69    2.5e-58
+               dust speck 10^-9 kg   1.00e-09   4.92e-05    7.1e-30      3.0e-32         1.3e+10   2.9e+61      1.1e+63    1.1e-61
+                       human 70 kg   7.00e+01   2.56e-01    2.0e-44      4.1e-25         1.2e+28   7.9e+68      6.0e+48    4.0e-69
+                             Earth   5.97e+24   6.37e+06    9.2e-75      1.4e-09         3.5e+66   4.9e+83      5.2e+17    6.4e-84
+                               Sun   1.99e+30   6.96e+08    2.5e-82      4.2e-06         3.6e+75   5.8e+87      5.5e+10    5.4e-88
+             neutron star 1.4 Msun   2.80e+30   1.20e+04    1.0e-77      3.5e-01         4.1e+80   1.7e+78      8.3e+00    1.8e-78
+            Hubble sphere (c / H0)   9.24e+52   1.37e+26   2.8e-122      1.0e+00        3.9e+103  2.3e+122      1.0e+00   1.4e-122
+    Reading:
+      * Compton/R is 1 for the electron (its size is taken to be its reduced Compton wavelength), 0.25 for the proton and below 1e-9 for everything larger: for
+        every larger object the quantum character lives in superposition and entanglement of states, not in the size of the object.
+      * Compactness stays below 1e-8 until a neutron star (0.35) -- gravity is a weak-field theory everywhere we measure it; the Hubble sphere sits exactly at 1 by
+        construction (M = c^3/(2 G H0)): the observable universe is at its own Schwarzschild threshold, a standard identity, not a coincidence of this programme.
+      * The medium's entanglement across an object's surface exceeds the Bekenstein-Hawking entropy of the same mass by (R/r_s)^2 = 1/compactness^2: the area-law entropy is
+        not 'used up' by ordinary matter; only black holes (and the Hubble sphere) saturate it.  Matter concentration enters only through how close R is to r_s.
+      * E_G/hbar is 62 /s for the QGEM-scale grain (self-gravity time 16 ms, of the order of the experiment's duration), 1e10 /s for a dust speck
+        and 1e28 /s for a person: the scale where gravity-mediated entanglement (E21: 0.03-2.8 rad) becomes visible.  If quantum states collapsed by self-gravity
+        (Diosi-Penrose; the parameter-free version was excluded by Donadi et al. 2021, E21), heavier objects could not keep them for longer than hbar/E_G.
+      * The quantum correction to Newton's law at the surface, (41/10 pi)(l_P/R)^2 (E21), is 2e-45 for the electron's Compton radius and falls to
+        2e-122 at the Hubble radius.
+
+==============================================================================
+M2. Matter concentration and entanglement: the first law of entanglement on a lattice
+==============================================================================
+    Lattice scalar, 200 sites, mass^2 = 0.01, region A = sites 96..103 (8 sites).  Vacuum entropy S_A = 0.74513 nats.
+    Self-checks of the modular Hamiltonian: S = <K> + ln Z  (thermodynamic identity): 0.74513 vs 0.74513;  <K0>_vacuum = sum eps nu = 48.06951 vs trace formula 48.06951.
+    (Region of 8 sites, correlation length 1/m = 10 sites.  A first attempt with a 40-site region at m^2 = 0.25 failed: the deep-interior entanglement-spectrum
+    values nu - 1/2 fall below double precision (1e-16) there, so the modular Hamiltonian is numerical noise; all nu - 1/2 here exceed 1e-12.)
+    Matter lump: mass^2 raised by lambda exp(-(i - i0)^2 / (2 sigma^2)), sigma = 2 sites (a localized matter concentration), lump at the centre of A.
+      lambda       delta S    delta <K0>  relative entropy  rel / lambda^2
+       1e-04    -3.360e-04    -3.354e-04         6.105e-07       6.105e+01
+       3e-04    -1.006e-03    -1.000e-03         5.473e-06       6.081e+01
+       1e-03    -3.324e-03    -3.264e-03         6.000e-05       6.000e+01
+       3e-03    -9.740e-03    -9.220e-03         5.200e-04       5.778e+01
+       1e-02    -3.007e-02    -2.496e-02         5.115e-03       5.115e+01
+       3e-02    -7.520e-02    -4.061e-02         3.459e-02       3.843e+01
+       1e-01    -1.652e-01     3.759e-02         2.028e-01       2.028e+01
+    => at small lambda delta S and delta <K0> agree (ratio 1.0018 at lambda = 0.0001); they go as lambda^0.98 and lambda^0.94 (first order); the relative entropy delta<K0> - delta S ~ lambda^1.96
+       (second order) and is never negative (positivity: the vacuum is the entropy-maximising state for given modular energy).
+    Where the lump sits (lambda = 0.01): delta S of region A against the lump position i0:
+      lump at the centre of A: delta S = -3.01e-02;  lump 20 sites away: -1.00e-03;  lump 40 or more sites away: |delta S| <= 1.7e-05.
+      The sign and size of the effect: a heavier local field is less correlated, so matter inside or beside the region changes its entanglement; the response dies off over a
+      few correlation lengths (1/m = 10 sites): it is local, which is what lets it behave like a field equation.
+    Meaning for the fluid picture: a matter concentration is a local change of the medium's Hamiltonian; the entanglement of any region changes by delta<K> to first
+    order.  For a region bounded by a Rindler/Unruh horizon K is the boost energy and delta S = delta<K> is the Clausius relation  delta S = delta Q / T  that Jacobson (1995)
+    turns into Einstein's equation.  What is verified here is only the lattice first law in a free field: not Einstein's equation.
+
+==============================================================================
+M3. Stretching entangles: the phonon pairs of the expanding medium (r37 mode integration)
+==============================================================================
+In de Sitter the phonon pair (k, -k) is a two-mode squeezed state.  With u'' + [1 + (lambda^2/2) tau^2 - 2/tau^2] u = 0 (tau = -c k eta, lambda = H xi/c, r37) and the
+adiabatic vacuum at early times, the number of quanta in each mode at tau is  n = (|u'|^2 + |u|^2)/2 - 1/2  and the entanglement entropy of the pair is
+S = (n+1) ln(n+1) - n ln n.  For lambda = 0 the exact solution gives n = 1 / (4 tau^4).
+     lambda    tau  e-folds since exit  n (numerical)  1/(4 tau^4)   S (nats)
+        0.0   3.00               -1.10     3.0864e-03   3.0864e-03      0.021
+        0.0   1.00                0.00     2.5000e-01   2.5000e-01      0.626
+        0.0   0.30                1.20     3.0864e+01   3.0864e+01      4.446
+        0.0   0.10                2.30     2.5000e+03   2.5000e+03      8.824
+        0.0   0.03                3.51     3.0864e+05   3.0864e+05     13.640
+        0.0   0.01                4.61     2.5000e+07   2.5000e+07     18.034
+        0.3   3.00               -1.10     3.7427e-03   3.0864e-03      0.025
+        0.3   1.00                0.00     2.2527e-01   2.5000e-01      0.585
+        0.3   0.30                1.20     2.9139e+01   3.0864e+01      4.389
+        0.3   0.10                2.30     2.3612e+03   2.5000e+03      8.767
+        0.3   0.03                3.51     2.9151e+05   3.0864e+05     13.583
+        0.3   0.01                4.61     2.3613e+07   2.5000e+07     17.977
+    => lambda = 0: n agrees with 1/(4 tau^4) to 8e-09; for tau < 0.3 the pair entropy grows by 4.00 nats per e-fold after horizon exit (a squeezing
+       parameter r = 2 ln(aH/k), S = 2 r); with the medium's graininess (lambda = 0.3) the same slope, 4.00: the entanglement is not an artefact of the continuum.
+    Entropy of all pairs per Hubble volume (de Sitter, exact n = 1/(4 tau^4); pairs counted once): S_H = I / (3 pi), I = int tau^2 S(n(tau)) d tau = 2.060  =>  S_H = 0.219 nats,
+    independent of H: a constant, small amount of entanglement per Hubble volume, produced and diluted continuously.
+    Compare with the horizon's own area-law entropy S_dS = 8 pi^2 (M_Pl/H)^2  (M_Pl = reduced Planck mass):
+                                 epoch    H (GeV)       S_dS  S_H / S_dS
+          inflation (r39 plateau, r37)    1.0e+13    4.7e+12     4.7e-14
+    end of the quench (r35 scale, H ~ 1e17)    1.0e+17    4.7e+04     4.7e-06
+                  dark-energy era (H0)    1.4e-42   2.3e+122    9.7e-124
+    So the pairs made by stretching carry entanglement of order 0.1 nat per Hubble volume, while the horizon's area-law entanglement is 1e12 to 1e122 nats: the
+    structure-seeding pairs are an exceedingly small part of the medium's entanglement.  The entanglement that matters for G and for horizon entropy is the
+    short-distance one, E19, not the cosmological pairs.
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   M1: where matter is quantum and where it is gravitating            -> Compton/R = 1 (electron, by definition), 0.25 (proton), < 8e-10 for everything larger; compactness 4e-06 (Sun), 0.35 (neutron star), 1 (Hubble sphere)
+   M1': ordinary matter saturates the medium's area-law entanglement  -> NO: S_surf / S_BH = 1/compactness^2: 5e+69 for the grain, 6e+10 for the Sun; only black holes reach 1
+   M2: first law of entanglement for a matter lump in the medium's field -> CONFIRMED on the lattice: delta S / delta<K> = 1.0018 at the smallest lambda; relative entropy ~ lambda^1.96, positive; lump effect local
+   M2': this proves gravity from entanglement                         -> NO: it checks the lattice first law in a free field; the step to Einstein's equation needs the Rindler/Unruh structure (Jacobson 1995) and is not tested here
+   M3: stretching entangles the medium's phonon pairs                 -> CONFIRMED: n = 1/(4 tau^4) to 8e-09, entropy grows 4.0 nats per e-fold (4.0 with graininess); S_H = 0.22 nats per Hubble volume
+   M3': these pairs account for the horizon entropy                   -> NO: S_H / S_dS = 5e-14 (inflation) to 1e-123 (today)
+   runtime 2 s

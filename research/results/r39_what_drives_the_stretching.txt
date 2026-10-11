@@ -1,0 +1,116 @@
+
+==============================================================================
+G1. A single barotropic medium cannot slow-roll: the identity, and the spectrum it makes instead
+==============================================================================
+Zero-temperature superfluid: pressure and energy depend on one number (mu), so P = P(rho).  Then d rho / dN = -3 (rho + P) gives
+    d ln(rho + P)/dN = -3 (1 + c_s^2),   d ln rho / dN = -3 (1 + w)   =>   d ln eps / dN = -3 (c_s^2 - w)   [exact].
+          bag c_inf^2 = 1.0: identity and Friedmann relation checked at four times, worst error 2.3e-10
+          bag c_inf^2 = 0.5: identity and Friedmann relation checked at four times, worst error 1.4e-10
+    chaplygin c_inf^2 = 1.0: identity and Friedmann relation checked at four times, worst error 3.4e-10
+    chaplygin c_inf^2 = 0.5: identity and Friedmann relation checked at four times, worst error 1.2e-10
+    Slow roll that gives n_s - 1 = -0.035 needs |eta| = |d ln eps/dN| <~ 0.0175: c_s^2 = w - eta/3 = -0.988 +- 0.006, i.e. a NEGATIVE
+    c_s^2: perturbations grow as exp(|c_s| k t) (gradient instability), fastest at the cutoff k ~ 1/xi, i.e. within ~ one Planck time.
+    (A scalar field with a potential is not barotropic: its adiabatic c_a^2 = -1 - 2V'/(3 H phidot) -> -1 in slow roll, while its
+    physical sound speed is 1.  The gap is the non-adiabatic pressure; a one-component T = 0 medium has no such gap.)
+
+What such a medium does instead.  Near its de Sitter fixed point eps ~ exp(-3 (1 + c^2) N) -- an ultra-slow-roll: zeta is NOT frozen
+outside the sound horizon but grows as exp[(3 c^2) N].  Counting that growth, the spectrum is predicted analytically to be
+    n_s - 1 = 3 (1 - c_inf^2),    c_inf = the sound speed at the fixed point.
+Check by integrating the full mode equation  zeta'' + (3 - eps + eta - 2s) zeta' + (c_s k / aH)^2 zeta = 0  from the vacuum (modes
+exiting 5.5-11 e-folds after acceleration starts, power read at N = 18):
+                        medium  c_inf^2  n_s-1 measured  3(1-c_inf^2)  difference
+                  constant c_s   0.3600          1.9200        1.9200     2.2e-05
+                  constant c_s   0.6400          1.0800        1.0800    -1.5e-06
+                  constant c_s   1.0000         -0.0000        0.0000    -3.3e-06
+         Chaplygin gas (brane)   0.5000          1.5000        1.5000     6.3e-06
+         Chaplygin gas (brane)   1.0000          0.0000        0.0000     4.3e-06
+                  constant c_s   1.0117         -0.0351       -0.0351    -3.3e-06
+    => the formula holds to 2e-05.  Planck's n_s = 0.9649 +- 0.0042 needs c_inf^2 = 1.0117 (2-sigma range 1.0089 to 1.0145):
+       a sound speed ABOVE c.  A causal medium (c_s <= c, and c_s = c in the Planck-length mapping) gives n_s >= 1.  For c_s = c the
+       spectrum is exactly flat (n_s = 1.0000), which is 8.4 sigma from the measurement.
+    Tensors: gravitational waves freeze at exit while zeta keeps growing, so r = 16 eps c_s e^{-2(3 c^2) dN} is far below any limit.
+    Besides, the fixed point is eternal: there is no end of stretching and no reheating in this medium.  It models dark energy, not an
+    inflation that ends.  (Priors: ultra-slow-roll, Kinney 2005; Chaplygin gas, Kamenshchik-Moschella-Pasquier 2001; brane origin,
+    Bilic-Tupper-Viollier 2002; kinetic-driven inflation, Armendariz-Picon-Damour-Mukhanov 1999.)
+
+==============================================================================
+G2. A stretched liquid: how far can tension go before the liquid tears (cavitates)?
+==============================================================================
+Causal bound.  Start at the equilibrium density rho_0 (P = 0, the vacuum of the liquid) and dilute it.  Since dP = c_s^2 d rho and
+c_s <= c everywhere, P(rho) >= -(rho_0 - rho), so  w = P/rho >= -(rho_0/rho - 1).  w < -1/3 needs rho < (3/4) rho_0; w = -0.988 needs
+rho < 0.50 rho_0 and c_s = c all the way down: the bag equation of state, whose sound speed never drops.  A real liquid's sound speed
+falls to zero at the spinodal.
+Real liquids (rest mass counts in rho): w_min >~ -(c_s/c)^2 x (stretch factor of order 1):
+      He-4: c_s = 238 m/s  ->  (c_s/c)^2 = 6.3e-13: w stays within ~6e-13 of zero.
+     water: c_s = 1480 m/s  ->  (c_s/c)^2 = 2.4e-11: w stays within ~2e-11 of zero.
+    For the Planck-length medium c_s = c, so the bound allows w of order -1; the question is what the shape of P(rho) does.
+
+Scan of shapes E(n) = -a n^q + b n^r (a, b fixed by P(1) = 0 and c_s(1) = c), requiring a stable branch with 0 < c_s^2 <= 1 between
+n = 1 and the spinodal.  w and e-folds with w < -1/3 as n falls (n ~ a^-3):
+    4900 (q, r) pairs tried; 3351 give a causal, stable stretched liquid with a spinodal.
+    A catch found on the first pass: the most negative w sat in the corner q, r -> 1, where the binding energy per constituent
+    approaches the whole rest-mass energy, rho_0 -> 0, and w = P/rho blows up for a trivial reason.  So the result is reported against
+    the binding fraction f_b = -E(1)/(m c^2) (f_b = 0.4 for the quantum-droplet shape; liquid He-4, 7.2 K per atom, has f_b = 2e-13):
+     f_b <=  shapes  best w at spinodal  stretch  longest w<-1/3 (e-folds)
+       0.10    1730              -0.116     1.26                     0.000
+       0.25    2595              -0.184     1.38                     0.000
+       0.50    3022              -0.277     1.51                     0.000
+       0.75    3205              -0.369     1.62                     0.040
+       0.90    3262              -0.447     1.69                     0.098
+       0.99    3343              -0.592     1.78                     0.177
+       1.00    3351              -0.616     1.80                     0.190
+    Forms with w < -1/3 at the spinodal: 75 of 3351, all with f_b >= 0.67.  Forms with w < -0.988: 0 of 3351.
+    Longest acceleration (w < -1/3) in any shape: 0.190 e-folds (f_b = 1.00) -- needed: >= 50.
+    Reading: tension strong enough to accelerate needs the equilibrium vacuum energy of the medium to be cancelled to within
+    33% of its rest mass -- a vacuum-energy tuning, the cosmological-constant problem again -- and even then
+    the liquid tears after a fraction of one e-fold.
+    Reference (the quantum-droplet shape q = 2, r = 5/2): spinodal at n = 0.640, w = -0.239, stretch 1.46, acceleration 0.00 e-folds.
+    Look-elsewhere count: the grid above is the number of forms tried; only the extremes are quoted.  (The scan covers two-term power
+    laws only; it does not prove no liquid exists.  What it shows is that the causal bound w >= -(rho_0/rho - 1) is not approached.)
+    The medium stretches, cavitates, and the cavities merge: after the spinodal the 'medium' is a foam, not an expanding fluid.
+
+==============================================================================
+G3. An open medium that makes new medium as space grows (reasoning, no number)
+==============================================================================
+If the density is held fixed by creating medium at a rate Gamma = 3 H per particle, rho = const, w = -1 exactly, de Sitter by
+construction (steady state: Bondi-Gold-Hoyle 1948; irreversible creation pressure: Prigogine et al. 1988).  Two problems remain:
+  (i) eps = 0 exactly, so the medium has no clock of its own: no scalar perturbation exists without a second ingredient;
+  (ii) the creation rate is an input, and creating medium out of nothing is a statement about the hyper-dimensions that is not derived.
+This is the 'space grows by itself' picture; it explains the stretch by assuming it.
+
+==============================================================================
+G4. A second sector: the medium's own phase field as a pseudo-Goldstone (natural inflation)
+==============================================================================
+The phase theta of the condensate is a free field (shift symmetry) with canonical decay constant F^2 = hbar^2 n / (m c_s^2).
+In the r33 mapping (xi = alpha l_P = hbar/(sqrt2 m c), c_s = c) with n xi^3 the number of constituents in a healing volume (mean-field
+needs n xi^3 >> 1): in Planck units F = 2^(1/4) sqrt(n xi^3)/alpha, and in units of the reduced Planck mass (m_P / sqrt(8 pi)):
+    F / M_Pl = 5.96 sqrt(n xi^3) / alpha   (an estimate from the mapping, not a measurement; n xi^3 >= 1, alpha ~ 1).
+A potential for the phase needs an explicit U(1)-breaking term (for example a Josephson coupling to a second condensate): V = L^4 (1 + cos(theta)),
+which is natural inflation (Freese-Frieman-Olinto 1990).  Closed-form (n_s, r) at N e-folds before the end:
+     f/M_Pl |  N = 50: n_s        r |  N = 60: n_s        r | verdict at N = 60
+        3.0 |       0.8881   0.0033 |       0.8886   0.0011 | n_s -18.2 sigma, r ok
+        4.0 |       0.9319   0.0223 |       0.9346   0.0117 | n_s -7.2 sigma, r ok
+        5.0 |       0.9478   0.0490 |       0.9522   0.0312 | n_s -3.0 sigma, r ok
+        5.3 |       0.9503   0.0566 |       0.9551   0.0374 | n_s -2.3 sigma, r too big
+        6.0 |       0.9541   0.0725 |       0.9595   0.0509 | n_s -1.3 sigma, r too big
+        8.0 |       0.9584   0.1041 |       0.9645   0.0794 | n_s -0.1 sigma, r too big
+       10.0 |       0.9596   0.1218 |       0.9659   0.0962 | n_s +0.2 sigma, r too big
+       15.0 |       0.9602   0.1413 |       0.9667   0.1153 | n_s +0.4 sigma, r too big
+       25.0 |       0.9604   0.1521 |       0.9669   0.1259 | n_s +0.5 sigma, r too big
+    Both n_s within 2 sigma and r < 0.036 (N = 50 or 60): no value of f.
+    r < 0.036 needs f <= 5.2 M_Pl (N = 60), where n_s = 0.9542 (2.6 sigma low).
+    The medium's own F = 6.0 sqrt(n xi^3)/alpha M_Pl is at or above the r bound unless alpha >~ 1.1 sqrt(n xi^3).
+    Natural inflation therefore sits at the edge of what the data allow, with the medium's F in the right order of magnitude (>~ 5 M_Pl is
+    unusual for a field theory, and here it arrives for free).  But it needs a second sector, a potential nobody derived, and a medium
+    with an explicit phase-breaking term; the amplitude (Lambda) is one free number.
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   G1a: a one-component barotropic medium can slow-roll                     -> NO: d ln eps/dN = -3(c_s^2 - w) (checked to 3e-10); w = -0.988 needs c_s^2 = -0.988 (imaginary sound speed)
+   G1b: what such a medium makes at its de Sitter fixed point               -> n_s - 1 = 3(1 - c_inf^2), integrated to 2e-05; c_s = c gives n_s = 1.0000 exactly = 8.4 sigma from Planck
+   G1c: reproducing n_s = 0.965 with a causal barotropic medium             -> NO: needs c_inf^2 = 1.0117 > 1 (a signal faster than the medium's own light)
+   G2: a stretched liquid (c_s = c at equilibrium) reaches w < -1/3 before tearing -> ONLY with the vacuum energy cancelled to within 33% of the rest mass (f_b >= 0.67); at f_b <= 0.5 the best w is -0.277; longest acceleration 0.19 e-folds vs 50 needed; w < -0.988 in 0 of 3351 shapes
+   G3: an open medium that creates itself holds de Sitter                   -> BY CONSTRUCTION: w = -1 is put in, and eps = 0 leaves no perturbation clock; not derived (reasoning only)
+   G4: the medium's phase field as natural inflation fits the sky           -> MARGINAL: F/M_Pl = 6.0 sqrt(n xi^3)/alpha is the right size, but r < 0.036 needs f <= 5.2, where n_s is 2.6 sigma low; needs a second sector
+   runtime 129 s

@@ -1,0 +1,96 @@
+Lattice 128^3, dx = 0.5 (box 64), dt = 0.03, noise D = 0.005; eps ramps from -0.3 at rate 1/tau_Q; counting at t = kappa sqrt(tau_Q).
+
+==============================================================================
+K1. Line length per volume against the quench time (Kibble-Zurek counting in 3D)
+==============================================================================
+    tau_Q =   5: done (41 s elapsed)
+    tau_Q =  10: done (95 s elapsed)
+    tau_Q =  20: done (176 s elapsed)
+    tau_Q =  40: done (294 s elapsed)
+    tau_Q =  80: done (474 s elapsed)
+    Self-check: the winding field is divergence-free in every snapshot (max |div| over all cubes = 0): lines close or wrap, never end.
+     tau_Q  runs  plaquettes  length/volume  L_v sqrt(tau)  |psi|^2/eps  spacing/xi   (kappa = 6)
+         5     2       10810        0.00687        0.01537         0.93       19.78
+        10     2        7626        0.00485        0.01533         0.93       19.79
+        20     2        5192        0.00330        0.01476         0.93       20.17
+        40     2        3870        0.00246        0.01556         0.93       19.64
+        80     2        3276        0.00208        0.01863         0.92       17.95
+    kappa = 6: length/volume ~ tau_Q^(-0.46 +- 0.01)
+    kappa = 8: length/volume ~ tau_Q^(-0.48 +- 0.01)
+    Excluding the largest tau_Q = 80: kappa = 6: tau_Q^(-0.50 +- 0.01), kappa = 8: tau_Q^(-0.51 +- 0.01).
+    Kibble-Zurek (mean field z = 2, nu = 1/2): length/volume ~ xi_hat^-2 ~ tau_Q^(-1/2).  The statistical error is the line-count (Poisson) error only, with 2 runs per
+    point; the last point (tau_Q = 80) has a line spacing of 0.34 of the box side, so the box flattens it (L_v sqrt(tau) rises 20 %) and it is left out of the main fit.
+    Spacing between lines, in units of the healing length at the count, is 19.8 for every tau_Q up to 40: the KZ scaling is a statement about this number being constant.
+
+==============================================================================
+K2. Structure of the network: infinite strings and loops
+==============================================================================
+Each line component is followed through the lattice with unwrapped coordinates; a component that does not close on itself in the covering space is an
+'infinite' (box-wrapping) string.  Length of a component = number of cubes it passes through.  Cubes with 4+ pierced faces (two strands in one cube,
+ambiguous reconnection) are counted as junctions and joined.
+     tau_Q  components  wrapping  length in wrapping  loops  longest loop / box  junction cubes / cubes
+         5          21         4                0.78     17                3.12                   0.000
+        10          17         2                0.38     15                9.71                   0.000
+        20           9         2                0.42      7                6.48                   0.000
+        40           6         2                0.40      4                7.54                   0.000
+        80           9         2                0.25      7                5.48                   0.000
+    => on average 44% of the line length sits in box-wrapping strings (Vachaspati-Vilenkin / Scherrer-Vilenkin Brownian estimate for a random-phase
+       network: ~80 %, a non-universal lattice-dependent number; here the box is small, so the 'infinite' class is also box-limited).
+    Loop-length distribution, pooled over tau_Q = 10, 20, 40 with lengths in units of the line spacing: 26 loops; dn/dl ~ l^(-1.16)  (random-walk network: -2.5;
+    the pooled sample is small, the fit uses bins with >= 3 loops and carries a large uncertainty, +- 0.5 is a fair guess).
+
+==============================================================================
+K3. The network ages: coarsening at fixed eps
+==============================================================================
+    tau_Q = 20, hold eps = 1.342 after the count; box side 64.
+      time after count  length/volume  plaquettes  wrapping fraction  loops  wrapping strings  length / (box x strings)
+                     0        0.00351        2764               0.93      2                 2                      7.20
+                    10        0.00264        2076               0.97      1                 2                      5.41
+                    20        0.00214        1684               1.00      0                 2                      4.39
+                    40        0.00175        1376               1.00      0                 2                      3.58
+                    80        0.00121         952               1.00      0                 2                      2.48
+                   140        0.00108         852               1.00      0                 2                      2.22
+    Closed loops vanish within the first 20 time units; what remains is 2 box-wrapping strings of total length 2.22 x (box x strings), i.e. still
+    that many times their straight-line minimum (a string that wraps the box cannot be shorter than the box).  Over the window t >= 20 the log-log slope of length/volume
+    against absolute time is -0.56 and the decay slows after m = 80: with only 2 long strings left in a periodic box the late stage is set by the box, so this run
+    does NOT test the model-A coarsening law t^(-1) (that needs a box several times larger and several runs).  What it shows: loops decay quickly, long strings straighten,
+    and the network loses 3x in length without any expansion.
+
+==============================================================================
+K4. What a line weighs inside a network, and the Planck-medium bound of r35
+==============================================================================
+Energy above the uniform ground state per unit line length, in units of 2 pi eps (an isolated global vortex has 2 pi eps [ln(R/xi) + const], xi = eps^(-1/2)):
+     tau_Q  kappa   energy / length (2 pi eps)  ln(spacing/xi)
+         5      6                         3.51            2.98
+         5      8                         3.73            3.24
+        10      6                         4.09            2.99
+        10      8                         4.38            3.26
+        20      6                         5.38            3.00
+        20      8                         5.53            3.27
+        40      6                         7.40            2.98
+        40      8                         7.50            3.24
+        80      6                        10.62            2.90
+        80      8                        11.25            3.20
+    => the energy per unit length rises with tau_Q (3.5 to 10.6) while ln(spacing/xi) stays at 3.0: the rise is leftover wave energy of the quench spread over fewer lines
+       (it scales like 1/length-density), so these numbers are UPPER bounds on the string energy.  The fastest quench (tau_Q = 5, most lines, least wave energy per line)
+       gives the closest estimate, 3.5, which is ln(spacing/xi) + 0.5: the cut-off of the logarithm is the line spacing, as for a dense vortex lattice.
+    r35 took ln(R/xi) = 1.5 at formation (an underestimate by a factor 2.3) and 141 for strings that stretch with the universe (spacing ~ Hubble radius, R_obs/l_P).
+    Bound G mu / c^2 < 1.5e-07 at formation: f alpha^2 < 6.8e-09 (measured logarithm 3.5); today, if the strings survive as a scaling network whose spacing grows with
+    the horizon, the logarithm is 141 and f alpha^2 < 1.7e-10.  The tension grows with the spacing, so the bound that matters is the later one -- unless inflation has
+    removed the strings (they are then diluted to ~1 per observable universe, below).  Tension is therefore not a property of the medium alone but of the network's age.
+    Dilution (as in r35): formation at T_P = 1.42e+32 K, expansion to today stretches lengths x1.6e+32.  With the measured spacing in units of xi (alpha = 1, xi = l_P):
+     tau_Q  spacing / l_P   strings in the observable universe   e-folds needed to leave ~1
+         5           19.8                              6.8e+83                         64.3
+        10           19.8                              6.8e+83                         64.3
+        20           20.2                              6.4e+83                         64.3
+        40           19.6                              6.9e+83                         64.4
+        80           17.9                              9.1e+83                         64.4
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   K1: Kibble-Zurek counting works in 3D: length/volume ~ tau_Q^(-1/2)    -> CONFIRMED: -0.50 +- 0.01 (kappa 6), -0.51 (kappa 8) for tau_Q <= 40; with tau_Q = 80 included -0.46 (box-limited)
+   K2a: the network is mostly long strings, plus loops                    -> 44% of the line length in box-wrapping strings (small box); loops dn/dl ~ l^(-1.2) from only 26 loops
+   K3: the network ages without expansion                                 -> loops vanish within 20 time units; length/volume falls 3-fold, then slows (2 wrapping strings left at 2.2x their minimum length); t^(-1) law not tested (box too small)
+   K4: the string tension is a property of the network, not of the medium alone -> energy/length 3.5 (upper bound) at formation vs ln(R_obs/xi) = 141 for a scaling network today: f alpha^2 < 7e-09 then, < 2e-10 later
+   runtime 636 s

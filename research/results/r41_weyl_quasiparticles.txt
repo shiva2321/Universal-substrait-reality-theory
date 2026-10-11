@@ -1,0 +1,103 @@
+
+==============================================================================
+J1. The nodes: positions, speeds, chirality (two independent computations)
+==============================================================================
+Model: t = 1.0, Delta = 0.6, mu = -4.0.  Nodes need d = 0: sin kx = sin ky = 0 and xi = 0; for mu = -4 t only kx = ky = 0, cos kz = 0.
+    nodes found by minimising |d| on a grid and refining: 2
+      k = (+0.0000, +0.0000, -1.5708) : speeds (singular values of dd/dk) = 0.6000, 0.6000, 2.0000; sign det = -1; Berry flux of the lower band = -1.000
+      k = (+0.0000, +0.0000, +1.5708) : speeds (singular values of dd/dk) = 0.6000, 0.6000, 2.0000; sign det = +1; Berry flux of the lower band = +1.000
+    analytic: speeds Delta = 0.6, Delta, 2 t sin(k_F) = 2.0000: perpendicular speed 0.6000, parallel speed 2.0000.
+    total chirality: sum of sign det = 0; sum of Berry fluxes = 0  (Nielsen-Ninomiya: it must vanish on a lattice,
+    so a single Weyl fermion cannot exist: a left-handed one always comes with a right-handed one far away in momentum space).
+    (The Berry flux and sign det J agree up to one overall sign convention, the same for both nodes.)
+
+==============================================================================
+J2. Are the nodes protected?  Random smooth perturbations of growing size
+==============================================================================
+Perturbation: each component of d(k) gets a random Fourier series on the 27 wave vectors n in {-1, 0, 1}^3, rms amplitude eps (units of t).
+A node is a zero of the 3-vector d(k); it is removed only when two nodes of opposite chirality meet and annihilate; new pairs can also appear.
+       eps  samples  exactly 2 nodes  0 (gapped)  4 or more  net chirality = 0
+      0.05       24             1.00        0.00       0.00               1.00
+      0.10       24             1.00        0.00       0.00               1.00
+      0.20       24             1.00        0.00       0.00               1.00
+      0.40       24             0.96        0.00       0.04               1.00
+      0.80       24             0.71        0.00       0.29               1.00
+      1.60       24             0.33        0.04       0.62               1.00
+    => the pair survives every perturbation up to eps ~ 0.2-0.4 (a sizeable fraction of the cone speeds), and the net chirality stays zero in every
+       sample: the nodes are protected by topology (they can only be moved, or removed in pairs), not by a symmetry that a small term could break.
+    Mass from tuning: sweep mu towards the merging point (nodes at kz = +-k_F meet at kz = pi when mu = -2 t):
+      mu + 2t = -0.400: smallest gap along kx = ky = 0 is 0.000  (nodes present)
+      mu + 2t = -0.200: smallest gap along kx = ky = 0 is 0.000  (nodes present)
+      mu + 2t = -0.100: smallest gap along kx = ky = 0 is 0.000  (nodes present)
+      mu + 2t = -0.050: smallest gap along kx = ky = 0 is 0.000  (nodes present)
+      mu + 2t = -0.020: smallest gap along kx = ky = 0 is 0.000  (nodes present)
+      mu + 2t = -0.010: smallest gap along kx = ky = 0 is 0.000  (nodes present)
+      mu + 2t = +0.010: smallest gap along kx = ky = 0 is 0.020  (gapped: mass = 0.010 t)
+      mu + 2t = +0.050: smallest gap along kx = ky = 0 is 0.100  (gapped: mass = 0.050 t)
+      mu + 2t = +0.200: smallest gap along kx = ky = 0 is 0.400  (gapped: mass = 0.200 t)
+    Giving the quasi-particle a mass this way is linear in the distance to the critical point mu = -2 t: a mass of 1e-23 of the band
+    width needs mu tuned to 1e-23 -- not natural.  A protected-massless fermion gets mass only by a deliberate (new) mechanism: J4.
+
+==============================================================================
+J3. One light cone for all species?
+==============================================================================
+    Fermion cone of this model: c_perp = Delta = 0.600, c_par = 2 t sin k_F = 2.000: anisotropy c_perp / c_par = 0.30.
+    Isotropy needs Delta = 2 t sin k_F (one condition).  In the continuum chiral p-wave state c_par = v_F, c_perp = Delta_0 / p_F, so
+    c_perp / c_par = Delta_0 / (2 E_F): helium-3 (Delta_0 / E_F ~ 1e-3, typed from memory) is anisotropic by a factor of ~1e3;
+    isotropy needs Delta_0 = 2 mu: strong pairing, at the edge of the BCS-BEC crossover where the Weyl points approach and merge (J2).
+    Other species: the sound mode (Anderson-Bogoliubov) has c_s = v_F / sqrt(3) in weak-coupling BCS (literature, not computed here),
+    so c_s / c_par = 0.577 -- the phonon and the fermion cone are different cones unless the medium is tuned.
+    How equal must they be?  Limits on speed differences (order of magnitude; typed from memory): gravitational waves vs light, |c_g - c_gamma| / c < ~1e-15
+    (GW170817 + GRB 170817A); electron vs photon ~1e-15 or better; neutron/proton isotropy ~1e-27 (Hughes-Drever type).
+    A speed mismatch of O(1) (fermion cone: 1 - 0.30 = 0.70; sound against fermion: 1 - 0.577 = 0.42) must be brought below 1e-15: the speeds must agree to 15 digits.
+    Only a flow of the couplings with energy (Chadha-Nielsen 1983: emergent Lorentz invariance from renormalisation) could do it without tuning.
+    If a difference delta(E) = delta(E_P) (E/E_P)^gamma, going from E_P to 1 TeV (ln = 37.0) to 1e-15 needs gamma = 0.93.
+    One-loop estimates give gamma ~ g^2 / (16 pi^2) ~ 1e-3-1e-2 for couplings of standard-model size (prior art: Collins, Perez, Sudarsky, Urrutia,
+    Vucetich 2004 find O(1e-3-1e-2) leftover violations for Planck-scale breaking), i.e. 1e11-1e13 above the limit.  Not computed here.
+    In the flow picture of gravity (r34, r40) every species rides the same medium flow; a species with a different c deflects differently:
+    rescaling H = c'|k| + v.k by c' shows it sees the flow v/c', i.e. a source of mass M c^2/c'^2: alpha' / alpha = (c / c')^2 = 1 - 2 delta.
+    So the equivalence principle (and Shapiro delay) tests bound delta directly: a tuning of 1e-15 is needed even before any lumps appear.
+
+==============================================================================
+J4. A tiny mass without tuning: back-scattering of a Weyl mode by a smooth structure
+==============================================================================
+A mass couples the two nodes (momentum transfer 2 k_F): in real space it is the amplitude to be back-scattered by a structure of the medium.
+Exact test: half-filled tight-binding chain (the 1D version of the node pair, k_F = pi/2, speed 2 t), a right mover at E = 0 meets the smooth
+barrier V_n = V0 / cosh^2(n/L) (L in lattice spacings; the medium's own spacing is ~ the healing length); |r| from the exact transfer matrix
+with 110-digit arithmetic (double precision cannot resolve |r| < 1e-12; values below 1e-44 are discarded: the barrier tail, cut off at 60 widths, limits the result to ~1e-52).
+    |r| against L for four barrier heights V0 (units of t; the band is 4 t wide):
+        L     V0 = 0.1     V0 = 0.5     V0 = 1.0     V0 = 1.5
+      1.0    1.426e-02    7.834e-02    1.989e-01    3.873e-01
+      2.0    4.472e-04    7.363e-03    5.878e-02    2.566e-01
+      4.0    2.344e-07    7.330e-05    4.251e-03    8.366e-02
+      8.0    7.497e-14    6.109e-09    1.991e-05    7.673e-03
+     12.0    2.214e-20    4.943e-13    9.120e-08    6.881e-04
+     16.0    6.433e-27    3.972e-17    4.156e-10    6.142e-05
+     20.0    1.858e-33    3.183e-21    1.890e-12    5.471e-06
+     32.0          nan    1.627e-33    1.769e-19    3.852e-09
+     50.0          nan          nan    5.044e-30    7.168e-14
+     70.0          nan          nan    9.669e-42    3.971e-19
+    100.0          nan          nan          nan    5.173e-27
+    Electron-to-Planck mass ratio 4.19e-23 (ln = -51.5).  Slope of ln|r| at large L, and the width where |r| crosses that ratio:
+      V0 = 0.1: d ln|r| / dL =  -3.763;  L(|r| = m_e/m_P) = 13.7 healing lengths
+      V0 = 0.5: d ln|r| / dL =  -2.358;  L(|r| = m_e/m_P) = 21.8 healing lengths
+      V0 = 1.0: d ln|r| / dL =  -1.349;  L(|r| = m_e/m_P) = 38.2 healing lengths
+      V0 = 1.5: d ln|r| / dL =  -0.605;  L(|r| = m_e/m_P) = 85.1 healing lengths
+    Weak-barrier check (V0 = 0.001): slopes -4.71, -4.75, -4.78 at L ~ 9, 11, 13; prediction -pi^2/2 + 2/L = -4.71, -4.75, -4.78  (Born amplitude: the lattice sum of V_n e^(i pi n) is
+    dominated by the pole of sech^2 at n = i pi L / 2, giving L^2 exp(-pi^2 L / 2) with pi^2/2 = 4.93).
+    Strong barriers (V0 comparable to the bandwidth) reach a complex turning point earlier and the exponent shrinks (WKB), but the fall stays exponential.
+    So a Planck-length medium can carry particle masses 22 orders below the Planck mass with a structure only ~ 10-100 healing lengths wide,
+    no tuning: it is the exponential suppression of back-scattering by smooth variations.  What it does NOT supply: what the structure is,
+    why it has that width, why different species (e, mu, tau, quarks; 12 orders of mass) have different widths, and how it comes about
+    in a medium that has just been stretched by e^50: an analytic structure stretched by e^50 has no Fourier weight at 2 k_F at all (r39, E47).
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   J1: the medium has Weyl nodes with E = c|p| and definite chirality -> CONFIRMED: 2 nodes, chirality -1 and +1 (sign det) and -1 and +1 (Berry flux); sum 0
+   J1': a single Weyl fermion without a partner                       -> NO: total chirality zero (Nielsen-Ninomiya); matter comes in left/right pairs far apart in momentum space
+   J2: the nodes survive random smooth perturbations                  -> YES up to eps ~ 0.2 t (fraction with exactly 2 nodes = 1.00 at eps = 0.2); net chirality zero in all samples
+   J2': a mass without fine-tuning from small translation-invariant terms -> NO: gap is linear in the distance to the merging point; 1e-23 needs 1e-23 tuning
+   J3: all species share one light cone                               -> NO without tuning: fermion cone anisotropy 0.30, phonon/fermion 0.58 (weak coupling); must agree to ~1e-15 (needed running exponent gamma = 0.93)
+   J4: m_e / m_P = 4e-23 from a smooth structure of the medium        -> POSSIBLE: back-scattering falls exponentially; |r| = m_e/m_P at L = 14-85 healing lengths (V0 = 0.1-1.5 t); the structure itself is not derived
+   runtime 9 s
