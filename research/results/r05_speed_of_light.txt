@@ -2,7 +2,7 @@
 ==============================================================================
 1. A speed limit emerges from local coupling (Lieb-Robinson), simulated
 ==============================================================================
-numerical vs exact Bessel solution |J_n(2Jt)|^2: max difference 6.9e-16
+numerical vs exact Bessel solution |J_n(2Jt)|^2: max difference 7.3e-16
 late-time speeds: threshold front 2.073, leading peak 1.956 sites per unit time; Lieb-Robinson 2Ja/hbar = 2.000
   (the edge has an Airy-type precursor whose width grows ~ t^(1/3): a threshold front runs slightly
    fast, the peak slightly slow; both converge to 2Ja/hbar as t grows)

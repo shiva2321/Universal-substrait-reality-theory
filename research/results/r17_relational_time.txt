@@ -3,10 +3,10 @@
 A. Relational time (Page-Wootters): a static universe whose parts see time pass
 ==============================================================================
 clock: 16 evenly spaced levels; system: a qubit; constraint J = H_clock + H_system
-physical states (J Psi = 0): 2-dimensional;  |J Psi| = 5.7e-17
-the WHOLE universe does not change: max | |<Psi|exp(-iJs)|Psi>| - 1 | = 4.4e-16
+physical states (J Psi = 0): 2-dimensional;  |J Psi| = 1.2e-16
+the WHOLE universe does not change: max | |<Psi|exp(-iJs)|Psi>| - 1 | = 2.2e-16
 but the system, read relative to the clock, evolves exactly by Schroedinger's equation:
-   max infidelity over 16 clock readings = 7.8e-16
+   max infidelity over 16 clock readings = 1.3e-15
 => time is a RELATION between parts (clock reading <-> system state), not an external
    parameter. Realised with entangled photons: Moreva et al., PRA 89, 052122 (2014).
 

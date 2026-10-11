@@ -3,7 +3,7 @@
 A. Mode count and helicities at a generic wavevector (k = (0.13, 0.31, 0.47))
 ==============================================================================
 M1 elastic tensor medium, no gauge symmetry
-     6 modes -> h=0: w^2/D^2=+2.000, h=0: w^2/D^2=+1.000, h=1: w^2/D^2=+1.500, h=1: w^2/D^2=+1.500, h=2: w^2/D^2=+1.000, h=2: w^2/D^2=+1.000
+     6 modes -> h=0: w^2/D^2=+1.000, h=0: w^2/D^2=+2.000, h=1: w^2/D^2=+1.500, h=1: w^2/D^2=+1.500, h=2: w^2/D^2=+1.000, h=2: w^2/D^2=+1.000
 M2 spatial gauge, curvature^2 stiffness (Xu 2006)
      3 modes -> h=0: w^2/D^2=+0.329, h=2: w^2/D^2=+0.329, h=2: w^2/D^2=+0.329
 M3 spatial gauge, Einstein stiffness, absolute time (lambda = 1.2)

@@ -33,7 +33,7 @@ D = 5 space dimensions: force ~ 1/r^4; stable planetary orbits: no (Ehrenfest 19
 ==============================================================================
 Q4  Particles as trapped ripples obey special relativity (sine-Gordon chain, c = 1)
 ==============================================================================
-v = 0.00c: measured speed 0.000  width shrink 1.000  Lorentz gamma 1.000  energy/8 1.000
+v = 0.00c: measured speed -0.000  width shrink 1.000  Lorentz gamma 1.000  energy/8 1.000
 v = 0.30c: measured speed 0.300  width shrink 1.048  Lorentz gamma 1.048  energy/8 1.048
 v = 0.60c: measured speed 0.600  width shrink 1.250  Lorentz gamma 1.250  energy/8 1.250
 v = 0.80c: measured speed 0.800  width shrink 1.667  Lorentz gamma 1.667  energy/8 1.667
