@@ -58,6 +58,7 @@ This is the running record of every question, calculation, plot and conclusion i
 | [E40](#e40) | 2026-10-11 | Other ways of putting fermions on the substrate: how much does a Dirac fermion count? | r30 |
 | [E41](#e41) | 2026-10-11 | Review of the parallel memory-kernel (r25) and dark-matter (r28) entries, and the hand-off list for the next session | — |
 | [E42](#e42) | 2026-10-11 | Outside review of the whole repository, and a re-test by calculation of R15–R17 (r25, r26, r28) | r31 |
+| [E43](#e43) | 2026-10-11 | Why gravity and quantum physics are not yet united, and why light has a dual nature: are there answers? | — |
 
 ---
 
@@ -375,6 +376,7 @@ Under a constant push the speed went 0.375 → 0.700 → 0.850 → 0.900c. Newto
 - [ ] (added 2026-10-11, from E40) Overlap and domain-wall fermions on the substrate (need a Euclidean-time lattice formulation); and the fermion weights with the flux-sector term of E39 included.
 - [x] (added 2026-10-11, from E41) Re-run the whole suite on the merged tree (r01–r30) in the background; the parallel session re-commits all regenerated figures, so commit only new files and claim the next numbers early. *Done 2026-10-11 in E42: r01–r31 on the merged tree all run (248 s); 27 of the 30 committed results regenerate byte for byte and the other three differ only in floating-point residuals and runtime lines.*
 - [ ] (added 2026-10-11, from E42) Housekeeping: add a LICENSE; add a smoke test that every `rNN` script reproduces its committed results file (the diff in E42 is a template: ignore runtime lines and residuals below 10⁻¹⁰); and agree a way to reserve numbers between sessions (they have collided on r/E numbers at least twice).
+- [ ] (added 2026-10-11, from E43) Watch for the first gravity-mediated-entanglement (QGEM-type) result; none was found as of 2026-10-11. When one is reported, record it against E21's prediction: a quantum substrate entangles the two masses, a classical one does not.
 
 > **Note (2026-10-10, later):** E10 gives the layered version of this picture, with parameter ranges and the new Coulomb-phase constraint α < α_c ≈ 0.079. Nothing in E9 is retracted.
 
@@ -2335,3 +2337,46 @@ Cubes l = 2–12; area-law fit S = η·6l² + b·l + c for l ≥ 4, exactly as f
 - **Sorkin**, Int. J. Theor. Phys. 36, 2759 (1997); **Ahmed, Dodelson, Greene & Sorkin**, PRD 69, 103523 (2004): everpresent Λ
 
 **Files:** [`r31_audit_of_r25_r26_r28.py`](r31_audit_of_r25_r26_r28.py), [results](results/r31_audit_of_r25_r26_r28.txt), ![audit](figures/r31_audit_of_r25_r26_r28_audit.png)
+
+---
+
+<a id="e43"></a>
+## E43 — Why gravity and quantum physics are not yet united, and why light has a dual nature: are there answers? (2026-10-11)
+
+**Question (user):** "so why cant gravity and quantum physics cant be united and why does light have dual nature ?? are there answers for these questions ?"
+
+**Method:** pure reasoning from established physics, plus a quick web check (two standard searches, 2026-10-11) of two time-sensitive facts: whether the gravity-mediated-entanglement test has been done, and whether any quantum-gravity programme has experimental support. Nothing is computed and there is no script. The search results were read as summaries, not as papers.
+
+**Results (the argument):**
+
+*A. Gravity and quantum physics*
+- **They can be combined at low energy; what is missing is a complete theory at the extremes.** Treating general relativity as an effective quantum field theory works: the leading quantum correction to Newton's law is (41/10π)(ℓ_P/r)² (Donoghue 1994; computed in E21/r16, about 10⁻⁷⁰ at 1 m). Hawking radiation is a semiclassical blend of the two. The description fails only near the Planck scale (ℓ_P ≈ 1.6×10⁻³⁵ m, 1.2×10¹⁹ GeV): the centres of black holes and the first instant of the Big Bang.
+- **Four obstacles.**
+  1. *Non-renormalisable.* G has units of length², so gravity's strength grows with energy. At each order of perturbation theory new infinities appear (already at two loops in pure gravity: Goroff & Sagnotti 1986) that cannot be absorbed into a finite number of measured constants, so the theory loses predictive power at high energy.
+  2. *Stage and actor.* Quantum theory needs a fixed space-time, a clock and a stage; in gravity the stage is dynamical and is what must be quantised. The direct attempt (Wheeler–DeWitt, ĤΨ = 0) has no time variable at all: the problem of time (compare the local Hamiltonian constraint of E17 and the Page–Wootters route of E23).
+  3. *Superposition of geometries.* If a mass can be in two places, so can its gravitational field; what a superposition of causal structures means is not settled.
+  4. *No data.* Gravity between two protons is about 10³⁶ times weaker than their electric repulsion, and the Planck energy is about 10¹⁵ times the LHC's. No quantum-gravity effect has been observed.
+- **Candidate answers, none confirmed (open).** String theory (the graviton is built in; needs extra dimensions; no confirmed prediction). Loop quantum gravity (space in discrete chunks; hard to recover smooth space-time). Causal sets (E25, E27: space-time as a growing partial order). Asymptotic safety (gravity may be renormalisable non-perturbatively). Holography and emergent gravity (Maldacena; Jacobson; Verlinde; Sakharov: E18, E19). And the possibility that gravity is **not quantised** at all (Oppenheim 2023).
+- **The decisive tabletop test (E21).** Put two neutral masses in superpositions side by side, shielded from electromagnetism; if they become entangled through gravity alone, gravity cannot be a classical field (Bose et al.; Marletto & Vedral, 2017). **Web check, 2026-10-11: no completed demonstration was found.** The QGEM designs are still proposals and theory (masses of at least about a nanogram, coherence of milliseconds; a Snowmass white paper judged some versions possible within about ten years). The nearest experiment measured classical gravity between a levitated sub-millimetre particle and kilogram masses (Science Advances, 2024). A positive result would show a non-classical mediator but not fix the theory; a null result would not be conclusive (decoherence).
+
+*B. Light's dual nature*
+- **The facts.** Wave: interference and diffraction (Young 1801), polarisation. Particle: the photoelectric effect (Einstein 1905: energy arrives in lumps E = hf, with a frequency threshold whatever the intensity), Compton scattering (1923), detectors that click one photon at a time, and photon antibunching (Kimble, Dagenais & Mandel 1977).
+- **The answer of quantum field theory.** Light is neither a wave nor a particle: it is the electromagnetic field, whose excitations come in countable units (photons). Between emission and detection the state evolves like a wave (amplitudes add and cancel); detection is a single lump at one place, with probability equal to the amplitude squared. Single photons sent one at a time through two slits land as dots that build up the interference stripes (Taylor 1909; Grangier, Roger & Aspect 1986), and learning which slit each took erases the stripes (complementarity). QED predicts the electron's magnetic moment to about twelve digits.
+- **What is still open (the measurement problem).** Why a spread-out amplitude gives one definite click, and whether anything "collapses". The Copenhagen, many-worlds, pilot-wave and objective-collapse readings make the same predictions so far, and no experiment decides between them. None of them explains why nature is quantum at all.
+
+**Interpretation, in plain English:**
+- **Gravity.** The two theories are each superb and clash only where something is both tiny and extremely heavy. The obstacles are known precisely (infinities that cannot be tamed, a space-time that is both stage and actor, no experiment near the scale). Nobody has the complete theory; there are several serious candidates and the bottleneck is mostly experimental.
+- **Light.** "Dual nature" is a limit of everyday words: light is one quantum thing that spreads like a wave and is found as a lump. That is answered, and tested to extreme precision. What remains open is the deeper question of what a measurement is.
+- **USRT.** It answers neither question. It assumes a quantum substrate (E28, weakness 4) and explains neither the Born rule nor the duality. For gravity it sits on the emergent-gravity and causal-set roads (E19, E21, E25); its distinctive claim is that G is the substrate's entanglement. The gravity-mediated-entanglement test is the experiment that separates a quantum substrate from a classical one (E21), so a result would bear directly on it.
+
+**Status:** (A) the obstacles: **established**; the candidate theories: **open**, none confirmed; the entanglement test: **open** (not done, as far as a quick search found). (B) wave–particle duality as the quantum behaviour of a field: **established**; the measurement problem: **open**.
+
+**References** (from memory, except the web check at the end):
+- **Donoghue**, PRD 50, 3874 (1994); **'t Hooft & Veltman**, Ann. Inst. H. Poincaré A 20, 69 (1974); **Goroff & Sagnotti**, Nucl. Phys. B 266, 709 (1986)
+- **DeWitt**, Phys. Rev. 160, 1113 (1967); **Kuchař**, in *Proc. 4th Canadian Conf. on General Relativity and Relativistic Astrophysics* (1992)
+- **Bose et al.**, PRL 119, 240401 (2017); **Marletto & Vedral**, PRL 119, 240402 (2017); **Oppenheim**, PRX 13, 041040 (2023)
+- **Weinberg** (1979, asymptotic safety); **Reuter**, PRD 57, 971 (1998); **Maldacena**, Adv. Theor. Math. Phys. 2, 231 (1998); **Jacobson**, PRL 75, 1260 (1995); **Verlinde**, JHEP 04 (2011) 029; **Rovelli**, Living Rev. Relativ. 1, 1 (1998)
+- **Einstein**, Ann. Phys. 17, 132 (1905); **Compton**, Phys. Rev. 21, 483 (1923); **Taylor**, Proc. Camb. Phil. Soc. 15, 114 (1909); **Grangier, Roger & Aspect**, Europhys. Lett. 1, 173 (1986); **Kimble, Dagenais & Mandel**, PRL 39, 691 (1977)
+- Web check (summaries only): Snowmass 2021 white paper on tabletop tests, arXiv:2203.11846; arXiv:2602.19306 (two interacting Stern–Gerlach interferometers, February 2026); "Fundamental Physics in 2025: Status, Decisive Targets, and Path Forward", arXiv:2512.21445
+
+**Files:** pure reasoning; no script.
