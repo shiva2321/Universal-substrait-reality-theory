@@ -1,0 +1,42 @@
+
+==============================================================================
+A. Defect formation in a superfluid quench (2D time-dependent Ginzburg-Landau, Kibble-Zurek scaling)
+==============================================================================
+Grid 256x256, dx = 0.5, dt = 0.04, noise D = 0.005; eps ramps from -0.3 at rate 1/tau_Q; vortices counted at
+t = kappa sqrt(tau_Q) (a fixed multiple of the freeze-out time sqrt(tau_Q)) once the order parameter has formed.
+     tau_Q  runs  vortices        n_v  n_v sqrt(tau)  |psi|^2/eps   (kappa = 6)
+        10     3       154    0.00313        0.00991         0.95
+        20     3       114    0.00232        0.01037         0.94
+        40     3        78    0.00159        0.01004         0.94
+        80     4        76    0.00116        0.01037         0.94
+       160     6        72    0.00073        0.00926         0.94
+    kappa = 6: fitted exponent n_v ~ tau_Q^(-0.51 +- 0.05)
+    kappa = 8: fitted exponent n_v ~ tau_Q^(-0.50 +- 0.05)
+    Kibble-Zurek (mean field, z = 2, nu = 1/2) predicts -0.50. Measured -0.51 +- 0.05 (stat), a further 0.02
+    from the choice of counting time.  Counting rules matter: exploratory runs in a smaller box, counting before the order
+    parameter had formed or at a different stage, gave anything from +1.8 to -0.68 (see E45); the rule used here is the one
+    that counts real vortices (|psi|^2 / eps = 0.94 at the count) at a fixed multiple of the freeze-out time.
+    Faster quench: more defects; slower: fewer; never none: the density is set by the cooling rate.
+
+==============================================================================
+B. If the medium is Planck-scale: what its vortex lines would weigh, and what dilutes them
+==============================================================================
+G m_P / (c^2 l_P) = 1.000, so  G mu / c^2 = 2 pi f alpha^2 ln(R/xi)  for density f rho_P and healing length alpha l_P.
+           f  alpha  ln(R/xi)   G mu / c^2   (bound 1.5e-07)
+       1e+00    1.0       1.5     9.42e+00
+       1e+00    1.0     141.5     8.89e+02
+       1e-08    1.0     141.5     8.89e-06
+       1e-10    1.0     141.5     8.89e-08
+    => the medium must satisfy f alpha^2 < 1.6e-08 (R = string spacing at formation) or < 1.7e-10 (R = observable universe):
+       i.e. 6e+07 to 6e+09 times less dense than the Planck density if its healing length is a Planck length.
+Dilution: formation at T_P = 1.42e+32 K, expansion to today (T = 2.7255 K, entropy dof included) stretches lengths x1.6e+32;
+    KZ spacing 2.9e-35 m becomes 4.5e-03 m, i.e. about 9e+86 string segments in the
+    observable universe.  Extra stretching by exp(N) with N = ln(R_obs / spacing) = 67 e-folds (inflation) leaves about one.
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   F3a: a quench into the superfluid leaves vortex defects, set by the cooling rate -> CONFIRMED by simulation: n_v ~ tau_Q^(-0.51 +- 0.05) against the Kibble-Zurek -0.50
+   F3b: a Planck-density, Planck-length superfluid is compatible with the observed sky -> NO: its vortex lines have G mu / c^2 ~ 9-889 against < 1e-07
+   F3c: what would rescue it                                                        -> (i) a medium 6e+07-6e+09 times less dense than Planck, or (ii) about 67 e-folds of inflation after the transition, or (iii) a vacuum manifold without vortices
+   runtime 187 s

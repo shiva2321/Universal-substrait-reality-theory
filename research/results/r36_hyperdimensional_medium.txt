@@ -1,0 +1,59 @@
+
+==============================================================================
+A. Forces on the brane from a massless mode that lives in a compact extra dimension
+==============================================================================
+Check of the closed form against the explicit image sum (200,001 images): V r / G = coth(pi r / L)
+       r / L  coth formula    image sum  difference
+        0.01     31.841460    31.841460     3.2e-08
+        0.10      3.287136     3.287136     3.2e-07
+        0.30      1.358034     1.358033     9.5e-07
+        1.00      1.003742     1.003739     3.2e-06
+        3.00      1.000000     0.999990     9.5e-06
+Local power law of V(r) = (G/r) coth(pi r/L):  d ln V / d ln r = -1.999 at r = 0.01 L (4D law, -2) and -1.000 at r = 100 L (3D law, -1).
+Assumption (typed, from memory): torsion balances see no deviation above ~25% from 1/r^2 at r = 52 micrometres.
+    coth(pi r / L) - 1 < 0.25 at r = 52 um gives L < 149 um (radius L/2pi < 24 um) and a first
+    Kaluza-Klein mode heavier than 8.3 meV.  For L = 1 mm the force at 52 um would be 6.2 times Newton's.
+    So a massless bulk mediator forces the extra dimension to be at most ~0.1 mm round, or the mediator to be massive/warped.
+
+==============================================================================
+B. The horizon problem: how fast must a bulk signal be?
+==============================================================================
+Planck 2018 background, z* = 1089.92: comoving horizon at recombination eta* = 0.280 Gpc,
+    comoving distance to the last-scattering sphere d_C = 13.87 Gpc; the horizon subtends 1.16 degrees
+    (about 9798 causally disconnected patches over the sky).
+    A common cause for two antipodal points needs signal speed >= d_C / eta* = 49 c; direct exchange needs >= 2 d_C / eta* = 99 c.
+    Gravitational waves travel at c to 1 part in 1e15 (GW170817), so the fast bulk mode cannot be the one carrying gravity;
+    and any coupling of it to brane matter would show up as a preferred frame (Collins et al. 2004), so it must barely couple.
+
+==============================================================================
+C. Is a brane made from the medium's own domain wall stable?
+==============================================================================
+Dark soliton psi0 = tanh(x) (units hbar = m = g = n0 = 1: c = 1, xi = 1/sqrt 2, time unit hbar/(m c^2) = sqrt(2) xi / c).
+Bogoliubov-de Gennes spectrum with transverse wavenumber k, finite differences on [-16, 16] with 360 points;
+growth rate = largest imaginary part of omega.  Sanity check first: the stationary equation and the k = 0 spectrum.
+    residual of -psi''/2 + psi^3 - psi for tanh(x): 6.1e-06; at k = 0 the largest |Im omega| is 0.0e+00 and the
+    smallest |omega| is 2.2e-02 (the translation zero mode, offset by discretisation); no instability for a straight soliton, as it must be.
+         k  growth rate
+      0.00       0.0000
+      0.15       0.0798
+      0.30       0.1543
+      0.45       0.2138
+      0.60       0.2525
+      0.75       0.2587
+      0.90       0.2032
+      1.05       0.0000
+      1.20       0.0000
+    Convergence at k = 0.70: growth rate 0.2614 (360 points) and 0.2616 (720 points); the zero-mode offset falls from
+    0.022 to 0.011 as the grid spacing halves, i.e. it is a discretisation error going to zero.
+    maximum growth rate 0.261 (units m c^2 / hbar) at k = 0.70 (units m c / hbar); unstable for k below ~1.00; growth at k = 0 is 0.0e+00.
+    The wall's bending doubles in about 3.8 xi / c.  For a Planck-length medium that is a few Planck times.
+    This is the 'snake instability' of dark solitons (Kuznetsov & Turitsyn 1988; seen in cold atoms by Anderson et al. 2001):
+    a flat wall in a repulsive superfluid breaks into vortex lines and rings.  A brane needs something more to hold it.
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   F4a: a hyper-dimensional medium gives 3D forces at large distance  -> ONLY IF the extra dimension is curled up: coth law verified to 1e-05; torsion balances then need L < ~149 um
+   F4b: a bulk shortcut can solve the horizon problem                 -> POSSIBLE IN PRINCIPLE: needs a bulk signal of 49-99 c, which cannot carry gravity (c to 1e-15) and must barely couple
+   F4c: observers live on a 3D wall of the medium itself              -> NOT AS IT STANDS: the simplest wall (dark soliton) is unstable to bending, growth rate up to 0.26 mc^2/hbar, doubling in ~4 xi/c
+   runtime 5 s

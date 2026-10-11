@@ -1,0 +1,49 @@
+
+==============================================================================
+A. Sound rays through three inward flows (c = 1, GM = 1, all flows 0.447 c at r = 10)
+==============================================================================
+Convergence: river flow, b = 100: start at 2000 b -> 0.04135692, 8000 b -> 0.04128973; the error goes as X^-1/2 (v ~ r^-1/2
+    stretches and tilts the wave vector all the way out), Richardson-extrapolated value 0.04122253, exact GR 0.04122254.
+    The river flow below uses the extrapolated value; the faster-decaying flows are converged at 2000 b.
+         b   GR exact     4GM/b   river flow  v ~ r^-1/2   linear-in-source flow    fluid-sink far field  
+        20   0.236136  0.200000     0.236135 ( 1.0000)     0.132823 ( 0.5625)     0.038579 ( 0.1634)
+        50   0.085083  0.080000     0.085083 ( 1.0000)     0.019189 ( 0.2255)     0.000944 ( 0.0111)
+       100   0.041223  0.040000     0.041223 ( 1.0000)     0.004733 ( 0.1148)     0.000059 ( 0.0014)
+       200   0.020300  0.020000     0.020300 ( 1.0000)     0.001179 ( 0.0581)     0.000004 ( 0.0002)
+       500   0.008047  0.008000     0.008047 ( 1.0000)     0.000189 ( 0.0234)     0.000000 ( 0.0000)
+      1000   0.004012  0.004000     0.004012 ( 1.0000)     0.000047 ( 0.0117)     0.000000 ( 0.0000)
+    (in brackets: deflection divided by the exact general-relativistic value)
+    => the river flow reproduces exact Schwarzschild light bending to 6.3e-06 at every b.
+    => the linear-in-source flow gives 0.562 of it at b = 20 and 0.0117 at b = 1000 (the ratio falls as 1/b:
+       bending ~ v(b)^2 ~ b^-2); the fluid-sink flow gives 0.163 and 1.5e-06 (ratio ~ b^-3: bending ~ b^-4).
+
+B. How does the deflection depend on the flow speed?  River flow scaled by eps, b = 100
+    eps = 0.05: deflection = 0.000100 = 0.0024 of GR   (eps^2 = 0.0025)
+    eps = 0.10: deflection = 0.000400 = 0.0097 of GR   (eps^2 = 0.0100)
+    eps = 0.20: deflection = 0.001602 = 0.0389 of GR   (eps^2 = 0.0400)
+    eps = 0.40: deflection = 0.006430 = 0.1560 of GR   (eps^2 = 0.1600)
+    eps = 0.70: deflection = 0.019888 = 0.4825 of GR   (eps^2 = 0.4900)
+    eps = 1.00: deflection = 0.041223 = 1.0000 of GR   (eps^2 = 1.0000)
+    => log-log slope at small eps = 2.00: the bending goes as the SQUARE of the flow speed.
+       First-order (linear in v) terms cancel for a symmetric inflow; the bending comes from v^2, the 'potential' part
+       of the acoustic metric.  A flow produced linearly by the source, v ~ G M, would bend by ~ (G M)^2: far too little.
+       Only a flow with v^2 ~ G M / r, i.e. v ~ sqrt(G M) (non-analytic in the source strength), matches gravity.
+
+C. What would sustain the river flow in a conserved fluid?
+   Continuity with uniform density rho and steady flow: div v = - s / rho, so the sink density needed is
+       s(r) = rho (3/2) sqrt(2 G M) r^(-3/2)      (kg per second per cubic metre),
+   and the total drain through a sphere of radius r is  Phi(r) = 4 pi rho sqrt(2 G M) r^(3/2).
+   Phi GROWS with r: the sinks are spread through all space, not located in the body, and Phi is not proportional to M.
+   Sun, medium at Planck density 5.15e+96 kg/m^3: drain through the Sun's surface 1.9e+121 kg/s, through 1 AU 6.1e+124 kg/s.
+   Euler equation: for the river flow v . grad v = - G M / r^2, i.e. the fluid elements themselves accelerate inward at the
+   Newtonian rate.  A steady irrotational flow of a uniform-density fluid has v . grad v = grad(v^2/2) balanced only by pressure
+   gradients, which are zero for uniform density: the flow needs an external inward force equal to gravity to exist.
+   A real fluid sink (continuity alone, no extra force) has v ~ r^-2 (scenario 3 above): it bends sound ~ b^-4, not b^-1.
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   F2a: an inward flow of the medium can bend light like gravity      -> YES for the river flow v = sqrt(2GM/r): matches exact Schwarzschild to 6e-06
+   F2b: the flow can be a linear response to the mass                 -> NO: bending goes as v^2 (slope 2.00); a flow v ~ GM/r gives 0.012 of GR at b = 1000 and falling as 1/b
+   F2c: a conserved fluid draining into a hyper-dimension makes that flow -> NO: a real sink flow has v ~ r^-2 and bends 1e-06 of GR at b = 1000 (~b^-4); the river flow needs sinks everywhere (Phi grows as r^1.5) and an inward force equal to gravity
+   runtime 1 s

@@ -60,6 +60,7 @@ This is the running record of every question, calculation, plot and conclusion i
 | [E42](#e42) | 2026-10-11 | Outside review of the whole repository, and a re-test by calculation of R15–R17 (r25, r26, r28) | r31 |
 | [E43](#e43) | 2026-10-11 | Why gravity and quantum physics are not yet united, and why light has a dual nature: are there answers? | — |
 | [E44](#e44) | 2026-10-11 | Time without an outside clock, space as a stiff fluid, and whether light's lumps are in the light or in the detector | r32 |
+| [E45](#e45) | 2026-10-11 | The fluid-space programme, stage 1: the equations, gravity as a flow, the quench from the beginning, hyper-dimensions | r33–r36 |
 
 ---
 
@@ -378,6 +379,10 @@ Under a constant push the speed went 0.375 → 0.700 → 0.850 → 0.900c. Newto
 - [x] (added 2026-10-11, from E41) Re-run the whole suite on the merged tree (r01–r30) in the background; the parallel session re-commits all regenerated figures, so commit only new files and claim the next numbers early. *Done 2026-10-11 in E42: r01–r31 on the merged tree all run (248 s); 27 of the 30 committed results regenerate byte for byte and the other three differ only in floating-point residuals and runtime lines.*
 - [ ] (added 2026-10-11, from E42) Housekeeping: add a LICENSE; add a smoke test that every `rNN` script reproduces its committed results file (the diff in E42 is a template: ignore runtime lines and residuals below 10⁻¹⁰); and agree a way to reserve numbers between sessions (they have collided on r/E numbers at least twice).
 - [ ] (added 2026-10-11, from E43) Watch for the first gravity-mediated-entanglement (QGEM-type) result; none was found as of 2026-10-11. When one is reported, record it against E21's prediction: a quantum substrate entangles the two masses, a classical one does not.
+- [ ] (added 2026-10-11, from E45) **Fluid-space stage 2, expansion and structure:** put the superfluid in an expanding background (Hubble friction on the phonons) and compute the spectrum of phonon fluctuations frozen at sound-horizon exit: is it scale-invariant with the observed tilt n_s = 0.965 ± 0.004? This is the first test of the "universe from the beginning" chain after the quench.
+- [ ] (added 2026-10-11, from E45) **Fluid-space stage 2, 3D quench:** repeat the F3 quench in 3D (vortex lines): network scaling, loop distribution, and whether the string tension can be reduced by a lower density without destroying the other results.
+- [ ] (added 2026-10-11, from E45) **Fluid-space stage 2, what holds a brane flat:** test stabilisers for the F4 wall (a second component, a conserved topological charge, a pinning potential) against the snake instability; and what sources the escape-speed flow of F2 (a field equation giving v² = −2Φ).
+- [ ] (added 2026-10-11, from E45) Housekeeping: `research/run_all.py` now takes about 7 minutes (r35 alone about 3); consider a `--fast` switch that skips r21, r29, r30 and r35.
 
 > **Note (2026-10-10, later):** E10 gives the layered version of this picture, with parameter ranges and the new Coulomb-phase constraint α < α_c ≈ 0.079. Nothing in E9 is retracted.
 
@@ -2428,3 +2433,62 @@ Cubes l = 2–12; area-law fit S = η·6l² + b·l + c for l ≥ 4, exactly as f
 - Web check (summaries only): the Reed College page on the Grangier experiment (people.reed.edu/~beckm/QM/grangier), arXiv:2209.06136 ("Testing the existence of single photons") and Physics Today, "The concept of the photon"
 
 **Files:** [`r32_light_lumps_and_energy_scales.py`](r32_light_lumps_and_energy_scales.py), [results](results/r32_light_lumps_and_energy_scales.txt), ![scales](figures/r32_light_lumps_and_energy_scales_lumps_and_scales.png)
+
+---
+
+<a id="e45"></a>
+## E45 — The fluid-space programme, stage 1: the equations, gravity as a flow, the quench from the beginning, and hyper-dimensions (2026-10-11)
+
+**Question (user):** "lets work out the math for the fluid space idea … also lets try to simulate universer from very begininig based on different ideas and mathematical calculations, formulations and simulations absed on them and see what happens ……. first its a super fluide like matter or soemthing and its in hyper dimentionas and we as an observers can only see and interact in 3d.... what we will do is test ideas and things based on that if they support or not we show theru calculations, formulations, simulations etc and even oif they not we will still ahve concrete evedences of whys"
+
+**Method:** define one model (FS, below), turn each idea about it into a prediction, test the prediction by calculation or simulation, and record a verdict **with the reason**. Four tests in stage 1: F1 (r33) the equations and their numerical check, F2 (r34) gravity as a flow of the medium, F3 (r35) the beginning as a quench with its defects, F4 (r36) hyper-dimensions with 3D observers.
+
+**The model FS (the mathematics).**
+1. The medium is a superfluid with order parameter ψ in D space dimensions (D = 3, or D = 4 with observers on a 3D slice, the brane): iħ∂ψ/∂t = [−ħ²∇²/2m + g|ψ|² − μ]ψ.
+2. Madelung form ψ = √n e^{iθ}, v = (ħ/m)∇θ: ∂n/∂t + ∇·(nv) = 0 and m∂v/∂t = −∇(gn + mv²/2 + Q), with the quantum pressure Q = −(ħ²/2m)∇²√n/√n.
+3. Small waves obey the Bogoliubov law ω² = c²k² + (ħk²/2m)² = c²k²(1 + k²ξ²/2), with c = √(gn₀/m) and ξ = ħ/(√2 mc). Below k ~ 1/ξ these phonons are Lorentz-invariant with c as "the speed of light"; above it they are superluminal, v_g/c − 1 = (3/4)(kξ)².
+4. Acoustic metric (Unruh 1981): sound in a medium streaming with velocity v(x) has the ray Hamiltonian H = c|k| + v·k, i.e. ds² = −(c² − v²)dt² − 2v·dx dt + dx² for uniform density and sound speed.
+5. Defects: a vortex line carries E/L = πρ(ħ/m)² ln(R/ξ) = 2πρc²ξ² ln(R/ξ) (using ħ/m = √2 cξ); for density fρ_P and ξ = αℓ_P this gives Gμ/c² = 2πfα² ln(R/ξ), because Gm_P/(c²ℓ_P) = 1.
+6. Hyper-dimensions: a massless bulk mode gives a static potential ∝ r^−(D−2); with the extra direction a circle of circumference L, the brane potential is V(r) = (G/r) coth(πr/L) = (G/r)(1 + 2Σₙ e^(−2πnr/L)): a 3D 1/r law plus a Kaluza–Klein tower of Yukawa terms with masses 2πnħ/(Lc).
+
+**Results (computed here):**
+
+*F1 — the equations (r33).* A split-step simulation of the Gross–Pitaevskii equation reproduces the Bogoliubov frequency to 3.5×10⁻⁶ at every k tested; pure sound (ω = ck) misses by up to 61 % at kξ = 3.3. If c_s = c and ξ = αℓ_P, the constituent mass is m = m_P/(√2 α) (8.6×10¹⁸ GeV for α = 1). The superluminal correction delays a 10 TeV photon over 1 Gpc by 5.2×10⁻¹⁴ s for a Planck-length medium, 10¹³ times below timing sensitivity; timing of 1–100 s probes ξ ~ 7×10⁻²⁹–7×10⁻²⁸ m. So: no conflict and no test. Not provided: one light cone for every species (E9, open problem 2).
+
+*F2 — gravity as a flow (r34).* Sound rays were traced through three inward flows, all normalised to 0.447 c at r = 10 GM/c² (c = 1, GM = 1). (1) The escape-speed ("river", Painlevé–Gullstrand) flow v = √(2GM/r) reproduces the exact Schwarzschild deflection to 6×10⁻⁶ at every impact parameter b = 20–1000, including the second-order 15π/4 term (after Richardson-extrapolating a finite-start error that goes as X^−1/2). (2) A flow linear in the source, v ~ GM/r, gives 0.56 of GR at b = 20 and 0.012 at b = 1000 (ratio ∝ 1/b). (3) The far field of a real fluid sink, v ~ r⁻², gives 0.16 and 1.5×10⁻⁶ (bending ∝ b⁻⁴). Scaling the river flow by ε, the bending goes as ε² (log-log slope 2.00): first-order terms in v cancel for a symmetric inflow, so the bending comes from v². What sustains the river flow? With uniform density the sink density must be ρ(3/2)√(2GM) r^−3/2 and the drain through radius r grows as r^(3/2) (1.9×10¹²¹ kg/s through the Sun's surface at Planck density): the sinks are spread through all space and the flux is not proportional to M. And v·∇v = −GM/r²: the fluid itself accelerates inward at the Newtonian rate, so the flow needs an inward force equal to gravity to exist.
+
+*F3 — the beginning as a quench (r35).* A 2D time-dependent Ginzburg–Landau simulation (256 × 256) ramping through the transition at rate 1/τ_Q leaves vortex defects whose density falls with slower cooling as n_v ∝ τ_Q^(−0.51 ± 0.05) (counted at 6 and 8 freeze-out times: −0.51, −0.50), against the Kibble–Zurek mean-field prediction −0.50. Counting rules matter: exploratory runs in a smaller box, counting before the order parameter had formed, gave exponents from +1.8 to −0.68; the rule used counts real vortices (|ψ|²/ε = 0.94 at the count) at a fixed multiple of the freeze-out time. For a Planck-length medium at Planck density the vortex lines would have Gμ/c² = 9 (string spacing) to 890 (observable universe) against < 1.5×10⁻⁷. The medium must satisfy fα² < 1.6×10⁻⁸ to 1.7×10⁻¹⁰ (6×10⁷–6×10⁹ times below Planck density), or the strings must be diluted: formation at T_P and ordinary expansion leave 9×10⁸⁶ string segments in the observable universe, and about 67 e-folds of extra stretching leave one.
+
+*F4 — hyper-dimensions (r36).* (a) The coth law was verified against an explicit image sum to 10⁻⁵ (local slopes −2.0 for r ≪ L and −1.0 for r ≫ L). Taking as the typed assumption that torsion balances exclude deviations above ~25 % at 52 µm, L < 149 µm (radius 24 µm), with a first Kaluza–Klein mode above 8.3 meV; for L = 1 mm the force at 52 µm would be 6.2 times Newton's. (b) The comoving horizon at recombination is 0.280 Gpc against 13.87 Gpc to the last-scattering sphere: 1.16°, about 9,800 disconnected patches. A bulk signal must travel at ≥ 49 c (common cause) to ≥ 99 c (direct exchange). (c) The simplest brane made of the medium itself, a dark-soliton wall tanh(x), is unstable to bending: growth rate up to 0.261 mc²/ħ at k = 0.70 mc/ħ, unstable for k below ~1.0, doubling in about 3.8 ξ/c (converged to 0.1 % between 360 and 720 grid points; a straight wall is stable at k = 0, as it must be). This is the known snake instability of dark solitons.
+
+**The ledger: each idea, its test, and why**
+
+| Idea | Verdict | Why |
+|---|---|---|
+| The medium is a superfluid with phonons and an emergent acoustic metric | **supported** (F1) | simulation matches Bogoliubov to 4×10⁻⁶ |
+| A Planck-length healing length is compatible with Lorentz invariance | **supported, untestable** (F1) | delay 5×10⁻¹⁴ s against 1–100 s sensitivity |
+| One medium gives one light cone for all species | **not provided** (F1) | only phonons are Lorentz-invariant by construction |
+| Gravity is an inward flow of the medium | **supported as kinematics** (F2) | the escape-speed flow reproduces Schwarzschild to 6×10⁻⁶ |
+| …and the flow is a linear response to the mass | **ruled out** (F2) | bending ∝ v²; a linear flow gives 0.012 of GR at b = 1000 |
+| …made by a conserved fluid draining into a hyper-dimension | **ruled out** (F2) | a real sink flow is v ~ r⁻² (bending ~ b⁻⁴); the needed flow requires sinks everywhere and a force equal to gravity |
+| The universe begins as a hot medium that cools into the superfluid | **supported** (F3) | defects form, density ∝ τ_Q^−0.51 as Kibble–Zurek predicts |
+| …with a Planck-density, Planck-length medium | **ruled out as it stands** (F3) | vortex lines would have Gμ/c² ~ 10–900; needs ≥ 6×10⁷ times lower density, or ~67 e-folds of inflation, or no vortices |
+| Gravity on the brane comes from a massless bulk mode | **only if the extra dimension is curled up** (F4) | force ∝ 1/r² for r ≪ L; L < ~150 µm |
+| A fast bulk signal solves the horizon problem | **possible in principle** (F4) | needs ≥ 49–99 c, which cannot carry gravity (c to 10⁻¹⁵) and must barely couple |
+| Observers live on a 3D wall made of the medium itself | **not as it stands** (F4) | the flat wall bends and breaks (snake instability), doubling in ~4 ξ/c |
+
+**Interpretation, in plain English:**
+- The fluid picture hangs together as *kinematics* (how waves move in a moving medium) and fails, each time at the same place, as *dynamics* (what makes the medium move that way). Gravity as a flow works if the medium falls inward at exactly the escape speed, but nothing in a fluid produces that speed without gravity already being there. The beginning produces defects automatically, and for a Planck-sized dense medium they are absurd unless the universe was stretched by about 67 e-folds. Hyper-dimensions are consistent only if curled up smaller than ~0.15 mm, and a brane cut from the medium itself will not stay flat.
+- Where the evidence is against an idea, it also says what would rescue it: lower density, inflation, a stabilising mechanism for the brane, a source for the escape-speed flow.
+- **What stage 1 did not do:** it does not simulate a whole universe. The stages not yet simulated are the expansion after the transition (the 67 e-folds are required, not derived), the structure that grows from the phonon fluctuations, matter as knots, and dark energy.
+- **Limits of these tests:** F3 is a 2D toy and uses the Nambu–Goto string bound for global vortices (an order-of-magnitude comparison); the torsion-balance figure in F4 is typed from memory; the Planck-scale mapping assumes c_s = c and ξ = αℓ_P; the river-flow sink argument assumes uniform density and sound speed.
+
+**Status:** F1 equations: **established** and **computed here**. F2: river flow **computed here** (kinematics); linear-response and fluid-sink flows **ruled out**; the sustaining mechanism **open**. F3: Kibble–Zurek scaling **computed here**; the Planck-density medium **ruled out** without inflation, dilution or a vortex-free vacuum. F4: compact extra dimension **computed here**; horizon shortcut **open**; flat dark-soliton brane **ruled out** (snake instability).
+
+**References** (from memory):
+- **Unruh**, PRL 46, 1351 (1981); **Visser**, Class. Quantum Grav. 15, 1767 (1998); **Barceló, Liberati & Visser**, Living Rev. Relativ. 14, 3 (2011); **Volovik**, *The Universe in a Helium Droplet* (2003); **Hamilton & Lisle**, Am. J. Phys. 76, 519 (2008) (river model); **Painlevé** (1921); **Gullstrand** (1922)
+- **Kibble**, J. Phys. A 9, 1387 (1976); **Zurek**, Nature 317, 505 (1985); **Yates & Zurek**, PRL 80, 5477 (1998)
+- **Kuznetsov & Turitsyn**, Sov. Phys. JETP 67, 1583 (1988); **Anderson et al.**, PRL 86, 2926 (2001); **Pitaevskii & Stringari**, *Bose–Einstein Condensation* (2003)
+- **Arkani-Hamed, Dimopoulos & Dvali**, PLB 429, 263 (1998); **Lee et al.**, PRL 124, 101101 (2020); **Chung & Freese**, PRD 62, 063513 (2000); **Collins et al.**, PRL 93, 191301 (2004); **Abbott et al.** (GW170817), ApJ 848, L13 (2017); **Planck 2018 VI**, A&A 641, A6 (2020)
+
+**Files:** [`r33_fluid_space_foundations.py`](r33_fluid_space_foundations.py), [`r34_flow_gravity.py`](r34_flow_gravity.py), [`r35_quench_from_the_beginning.py`](r35_quench_from_the_beginning.py), [`r36_hyperdimensional_medium.py`](r36_hyperdimensional_medium.py); results [r33](results/r33_fluid_space_foundations.txt), [r34](results/r34_flow_gravity.txt), [r35](results/r35_quench_from_the_beginning.txt), [r36](results/r36_hyperdimensional_medium.txt); figures ![F1](figures/r33_fluid_space_foundations_foundations.png) ![F2](figures/r34_flow_gravity_flow_gravity.png) ![F3](figures/r35_quench_from_the_beginning_quench.png) ![F4](figures/r36_hyperdimensional_medium_hyperdimensional.png)
