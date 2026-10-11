@@ -197,7 +197,7 @@ def main():
     tt = np.arange(T + 1)
     ax.plot(tt, Sf, color=S1, lw=2, label="forward: entropy rises")
     ax.plot(T + tt, ex_S, color=S3, lw=2, label="all velocities reversed: exact return (bit-for-bit)")
-    ax.plot(T + tt, pt_S, color=S2, lw=2, ls="--", label="reversed with one bit flipped: never returns exactly (11,231 bits wrong)")
+    ax.plot(T + tt, pt_S, color=S2, lw=2, ls="--", label=f"reversed with one bit flipped: never returns exactly ({int(np.sum(pt_y != g0)):,} bits wrong)")
     ax.axvline(T, color=MUTED, ls=":", lw=1.2)
     ax.text(T + 8, 27500, "velocities reversed", color=INK_2, fontsize=9)
     ax.set(xlabel="time step", ylabel="coarse-grained entropy (nats)",
