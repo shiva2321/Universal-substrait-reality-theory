@@ -43,6 +43,7 @@ This is the running record of every question, calculation, plot and conclusion i
 | [E25](#e25) | 2026-10-11 | Testing a causal-set substrate: discreteness without a rest frame | r19 |
 | [E26](#e26) | 2026-10-11 | The constants of nature and the substrate: how, why and whether they relate | r20 |
 | [E27](#e27) | 2026-10-11 | Synthesis: time, the causal-set substrate, and the constants (USRT v2.3) | — |
+| [E28](#e28) | 2026-10-11 | Plain-English overview: the journey, the universe according to USRT v2.3, its weaknesses and what it cannot explain | — |
 
 ---
 
@@ -1455,3 +1456,65 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 **References:** as in E23–E26.
 
 **Files:** synthesis entry (no new script).
+
+---
+
+<a id="e28"></a>
+## E28 — Plain-English overview: where USRT stands, what it says, where it is weak (2026-10-11)
+
+**Question (user):** "Based on everything we have done so far, from the very start, and where it stands right now: what is the universe in plain terms according to USRT? Plus where is it weak and why, and what can't it explain and why?"
+
+**Method:** pure reasoning; a summary of the audit and of E0–E27. No new calculation.
+
+**The journey in five steps:**
+1. **Original USRT.** Space is a Planck-scale crystal or superfluid. Light is its shear wave, mass is trapped light, gravity is a dent, and particle masses come from formulas.
+2. **The audit.** The intuitions were good but the mechanisms failed:
+   - the crystal makes light's speed depend on direction (17–33 %) and adds a third polarisation;
+   - the dent gives short-range gravity;
+   - the mass formulas were fits (42σ to 5,523σ off).
+3. **E1–E10.** Rebuilt on established physics: light as the twist (gauge) mode of a quantum network, relativity emerging for trapped ripples, c as the substrate's built-in speed limit.
+4. **E11–E22.** Mass is trapped energy, and pairs are created above 2Mc². Gravity follows if trapped energy slows the substrate's local rate. G comes from the substrate's quantum jiggling and entanglement, with cells of ~0.3√N Planck lengths. The lattice failed three tests: graviton speed, a third graviton, and cosmic strings.
+5. **E23–E27.** Time is relational, relative and one-way. A causal-set substrate (a growing random order, no grid) passed the tests the lattice failed. The constants: c, ħ and G are units; the other relations come from mechanisms, not formulas.
+
+**The universe according to USRT v2.3, in plain terms:**
+- **What exists:** an enormous number of tiny events, about one per Planck-sized piece of spacetime. They are connected only by "this one came before that one". There is no grid, no fixed rest frame and no universal "now".
+- **Time:** the growth of this web of events. It runs one way because events are only ever added to the future. Your own time is the number of events along your path; move fast or sit deep in gravity and your path holds fewer of them, so you age less.
+- **Space and geometry:** distances, the number of dimensions and curvature are not built in. They are read off by counting events and how they are ordered.
+- **Light:** a ripple of "twist" travelling through the web, at exactly c at every energy.
+- **Matter and mass:** knots of trapped energy in the substrate that cannot unwind. They are made only in particle–antiparticle pairs, and their mass is their trapped energy divided by c².
+- **Gravity:**
+  - **How it acts:** trapped energy lowers the local rate of the substrate. Waves and every internal rhythm slow by the same factor, so clocks run slow, light bends, and everything falls alike.
+  - **How strong it is:** its strength G is not fundamental; it is the stiffness and entanglement of the substrate's own quantum fluctuations.
+- **Quantum mechanics and gravity:** one substrate seen at two magnifications. Quantum mechanics is its small-scale behaviour; gravity is its large-scale elasticity and entanglement thermodynamics. The two only clash near the Planck length, where the substrate's graininess shows.
+- **The constants:** c, ħ and G are the substrate's units. The sizes of atoms, planets and stars follow from α and gravity's weakness. Gravity's weakness and the tiny cosmological constant have mechanisms. The rest are inputs.
+
+**Where it is weak, and why:**
+1. **It has no 4D dynamics of its own yet.** The substrate's kinematics come from causal-set theory, and the fields and Einstein's equations are borrowed. *Why:* nobody knows the quantum rule by which a causal set grows into a 4D spacetime. Most random orders look nothing like space (Kleitman–Rothschild); suppressing them is an open problem for the whole field.
+2. **It derives no new number.** α, the particle masses, the mixing angles and the matter excess are inputs, and the null test (E26) shows that "hidden formulas" are not there. *Why:* no mechanism yet links the substrate's microstructure to these values. The original formulas were fits.
+3. **Real particles are not derived.** Knots are shown in 1D. Spin ½, g = 2, the weak force's left-handedness and three generations are not derived; the audit found that a light loop gives spin 1 and g = 1. *Why:* fermions and chirality need a structure we have not built.
+4. **Quantum mechanics is assumed, not explained.** The substrate is quantum by hypothesis. The Born rule, the 2√2 limit of entanglement and the measurement problem are untouched. *Why:* USRT has no deeper layer under quantum theory.
+5. **Most of it is borrowed.** Sorkin, Sakharov, Jacobson, Page–Wootters, Volovik, Levin–Wen. Weak-field gravity is General Relativity re-described as a medium. *Why:* those are the parts that survive the data. USRT's contribution is the synthesis and the tests in this repository, not new laws.
+6. **The causal-set wave operator is non-local and noisy.** One realisation fluctuates ~40× its signal, so physical fields need a non-locality scale. *Why:* exact Lorentz symmetry with discreteness forces it (Bombelli–Henson–Sorkin). It may also show up as "swerves", which are constrained.
+7. **The graviton is argued, not built, in the causal-set version.** The obstacles are removed, but no spin-2 mode has been derived from a causal set's dynamics.
+8. **Its predictions are hard to test or not unique.**
+   - Gravity-mediated entanglement is also predicted by ordinary quantum gravity.
+   - "No energy-dependent light delays" is a null prediction.
+   - Λ fluctuations and swerves need cosmological precision.
+   - The +4.6 % shadow (E14) belongs to an optional strong-field branch that has not been re-tested.
+
+**What it cannot explain (yet), and why:**
+- **The values of the constants and masses:** no mechanism (weakness 2).
+- **Why there is more matter than antimatter:** it needs more than the measured T violation.
+- **Why the universe started with low entropy:** an initial condition, not a law (E24).
+- **Dark matter:** the original condensate idea is disfavoured; nothing replaces it.
+- **Why 3+1 dimensions:** the dimension is counted (E25), not explained.
+- **The measurement problem and the Born rule:** weakness 4.
+- **Why the cells are ~10¹⁹ times smaller than a proton:** it is the hierarchy problem restated (E22 note, E26).
+
+**Interpretation:** USRT v2.3 is a coherent research programme. It is consistent with every measurement checked in this repository, assembled mostly from established or actively researched ingredients, and it gives clear tests. It is **not yet a theory** that derives new numbers or its own dynamics. The original intuitions survived (space is a medium, light is a ripple, mass is trapped energy, time is relational); the original mechanisms (crystal, dent, mass formulas) did not.
+
+**Status:** summary (pure reasoning) of E0–E27; nothing new is computed.
+
+**References:** as in E0–E27.
+
+**Files:** overview entry (no new script).

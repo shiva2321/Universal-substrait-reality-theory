@@ -34,6 +34,24 @@ It ships with an **independent audit** that recomputes every headline claim agai
 
 ---
 
+## USRT today, in plain words
+
+> **The universe, according to USRT v2.3:**
+> - **What exists:** a vast number of tiny events, about one per Planck-sized piece of spacetime. They are linked only by "this came before that".
+> - **Time:** the growth of that web. It runs one way, and your time is the count of events along your path.
+> - **Space, light, matter and gravity:** patterns in that web.
+>   - Space and its curvature are read off by counting.
+>   - Light is a twist ripple moving at exactly c.
+>   - Matter is knots of trapped energy.
+>   - Gravity is trapped energy slowing the web's local rate.
+> - **G and the Planck scale:** these come from the web's own quantum jiggling and entanglement.
+>
+> **Where it stands:** consistent with every measurement checked here, and built mostly from established physics. It is **not yet a theory** that derives its own dynamics or any new number (α, the masses, dark matter).
+>
+> The full overview, with its weak points and what it cannot explain, is in [notebook entry E28](research/LAB_NOTEBOOK.md#e28).
+
+The table below is the *original* idea and what the audit made of it.
+
 ## The idea in 60 seconds
 
 Space is not empty. It is filled with a medium, a dense "substrate" that may extend into extra dimensions. Everything else is a disturbance of that medium:
