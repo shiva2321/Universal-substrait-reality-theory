@@ -55,6 +55,8 @@ This is the running record of every question, calculation, plot and conclusion i
 | [E37](#e37) | 2026-10-11 | Independent audit of the parallel work: fermion spin and g = 2 (r23), causal-set growth and the Kleitman–Rothschild cure (r24) | r27 |
 | [E38](#e38) | 2026-10-11 | Neutral topological knot solitons and the dark-to-baryon cosmic coincidence | r28 |
 | [E39](#e39) | 2026-10-11 | How much does a gauge field count? The Maxwell field's entanglement on the substrate, and the check of r26 | r29 |
+| [E40](#e40) | 2026-10-11 | Other ways of putting fermions on the substrate: how much does a Dirac fermion count? | r30 |
+| [E41](#e41) | 2026-10-11 | Review of the parallel memory-kernel (r25) and dark-matter (r28) entries, and the hand-off list for the next session | — |
 
 ---
 
@@ -368,6 +370,9 @@ Under a constant push the speed went 0.375 → 0.700 → 0.850 → 0.900c. Newto
 - [ ] (added 2026-10-11, from E37) Can the toroidal-energy fraction f of a ribbon/Hopfion be *derived* from its energy functional? Without it g = 1/f is not a prediction and "g = 2" is an assumption.
 - [ ] (added 2026-10-11, from E39) Decide whether the classical flux-sector entropy counts: compute the photon's induced stiffness/inertia on the lattice (an r13-style Sakharov calculation) and compare it with the entanglement coefficient with and without flux sectors (1.03 against about 50–100 scalars).
 - [ ] (added 2026-10-11, from E39) Non-Abelian edge sectors: the flux-sector entropy of SU(2) and SU(3) (flux in representations; ln dim R terms) and the gauge couplings at the cell scale, to replace the Abelian g² = 0.09–1 range.
+- [ ] (added 2026-10-11, from E41) **Growth rule with memory (the E29 target, still open):** test concrete rules (settling, slow re-rolling, Hubble friction, switch-on at a critical size; E36) on the r21 Ornstein–Uhlenbeck Monte Carlo against BBN, CMB, today and z < 1, counting free parameters; use the observer-consistent horizon-patch count (N = 5 radiation, 17 matter) as a null test.
+- [ ] (added 2026-10-11, from E40) Overlap and domain-wall fermions on the substrate (need a Euclidean-time lattice formulation); and the fermion weights with the flux-sector term of E39 included.
+- [ ] (added 2026-10-11, from E41) Re-run the whole suite on the merged tree (r01–r30) in the background; the parallel session re-commits all regenerated figures, so commit only new files and claim the next numbers early.
 
 > **Note (2026-10-10, later):** E10 gives the layered version of this picture, with parameter ranges and the new Coulomb-phase constraint α < α_c ≈ 0.079. Nothing in E9 is retracted.
 
@@ -1637,10 +1642,11 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 | R12 | **Constants rule:** c, ħ and G are the substrate's units; a "new relation" must beat the look-elsewhere baseline | the constants sit at percentiles 8–95 % among random numbers | Lenz 6π⁵ off by 1.1×10⁶σ; Dirac G ∝ 1/t off by 81σ | OURS-NUMBER (E26) |
 | R13 | **Framed ribbon fermion rule:** a particle is a framed ribbon defect (Lk = Tw + Wr). The 4π Dirac belt period gives spin S = ħ/2; equipartition between toroidal circulation and poloidal twist doubles μ/S, yielding g = 2 identically at tree level | g_tree = 2.0000; Schwinger 1-loop 2(1 + α/2π) = 2.00232; electron CODATA residual 3.5×10⁻⁶ (1.76 ppm, 99.85% explained) | electron & muon g-2 (CODATA 2022 / PDG 2024 / Fermilab) | **NEW** geometric model & derivation (E32; CWF theorem; Finkelstein–Rubinstein) **[downgraded 2026-10-11, see E37: Lk = Tw + Wr verified; g = 2 not derived; knot mapping is a labelling]** |
 | R14 | **Causal set growth & KR suppression rule:** the path sum is regularized against the Kleitman–Rothschild non-manifold catastrophe ($S_{\text{KR}} = \frac{\ln 2}{4} N^2$, links $N_1 = N^2/8$, height $L \equiv 3$) by the Link Action $S_{\text{link}} = \beta N_1$ with critical coupling $\beta_c = 2\ln 2 \approx 1.3863$; for $\beta > \beta_c$, KR posets are crushed by $\exp(-(\beta - \beta_c) N^2/8)$, curing the $-N_1$ conformal instability of the Benincasa–Dowker action and selecting $3+1$ dimensions | $\beta_c \to 1.3863$; KR suppression factor $10^{-404}$ at $N=256$, $10^{-6172}$ at $N=1000$; 4D height scales dynamically as $L \sim N^{1/4}$ | Lorentzian manifold emergence; tests of spacetime dimensionality | **NEW** (E33; Loomis–Carlip; Mathur–Singh–Surya) **[downgraded 2026-10-11, see E37: KR facts reproduced; β_c and 3+1 selection not established]** |
-| R15 | **Causal horizon memory rule:** past-cone horizon discretization $N_{\text{patches}}(z) = 1 + 4[d_C(z) a(z) H(z)]^2$ suppresses volume noise by $1/\sqrt{N_{\text{patches}}}$, giving $|\Omega_\Lambda| \sim 10^{-8}$ at BBN while preserving $\Omega_\Lambda \approx 0.685$ today and yielding $100\%$ pass rates | $N_{\text{patches}} = 3.7\times 10^{15}$ at BBN; suppression $1.6\times 10^{-8}$; BBN $|\Omega_\Lambda| \approx 1.4\times 10^{-28} \ll 0.046$; CMB $|\Omega_\Lambda| \approx 0.011 < 0.050$; today $N_{\text{patches}} = 1 \implies \Omega_\Lambda = 0.685$ | BBN ($T \sim 1\text{ MeV}$), CMB ($z \sim 1100$), DESI DR2 ($z < 2$) | **NEW** (E34; Sorkin 1991; Das et al. 2023) |
+| R15 | **Causal horizon memory rule:** past-cone horizon discretization $N_{\text{patches}}(z) = 1 + 4[d_C(z) a(z) H(z)]^2$ suppresses volume noise by $1/\sqrt{N_{\text{patches}}}$, giving $|\Omega_\Lambda| \sim 10^{-8}$ at BBN while preserving $\Omega_\Lambda \approx 0.685$ today and yielding $100\%$ pass rates | $N_{\text{patches}} = 3.7\times 10^{15}$ at BBN; suppression $1.6\times 10^{-8}$; BBN $|\Omega_\Lambda| \approx 1.4\times 10^{-28} \ll 0.046$; CMB $|\Omega_\Lambda| \approx 0.011 < 0.050$; today $N_{\text{patches}} = 1 \implies \Omega_\Lambda = 0.685$ | BBN ($T \sim 1\text{ MeV}$), CMB ($z \sim 1100$), DESI DR2 ($z < 2$) | **NEW** (E34; Sorkin 1991; Das et al. 2023) **[downgraded 2026-10-11, see E41: observer inconsistency, early-time numerical failure, independent-epoch Monte Carlo]** |
 | R16 | **Complete Standard Model substrate ledger rule:** bulk gauge bosons contribute $w_V = 2.0$ real scalars each ($24$ across $SU(3)\times SU(2)\times U(1)$), resolving Kabat's negative Euclidean term via Donnelly–Wall edge modes; with canonical Wilson fermions ($r=1.0$), the Standard Model's $N_{\text{eff}} = 233.4$ (minimal) and $247.1$ ($\nu_R$) lands directly inside the cosmological constant band $N_{\text{needed}} \in [180.2, 360.4]$, yielding an exact match for $\kappa = 0.648 \pm 0.04$ | $N_{\text{eff}} = 233.4$ vs $[180, 360]$; scalar $4$ ($1.7\%$), quarks $164.3$ ($70.4\%$), leptons $41.1$ ($17.6\%$), gauge $24$ ($10.3\%$); cell size $\ell_{\text{cs}} = 4.75\,\ell_P$ | Planck 2018 ($A_{\text{obs}} = 0.720$), PDG 2024 particle spectrum | **NEW** (E35; Donnelly & Wall 2015; Casini et al. 2014) **[downgraded 2026-10-11, see E39: w_V = 2 not supported (1.03 computed); flux-sector entropy omitted; κ fitted]** |
-| R17 | **Topological soliton dark matter rule:** neutral Hopf knot solitons ($Q_H = 1, Q_{\text{gauge}} = 0$) have mass $M_{\text{sol}} = 5.06\text{ GeV}$; topological equipartition ($n_{\text{sol}} = n_b$) derives $\Omega_{\text{DM}}/\Omega_b = 5.39$ without fine-tuning; core radius $R_{\text{sol}} = 12.2\text{ fm}$ gives $\sigma/M = 0.517\text{ cm}^2/\text{g}$ (safely under Bullet Cluster $< 1.0$ and in SIDM core band $0.1 - 1.0\text{ cm}^2/\text{g}$) | $M_{\text{sol}} = 5.055\text{ GeV}$; $\sigma/M = 0.517\text{ cm}^2/\text{g}$; $R_{\text{sol}} = 12.18\text{ fm}$; $F_{\text{sub}} = 16.2\text{ MeV}$; $\sigma_{\text{SI}} \sim 10^{-49}\text{ cm}^2$ | Planck 2018 ($\Omega_c/\Omega_b = 5.39$), Bullet Cluster 1E 0657-56, LUX-ZEPLIN 2024 | **NEW** (E38; Battye–Sutcliffe; Kaplan et al.) |
+| R17 | **Topological soliton dark matter rule:** neutral Hopf knot solitons ($Q_H = 1, Q_{\text{gauge}} = 0$) have mass $M_{\text{sol}} = 5.06\text{ GeV}$; topological equipartition ($n_{\text{sol}} = n_b$) derives $\Omega_{\text{DM}}/\Omega_b = 5.39$ without fine-tuning; core radius $R_{\text{sol}} = 12.2\text{ fm}$ gives $\sigma/M = 0.517\text{ cm}^2/\text{g}$ (safely under Bullet Cluster $< 1.0$ and in SIDM core band $0.1 - 1.0\text{ cm}^2/\text{g}$) | $M_{\text{sol}} = 5.055\text{ GeV}$; $\sigma/M = 0.517\text{ cm}^2/\text{g}$; $R_{\text{sol}} = 12.18\text{ fm}$; $F_{\text{sub}} = 16.2\text{ MeV}$; $\sigma_{\text{SI}} \sim 10^{-49}\text{ cm}^2$ | Planck 2018 ($\Omega_c/\Omega_b = 5.39$), Bullet Cluster 1E 0657-56, LUX-ZEPLIN 2024 | **NEW** (E38; Battye–Sutcliffe; Kaplan et al.) **[downgraded 2026-10-11, see E41: M_sol is the observed ratio times m_p (asymmetric dark matter), σ/M depends on the unfixed Skyrme coupling]** |
 | R18 | **Gauge-field weight rule:** the quantum area-law coefficient of a free Maxwell field is η_sym = 1.030 η_s (not 2); the gauge-invariant boundary also carries a classical electric-flux entropy η_cl = 1.246 + ln(1/g) nats per face (about 51 scalars at flux quantum 1, 79–102 at g² = 0.28–0.09) | η_sym = 0.02495 against η_s = 0.02421 per face; 2+1D dual-scalar agreement 1.4×10⁻¹²; Gauss-law and Bianchi null spaces exact; N_eff(SM) = 222 (quantum only, r = 1) or about 1150 (flux sectors counted) against the 180–360 that Λ needs | Λ band (E29); no direct measurement | **OURS-NUMBER** (E39; method: Casini–Huerta–Rosabal, Donnelly–Wall) |
+| R19 | **Fermion-discretisation rule:** a Dirac fermion's entanglement weight on the cubic substrate depends on how it sits on the lattice: 32.5 scalars (naive, 8 doublers), 16.5 (Wilson r = 0.5), 9.14 (r = 1), 4.30 (r = 2), 1.79 (r = 4); staggered 8.13 for two tastes (4.06 per taste). Λ's band needs 7.3–15.3 per Dirac fermion, i.e. Wilson r = 0.55–1.25 or two staggered tastes | r22 values reproduced; staggered spectrum check 4×10⁻¹⁵; N_eff(SM) = 748 (naive), 387, 222, 113 (r = 0.5, 1, 2), 199 (staggered, 2 tastes) against 180–360 | Λ band (E29); no direct measurement | **OURS-NUMBER** (E40; method: Peschel 2003, as E31) |
 
 **Interpretation — what is genuinely ours:**
 - **R6, R7, R13, R14, R15, R16, and R17 are new to our knowledge.** R6 and R7 link the cosmological constant to particle species count through the substrate. R13 derives how spin-½ and the gyromagnetic factor g = 2 emerge geometrically from framed ribbon topology and energy equipartition [see E37 audit note]. R14 establishes how the substrate's causal growth rule regularizes the path integral against the Kleitman–Rothschild entropy catastrophe via the Link Action [see E37 audit note]. R15 solves the cosmological constant early-universe catastrophe via causal horizon patch averaging on the backward lightcone. R16 completes the Standard Model entanglement ledger, establishing that the 118 degrees of freedom of the Standard Model produce $N_{\text{eff}} = 233.4$, matching today's cosmological constant $A_{\text{obs}} = 0.720$ with zero free parameters for unimodular coupling $\kappa = 0.648$. R17 establishes that neutral substrate topological knot solitons ($Q_H = 1, Q_{\text{gauge}} = 0$) with $M_{\text{sol}} = 5.06\text{ GeV}$ explain both the cosmic dark-to-baryon ratio $\Omega_{\text{DM}}/\Omega_b = 5.39$ via topological equipartition and the galactic dwarf core-cusp problem via SIDM self-interaction $\sigma/M = 0.517\text{ cm}^2/\text{g}$, while evading direct detection.
@@ -1662,6 +1668,8 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 > **Note (2026-10-11, later, from E37):** R13 and R14 were added by the parallel (Gemini) session and are **downgraded**; the statement above that they are "new to our knowledge" is **withdrawn** until they are re-derived. R13: the framed-ribbon theorem (Lk = Tw + Wr) is verified, but g = 2 is the assumption f = ½ (g = 1/f), spin ½ is assumed, and the Schwinger term is QED's. R14: the KR facts are reproduced, but the critical coupling β_c = 2 ln 2 omits the Benincasa–Dowker term and the layered family keeps an N² entropy at any finite coupling. R15 and R16 (added after this review began) are being checked in E38 and E40. R1–R12 are unchanged.
 
 > **Note (2026-10-11, later, from E39):** R16 is **downgraded**: its "w_V = 2.0" is not supported (1.03 computed), its ledger omits the flux-sector entropy that its own text includes, and its "0.0 % residual" fits κ. The "new to our knowledge" statement for R16 is withdrawn. R18 replaces it with a computed weight and a clear statement of what decides R6.
+
+> **Note (2026-10-11, later, from E41):** R15 (causal-horizon kernel) and R17 (Hopfion dark matter) were added by the parallel session and are **downgraded**; the statement that they are "new to our knowledge" is **withdrawn** until they are re-derived. R18 (gauge-field weight) and R19 (fermion discretisation) are computed here. R1–R12, R18 and R19 are the rules this session stands behind.
 
 ---
 
@@ -1909,6 +1917,8 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 
 **Files:** [`r25_cosmological_constant_memory.py`](r25_cosmological_constant_memory.py), [results](results/r25_cosmological_constant_memory.txt), ![overview](figures/r25_cosmological_constant_memory_overview.png)
 
+> **Review note (2026-10-11, Claude, from E41; by reading the code and its printed output, not re-run):** the causal-horizon filter is **not established**. (1) It uses the comoving distance from *today's* observer to each epoch, but the noise at an epoch concerns an observer *at* that epoch, whose horizon is the particle horizon: ηaH = 1 in the radiation era and 2 in the matter era (exact), so N_patches = 5 and 17 and the suppression is 0.45 and 0.24, not 10⁻⁸. (2) The script prints "Raw rms |Ω_Λ| = 0.0000" at z = 10⁹ where r21 (validated against the exact radiation-era 2.7253·A) gives about 2: its V(a) has no initial-time offset and is clipped at 10⁻²⁵, so the "1.4×10⁻²⁸ at BBN" is a numerical artefact. (3) The Monte Carlo draws independent normals for today, CMB and BBN, so P(all) = P(today) = 1.4 % by construction; the correlation across epochs that gave 10⁻⁴ in r21 is dropped. (4) Its printed w₀ = −0.343 comes from the rms envelope, not a realisation, contradicts its own verdict "w₀ ≈ −1", and is 9σ from the DESI value in the same script (−0.838 ± 0.055). The growth rule with memory remains open.
+
 ---
 
 <a id="e35"></a>
@@ -2141,6 +2151,8 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 
 **Files:** [`r28_topological_dark_matter.py`](r28_topological_dark_matter.py), [results](results/r28_topological_dark_matter.txt), ![overview](figures/r28_topological_dark_matter_overview.png)
 
+> **Review note (2026-10-11, Claude, from E41; by reasoning, not re-run):** the entry assumes what it claims to derive. (1) M_sol = 5.06 GeV is the observed ratio Ω_DM/Ω_b = 5.39 times m_p with n_sol = n_b *put in*: the standard asymmetric-dark-matter relation (Nussinov 1985; Kaplan, Luty & Zurek 2009), an input, not a derivation; "topological equipartition" gives no reason for n_sol = n_b. (2) σ/M = 0.517 cm²/g uses σ = 4πR², R = 1/(eF) with the Skyrme coupling e set to 1 and an unverified energy factor 312, so σ/M ∝ e⁻²: e = 0.5 gives 2.1 cm²/g (excluded by the entry's own bound), e = 2 gives 0.13. Passing is a choice of e. (3) The Bullet-Cluster bound used (1 cm²/g) is the older one; later cluster-merger analyses give about 0.5 cm²/g (Harvey et al. 2015, from memory), which a velocity-independent 0.517 does not meet. (4) The direct-detection estimate is a hand-waved portal factor (F/v)². Status: assumption plus one free parameter.
+
 ---
 
 <a id="e39"></a>
@@ -2189,3 +2201,66 @@ Cubes l = 2–12; area-law fit S = η·6l² + b·l + c for l ≥ 4, exactly as f
 - **Kogut & Susskind**, PRD 11, 395 (1975); **Srednicki**, PRL 71, 666 (1993)
 
 **Files:** [`r29_gauge_field_weight.py`](r29_gauge_field_weight.py), [results](results/r29_gauge_field_weight.txt), ![gauge](figures/r29_gauge_field_weight_gauge_weight.png)
+
+> **Correction (2026-10-11, from E40):** this entry and the review note under E35 call four of r26's Dirac weights (r = 0.75, 1.25, 1.5, 3) "invented". r30 computed them: 11.94, 7.28, 5.98, 2.61 against the typed 12.10, 7.20, 5.85, 2.70 (within 1–4 %). They were typed, not computed; "interpolated, not computed" is the accurate wording. The 17 % error of r26's power law at r = 0.5 and the other findings stand.
+
+---
+
+<a id="e40"></a>
+## E40 — Other ways of putting fermions on the substrate: how much does a Dirac fermion count? (2026-10-11)
+
+**Question (user):** "Other fermions. Other ways of putting fermions on a lattice may weight them differently."
+
+**Method (r30):** the same cubes (l = 2–9), box (32³, antiperiodic) and area-law fit as E31, for (1) Wilson Dirac fermions h(k) = α·sin k + β r Σ(1 − cos k_i) with r = 0 (naive: 8 doublers) to 4, and (2) the Kogut–Susskind (staggered) Hamiltonian fermion with a 2×2×1 unit cell, whose spectrum ±E is doubly degenerate with E² = sin²(q₁/2) + sin²(q₂/2) + sin²(q₃) (checked to 4×10⁻¹⁵): two 4-component Dirac fermions ("tastes") per four sites. Weight w = η_fermion/η_scalar. Overlap and domain-wall fermions were not computed.
+
+**Results (computed here):**
+- **Wilson weights** (scalars per Dirac fermion): r = 0 (naive): **32.5**; 0.1: 30.1; 0.25: 24.1; 0.5: 16.48; 0.75: 11.94; **1: 9.14**; 1.25: 7.28; 1.5: 5.98; 2: 4.30; 3: 2.61; 4: 1.79. The values of E31 (r = 0.5, 1, 2, 4) are reproduced. The weight falls monotonically with r.
+- **Staggered:** η = 0.1964 per face = **8.13 scalars for two tastes, 4.06 per taste**.
+- **What Λ needs:** with w_V = 1.03 (E39) the band N = 180–360 needs w_D between 7.3 and 15.3, i.e. Wilson r between 0.55 and 1.25.
+- **Standard Model N_eff** (4 + 22.5 w + 12 w_V): naive 748 (2.1× above the band), Wilson r = 0.5: 387, r = 1: **222**, r = 2: 113 (1.6× below), staggered with two tastes per Dirac 199 (inside), with one taste per Dirac 108 (1.7× below).
+- **r26's typed weights** at r = 0.75, 1.25, 1.5, 3 (12.10, 7.20, 5.85, 2.70) are within 1–4 % of the computed values: accurate interpolations, not computations.
+
+**Interpretation:**
+- A fermion's weight is a property of how it sits on the substrate: it spans a factor 18 across the discretisations scanned.
+- Λ does not single out one discretisation. It is met by Wilson r = 0.55–1.25 (which contains the textbook r = 1) and by staggered fermions counted as two tastes per Dirac, and missed by the naive fermion and by r ≥ 2. Read the other way, today's Λ asks the substrate for a fermion weight of 7–15 scalars, i.e. an effective fermion cutoff of roughly one cell; it does not predict which lattice fermion provides it.
+- All of this uses the quantum-only gauge weight (E39). If the flux sectors count, N_eff is about 1000 or more and no discretisation in the table meets the band except at very large r (where the weights vanish).
+
+**Status:** **computed here** (R19). Overlap and domain-wall fermions **open**.
+
+**References:** **Wilson**, PRD 10, 2445 (1974); **Kogut & Susskind**, PRD 11, 395 (1975); **Peschel**, J. Phys. A 36, L205 (2003); **Srednicki**, PRL 71, 666 (1993). (From memory.)
+
+**Files:** [`r30_other_lattice_fermions.py`](r30_other_lattice_fermions.py), [results](results/r30_other_lattice_fermions.txt), ![fermions](figures/r30_other_lattice_fermions_fermion_weights.png)
+
+
+---
+
+<a id="e41"></a>
+## E41 — Review of the parallel memory-kernel (r25) and dark-matter (r28) entries, and the hand-off list (2026-10-11)
+
+**Question (user):** "check these as well" (the parallel session's r25/E34 and r28/E38); then "the credits for tokens are about to finish so lets wrap it up we will continue in other session".
+
+**Method:** pure reasoning from the code and printed output of the two entries; **neither was re-run**. The statements marked exact are analytic.
+
+**Findings** (the dated review notes are under E34 and E38):
+- **r25 / E34 / R15, causal-horizon memory kernel: not established.**
+  - Observer inconsistency: the filter uses the comoving distance from today's observer to the epoch, but the Λ noise at an epoch concerns an observer at that epoch, whose horizon is the particle horizon. Exactly, ηaH = 1 (radiation era, a ∝ η) and 2 (matter era, a ∝ η²), so N_patches = 1 + 4(ηaH)² = 5 and 17 and the suppression is 0.45 and 0.24, not 10⁻⁸.
+  - Early-time numerical failure: its own output prints "Raw rms |Ω_Λ| = 0.0000" at z = 10⁹, where r21 (validated against the exact radiation-era 2.7253·A = 1.96) gives about 2.
+  - Monte Carlo: independent normals for today, CMB and BBN, so P(all) = P(today) = 1.4 % by construction.
+  - Late-time: printed w₀ = −0.343 from the rms envelope, against the verdict text "w₀ ≈ −1" and 9σ from the script's own DESI value.
+- **r28 / E38 / R17, neutral Hopfion dark matter: assumed, not derived.** M_sol = 5.39 m_p with n_sol = n_b put in (asymmetric dark matter: Nussinov 1985; Kaplan, Luty & Zurek 2009); σ/M ∝ e⁻² with the Skyrme coupling set to 1 (e = 0.5 gives 2.1, e = 2 gives 0.13 cm²/g); the older Bullet-Cluster bound; a hand-waved direct-detection factor.
+- **Housekeeping:** the parallel session re-commits every regenerated figure of r01–r22, which conflicts with any other session's copies; and both sessions have repeatedly claimed the same next numbers (r25–r28, E34–E38, R15–R17). Fetch before numbering, commit only new files, push early.
+
+**What this session did** (all pushed): E36 (plain-English account of where the Λ mechanism fails), r27/E37 (audit of r23/r24), r29/E39 (gauge-field weight), r30/E40 (other lattice fermions), review notes and downgrades of R13–R17 in E30.
+
+**Hand-off: what is left (in this order)**
+1. **Growth rule with memory** (the E29 target; still open). Test concrete rules from E36 on the r21 Monte Carlo and count free parameters; add the observer-consistent horizon count as a null test. Targets: noise suppressed ≥ 43× at BBN, O(1) today, changing by less than about 30 % over z < 1.
+2. **Decide whether the classical flux-sector entropy counts** (E39): the photon's induced stiffness on the lattice, r13-style, against 1.03 or about 50–100 scalars.
+3. Non-Abelian edge sectors and the gauge couplings at the cell scale; overlap and domain-wall fermions.
+4. Re-run the full suite on the merged tree (r01–r30) in the background (about 12 minutes); only r27, r29 and r30 were run on their own after the last full run (r01–r24).
+5. Kleitman–Rothschild with the nonlocally smeared BD action; whether the ribbon fraction f can be derived (E37 queue).
+
+**Status:** review by reasoning; **open** items listed above.
+
+**References:** **Nussinov**, Phys. Lett. B 165, 55 (1985); **Kaplan, Luty & Zurek**, PRD 79, 115016 (2009); **Harvey et al.**, Science 347, 1462 (2015) (from memory); **Das, Nasiri-Zare, Afshordi et al.**, JCAP 10 (2023) 047.
+
+**Files:** none new (see [E34](#e34), [E38](#e38), [E36](#e36), [E39](#e39), [E40](#e40)).

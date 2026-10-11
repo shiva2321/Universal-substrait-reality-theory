@@ -1,0 +1,58 @@
+
+==============================================================================
+A. Wilson fermions: the weight against the Wilson parameter, including the naive limit
+==============================================================================
+   scalar on the same cubes: eta_s = 0.02416 per face; vector-boson quantum weight from r29: w_V = 1.030
+       r  eta_D per face  w_D (scalars)  N_eff(SM) = 4 + 22.5 w_D + 12 w_V
+    0.00         0.78546         32.515                                748
+    0.10         0.72688         30.090                                693
+    0.25         0.58256         24.115                                559
+    0.50         0.39809         16.479                                387
+    0.75         0.28852         11.943                                285
+    1.00         0.22075          9.138                                222
+    1.25         0.17588          7.281                                180
+    1.50         0.14443          5.979                                151
+    2.00         0.10387          4.300                                113
+    3.00         0.06303          2.609                                 75
+    4.00         0.04327          1.791                                 57
+   r = 0 is the naive fermion (8 massless doublers in 3 space dimensions): 32.5 scalars, about 4.1 per doubler.
+   Check against E31 / r22 (computed there): r = 0.5, 1, 2, 4 gave 16.48, 9.14, 4.30, 1.79; reproduced above.
+   The weight falls monotonically with r and tends to zero for r -> infinity (the Wilson term squeezes the Dirac cone).
+   Weights typed into r26 (not computed there) against the values computed here:
+      r = 0.75: typed 12.10, computed 11.943  (+1.3 %)
+      r = 1.25: typed  7.20, computed  7.281  (-1.1 %)
+      r = 1.5: typed  5.85, computed  5.979  (-2.2 %)
+      r = 3.0: typed  2.70, computed  2.609  (+3.5 %)
+   They are within 1-4 %: accurate interpolations, but not computed. r26's power law 9.13 r^-1.08 is 17 % off at r = 0.5.
+   Lambda's band N = 180-360 needs w_D between 7.3 and 15.3 scalars, i.e. Wilson r between 0.55 and 1.25.
+
+==============================================================================
+B. Staggered (Kogut-Susskind) fermions
+==============================================================================
+   spectrum check: bands are +-E doubly degenerate with E^2 = sin^2(q1/2) + sin^2(q2/2) + sin^2(q3); max deviation 3.6e-15
+   area-law fit: eta_stag = 0.19636 per face = 8.129 scalars for the 2 tastes, 4.064 per taste (one 4-component Dirac)
+   Same ballpark as Wilson r = 1 (9.14) per Dirac fermion if each Standard Model Dirac fermion is one *pair* of tastes,
+   and about half of it if one taste: the identification is a choice the substrate has to make.
+
+==============================================================================
+C. Standard Model species count by discretisation (Higgs 4 + 22.5 Dirac x w + 12 vectors x w_V)
+==============================================================================
+   discretisation                      w per Dirac  N_eff(SM)    against 180-360
+   naive (8 doublers)                        32.51        748         2.1x above
+   Wilson r = 0.5                            16.48        387         1.1x above
+   Wilson r = 1                               9.14        222             inside
+   Wilson r = 2                               4.30        113         1.6x below
+   staggered, 2 tastes per Dirac              8.13        199             inside
+   staggered, 1 taste per Dirac               4.06        108         1.7x below
+   => Lambda does not single out one fermion discretisation: it is met by Wilson r between 0.55 and 1.25 and by staggered fermions counted as two tastes per Dirac; it is missed by the naive fermion and by r >= 2.
+   => read the other way, the observed Lambda asks the substrate for a fermion weight of 7.3-15.3 scalars per Dirac, i.e. an effective
+      cutoff for the fermions of roughly one cell; it does not predict which lattice fermion does it.
+
+==============================================================================
+Verdict
+==============================================================================
+* COMPUTED HERE: Dirac weights w_D(r) from the naive fermion (32.5) to r = 4 (1.79); staggered 8.13 for two tastes (4.06 per taste).
+* The window that Lambda needs corresponds to Wilson r = 0.55-1.25, which contains the textbook r = 1.
+* r26's typed weights at r = 0.75, 1.25, 1.5, 3 are accurate to 1-4 % (they were interpolated, not computed).
+* NOT COMPUTED: overlap and domain-wall fermions; non-Abelian and gauge-sector edge terms (see r29).
+   runtime 94 s
