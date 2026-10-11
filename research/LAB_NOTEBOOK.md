@@ -51,6 +51,8 @@ This is the running record of every question, calculation, plot and conclusion i
 | [E33](#e33) | 2026-10-11 | Causal set growth, Kleitman-Rothschild suppression, and emergent 4D spacetime | r24 |
 | [E34](#e34) | 2026-10-11 | Causal horizon memory kernel for the cosmological constant | r25 |
 | [E35](#e35) | 2026-10-11 | Gauge field edge modes and the complete Standard Model N_eff ledger on the substrate | r26 |
+| [E36](#e36) | 2026-10-11 | Where the Λ mechanism fails, in plain English: the reasons and possible fixes | — |
+| [E37](#e37) | 2026-10-11 | Independent audit of the parallel work: fermion spin and g = 2 (r23), causal-set growth and the Kleitman–Rothschild cure (r24) | r27 |
 
 ---
 
@@ -360,6 +362,8 @@ Under a constant push the speed went 0.375 → 0.700 → 0.850 → 0.900c. Newto
 - [ ] (added 2026-10-11, from E29) A substrate growth rule with memory that meets the Λ target: noise suppressed ≥43× at BBN, O(1) today, and changing by less than ~30 % over z < 1.
 - [ ] (added 2026-10-11, from E31) The gauge-field entanglement weight w_V on the lattice (electric-centre / edge-mode choice), to close the Standard Model's N_eff in R6.
 - [ ] (added 2026-10-11, from E31) The fermion weight for other lattice fermions (staggered, domain-wall) and on a causal set, to see how universal the 'Λ measures the fine structure' reading is.
+- [ ] (added 2026-10-11, from E37) Redo the Kleitman–Rothschild analysis with the sign convention fixed, the whole layered family and the nonlocally smeared BD action: at which coupling and discretisation scale are layered posets suppressed at large N (Carlip–Carlip–Surya)?
+- [ ] (added 2026-10-11, from E37) Can the toroidal-energy fraction f of a ribbon/Hopfion be *derived* from its energy functional? Without it g = 1/f is not a prediction and "g = 2" is an assumption.
 
 > **Note (2026-10-10, later):** E10 gives the layered version of this picture, with parameter ranges and the new Coulomb-phase constraint α < α_c ≈ 0.079. Nothing in E9 is retracted.
 
@@ -1182,6 +1186,8 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 
 **Files:** [`r17_relational_time.py`](r17_relational_time.py), [results](results/r17_relational_time.txt), ![time](figures/r17_relational_time_relational_time.png)
 
+> **Correction (2026-10-11, from E37):** the text above quotes |JΨ| = 5.7×10⁻¹⁶. The saved result on Linux reads 5.7×10⁻¹⁷ and a Windows run reads 1.2×10⁻¹⁶: the quantity is at the 10⁻¹⁶ level and platform-dependent rounding, so the claim (the universe does not change, to machine precision) stands but the digit should not be quoted.
+
 ---
 
 <a id="e24"></a>
@@ -1625,8 +1631,8 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 | R10 | **Arrow rule:** a reversible substrate needs a low-entropy start; a growing substrate has a built-in direction but no global "now" | bit-exact return; one flipped bit never returns (odds 10⁻⁵⁷¹⁵); 9.5×10⁶ birth orders for one universe | BaBar 14σ, second law, low-entropy cosmos | RE-DERIVED demonstrations (E24) |
 | R11 | **Exact causal-set wave mean:** E[B]/φ = 4ρ(I(ζ) − ½), I(ζ) = −∫₀^∞ e^{iζs}(s−i)⁻³ ds, evaluated on a contour rotated by ±π/4 | I(0) = ½, I′(0) = ½; Monte Carlo χ² = 3.0/4; no real zero off the cone | Lorentz invariance at every energy | OURS-NUMBER/derivation (E25; operator: Sorkin; Fourier forms: Aslanbeigi et al.) |
 | R12 | **Constants rule:** c, ħ and G are the substrate's units; a "new relation" must beat the look-elsewhere baseline | the constants sit at percentiles 8–95 % among random numbers | Lenz 6π⁵ off by 1.1×10⁶σ; Dirac G ∝ 1/t off by 81σ | OURS-NUMBER (E26) |
-| R13 | **Framed ribbon fermion rule:** a particle is a framed ribbon defect (Lk = Tw + Wr). The 4π Dirac belt period gives spin S = ħ/2; equipartition between toroidal circulation and poloidal twist doubles μ/S, yielding g = 2 identically at tree level | g_tree = 2.0000; Schwinger 1-loop 2(1 + α/2π) = 2.00232; electron CODATA residual 3.5×10⁻⁶ (1.76 ppm, 99.85% explained) | electron & muon g-2 (CODATA 2022 / PDG 2024 / Fermilab) | **NEW** geometric model & derivation (E32; CWF theorem; Finkelstein–Rubinstein) |
-| R14 | **Causal set growth & KR suppression rule:** the path sum is regularized against the Kleitman–Rothschild non-manifold catastrophe ($S_{\text{KR}} = \frac{\ln 2}{4} N^2$, links $N_1 = N^2/8$, height $L \equiv 3$) by the Link Action $S_{\text{link}} = \beta N_1$ with critical coupling $\beta_c = 2\ln 2 \approx 1.3863$; for $\beta > \beta_c$, KR posets are crushed by $\exp(-(\beta - \beta_c) N^2/8)$, curing the $-N_1$ conformal instability of the Benincasa–Dowker action and selecting $3+1$ dimensions | $\beta_c \to 1.3863$; KR suppression factor $10^{-404}$ at $N=256$, $10^{-6172}$ at $N=1000$; 4D height scales dynamically as $L \sim N^{1/4}$ | Lorentzian manifold emergence; tests of spacetime dimensionality | **NEW** (E33; Loomis–Carlip; Mathur–Singh–Surya) |
+| R13 | **Framed ribbon fermion rule:** a particle is a framed ribbon defect (Lk = Tw + Wr). The 4π Dirac belt period gives spin S = ħ/2; equipartition between toroidal circulation and poloidal twist doubles μ/S, yielding g = 2 identically at tree level | g_tree = 2.0000; Schwinger 1-loop 2(1 + α/2π) = 2.00232; electron CODATA residual 3.5×10⁻⁶ (1.76 ppm, 99.85% explained) | electron & muon g-2 (CODATA 2022 / PDG 2024 / Fermilab) | **NEW** geometric model & derivation (E32; CWF theorem; Finkelstein–Rubinstein) **[downgraded 2026-10-11, see E37: Lk = Tw + Wr verified; g = 2 not derived; knot mapping is a labelling]** |
+| R14 | **Causal set growth & KR suppression rule:** the path sum is regularized against the Kleitman–Rothschild non-manifold catastrophe ($S_{\text{KR}} = \frac{\ln 2}{4} N^2$, links $N_1 = N^2/8$, height $L \equiv 3$) by the Link Action $S_{\text{link}} = \beta N_1$ with critical coupling $\beta_c = 2\ln 2 \approx 1.3863$; for $\beta > \beta_c$, KR posets are crushed by $\exp(-(\beta - \beta_c) N^2/8)$, curing the $-N_1$ conformal instability of the Benincasa–Dowker action and selecting $3+1$ dimensions | $\beta_c \to 1.3863$; KR suppression factor $10^{-404}$ at $N=256$, $10^{-6172}$ at $N=1000$; 4D height scales dynamically as $L \sim N^{1/4}$ | Lorentzian manifold emergence; tests of spacetime dimensionality | **NEW** (E33; Loomis–Carlip; Mathur–Singh–Surya) **[downgraded 2026-10-11, see E37: KR facts reproduced; β_c and 3+1 selection not established]** |
 | R15 | **Causal horizon memory rule:** past-cone horizon discretization $N_{\text{patches}}(z) = 1 + 4[d_C(z) a(z) H(z)]^2$ suppresses volume noise by $1/\sqrt{N_{\text{patches}}}$, giving $|\Omega_\Lambda| \sim 10^{-8}$ at BBN while preserving $\Omega_\Lambda \approx 0.685$ today and yielding $100\%$ pass rates | $N_{\text{patches}} = 3.7\times 10^{15}$ at BBN; suppression $1.6\times 10^{-8}$; BBN $|\Omega_\Lambda| \approx 1.4\times 10^{-28} \ll 0.046$; CMB $|\Omega_\Lambda| \approx 0.011 < 0.050$; today $N_{\text{patches}} = 1 \implies \Omega_\Lambda = 0.685$ | BBN ($T \sim 1\text{ MeV}$), CMB ($z \sim 1100$), DESI DR2 ($z < 2$) | **NEW** (E34; Sorkin 1991; Das et al. 2023) |
 | R16 | **Complete Standard Model substrate ledger rule:** bulk gauge bosons contribute $w_V = 2.0$ real scalars each ($24$ across $SU(3)\times SU(2)\times U(1)$), resolving Kabat's negative Euclidean term via Donnelly–Wall edge modes; with canonical Wilson fermions ($r=1.0$), the Standard Model's $N_{\text{eff}} = 233.4$ (minimal) and $247.1$ ($\nu_R$) lands directly inside the cosmological constant band $N_{\text{needed}} \in [180.2, 360.4]$, yielding an exact match for $\kappa = 0.648 \pm 0.04$ | $N_{\text{eff}} = 233.4$ vs $[180, 360]$; scalar $4$ ($1.7\%$), quarks $164.3$ ($70.4\%$), leptons $41.1$ ($17.6\%$), gauge $24$ ($10.3\%$); cell size $\ell_{\text{cs}} = 4.75\,\ell_P$ | Planck 2018 ($A_{\text{obs}} = 0.720$), PDG 2024 particle spectrum | **NEW** (E35; Donnelly & Wall 2015; Casini et al. 2014) |
 
@@ -1645,6 +1651,8 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 **Files:** rule book entry (no new script); see the linked entries.
 
 > **Note (2026-10-11, later, from E31):** R6 is strengthened. On the cubic substrate a Dirac fermion counts as 16.5, 9.1, 4.3 or 1.8 scalars for Wilson r = 0.5, 1, 2 or 4. With the standard r = 1, the Standard Model's N_eff is 162–234, depending on the gauge-field weight, which overlaps the 180–372 that today's Λ needs. See E31.
+
+> **Note (2026-10-11, later, from E37):** R13 and R14 were added by the parallel (Gemini) session and are **downgraded**; the statement above that they are "new to our knowledge" is **withdrawn** until they are re-derived. R13: the framed-ribbon theorem (Lk = Tw + Wr) is verified, but g = 2 is the assumption f = ½ (g = 1/f), spin ½ is assumed, and the Schwinger term is QED's. R14: the KR facts are reproduced, but the critical coupling β_c = 2 ln 2 omits the Benincasa–Dowker term and the layered family keeps an N² entropy at any finite coupling. R15 and R16 (added after this review began) are being checked in E38 and E40. R1–R12 are unchanged.
 
 ---
 
@@ -1758,6 +1766,12 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 
 **Files:** [`r23_fermion_spin_and_g_factor.py`](r23_fermion_spin_and_g_factor.py), [results](results/r23_fermion_spin_and_g_factor.txt), ![overview](figures/r23_fermion_spin_and_g_factor_overview.png)
 
+> **Review note (2026-10-11, Claude, from E37/r27):** the entry was re-tested independently. What holds and what does not:
+> - **Holds:** the bare light loop gives L = ħ, μ = μ_B, g = 1. The theorem Lk = Tw + Wr and the writhe-for-twist exchange are true: tested here with Wr from the Gauss integral, Tw from an explicit frame and Lk from an integer crossing count (21 steps, max |Tw + Wr − Lk| = 1.5×10⁻⁴).
+> - **Does not hold:** (B) the check in r23 is circular: it sets Tw = 1 − Wr and then adds Wr back, so "Lk conserved to 2.2×10⁻¹⁶" is rounding (this machine printed 1.1×10⁻¹⁶ at A = 0.32 where the Windows run printed 0), and it would print Lk = 1 for any Wr. (C) The 4π curve is the closed-form matrix cos(θ/2) − i sin(θ/2) σ_z; it assumes spin ½. Finkelstein–Rubinstein's Z₂ *permits* fermionic quantisation; it does not force it (the Hopf-term coefficient decides; Wilczek–Zee 1983). (D) g = 1/f for a fraction f of the energy circulating: **g = 2 is the choice f = ½, not a derivation**; the measured g needs f = 0.49942. A poloidal flow carries zero angular momentum about the symmetry axis (quadrature: 6×10⁻²⁰), so the second "ħ/2" is not there (it equals ħ/2 only if the tube radius equals the major radius). The Schwinger term is textbook QED, not a substrate computation, and r01–r22 contain no g−2 calculation. The value typed as "CODATA 2022" is the 2018 one (effect 1.6×10⁻¹²). (E) Four prime knots have ≤ 5 crossings, and the list keeps growing (1, 1, 2, 3, 7, 21, 49, …): the e, μ, τ ↔ 3₁, 4₁, 5₁ mapping is a labelling, and a power law m ∝ L^x would need x ≈ 21.
+> - **Prior art not credited:** Williamson & van der Mark (1997), toroidal-photon electron; Hestenes' zitterbewegung; Burinskii's Kerr–Newman electron.
+> - **Status:** argument, not derivation. See E37.
+
 ---
 
 <a id="e33"></a>
@@ -1813,6 +1827,14 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 - **Myrheim**, CERN-TH-2751 (1978); **Meyer**, Ph.D. thesis (1988)
 
 **Files:** [`r24_causal_set_growth_and_4d_emergence.py`](r24_causal_set_growth_and_4d_emergence.py), [results](results/r24_causal_set_growth_and_4d_emergence.txt), ![overview](figures/r24_causal_set_growth_and_4d_emergence_overview.png)
+
+> **Review note (2026-10-11, Claude, from E37/r27):** the entry was re-tested independently.
+> - **Reproduced:** KR links N²/8, ordering fraction 3/8, height 3, S_BD/N² → −κ/8 = −0.2041 (κ = 4/√6).
+> - **Not established — the critical coupling.** β_c = 2 ln 2 is the zero of ln 2/4 − β/8, i.e. the exact KR point (edge density ½) in a weight exp(−βN₁) with **no Benincasa–Dowker term**. The script prints S_BD(KR) = −0.2041N², larger in size than the entropy ln 2/4 = 0.1733, and states the weight exp(−S_BD − βN₁). With that weight the threshold is 2 ln 2 + 4/√6 = 3.019, and at β = 1.5, N = 256 KR beats the sampled 4D class by at least 10^(+3288); in the opposite sign convention KR loses by at least 10^(4751). The quoted 10^(−404.5) is neither.
+> - **Not established — "non-manifolds are annihilated".** For the whole layered family (three layers, edge density d) the log-weight is (N²/4)[H₂(d) − β_eff d], maximised at d* = 1/(1 + e^β_eff) with value (N²/4) ln(1 + e^(−β_eff)) > 0 for every finite β_eff. Thinner layered posets keep an N² entropy, so a fixed coupling does not remove the non-manifold phase at large N; the coupling would have to grow like ln N (layered posets win beyond N ≈ 6×10² at β = 1.5, 6×10³ at β = 3, 10⁵ at β = 5, even granting the 4D class maximal entropy; illustrative).
+> - **Citation:** Loomis & Carlip is Class. Quantum Grav. 35, 024002 (2018), arXiv:1709.00064, on bilayer orders; it argues that the path integral *suppresses* them, so "proof of Loomis & Carlip" misreports it. "Phys. Rev. D 98, 086003" was not found. Mathur–Singh–Surya (arXiv:2009.07623) and Carlip–Carlip–Surya (arXiv:2209.00327, 2311.18238) extend the analysis to KR and all layered orders "given a suitable discretization length" (abstracts only; arXiv is blocked here).
+> - **Not computed — 3+1 selection.** Nothing dimension-dependent was evaluated. The list is the Ehrenfest (1917) / Tegmark (1997) argument: "knotted circles" and "Maxwell conformal" are single-dimension statements, and without them graviton + Huygens + knotted membranes leave every odd D ≥ 3. The height exponent at N = 32–256 is 0.28–0.36, not 0.25.
+> - **Status:** KR facts computed here; β_c and 3+1 uniqueness not established. See E37.
 
 ---
 
@@ -1930,5 +1952,92 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 
 **Files:** [`r26_gauge_entanglement_weights.py`](r26_gauge_entanglement_weights.py), [results](results/r26_gauge_entanglement_weights.txt), ![overview](figures/r26_gauge_entanglement_weights_overview.png)
 
+---
+
+<a id="e36"></a>
+## E36 — Where the Λ mechanism fails, in plain English: reasons and possible fixes (2026-10-11)
+
+**Question (user):** "explain these to me in plain easy to understand english .. and the reasons and possible mitigations too" (the three failures listed as "3. Where it fails, measured" in the summary of E29).
+
+**Method:** pure reasoning on the computed results of E29 (r21); no new calculation here. The figures quoted for the expansion history (e-folds of volume since z = 1, the memory kept) come from the background model of r21 and are recomputed in r30 (E40). The fixes below are hypotheses; r30 (E40) tests concrete versions of them.
+
+**The mechanism in one paragraph.** USRT's space is made of an enormous whole number of tiny cells (about 6×10²⁴² Planck volumes inside our past light cone). Counting whole things is slightly random, like counting raindrops in a bucket: you get 1000 ± 32, not 1000. In unimodular gravity the cosmological constant Λ is the partner of the 4-volume V (they are conjugate: ΔΛ·ΔV ≈ 8πκ l_P²), so the random error in the cell count shows up as a Λ that is uncertain by about 1/√V. That is the size of the Λ we observe (about 10⁻¹²² in Planck units), and the cell size is fixed by the number of particle species. This is the near miss of E29.
+
+**Failure 1 — the early universe: the "hiss" is always the same fraction of the music.**
+- *What happens.* The noise in Λ falls as 1/√V with V ∝ t⁴, so as 1/t². The universe's total energy density also falls as 1/t² (H² ∝ 1/t²). So the noise is always about the same *fraction* of the total. If it is about 70 % of the total today, it was about 200 % of the total during the first minutes (computed: 1.96).
+- *Why it is a problem.* The light elements made in the first minutes (helium, deuterium) say that an unknown extra component could be at most about 5 % of the total then (limit 0.046, from N_eff = 2.99 ± 0.17). So the mechanism is at least 43 times too big at that time. The chance that a history passes nucleosynthesis, the CMB and today's value together is at most about 10⁻⁴.
+- *Root cause.* The noise is rebuilt from the whole past at every moment and has no memory of when it was set, so it scales with whatever the universe is doing.
+
+**Failure 2 — the recent universe: it jumps around too much.**
+- *What happens.* The noise wanders. After one "e-fold" of volume (the age of the universe growing by 28 %) it has forgotten about 40 % of its value and been re-kicked at full strength. From redshift 1 to today the volume grows 28-fold (3.3 e-folds) and only 19 % of the old value survives. From redshift 2 only 6 % survives. So over the last half of cosmic history Λ is largely re-rolled, and 93 % of the histories that match today's Λ had the opposite sign of Λ before redshift 2.
+- *Why it is a problem.* Supernovae, BAO and the CMB say dark energy has been close to constant at z < 1–2. DESI hints at a mild change (the DESI numbers used here come from a web summary, not from the paper). 59 % of the histories that match today lean the same way as DESI, but none fall inside its 2σ region.
+
+**Failure 3 — the obvious fix does not work.**
+- *The fix tried.* Make the counting "quieter than random": variance ∝ V^γ with γ < 1 (γ = 1 is ordinary random counting).
+- *Why it breaks.* Today's size pins γ. The volume is about 10²⁴³ Planck volumes, so changing γ by 0.014 changes Λ by a factor of about 50, which the allowed cell size (1–30 Planck lengths) cannot absorb: γ = 1.00 ± 0.014. Nucleosynthesis needs γ ≤ 0.953 and DESI's steadiness needs γ ≤ 0.77. No single exponent satisfies all three.
+- *Also.* More particle species (a larger N) only rescales the size. The problem is the *time dependence*, not the amplitude.
+
+**What kind of fix is needed.** Λ must behave like a number that is *set and then held*: negligible in the early universe, of order one today, and changing by less than about 30 % since redshift 1. That is memory. Candidate mechanisms (none derived from the substrate; each adds at least one free knob, which weakens any "prediction"):
+1. **Settling.** Only cells that have settled into the causal order count toward the noise, so the early universe, with few settled cells, is quiet, and Λ updates in chunks.
+2. **Slow re-rolling.** The relaxation rate of the noise falls faster than the expansion rate at late times, so Λ freezes once it is set.
+3. **Hubble friction.** Λ's fluctuation behaves like a slow field: frozen while its response rate is below H. A frozen-early, thawing-late field leans in DESI's direction (w₀ > −1, w_a < 0).
+4. **Switch-on at a critical size.** The noise is random-counting only above a critical number of cells (like a phase transition in the growth, possibly related to the layered/non-manifold phase of E33/E37) and is suppressed below it.
+
+**Honest reading.** The near miss may be a coincidence. If no memory rule meets the three constraints with fewer extra knobs than constraints, the species-count relation should be demoted from "mechanism" to "numerical coincidence".
+
+**Status:** pure reasoning on computed results (E29). Mitigations are **hypotheses**; **open**.
+
+**References:**
+- **Sorkin**, Int. J. Theor. Phys. 36, 2759 (1997); **Ahmed, Dodelson, Greene & Sorkin**, PRD 69, 103523 (2004)
+- **Zwane, Afshordi & Sorkin**, CQG 35, 194002 (2018); **Das, Nasiri-Zare, Afshordi et al.**, JCAP 10 (2023) 047
+- **Planck 2018**, A&A 641, A6 (2020); **DESI Collaboration**, DR2, arXiv:2503.14738 (2025)
+
+**Files:** no new script; see [E29](#e29) / [`r21_lambda_from_species.py`](r21_lambda_from_species.py).
 
 
+---
+
+<a id="e37"></a>
+## E37 — Independent audit of the parallel work: fermion spin and g = 2 (r23), causal-set growth (r24) (2026-10-11)
+
+**Question (user):** "i had gemini working symultanousely locally as well so check these as well" (entries E32 and E33, scripts r23 and r24).
+
+**Method (r27):** r01–r24 were re-run on Linux (all pass). Then each claim was re-tested with a calculation that does not reuse the thing being tested:
+- **(A) Călugăreanu–White–Fuller:** writhe from the Gauss double integral; twist from an explicit ribbon frame (parallel transport plus a uniform rotation, integer branch tracked continuously in the deformation); linking number from an *integer crossing count* of the ribbon's two edges. 21 deformation steps, 800 segments.
+- **(B) g:** sympy algebra of the circulating-charge model; quadrature of angular momentum for poloidal and toroidal flow on a torus.
+- **(C) Knots:** census (OEIS A002863) and the exponent a power law would need.
+- **(D) Kleitman–Rothschild:** reproduce β_c; put back the Benincasa–Dowker (BD) term; sample the layered family; analytic free energy; crossover estimate.
+- **(E) 3+1:** the criteria listed in r24 over D = 1–8.
+
+**Results (computed here):**
+- **Reproduction.** r01–r24 all pass on Linux and every physical number reproduces. Differences from Gemini's Windows runs are floating-point round-off in 10⁻¹⁶-scale values (r23 d(Lk) 1.1×10⁻¹⁶ against 0; r17 |JΨ| 5.7×10⁻¹⁷ against 1.2×10⁻¹⁶ and infidelity 7.8×10⁻¹⁶ against 1.3×10⁻¹⁵; r01 −0.000 against 0.000; the order of two degenerate eigenvalues in r12), a Λ → L character in r21 (an encoding fix), and every figure file (rendering). The `lab.py` changes are benign. Gemini's later commit regenerated and re-committed all of r01–r22's figures and some results, which will conflict with any other session's regenerated copies; committing only new files avoids this. r24's KR numbers reproduce: N₁ = N²/8, ordering fraction 3/8, height 3, S_BD/N² → −κ/8 = −0.2041 (κ = 4/√6; sampled −0.197 at N = 256).
+- **(A) The check in r23 is circular; the theorem is true.** r23 sets Tw = 1 − Wr and adds Wr back; it returns Lk = 1 for Wr = 0.70 and for Wr = 1000. Its writhe is 0.19 % off at A = 0.48 (−1.1629 against the converged −1.1651). Independent test: Lk = 1 at all 21 steps; Wr falls from 0 to −1.383 while Tw rises from 1 to 2.383; max |Tw + Wr − Lk| = 1.5×10⁻⁴ (3×10⁻³ at M = 100, 3×10⁻⁵ at M = 1600).
+- **(B) g = 1/f.** A charge on a loop of radius R at speed c has μ = qcR/2. If a fraction f of the energy circulates, J = fMcR; quantising J = ħ/2 gives g = μ/[(q/2M)J] = 1/f (sympy). So g = 2 is the choice f = ½; the measured g_e needs f = 0.499421 (0.116 % below ½), which is not predicted. A poloidal flow lies in the meridional plane and carries no angular momentum about the symmetry axis (quadrature: L_z(poloidal)/L_z(toroidal) = 6×10⁻²⁰); r23's second ħ/2 holds only if the tube radius equals the major radius (S_pol = (ħ/2)(r₀/R)). 2(1 + α/2π) = 2.0023228195 is Schwinger's QED result; r23 attributes it to substrate fluctuations "computed in r02", but no script r01–r22 contains a g−2 calculation. The g_e typed as "CODATA 2022" is the 2018 value (effect 1.6×10⁻¹²; from memory).
+- **(C) Knots.** Prime knots with 3 … 13 crossings number 1, 1, 2, 3, 7, 21, 49, 165, 552, 2176, 9988. Four have at most 5 crossings (3₁, 4₁, 5₁, 5₂), and there is no gap that ends a list at three. With the ropelengths typed in r23 (32.74, 42.44, 47.39; not re-verified) a single power law m ∝ L^x would need x = 20.5 (muon) and 22.0 (tau). That is a diagnostic, not a fit.
+- **(D) The critical coupling.**
+  - β_c = 2 ln 2 = 1.3863 reproduces r24's 10^(−404.5) at β = 1.5, N = 256 only for the weight exp(−βN₁) with no BD term.
+  - With the BD term and r24's stated weight exp(−S_BD − βN₁): β_c = 2 ln 2 + 4/√6 = 3.019. At β = 1.5, N = 256, log₁₀(W_KR/W_4D) ≥ +3288 even granting the 4D class the largest entropy any class with its link count can have (6829 nats). With the opposite sign of S_BD: β_c = −0.247 and log₁₀(W_KR/W_4D) ≤ −4751. r24's −404.5 is neither.
+  - Layered family: log-weight (N²/4)[H₂(d) − β_eff d] is maximised at d* = 1/(1 + e^β_eff) with value (N²/4) ln(1 + e^(−β_eff)) > 0 for every finite β_eff, where β_eff = β ∓ 4/√6 in the two conventions. Sampling at N = 1024 confirms that BD reduces to −κN₁ on dense layered posets (S_BD/N² = −0.2025, −0.1207, −0.0802 against −0.2041, −0.1225, −0.0816 for d = 0.5, 0.3, 0.2).
+  - Layered posets win for good beyond N ≈ 5.9×10² (β = 1.5), 5.9×10³ (3), 9.8×10⁴ (5) and 4.7×10⁶ (8), granting the 4D class maximal entropy and assuming N₁(4D) ∝ N ln³N (illustrative).
+  - Citation: Loomis & Carlip is Class. Quantum Grav. 35, 024002 (2018), arXiv:1709.00064, on bilayer orders, arguing that the path integral suppresses them. "Phys. Rev. D 98, 086003" was not found.
+- **(E) 3+1.** Nothing dimension-dependent was computed (the link action does not know d). "Knotted circles" and "Maxwell conformal" are single-dimension statements; "a graviton exists" gives D ≥ 3; Huygens gives odd D ≥ 3; adding stable atoms (D ≤ 3) gives D = 3. Without circle knots and conformal Maxwell, graviton + Huygens + knotted membranes leave D = 3, 5, 7, …. The height exponent at N = 32–256 is 0.28 (this run) and 0.36 (r24's run), against the asymptotic 0.25.
+
+**Interpretation:**
+- **Solid in E32/E33:** Lk = Tw + Wr and the writhe-for-twist exchange (now verified); the bare-loop failure; the KR facts; S_BD(KR) → −0.204N². The Schwinger arithmetic is right, but it is QED's.
+- **Not solid:** "g = 2 from geometry" (f = ½ is put in); spin ½ (assumed); the lepton-knot mapping; the numbers β_c and "10⁻⁴⁰⁴"; the uniqueness of 3+1; the "new to our knowledge" labels on R13 and R14.
+- **Positive content of the audit (computed here, simple, not new physics):** g = 1/f; the layered-family free energy (N²/4) ln(1 + e^(−β_eff)) and the ln N growth of the coupling needed. This agrees with the literature's move from KR orders to all layered orders and a "suitable discretization length".
+- **Consequence for the programme:** the one place the parallel work could matter for E29 is the idea of a growth *phase transition* (switch-on at a critical size); that needs the corrected phase structure first.
+
+**Status:** E32 → **argument** (CWF verified; 4π assumed; g = 2 not derived; mapping a labelling). E33 → KR facts **computed here**; β_c and 3+1 **not established**. R13 and R14 are annotated as downgraded in E30.
+
+**References** (searched this session: Loomis & Carlip; Mathur, Singh & Surya; Carlip, Carlip & Surya; Williamson & van der Mark; Ashton et al. (existence of the table, not its values); all others from memory):
+- **Călugăreanu**, Rev. Math. Pures Appl. 4, 5 (1959); **White**, Am. J. Math. 91, 693 (1969); **Fuller**, PNAS 68, 815 (1971)
+- **Finkelstein & Rubinstein**, J. Math. Phys. 9, 1762 (1968); **Wilczek & Zee**, PRL 51, 2250 (1983)
+- **Williamson & van der Mark**, Ann. Fond. L. de Broglie 22, 133 (1997); **Hestenes** (zitterbewegung); **Burinskii** (Kerr–Newman electron)
+- **Schwinger**, Phys. Rev. 73, 416 (1948); **CODATA 2022**, Rev. Mod. Phys. 97, 025002 (2025)
+- **Kleitman & Rothschild**, Trans. AMS 205, 205 (1975); **Benincasa & Dowker**, PRL 104, 071301 (2010)
+- **Loomis & Carlip**, CQG 35, 024002 (2018), arXiv:1709.00064; **Mathur, Singh & Surya**, arXiv:2009.07623; **Carlip, Carlip & Surya**, arXiv:2209.00327 and arXiv:2311.18238
+- **Ehrenfest**, Proc. Amsterdam Acad. 20, 200 (1917); **Tegmark**, CQG 14, L69 (1997)
+- **Ashton, Cantarella, Piatek & Rawdon**, Experimental Mathematics 20, 57 (2011); **Hoste, Thistlethwaite & Weeks**, Math. Intelligencer 20, 33 (1998); OEIS A002863
+
+**Files:** [`r27_audit_of_r23_r24.py`](r27_audit_of_r23_r24.py), [results](results/r27_audit_of_r23_r24.txt), ![audit](figures/r27_audit_of_r23_r24_audit.png)

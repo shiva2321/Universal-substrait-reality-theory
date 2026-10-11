@@ -1,0 +1,184 @@
+
+==============================================================================
+A. r23-B: is the Calugareanu-White-Fuller check in r23 a test?
+==============================================================================
+r23 computes Wr, then SETS Tw = Lk_exact - Wr and prints Lk = Wr + Tw. That returns Lk_exact for ANY Wr.
+   r23 pipeline, converged Wr (A = 0.48)       : Tw =    +2.1651, Lk = Wr + Tw = 1.0000000000000000   |Lk - 1| = 0.0e+00
+   r23 pipeline, deliberately wrong Wr = +0.70 : Tw =    +0.3000, Lk = Wr + Tw = 1.0000000000000000   |Lk - 1| = 0.0e+00
+   r23 pipeline, absurd Wr = +1000             : Tw =  -999.0000, Lk = Wr + Tw = 1.0000000000000000   |Lk - 1| = 0.0e+00
+   => 'Lk conserved to 2.2e-16' is floating-point rounding of 1 - Wr + Wr. It is not evidence for the theorem.
+   (On this Linux machine the same r23 script printed d(Lk) = 1.11e-16 at A = 0.32 where the Windows run printed 0.)
+   r23's writhe routine uses a vertex rule: Wr(A=0.48) = -1.1629 at M = 300; converged midpoint value -1.1651 (difference 0.0022, 0.19 %).
+
+Real test. Ribbon = centre curve C plus its push-off C' = C + eps*U (eps = 0.02), same family as r23:
+   r(t) = ((1 + 0.4 cos 3t) cos t, (1 + 0.4 cos 3t) sin t, A sin 3t), M = 800 segments.
+   Wr : Gauss double integral of C (midpoint rule).
+   Tw : (1/2pi) closed-integral of (T x U).dU for an explicit ribbon frame U, built by parallel transport
+        plus a uniform extra rotation, with the integer part tracked continuously in A (the ribbon is deformed
+        continuously, starting from the planar ribbon with Tw = 1).
+   Lk : half the signed crossing count between C and C' in a generic projection (an integer).
+   The three are computed with no reference to one another; then Lk - Tw - Wr is the test of the theorem.
+       A         Wr         Tw      Tw+Wr  Lk (crossings)   Tw+Wr-Lk
+    0.00   +0.00000   +0.99995   +0.99995             1.0  -4.97e-05
+    0.16   -0.59698   +1.59712   +1.00014             1.0  +1.45e-04
+    0.32   -0.95524   +1.95537   +1.00013             1.0  +1.27e-04
+    0.48   -1.16513   +2.16521   +1.00008             1.0  +7.86e-05
+    0.64   -1.29625   +2.29629   +1.00003             1.0  +3.47e-05
+    0.80   -1.38266   +2.38266   +1.00000             1.0  -4.10e-06
+   max |Tw + Wr - Lk| over 21 deformation steps = 1.5e-04;  Lk takes the values [1.0];  max frame-closure error = 3.1e-15
+   Over the sweep Wr changes by -1.383 and Tw by +1.383: writhe really is traded for twist.
+   Convergence of the residual with the number of segments M (A = 0.48; the integer branch of the frame is
+   tracked from A = 0 in 12 steps at each M):
+      M =   100:  Tw + Wr - Lk = -3.05e-03
+      M =   200:  Tw + Wr - Lk = -1.02e-04
+      M =   400:  Tw + Wr - Lk = +1.44e-04
+      M =   800:  Tw + Wr - Lk = +7.86e-05
+      M =  1600:  Tw + Wr - Lk = +3.03e-05
+   the residual falls from 3e-03 (M = 100) to 3e-05 (M = 1600); it is not
+   monotone because the Wr and Tw discretisation errors have different signs. It is discretisation error.
+   Verdict A: the THEOREM and the writhe-for-twist exchange in r23's table are TRUE (now checked: residual <= 1e-04); r23's own check proved nothing, and its Wr is ~0.2 % off.
+
+==============================================================================
+B. r23-D: does equipartition give g = 2 and spin hbar/2?
+==============================================================================
+   mu = q c R / 2 ;  J = f M c R ;  J = hbar/2  =>  R = hbar/(2*M*c*f) ;  g = mu / [(q/2M) J] = 1/f  (sympy)
+   So g = 1/f: the 'derivation' is the choice f = 1/2 (half the energy circulating, half 'poloidal').
+   f = 1   -> g = 1 (bare loop);   f = 1/2 -> g = 2 exactly;   measured g_e = 2.00231930436 needs f = 0.499421 (0.116 % below 1/2).
+   Equipartition is assumed, not derived; with it g = 2 comes out because 1/f = 2 was put in.
+   Quadrature over a torus (R = 1.0, minor radius 0.3): L_z(poloidal flow) / L_z(toroidal flow, same speed) = +5.9e-20
+   A poloidal (around-the-tube) flow lies in the meridional plane, so rho*v_phi = 0 and it adds NOTHING to J_z.
+   r23 counts it as a second hbar/2. Its own formula S_pol = (E_pol/c^2) r0 c equals hbar/2 only if the tube
+   radius r0 equals the major radius R = hbar/(Mc); for a thin torus S_pol = (hbar/2)(r0/R):
+      r0/R = 1.0:  S_pol = 0.50 hbar
+      r0/R = 0.3:  S_pol = 0.15 hbar
+      r0/R = 0.1:  S_pol = 0.05 hbar
+   Schwinger term: 2(1 + alpha/2pi) = 2.0023228195; residual to the measured g_e = +3.515e-06. This is
+   textbook QED (1948). r23 attributes it to 'substrate gauge fluctuations (computed in r02)'; r02 contains no
+   g-2 calculation (searched: no 'schwinger', 'anomal' or 'g-2' in r01-r22). '99.85 % explained' is QED's credit.
+   Constants: the number typed into r23 as 'CODATA 2022' (2.00231930436256) is the CODATA 2018 value; CODATA 2022 is
+   2.00231930436092(36) (from memory: a_e = 1.15965218046(18)e-3 gives exactly that; not re-fetched). Effect: 1.6e-12.
+   Verdict B: the numbers g = 1 (bare loop) and the Schwinger arithmetic are right; 'g = 2 identically from
+   geometry' is NOT derived (g = 1/f with f = 1/2 assumed), the spin accounting double-counts, and Schwinger is QED's.
+
+==============================================================================
+C. r23-E: do prime knots explain 'exactly three generations'?
+==============================================================================
+   Prime knots by minimal crossing number (Hoste-Thistlethwaite-Weeks census; OEIS A002863):
+       3 crossings:     1 knots   (cumulative      1)
+       4 crossings:     1 knots   (cumulative      2)
+       5 crossings:     2 knots   (cumulative      4)
+       6 crossings:     3 knots   (cumulative      7)
+       7 crossings:     7 knots   (cumulative     14)
+       8 crossings:    21 knots   (cumulative     35)
+       9 crossings:    49 knots   (cumulative     84)
+      10 crossings:   165 knots   (cumulative    249)
+      11 crossings:   552 knots   (cumulative    801)
+      12 crossings:  2176 knots   (cumulative   2977)
+      13 crossings:  9988 knots   (cumulative  12965)
+   r23 takes 3_1, 4_1, 5_1 and stops. But 5_1 shares its crossing number with 5_2, and 6 crossings has 3 knots,
+   7 has 7, 8 has 21: the count grows exponentially with no gap to end a 'low-lying' list at three.
+   Mass ratios m_mu/m_e = 206.8, m_tau/m_e = 3477.4; ropelengths (as typed in r23) 32.74, 42.44, 47.39 differ by factors 1.30 and 1.45.
+   A power law m ~ L^x would need x = 20.5 (muon) and x = 22.0 (tau). That is a diagnostic, not a fit:
+   no soliton energy scales as the 21st power of ropelength, and two numbers with one free exponent test nothing.
+   Verdict C: the mapping e,mu,tau <-> 3_1,4_1,5_1 is a labelling, not a result. r23's own 'open' status stands;
+   the sentence 'provides a clean topological rationale for exactly three generations' should be withdrawn.
+
+==============================================================================
+D. r24: the critical coupling beta_c = 2 ln 2 and 'KR posets are crushed'
+==============================================================================
+   D1. What the script's number is. Weight exp(-beta*N1) only; KR entropy (ln2/4) N^2, links N^2/8:
+       log-weight(KR) per N^2 = ln2/4 - beta/8, zero at beta = 2 ln 2 = 1.3863;  at beta = 1.5, N = 256 the exponent is (beta - 2ln2) N^2/8/ln10 = 404.5 decades.  (r24 prints 404.5: reproduced.)
+       This compares the single point p = 1/2 against zero and uses NO Benincasa-Dowker term.
+   D2. Put back the BD term that r24 itself prints. Samples (r24's own samplers; 4 KR, 3 sprinklings):
+          N    N1(KR)   S_BD(KR)  S_BD/N^2 |   N1(4D)  S_BD(4D)
+         32     128.8     -192.3   -0.1878 |     35.7      27.2
+         64     513.8     -721.4   -0.1761 |    119.7     141.0
+        128    2034.2    -3112.9   -0.1900 |    539.7    -137.2
+        256    8171.2   -12925.5   -0.1972 |   1754.0    -254.7
+       S_BD(KR)/N^2 -> -kappa/8 = -0.2041  (kappa = 4/sqrt6 = 1.6330); entropy term ln2/4 = 0.1733.
+       The BD term is LARGER than the entropy term, and in r24's own weight exp(-S_BD - beta*N1) it has the
+       sign that ENHANCES KR (S_BD < 0). The honest threshold for that weight is
+           beta_c(A) = 8(ln2/4 + kappa/8) = 2 ln 2 + 4/sqrt6 = 3.0193   (not 1.3863).
+       With the opposite overall sign of the action (the convention in which the continuum phase exists):
+           beta_c(B) = 2 ln 2 - 4/sqrt6 = -0.2467 < 0: the BD term alone already beats the entropy, narrowly (0.247 N^2/8).
+       At beta = 1.5, N = 256, KR against the sampled 4D class (N1 = 1754, S_BD = -255):
+         convention A, r24's stated weight exp(-S_BD - beta N1): even if the 4D class has the largest entropy any class
+            with its link count can have (ln C(N(N-1)/2, N1) = 6829 nats), log10(W_KR / W_4D) >= +3288.
+         convention B, exp(+S_BD - beta N1): even if the 4D class has entropy 0, log10(W_KR / W_4D) <= -4751.
+       r24 reports -404.5, which is neither. Whether KR is enhanced or suppressed depends on a sign convention that
+       r24 never fixes, and in the convention it states KR wins by thousands of decades at its own example point.
+       (The 4D class's S_BD fluctuates by several hundred between runs, still far below the N^2 terms.)
+   D3. The whole layered family. Three layers N/4, N/2, N/4 with edge density d between neighbouring layers:
+       number of such posets ~ exp[(N^2/4) H2(d)], links N1 = d N^2/4 (KR is d = 1/2). With weight
+       exp(-beta_eff*N1), log W = (N^2/4)[H2(d) - beta_eff d], maximised at d* = 1/(1+e^beta_eff):
+           max_d = ln(1 + e^(-beta_eff)) > 0   for EVERY finite beta_eff.
+        beta_eff       d*  ln(1+e^-b)  KR point ln2 - b/2
+           0.000   0.5000      0.6931              0.6931
+           1.000   0.2689      0.3133              0.1931
+           1.386   0.2000      0.2231              0.0000
+           1.500   0.1824      0.2014             -0.0569
+           3.000   0.0474      0.0486             -0.8069
+           5.000   0.0067      0.0067             -1.8069
+           8.000   0.0003      0.0003             -3.3069
+       The exact KR point (d = 1/2) does go negative beyond beta = 2 ln 2, but the maximum moves to a thinner
+       layered poset and stays positive: the N^2 entropy of the layered family is never removed at fixed beta.
+       Sampled check that BD reduces to a pure link action on dense layered posets (N = 1024):
+         d = 0.5: S_BD/N^2 = -0.2025   link-action value -kappa*d/4 = -0.2041
+         d = 0.3: S_BD/N^2 = -0.1207   link-action value -kappa*d/4 = -0.1225
+         d = 0.2: S_BD/N^2 = -0.0802   link-action value -kappa*d/4 = -0.0816
+       (For thin layers, d <~ N^(-1/2), the 2-, 3-, 4-step intervals matter and S_BD is dominated by large
+       fluctuations; that regime is where the nonlocal smearing of the action is needed.)
+       In the two conventions the dense-layer BD action is -kappa*N1, so beta_eff = beta - kappa (A) or beta + kappa (B),
+       kappa = 1.6330; either way beta_eff is finite and ln(1 + e^-beta_eff) > 0.
+       Where the layered family overtakes the 4D class for good. N1(4D) = c N ln^3 N with c fitted at N = 256 (c = 0.040),
+       4D entropy at its upper bound ln C(N^2/2, N1) (the true manifold entropy is far smaller, so these N are upper
+       limits on the crossover), 4D weight exp(-beta*N1). ILLUSTRATIVE: the N ln^3 N law is assumed.
+         beta = 1.5: beyond N ~ 5.9e+02 the layered family wins even with the 4D class at maximal entropy
+         beta = 3.0: beyond N ~ 5.9e+03 the layered family wins even with the 4D class at maximal entropy
+         beta = 5.0: beyond N ~ 9.8e+04 the layered family wins even with the 4D class at maximal entropy
+         beta = 8.0: beyond N ~ 4.7e+06 the layered family wins even with the 4D class at maximal entropy
+       So a fixed link coupling cannot make the continuum limit manifold-like; the coupling would have to grow
+       like ln N. (Literature, from abstracts only; arXiv is blocked in this container: Loomis & Carlip handle
+       the two-level orders; Mathur, Singh & Surya find the link action suppresses KR orders; Carlip, Carlip &
+       Surya extend this to ALL layered sets, 'given a suitable discretization length' of the nonlocal action.)
+   D4. Citation: r24/E33 cite 'Loomis & Carlip, Phys. Rev. D 98, 086003 (2018)'. The paper is Class. Quantum
+       Grav. 35, 024002 (2018), arXiv:1709.00064, on bilayer orders. It does not show that 'the naive BD action is
+       unbounded from below on KR posets, so KR dominates'; it argues the opposite, that suitable parameters
+       suppress them. 'Proof of Loomis & Carlip' in r24 is a misattribution.
+   D5. Height of 4D sprinklings, N = 32..256: this run L = 3.3, 4.0, 5.3, 6.0 (local log-log slope 0.28);
+       r24's run L = 3.1, 4.0, 5.2, 6.6 (slope 0.36). Both exceed the asymptotic 0.25: N = 256 is not in the
+       asymptotic regime, so the figure label 'L ~ N^(1/4)' is a statement about N >> 10^3 that r24 did not test.
+
+==============================================================================
+E. r24: is 3+1 'selected'? The criteria, dimension by dimension
+==============================================================================
+   Criteria listed in r24 plus two standard ones (spatial dimension D; spacetime d = D + 1):
+   criterion                                   D=1 D=2 D=3 D=4 D=5 D=6 D=7 D=8
+   circle can be knotted                        .   .  yes  .   .   .   .   . 
+   knotted codim-2 membrane S^(D-2) exists      .   .  yes yes yes yes yes yes
+   Weyl tensor nonzero (graviton), d >= 4       .   .  yes yes yes yes yes yes
+   Huygens sharp propagation (odd D >= 3)       .   .  yes  .  yes  .  yes  . 
+   Maxwell conformal (d = 4)                    .   .  yes  .   .   .   .   . 
+   stable atoms/orbits (D <= 3, Ehrenfest)     yes yes yes  .   .   .   .   . 
+   intersection, r24's four criteria                   : D = [3]
+   intersection, graviton + Huygens + knotted membranes: D = [3, 5, 7]
+   intersection, graviton + Huygens + stable atoms     : D = [3]
+   Reading: 'circle knots' and 'Maxwell conformal' are each single-dimension statements that point at D = 3 by
+   construction. Without them, graviton + Huygens + knotted membranes leave every odd D >= 3; adding 'atoms are
+   stable' (D <= 3) gives D = 3. That is the Ehrenfest (1917) / Tegmark (1997) argument, which r24 does not cite.
+   No dimension-dependent quantity was computed in r24 (the link action does not know d), so the sentence 'the
+   regularized causal path sum ... uniquely selects d = 3+1' is not a result of the simulation.
+
+==============================================================================
+Verdict
+==============================================================================
+   r23 A: bare loop gives L = hbar, mu = mu_B, g = 1              -> REPRODUCED (an identity)
+   r23 B: Lk = Tw + Wr, writhe traded for twist                   -> TRUE, but r23's check is circular; tested here (<= 1e-04)
+   r23 C: 4pi belt period => spin 1/2                             -> ASSUMED: closed-form SU(2) matrix; FR gives permission, not necessity
+   r23 D: equipartition => g = 2 identically                      -> NOT DERIVED: g = 1/f, f = 1/2 put in; poloidal J_z = 0
+   r23 D: Schwinger 2(1 + alpha/2pi), 99.85 %                     -> QED's result, not the substrate's
+   r23 E: 3_1, 4_1, 5_1 <-> e, mu, tau                            -> LABELLING: 4 knots with <= 5 crossings, no gap, no mass law
+   r24 A: KR links N^2/8, r = 3/8, height 3, S_BD -> -0.204 N^2   -> REPRODUCED
+   r24 D: beta_c = 2 ln 2 cures the BD instability                -> NOT ESTABLISHED: drops the BD term; the layered family survives
+   r24 E: 3+1 uniquely selected                                   -> NOT COMPUTED: argument list; known as Ehrenfest-Tegmark
+   runtime 10 s
