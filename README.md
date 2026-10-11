@@ -270,7 +270,7 @@ All 45 scripts run cleanly (tested with Python 3.13, NumPy, SciPy, Matplotlib, S
 ├── research/
 │   ├── LAB_NOTEBOOK.md                           dated record of every question, method, result
 │   ├── lab.py   run_all.py                       shared helpers; re-run everything
-│   ├── r01 ... r21_*.py                          one script per question
+│   ├── r01 ... r22_*.py                          one script per question
 │   ├── results/   figures/                       text output and plots of each script
 └── audit/
     ├── USRT_AUDIT_REPORT.md                      findings, provenance, before/after fixes, errata
@@ -392,6 +392,7 @@ Exploration after the audit lives in [`research/`](research/). Each question bec
 | [`r19`](research/r19_causal_set_substrate.py) | Test a causal set: discreteness with no rest frame | **It passes everything the lattice failed.** Links point in every boost direction (Ein(N) exact). Dimension comes from order alone (2.005, 3.000, 3.998). **The twin paradox appears by counting elements.** The mean wave operator is a closed-form function of k² only: **exactly Lorentz invariant**, with c at every energy (MC χ² = 3.0/4). **Curvature from counting → −R/2** (to 1×10⁻⁴). Λ ~ 1/√N gives 1.4×10⁻¹²² against an observed 2.8×10⁻¹²². |
 | [`r20`](research/r20_constants_and_substrate.py) | How do the constants of nature relate to the substrate? | **c, ħ, G are the substrate's units.** α and α_G set the sizes of atoms, stars (α_G^(−3/2) m_p = 1.85 M_⊙) and planets (1.2 Jupiters). The three couplings nearly meet at 2×10¹⁶ GeV (MSSM). Gravity's weakness is an exponential of the strong coupling's running. **Dirac's G ∝ 1/t is excluded at 81σ.** **Null test:** the constants are no closer to simple formulas than random numbers are. |
 | [`r21`](research/r21_lambda_from_species.py) | **Our own relation:** can the substrate's counting noise give the cosmological constant? | **New (to our knowledge): Λ√V = 2πκ/(Nη).** The size of Λ is set by the number of particle species. The observed universe gives Λ√V_past = 0.720, which needs N ≈ 180–370 species; **the Standard Model has 118**, so it lands within a factor 1.5–3 with nothing fitted, and the cells come out at 4–6 Planck lengths. **But** the simple mechanism makes Λ as large during nucleosynthesis as today: P(passing BBN, CMB and today) ≤ 10⁻⁴, and none of its histories fall inside DESI's 2σ boxes. **No power-law counting statistics can fix it** (γ = 1.00 is needed for the size, γ ≤ 0.77 for DESI). |
+| [`r22`](research/r22_species_weights.py) | Does the Standard Model really give the species number Λ needs? | **We computed how much a fermion counts on the substrate:** a Dirac fermion is entangled like 16.5, 9.1, 4.3 or 1.8 scalars for Wilson regulator r = 0.5, 1, 2 or 4 (method check: 1D slope 0.3333 against exact 1/3). With the standard r = 1, the Standard Model gives N_eff ≈ 160–230, **overlapping the 180–370 that today's Λ needs**. Read the other way, the cosmological constant becomes a measurement of the substrate's fine structure (r ≲ 1.3). |
 
 <table>
 <tr>

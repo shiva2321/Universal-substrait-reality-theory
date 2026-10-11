@@ -46,6 +46,7 @@ This is the running record of every question, calculation, plot and conclusion i
 | [E28](#e28) | 2026-10-11 | Plain-English overview: the journey, the universe according to USRT v2.3, its weaknesses and what it cannot explain | — |
 | [E29](#e29) | 2026-10-11 | USRT's own relation: the cosmological constant from the number of particle species (and why its simple form fails) | r21 |
 | [E30](#e30) | 2026-10-11 | The USRT rule book: rules and relations this programme derived itself, with originality status | — |
+| [E31](#e31) | 2026-10-11 | How much each particle counts: fermion entanglement on the substrate, and what Λ says about the substrate's fine structure | r22 |
 
 ---
 
@@ -352,6 +353,9 @@ Under a constant push the speed went 0.375 → 0.700 → 0.850 → 0.900c. Newto
 - [ ] (added 2026-10-11, from E25) "Swerves": simulate a particle hopping along a sprinkling and measure its Lorentz-invariant momentum diffusion; compare with published bounds.
 - [ ] (added 2026-10-11, from E23) Quantum time dilation (Smith & Ahmadi 2020): a clock in a superposition of speeds; compute the predicted signal for atom interferometers.
 - [ ] (added 2026-10-11, from E26) Two-loop running with thresholds: the value of the single coupling at the cell scale, if any; and the proton-lifetime window.
+- [ ] (added 2026-10-11, from E29) A substrate growth rule with memory that meets the Λ target: noise suppressed ≥43× at BBN, O(1) today, and changing by less than ~30 % over z < 1.
+- [ ] (added 2026-10-11, from E31) The gauge-field entanglement weight w_V on the lattice (electric-centre / edge-mode choice), to close the Standard Model's N_eff in R6.
+- [ ] (added 2026-10-11, from E31) The fermion weight for other lattice fermions (staggered, domain-wall) and on a causal set, to see how universal the 'Λ measures the fine structure' reading is.
 
 > **Note (2026-10-10, later):** E10 gives the layered version of this picture, with parameter ranges and the new Coulomb-phase constraint α < α_c ≈ 0.079. Nothing in E9 is retracted.
 
@@ -1631,3 +1635,55 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 **Status:** summary of the programme's own results (E17–E29); labels as above.
 
 **Files:** rule book entry (no new script); see the linked entries.
+
+> **Note (2026-10-11, later, from E31):** R6 is strengthened. On the cubic substrate a Dirac fermion counts as 16.5, 9.1, 4.3 or 1.8 scalars for Wilson r = 0.5, 1, 2 or 4. With the standard r = 1, the Standard Model's N_eff is 162–234, depending on the gauge-field weight, which overlaps the 180–372 that today's Λ needs. See E31.
+
+---
+
+<a id="e31"></a>
+## E31 — How much each particle counts: fermion entanglement on the substrate (2026-10-11)
+
+**Question (user):** as E29 and E30, "our own calculations". This is the step the rule book flagged as decisive for R6: does the Standard Model's particle content actually give the N_eff that today's Λ needs?
+
+**Method (r22):**
+- **The field:** a free Dirac fermion on the cubic substrate, with the Wilson regulator h(k) = Σαᵢ sin kᵢ + β r Σ(1 − cos kᵢ), which gives the 7 lattice doublers masses 2r, 4r and 6r.
+- **The entropy:** the ground-state entanglement entropy of cubes (side 2–9, 32³ antiperiodic box), from the restricted correlation matrix (Peschel): S = −Σ[ν ln ν + (1−ν) ln(1−ν)].
+- **Method check:** a 1D half-filled chain must give S = (1/3) ln ℓ.
+- **The comparison:** the scalar is computed in the same window. Then N_eff(SM) = 4 + 22.5 w_D + 12 w_V, scanning the gauge-field weight w_V from −4 to +2.
+
+**Results (computed here):**
+- **The method passes its check:** the chain slope is 0.3333 (exact 1/3).
+- **The scalar matches r14:** η_s = 0.02416 (0.02421 in r14).
+- **A Dirac fermion's weight depends on the regulator:**
+
+  | Wilson r | η_D | Counts as (real scalars) | SM N_eff (w_V from −4 to +2) |
+  |---|---|---|---|
+  | 0.5 | 0.398 | 16.5 | 327–399 |
+  | 1 | 0.2208 | 9.14 | **162–234** |
+  | 2 | 0.104 | 4.30 | 53–125 |
+  | 4 | 0.0433 | 1.79 | −4 to 68 |
+
+  The box is converged: 0.22076 at 40³ against 0.22075 at 32³.
+- **Today's Λ needs N_eff = 180–372** (E29). That means a fermion weight of 6.8–18.5 scalars, i.e. **r ≲ 1.3**, which **includes the standard choice r = 1**.
+
+**Interpretation:**
+1. **How much a particle species counts in the substrate's entanglement depends on the substrate's fine structure** (here, the regulator that removes the fermion doublers). It is not simply "one per degree of freedom".
+2. **With the standard regulator the Standard Model gives N_eff ≈ 160–230**, overlapping what today's Λ needs. **R6 is consistent with the known particle content without fine-tuning.**
+3. **Read the other way, R6 turns the cosmological constant into a measurement of the substrate's fine structure:** the observed Λ prefers fermions with r ≲ 1.3. This is a new kind of link: **a cosmological number constraining the microscopic substrate**.
+4. **Still open:**
+   - the gauge-field weight, which needs the edge-mode treatment;
+   - other lattice fermions;
+   - above all the early-universe failure of the simple dynamics (E29). R6 can only become a prediction once a growth rule with memory exists.
+
+**Status:** **computed here**; new to our knowledge as a test of R6. The gauge weight and the dynamics are **open**.
+
+**References:**
+- **Wilson** (1974), in *New Phenomena in Subnuclear Physics*
+- **Nielsen & Ninomiya**, Nucl. Phys. B 185, 20 (1981)
+- **Peschel**, J. Phys. A 36, L205 (2003)
+- **Calabrese & Cardy**, J. Stat. Mech. P06002 (2004)
+- **Casini & Huerta**, PRD 89, 085012 (2014)
+- **Donnelly & Wall**, PRL 114, 111603 (2015)
+- **Kabat**, Nucl. Phys. B 453, 281 (1995)
+
+**Files:** [`r22_species_weights.py`](r22_species_weights.py), [results](results/r22_species_weights.txt), ![weights](figures/r22_species_weights_species_weights.png)
