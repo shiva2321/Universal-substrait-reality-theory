@@ -1,0 +1,75 @@
+Interval of 24 sites in a chain with m^2 = 0.001 (correlation length 32 sites); the cut is the right end of the interval.  Finite chain for the lump responses: 600 sites.
+
+==============================================================================
+R1. Is the vacuum modular Hamiltonian a boost generator near the cut?
+==============================================================================
+    110-digit vacuum entropy of the interval S = 1.123724 nats; entanglement-spectrum levels eps (lowest 10): 1.6, 2.0, 5.2, 6.3, 9.4, 11.0, 14.3, 16.3, 19.8, 22.1; highest 81.
+    13 of 24 values nu - 1/2 are below 1e-12 (smallest 4.61e-36): double precision cannot resolve them, 110 digits can.
+     distance d - 1/2  B_ii (110 digits)  B_ii (double)  2 pi x (1 - x/L)  110-digit / BW  B_ii / (2 pi x)
+                  0.5            3.12324        3.12324           3.07614          1.0153           0.9942
+                  1.5            9.09708        9.09679           8.83573          1.0296           0.9652
+                  2.5           14.60865       14.57071          14.07172          1.0382           0.9300
+                  3.5           19.64978       18.96150          18.78411          1.0461           0.8935
+                  4.5           24.21612       21.31345          22.97290          1.0541           0.8565
+                  5.5           28.30123       23.20026          26.63809          1.0624           0.8190
+                  6.5           31.89532       24.47099          29.77968          1.0710           0.7810
+                  7.5           34.98490       25.59528          32.39767          1.0799           0.7424
+                  8.5           37.55257       26.43368          34.49207          1.0887           0.7031
+                  9.5           39.57702       27.01901          36.06287          1.0974           0.6630
+    => against the exact interval profile the 110-digit B_ii deviates by at most 9.7% over distances 0.5 to 9.5 sites (lattice/mass corrections ~ few %).
+       Linear fit over the first 6 sites: B_ii = 5.0368 x distance + 1.3889; Bisognano-Wichmann: slope 2 pi = 6.2832 (slope is -19.8% off, and the profile curves by the factor 1 - x/L).
+       The double-precision attempt departs from the exact profile by up to 25%: the precision floor, not the physics, limited it.
+    gradient bonds: -A_(i,i+1) / [2 pi x (1 - x/L)] = 1.014, 1.019, 1.025, 1.033, 1.044, 1.055 (x = 1..6): the same boost profile for the gradient energy.
+
+==============================================================================
+R2. How local is K?
+==============================================================================
+                    window   kinetic part B   gradient part A   off-diagonal share of B
+              last 4 sites            0.042             0.027                     0.014
+              last 8 sites            0.069             0.049                     0.030
+             last 12 sites            0.096             0.072                     0.050
+    (relative Frobenius deviation from the exact local conformal boost form 2 pi x (1 - x/L); the off-diagonal share of B vanishes for a strictly local generator.)
+
+==============================================================================
+R3. Clausius relation: delta S = delta Q / T(x), T(x) = 1 / (2 pi x (1 - x/L))
+==============================================================================
+  R3a. Localised heat.  Deposit energy as random kicks in a Gaussian profile v (width 1.2 sites) at distance d from the cut: kinetic heat dP = s^2 v v^T (energy s^2 |v|^2 / 2), or potential/gradient heat
+       dX = s^2 v v^T (energy s^2 v^T K0 v / 2, K0 = -Laplacian + m^2).  These are valid mixed states, first order in s^2; delta S = (1/2) Tr(A dX) + (1/2) Tr(B dP) is the exact first law.
+           d   T^-1 BW = 2 pi d (1-d/L) |  kinetic: dS/dE   ratio |  potential: dS/dE   ratio
+         1.5                      8.836 |           9.493   1.074 |             9.175   1.038
+         2.5                     14.072 |          14.866   1.056 |            14.221   1.011
+         3.5                     18.784 |          20.193   1.075 |            19.163   1.020
+         4.5                     22.973 |          25.078   1.092 |            23.597   1.027
+         5.5                     26.638 |          29.477   1.107 |            27.498   1.032
+         7.5                     32.398 |          36.760   1.135 |            33.669   1.039
+         9.5                     36.063 |          42.029   1.165 |            37.582   1.042
+       => entropy per unit heat = 1/T(x) = 2 pi x (1 - x/L) to within 17% for kinetic and potential heat at all distances 1.5-9.5: Clausius with the Unruh/Rindler
+          temperature profile (T = 1/(2 pi x) near a cut), for the exact first law and the exact 110-digit K0.
+
+  R3b. A change of the Hamiltonian: a matter lump (mass bump).
+    Matter lump: mass^2 raised by 0.0001 exp(-(i - i0)^2 / (2 sigma^2)), sigma = 1.2 sites, centre at distance d from the cut inside the interval.
+    delta S = delta<K0> = (1/2) Tr(A dX) + (1/2) Tr(B dP): exact first law with the 110-digit K0 (the first law itself was verified to 0.2 % in r43, where the entropy can be computed directly).
+    delta S_BW = sum_i beta(x_i) delta h_i (delta h_i = change of the vacuum-chain energy density in the new state); delta S_loc applies the local boost form of K to the exact covariance changes.
+        d      delta S  delta S_loc   delta S_BW  S_loc/S   S_BW/S   net energy  sum |delta h|
+      1.5   -8.514e-04   -5.153e-05   -5.768e-05    0.061    0.068    1.051e-05      2.534e-05
+      2.5   -8.074e-04    3.974e-05    3.717e-05   -0.049   -0.046    1.161e-05      2.614e-05
+      3.5   -7.622e-04    1.267e-04    1.262e-04   -0.166   -0.166    1.120e-05      2.656e-05
+      4.5   -7.216e-04    2.036e-04    2.041e-04   -0.282   -0.283    1.063e-05      2.712e-05
+      5.5   -6.866e-04    2.699e-04    2.709e-04   -0.393   -0.395    1.016e-05      2.759e-05
+      7.5   -6.326e-04    3.717e-04    3.733e-04   -0.588   -0.590    9.467e-06      2.828e-05
+      9.5   -5.990e-04    4.351e-04    4.370e-04   -0.726   -0.729    9.045e-06      2.871e-05
+    => for a mass bump the exact first-law entropy change (-8.5e-04 to -6.0e-04) hardly depends on where the lump is (correlation length 32 sites > interval 24 sites):
+       it is carried by the lump's long-range vacuum-polarisation tail, which the local boost form (and the local energy density) do not see: S_loc/S and S_BW/S are far from 1.
+       So the local Clausius relation holds for localised ENERGY (R3a), not for a change of the mass term in a nearly massless field: a matter source in a field with a long correlation length
+       changes the entanglement through the field's nonlocal response.  (In r43, with a correlation length of 10 sites and an 8-site interval, the same effect was local over a few correlation lengths.)
+    The Clausius half is therefore verified for heat; the geometric half (the area change of the horizon, Raychaudhuri) is not on this lattice.
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   R1: the modular Hamiltonian near a cut is the conformal boost generator 2 pi x (1 - x/L) -> CONFIRMED in 110-digit arithmetic: B_ii within 9.7% of the exact profile for distances 0.5-9.5; the double-precision attempt was off by up to 25%
+   R2: K is local near the cut                                                      -> largely: within 8 sites the deviation from the local boost form is 7% (kinetic), 5% (gradient); off-diagonal share of B 3%
+   R3a: localised heat obeys delta S = delta Q / T with T = 1/(2 pi x (1 - x/L))    -> CONFIRMED (tolerance 20 %, set after R1 showed the profile itself to be within 9.7 %, the rest being Gaussian smearing and off-diagonal terms): kinetic and potential heat within 17% of 2 pi x (1 - x/L) at d = 1.5-9.5 sites
+   R3b: the same local relation for a mass lump in a nearly massless field          -> NO: exact delta S (-8.5e-04 to -6.0e-04) is nearly independent of position and the local forms give -0.73 to 0.06 of it: the response is nonlocal on scales of the correlation length
+   R4: this derives Einstein's equation                                             -> NO: it verifies the Clausius half (entropy per unit energy = 2 pi x distance) for a free scalar on a lattice; the geometric half (horizon area and Raychaudhuri) is not tested
+   runtime 3 s

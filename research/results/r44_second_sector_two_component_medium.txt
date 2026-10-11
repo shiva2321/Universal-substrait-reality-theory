@@ -1,0 +1,87 @@
+
+==============================================================================
+P1. Two-component hydrodynamics against the Bogoliubov-de Gennes spectrum
+==============================================================================
+Equal components n_a = n/2 each, hbar = m = 1.  Predictions: c_d^2 = n_a (g + g12)/m, c_r^2 = n_a (g - g12)/m, F_r^2 = n_a/(2 m c_r^2) = 1/(2 (g - g12)).
+        g    g12    n_a |  c_density BdG   formula |  c_spin BdG   formula |  s = c_r/c_d  sqrt((g-g12)/(g+g12))
+      1.0   0.00    1.0 |        1.00000   1.00000 |     1.00000   1.00000 |      1.00000                1.00000
+      1.0   0.50    1.0 |        1.22474   1.22474 |     0.70711   0.70711 |      0.57735                0.57735
+      1.0   0.80    2.0 |        1.89737   1.89737 |     0.63246   0.63246 |      0.33333                0.33333
+      1.0   0.90    1.0 |        1.37840   1.37840 |     0.31623   0.31623 |      0.22942                0.22942
+      2.0   1.90    0.5 |        1.39642   1.39642 |     0.22361   0.22361 |      0.16013                0.16013
+    => both sound speeds agree with the formulas to 2.5e-06.  The relative-phase decay constant follows from the same coefficients: kinetic term K_r = n_a/(2m), c_r^2 = K_r / F_r^2.
+    A slow spin sound needs g12 close to g (s = 0.3 means g12/g = 0.83): the mixture is near its miscibility threshold, where the spin mode softens.
+
+==============================================================================
+P2. The observationally allowed region in (f, s) for a cosine Josephson coupling
+==============================================================================
+    Non-Gaussianity: f_NL^equil = -(35/108)(1/s^2 - 1); Planck 2018 (typed from memory) f_NL^equil = -26 +- 47: 95 % limit -120 => s > 0.052.
+    Tensors: r = 16 epsilon s = s r_canonical;  tilt: n_s of the canonical field (a constant sound speed does not change it).  Slow roll from near the top of the cosine.
+        f |  N = 60: n_s  sigma   r_can  s_max |  N = 50: n_s  sigma   r_can  s_max | s window (best of N = 50, 60)
+      3.0 |       0.8886  -18.2  0.0011   9.99 |       0.8881  -18.3  0.0033   9.99 | none
+      4.0 |       0.9346   -7.2  0.0117   3.09 |       0.9319   -7.8  0.0223   1.62 | none
+      5.0 |       0.9522   -3.0  0.0312   1.15 |       0.9478   -4.1  0.0490   0.74 | none
+      6.0 |       0.9595   -1.3  0.0509   0.71 |       0.9541   -2.6  0.0725   0.50 | 0.05 to 0.71
+      7.0 |       0.9628   -0.5  0.0670   0.54 |       0.9569   -1.9  0.0906   0.40 | 0.05 to 0.54
+      8.0 |       0.9645   -0.1  0.0794   0.45 |       0.9584   -1.6  0.1041   0.35 | 0.05 to 0.45
+     10.0 |       0.9659   +0.2  0.0962   0.37 |       0.9596   -1.3  0.1218   0.30 | 0.05 to 0.37
+     12.0 |       0.9665   +0.4  0.1064   0.34 |       0.9600   -1.2  0.1323   0.27 | 0.05 to 0.34
+     15.0 |       0.9667   +0.4  0.1153   0.31 |       0.9602   -1.1  0.1413   0.25 | 0.05 to 0.31
+     20.0 |       0.9669   +0.5  0.1225   0.29 |       0.9603   -1.1  0.1486   0.24 | 0.05 to 0.29
+     30.0 |       0.9669   +0.5  0.1278   0.28 |       0.9604   -1.1  0.1540   0.23 | 0.05 to 0.28
+    => with s = 1 (one component, r39) nothing is allowed; with a spin-sound speed s < 1 the region is f = 6-30+ and s between 0.05 and about 0.3-0.7 (smaller for larger f);
+       the tilt is the same as before (r39) but the tensors are cut by the factor s.  Consistency relation n_t = -r / (8 s) instead of -r/8: a test for CMB-S4 / LiteBIRD if r is detected.
+
+==============================================================================
+P3. Does the shape of the Josephson potential matter?  Junctions of transparency tau
+==============================================================================
+A tunnel junction between two superfluids has the energy-phase relation V = 1 - sqrt(1 - tau sin^2(phi/2)) (Andreev bound states; tau -> 0 is the cosine, tau = 1 a perfectly
+transparent junction with a cusp).  For each tau: the f that gives the observed tilt at N = 60, and the canonical r there; the maximum s for r < 0.036 follows.
+       tau   f for n_s = 0.9649  r_canonical   s_max
+      0.00                 8.36       0.0831    0.43
+      0.50                 8.66       0.0957    0.38
+      0.90                 7.76       0.1056    0.34
+      0.99                 6.32       0.1049    0.34
+    => the shape changes the numbers by tens of percent, not the conclusion: with s = 1 every shape gives r_canonical 0.08-0.1 at the observed tilt, too large;
+       it is the sound speed s of the spin mode that brings r under the limit.
+
+==============================================================================
+P4. What the medium must look like: parameters, validity, and the density sector
+==============================================================================
+From f = F_COEFF sqrt(n xi^3) / (alpha s):  sqrt(n xi^3)/alpha = f s / 2.98.  Mean field needs n xi^3 >= 1, so alpha >= 2.98/(f s).  The amplitude fixes H:
+H^2 = (pi^2/2) A_s r (M_Pl = 1), V_0 = 3 H^2.  Graininess of the density sector is lambda_d = alpha H t_P, of the spin mode lambda_r = alpha H t_P / s^2 (its healing length
+is xi/s and its speed c s); the hydrodynamic description needs lambda << 1 (r37: the amplitude correction goes as lambda^2).
+        f     s        r     n_s   H (GeV)  V0^1/4 (GeV)    H t_P alpha_min  lambda_r(alpha_min)  V0 / rho_medium
+      8.0  0.30   0.0238  0.9645   3.8e+13       1.3e+16  3.1e-06      1.24              4.3e-05          3.9e-12
+     10.0  0.30   0.0289  0.9659   4.2e+13       1.3e+16  3.4e-06      1.00              3.8e-05          2.0e-12
+     10.0  0.15   0.0144  0.9659   3.0e+13       1.1e+16  2.4e-06      1.99              2.2e-04          1.6e-11
+     15.0  0.25   0.0288  0.9667   4.2e+13       1.3e+16  3.4e-06      1.00              5.5e-05          1.3e-12
+     20.0  0.15   0.0184  0.9669   3.4e+13       1.2e+16  2.8e-06      1.00              1.2e-04          1.3e-12
+    => for natural values alpha ~ 1, n xi^3 ~ 1: H ~ 1e13 GeV, graininess of the spin mode ~ 1e-5 (hydrodynamics holds at inflation), and the Josephson energy is ~ 1e-12 of the medium's
+       energy density: a tiny Rabi coupling, protected by the relative-phase symmetry (technically natural) but a hierarchy that is an input.
+    Strings: the vortex lines of r35/r42 form at the first transition, before this stretching; their dilution needs the e-folds computed in r42 (~64) and the N here is only 50-60 for the modes,
+    the total being set by the initial relative phase (P5).
+    The density sector: its equation of state is the stiff-plus-tension (constant c_d = c) one that lets light fall with the medium (r40, Gamma = 0).  During inflation its energy dilutes as a^-6 and is
+    negligible after a few e-folds, so its flat spectrum (r39: n_s = 1 exactly) does not feed the curvature perturbation; the red tilt comes entirely from the relative phase.  The tension of E47
+    (gravity wants P = c^2 rho + const, the sky wants a tilt) is resolved by having two sectors: the density sector for gravity, the spin sector for the tilt.
+
+==============================================================================
+P5. Full background simulation and mode integration (f = 10, s = 0.3)
+==============================================================================
+V = V0 (1 + cos(chi/f)), f = 10.0, V0 = 1e-09 (M_Pl = 1); the stiff density sector starts at 1e3 V0 and dilutes as a^-6; the relative phase starts at x_i = 1.0 rad from the top with a small velocity.
+    inflation ends (epsilon = 1) after N = 148.0 e-folds (slow-roll integral from x_i = 1.0 rad: 146.5).
+    acceleration starts at N = 1.21; the stiff sector's share of the energy is 6.2e-24 at N = 10 and 5.1e-50 at N = 20.
+    at N_* = N_end - 55 = 93.0: simulated epsilon = 0.00686, slow-roll epsilon = 0.00691; slow-roll n_s = 0.9624, r = 0.0332 (s = 0.3).
+    full mode integration of zeta (modes leaving at N_* +- 2): n_s = 0.9625 (slow roll 0.9624); P_zeta at N_* = 1.750e-09 against H^2 / (8 pi^2 epsilon s) = 1.726e-09 (ratio 1.014).
+    Random initial relative phase (uniform on the circle): slow-roll e-folds N = 2 f^2 ln(sin(x_end/2) / sin(x_i/2)); a fraction 0.53 of the circle gives N >= 60
+    (the rest, 0.47, is too close to the bottom to inflate and stays a small, non-inflating domain: inflation wins by volume).
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   P1: two-component hydrodynamics (sound speeds, s^2 = (g - g12)/(g + g12)) -> CONFIRMED against the Bogoliubov-de Gennes spectrum to 3e-06
+   P2: a Josephson-coupled relative phase can reproduce the sky             -> YES for f = 6-30+ and spin-sound speed s = 0.05-0.3..0.7 c (s = 1 is excluded: r too large); n_s and r both inside the 2-sigma / 95 % limits
+   P3: the junction shape matters                                           -> ONLY QUANTITATIVELY: f for the observed tilt 6.3-8.7, canonical r 0.083-0.106; every shape needs s < 1
+   P4: the medium parameters are natural                                    -> PARTLY: alpha ~ 1, n xi^3 ~ 1 and graininess ~ 4e-05 are fine; the Josephson energy is 2e-12 of the medium's energy density and the spin sound must be slow (g12/g ~ 0.8): inputs
+   P5: the full simulation and mode integration confirm the slow-roll results -> n_s 0.9625 vs 0.9624; amplitude ratio 1.014; stiff sector negligible after ~10 e-folds; 53% of random initial phases inflate for >= 60 e-folds
+   runtime 115 s

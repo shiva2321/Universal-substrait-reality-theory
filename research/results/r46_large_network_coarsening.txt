@@ -1,0 +1,54 @@
+Lattice 512^3, dx = 1.0, dt = 0.1, eps = 0.3 (healing length 1.83 lattice spacings), box 512; seeds (1, 2); times (20.0, 40.0, 80.0, 160.0, 320.0, 640.0).
+Random initial field (amplitude 0.3), no noise afterwards: coarsening of the random-phase network (an instantaneous quench).
+
+==============================================================================
+N1a. Self-test of the line tracer on a known configuration
+==============================================================================
+    synthetic network: components 2, sizes [8, 24], wrapping flags [False, True]  (expected: a closed ring of 8 cubes and a wrapping line of 24 cubes)
+    self-test PASSED.
+
+==============================================================================
+N1b. Coarsening of the random-phase network
+==============================================================================
+         t  plaquettes (mean)  length/volume    L_v * t  |psi|^2/eps  wrapping fraction   loops  wrapping strings
+        20             828399       0.004115     0.0823         0.61               0.65    4646                 4
+        40             447391       0.002222     0.0889         0.86               0.36    1691                 2
+        80             252139       0.001252     0.1002         0.92               0.76     614                 5
+       160             141725       0.000704     0.1126         0.95               0.39     238                 5
+       320              78247       0.000389     0.1244         0.97               0.44      94                 3
+       640              43366       0.000215     0.1379         0.98               0.93      18                 4
+    Local exponents d ln(L_v) / d ln t between neighbouring times: 20-40: -0.89, 40-80: -0.83, 80-160: -0.83, 160-320: -0.86, 320-640: -0.85
+    Fit over 40 <= t <= 320 (before the box matters): length/volume ~ t^(-0.84);  over all t >= 40: t^(-0.84).
+    Model-A coarsening (xi ~ t^(1/2), L_v ~ xi^-2): -1.  The ordering of the field is complete only at t ~ 20-40 (|psi|^2/eps = 0.6 at t = 20), so the earliest point is still formation.
+    Log-corrected form: L_v t = a + b ln t with a = 0.0234, b = 0.0176 fits the points t >= 40 to 0.6% (worst relative residual); the implied local exponent
+    d ln L_v / d ln t = -1 + b / (a + b ln t) is -0.80 at t = 40 and -0.87 at t = 640.
+    A pure power law t^-1 would have constant L_v t; it rises by 55% between the first and last point: t^-1 holds up to a logarithm (the tension of a global vortex line carries ln(L / core); Bray 1994).
+
+==============================================================================
+N1c. Structure: loops and infinite strings
+==============================================================================
+    (tracing is done only where the number of pierced plaquettes is below 4 million)
+         t  components  wrapping  length in wrapping  loops  longest loop / box  junction cubes / cubes
+        20        4650         4                0.65   4646               21.68                  0.0000
+        40        1693         2                0.36   1691              268.98                  0.0000
+        80         619         5                0.76    614                8.71                  0.0000
+       160         243         5                0.39    238               96.71                  0.0000
+       320          97         3                0.44     94               62.49                  0.0000
+       640          22         4                0.93     18                1.98                  0.0000
+    Loop-length slope at single times (lengths in units of the line spacing at that time; bins with >= 3 loops; shown only where there are >= 40 loops):
+      t =    20: 4646 loops, dn/dl ~ l^(-1.22 +- 0.01); lengths span 0.26 to 910.0 spacings
+      t =    40: 1691 loops, dn/dl ~ l^(-1.16 +- 0.02); lengths span 0.19 to 12653.0 spacings
+      t =    80:  614 loops, dn/dl ~ l^(-1.11 +- 0.04); lengths span 0.14 to 187.1 spacings
+      t =   160:  238 loops, dn/dl ~ l^(-0.94 +- 0.08); lengths span 0.11 to 2568.9 spacings
+      t =   320:   94 loops, dn/dl ~ l^(-0.88 +- 0.11); lengths span 0.12 to 1238.9 spacings
+    Loop-length distribution pooled over t >= 40 (lengths in line-spacing units): 2655 loops; dn/dl ~ l^(-1.18 +- 0.02)  (random-phase network: -2.5)
+    Average fraction of the length in box-wrapping strings over the traced times: 59%  (random-phase estimate ~ 80 %).
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   N1a: the union-find line tracer is correct on a known network  -> PASSED
+   N1b: model-A coarsening, length/volume ~ t^-1                  -> NOT CONFIRMED as a pure power law: t^(-0.84) over 40-320 (local exponents -0.83 to -0.86); but L_v t = a + b ln t fits to 0.6% (a = 0.023, b = 0.0176): t^-1 with a logarithmic correction
+   N1c: loops follow dn/dl ~ l^-5/2                               -> NOT CONSISTENT: -1.18 +- 0.02 from 2655 loops
+   N1d: most of the length is in infinite strings                 -> 59% in box-wrapping strings (random-phase estimate ~ 80 %)
+   runtime 2008 s

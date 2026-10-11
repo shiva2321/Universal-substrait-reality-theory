@@ -1,0 +1,66 @@
+
+==============================================================================
+Q1. The machinery against the known Lorentz-invariant Yukawa results
+==============================================================================
+    fermion, r = 1:  J_0 = 6.332574e-03, J_s = 6.332574e-03;  1/(16 pi^2) = 6.332574e-03  (difference J_s - J_0 = 8.7e-19: no flow in the Lorentz-invariant case)
+    scalar loop:     a_0 = 2.533030e-02, a_s = 2.533030e-02;  1/(4 pi^2) = 2.533030e-02  (a_s = a_0 c_f^2 holds to 0.0e+00)
+    anomalous dimensions: gamma_psi = 1.0000 g^2/(32 pi^2) (known: 1), gamma_phi = 2.0000 g^2/(16 pi^2) (known: 2).
+    With the vertex correction (-2 g^3/16pi^2) the beta function is (2 + 1 + 2) g^3/(16 pi^2) = 5 g^3/(16 pi^2), the standard value used below for the running coupling.
+    Q1 PASSED: all four numbers agree with the textbook values.
+
+==============================================================================
+Q2. The flow of the speed ratio r = c_b / c_f and its linearisation
+==============================================================================
+     r = c_b/c_f    J_s - J_0  scalar term  d ln r / dl per g^2
+            0.05  -2.9102e-01   5.0534e+00           5.3444e+00
+            0.10  -1.2560e-01   1.2538e+00           1.3795e+00
+            0.30  -2.3315e-02   1.2806e-01           1.5137e-01
+            0.50  -7.5053e-03   3.7995e-02           4.5501e-02
+            0.80  -1.3030e-03   7.1241e-03           8.4271e-03
+            0.95  -2.3374e-04   1.3683e-03           1.6020e-03
+            1.00   8.6736e-19   0.0000e+00          -8.6736e-19
+            1.05   1.9135e-04  -1.1775e-03          -1.3688e-03
+            1.25   6.6714e-04  -4.5595e-03          -5.2266e-03
+            2.00   9.3816e-04  -9.4989e-03          -1.0437e-02
+            5.00   3.7526e-04  -1.2159e-02          -1.2534e-02
+           20.00   3.6378e-05  -1.2633e-02          -1.2670e-02
+    Linearisation at r = 1: d ln r / dl = -rate * (r - 1) with rate = 2.95520e-02 g^2 = 4.6667 g^2/(16 pi^2).
+    => every species-speed difference decays as exp(-4.67 (g^2/16pi^2) l): the Lorentz-invariant point is attractive in the infrared for both signs of the difference (see table).
+    Sign check over r = 0.05..20.0: the flow always points toward r = 1: True.
+
+==============================================================================
+Q3. Planck scale to 1 TeV: fixed and running coupling
+==============================================================================
+ln(E_P / 1 TeV) = 37.0.  Initial speed ratio r_0 = 0.3 (an O(1) mismatch).  lambda = g^2/(16 pi^2) at the Planck scale; 'fixed' keeps g constant, 'running' uses
+d g^2/dl = -10 g^4 / (16 pi^2) (the Yukawa coupling falls toward the infrared, asymptotic freedom is absent: the theory is infrared free).
+      lambda | |ln r| fixed g  suppression | |ln r| running g  suppression |  lambda at 1 TeV (running)
+       0.001 |      7.188e-01    5.971e-01 |        7.639e-01    6.345e-01 |                     0.0007
+       0.003 |      3.830e-01    3.181e-01 |        5.062e-01    4.204e-01 |                     0.0014
+       0.010 |      8.557e-02    7.107e-02 |        2.852e-01    2.369e-01 |                     0.0021
+       0.030 |      2.471e-03    2.052e-03 |        1.628e-01    1.352e-01 |                     0.0025
+       0.100 |      1.374e-08    1.142e-08 |        8.849e-02    7.350e-02 |                     0.0026
+       0.300 |        < 1e-15      < 1e-15 |        5.141e-02    4.270e-02 |                     0.0027
+       1.000 |        < 1e-15      < 1e-15 |        2.870e-02    2.384e-02 |                     0.0027
+       3.000 |        < 1e-15      < 1e-15 |        1.699e-02    1.411e-02 |                     0.0027
+    (lambda >= 0.3 is not a weak coupling: g^2 = 16 pi^2 lambda; the one-loop flow is then a guide only.)
+
+==============================================================================
+Q4. What would reach 1e-15, and the QED-like case
+==============================================================================
+    Fixed coupling: the speeds agree to 1e-15 at 1 TeV only if lambda = g^2/(16 pi^2) = 0.20 (g^2 = 31) all the way from the Planck scale.
+    (linear estimate: lambda = ln(d_0 / 1e-15) / (4.67 x 37.0) = 0.20.)
+    Running coupling: the speed difference falls by exp(-4.67 * (1/10) ln(1 + 10 lambda_0 l)); reaching 1e-15 needs int lambda dl = 7.4, i.e. lambda_0 = 5.6e+29:
+    impossible: for lambda_0 = 1 (strong already) the integral is 0.59.
+    QED-like case (alpha = 1/137): photon-side rate e^2/(12 pi^2) = 7.74e-04 per e-fold; counting the fermion side as equal, an O(1) mismatch at the Planck scale is reduced only by exp(-0.057) = 0.944
+    by 1 TeV: the standard-model-size flow does essentially nothing (Collins et al. 2004: induced violations 1e-3-1e-2 survive).
+    Conclusion: in the infrared-free, weakly coupled regime the Lorentz-invariant point is attractive but the approach is a power of the energy with exponent ~ 1e-2 (g^2/16pi^2 ~ 1e-3-1e-2) or only a logarithm
+    when the coupling itself runs to zero: 15 digits of agreement cannot come from the flow; they need either a symmetry that forbids the difference or a strongly coupled UV fixed point (Bednik, Pujolas & Sibiryakov 2013).
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   Q1: the integrals reproduce the known Yukawa anomalous dimensions and give no flow at r = 1 -> PASSED
+   Q2: the Lorentz-invariant point is attractive (c_b and c_f flow together)        -> YES for every r tried (0.05-20.0); linear rate 4.67 g^2/(16 pi^2) per e-fold
+   Q3: 37 e-folds from the Planck scale to 1 TeV remove an O(1) speed mismatch      -> NO at weak coupling: lambda = 0.01 leaves 0.07 of it, lambda = 0.1 leaves 1.1e-08 and lambda = 0.3 less than 1e-15; with the coupling running to zero lambda = 1 leaves 2.4e-02
+   Q4: 1e-15 agreement from the flow alone                                          -> only with a constant strong coupling lambda = 0.20 (g^2 = 31); with running coupling lambda_0 = 6e+29 is needed; QED-size couplings reduce the mismatch by 0.94
+   runtime 217 s

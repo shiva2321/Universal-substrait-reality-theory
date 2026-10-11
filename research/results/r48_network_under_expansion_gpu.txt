@@ -1,0 +1,46 @@
+Device: NVIDIA GeForce RTX 3060.  Lattice 512^3, dx = 0.5 (box 256), d eta = 0.1; core width 1 in comoving units (lambda = v = 1); seeds (1, 2, 3); marks (6.0, 8.0, 10.0, 13.0, 16.0, 20.0, 25.0, 30.0, 36.0, 44.0, 52.0, 60.0).
+
+==============================================================================
+N2a. Scaling of the relativistic network: expanding (radiation era) and Minkowski
+==============================================================================
+     expanding seed 1: done in 120 s (5 steps/s)
+     expanding seed 2: done in 121 s (5 steps/s)
+     expanding seed 3: done in 119 s (5 steps/s)
+     Minkowski seed 1: done in 121 s (5 steps/s)
+     Minkowski seed 2: done in 120 s (5 steps/s)
+     Minkowski seed 3: done in 105 s (6 steps/s)
+     eta (= t) |  plaquettes        l_c  xi (expanding)  |phi|^2 |  plaquettes          l  xi (Minkowski)
+           6.0 |    18744349  3.724e-01           0.546    0.066 |    12450442  2.474e-01           0.335
+           8.0 |     1610889  3.201e-02           1.397    0.557 |     1255917  2.495e-02           0.791
+          10.0 |      778523  1.547e-02           1.608    0.958 |      846554  1.682e-02           0.771
+          13.0 |      462443  9.188e-03           1.605    0.896 |      612529  1.217e-02           0.697
+          16.0 |      312552  6.210e-03           1.586    0.804 |      384509  7.640e-03           0.715
+          20.0 |      209141  4.155e-03           1.551    0.890 |      255841  5.083e-03           0.701
+          25.0 |      141219  2.806e-03           1.510    0.907 |      175950  3.496e-03           0.677
+          30.0 |      103073  2.048e-03           1.473    0.935 |      128831  2.560e-03           0.659
+          36.0 |       75007  1.490e-03           1.439    0.991 |       92149  1.831e-03           0.649
+          44.0 |       52921  1.051e-03           1.402    0.977 |       64561  1.283e-03           0.635
+          52.0 |       39929  7.933e-04           1.366    0.971 |       48326  9.602e-04           0.621
+          60.0 |       31281  6.215e-04           1.337    0.980 |       37103  7.372e-04           0.614
+    => expanding: xi = 1.46 +- 0.08 for eta >= 16, d ln xi / d ln eta = -0.13 (scaling: 0; a log drift of global strings is expected);
+       Minkowski (damped to eta = 12, then undamped): length per volume falls as t^(-1.78) for t >= 25 (scaling: -2).
+    Reading: xi = 2 / (eta sqrt(l_c)) stays between 1.34 and 1.59 over eta = 16-60 (a factor 3.75 in eta): the string length per horizon volume changes by only
+    41% over that range, so the expanding network is APPROXIMATELY SCALING: it neither decays relative to the horizon nor grows.  It drifts slowly (fitted exponent above);
+    global strings are expected to drift logarithmically (their tension and radiation carry ln(xi t / core)); the fixed-comoving-core prescription and the finite dynamic range (core 1, box 256, eta <= 60)
+    can matter, so the asymptotic constant is not resolved here.  Minkowski (damped start): the length per volume falls close to t^-2 (exponent above), also near-scaling.  Seeds agree to a few percent in length.
+
+==============================================================================
+N2b: what a scaling network means for the string bound
+==============================================================================
+    Energy fraction in strings in the radiation era: Omega_s = rho_s / rho_c = (32 pi / 3) G mu / xi^2 = 15.8 G mu  (xi = 1.46); it is constant in time for a scaling network (here to within the drift above).
+    For G mu = 1.5e-07 (the CMB bound used in r35, r42) this is Omega_s = 2.4e-06; for the Planck-density medium with G mu / c^2 ~ 2 pi f alpha^2 ln: of order 1 (r35: 10-900),
+    so strings would hold the energy of the universe: no decay brings it down.  A scaling network is not diluted by waiting; only inflation after the strings form (or their absence) removes it.
+    (Global strings have a logarithmically growing tension, mu = 2 pi v^2 ln(xi t / core), and radiate Goldstone quanta, so the energy fraction grows with ln(t / core) at fixed xi: worse than this estimate.)
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   N2a: a relativistic string network under radiation-era expansion is (approximately) scaling -> YES, with a slow drift: xi = 1.46 +- 0.08, d ln xi / d ln eta = -0.13 (eta >= 16, 3 seeds, 512^3)
+   N2b: waiting dilutes the strings (the network decays away)                           -> NO: the energy fraction stays at (32 pi / 3) G mu / xi^2 = 16 G mu; only inflation after formation removes them
+   N2c: the GPU                                                                         -> NVIDIA GeForce RTX 3060: 590 leapfrog steps of a 512^3 complex field per run
+   runtime 706 s
