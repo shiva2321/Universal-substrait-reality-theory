@@ -44,6 +44,8 @@ This is the running record of every question, calculation, plot and conclusion i
 | [E26](#e26) | 2026-10-11 | The constants of nature and the substrate: how, why and whether they relate | r20 |
 | [E27](#e27) | 2026-10-11 | Synthesis: time, the causal-set substrate, and the constants (USRT v2.3) | — |
 | [E28](#e28) | 2026-10-11 | Plain-English overview: the journey, the universe according to USRT v2.3, its weaknesses and what it cannot explain | — |
+| [E29](#e29) | 2026-10-11 | USRT's own relation: the cosmological constant from the number of particle species (and why its simple form fails) | r21 |
+| [E30](#e30) | 2026-10-11 | The USRT rule book: rules and relations this programme derived itself, with originality status | — |
 
 ---
 
@@ -1518,3 +1520,114 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 **References:** as in E0–E27.
 
 **Files:** overview entry (no new script).
+
+---
+
+<a id="e29"></a>
+## E29 — USRT's own relation: the cosmological constant from the number of particle species (2026-10-11)
+
+**Question (user):** "So far we have just relied on the work of others. Now it's time for us to embark upon our ideas and establish calculations, rules and formulations of our own, which are grounded in the actual reality of the world, novel, and actually useful in describing reality."
+
+**The idea (ours).** Two results of this programme combine into a relation that, as far as our literature search found, has not been written down:
+- **E19 (r14):** the substrate's cell size is fixed by the number of particle species N, l² = 4Nη l_P², with η = 0.0242 per cell face (computed).
+- **E25 and Sorkin's everpresent Λ:**
+  - In unimodular gravity Λ and the 4-volume V are conjugate: ΔΛ ΔV ≈ 8πκ l_P², with κ = ½ or 1 by convention.
+  - A discrete substrate has Poisson volume noise ΔV = l²√V.
+- **Combined:** ⇒ **Λ √V_past = 2πκ/(N η)**. The Planck length cancels, and the size of the cosmological constant is set by **how many kinds of particles exist**.
+
+**Literature check (2026-10-11, web search):**
+- The everpresent-Λ literature has δΛ ∝ (l_P/l_cs)²/√V with the discreteness length l_cs (or an amplitude α) left free or fitted (Ahmed, Dodelson, Greene & Sorkin 2004; Zwane, Afshordi & Sorkin 2018; Das et al. 2023–24).
+- Dvali's species scale gives l ~ √N l_P.
+- We found **no paper fixing the everpresent-Λ amplitude from the species count via the entanglement/induced-gravity coefficient**. This is "new to our knowledge", not a guarantee.
+
+**Method (r21):**
+- Exact past-light-cone volumes in the radiation era (V = 8π/105 t⁴) and the matter era (V = 3π/55 t⁴), by sympy.
+- V_past for Planck 2018 ΛCDM, computed numerically and validated against the exact radiation limit (2.7253).
+- The rms Ω_Λ of the mechanism at every epoch.
+- The exact Ornstein–Uhlenbeck reformulation X = W(V)/√V in s = ln V, then 200,000 Monte Carlo histories tested against:
+  - BBN: |mean Ω| < 0.046 for 70 keV–1 MeV, from N_eff = 2.99 ± 0.17 at 2σ;
+  - the CMB epoch: |mean Ω| < 0.05 for z = 1000–3500, an approximate bound;
+  - today: Ω_Λ = 0.685 ± 0.02.
+- Late-time CPL fits compared with DESI DR2.
+- A generalisation to counting statistics with Var ∝ V^γ.
+
+**Results (computed here):**
+- **The observed value of the combination:** A_obs = Λ_obs √V_past = **0.720**, a dimensionless number of our universe, with V_past H0⁴ = 0.1229.
+- **Species needed:** N_needed = 2πκ/(ηA_obs) = **180–372**, depending on the convention and the lattice. The Standard Model has **118** degrees of freedom: **a factor 1.5–3 from the observed Λ, with nothing fitted**.
+- **Eliminating N:** the cell size is l = √(8πκ/A_obs) l_P = **4.2–5.9 l_P**. This does not depend on how each spin is weighted.
+- **Caveat:** the spin weighting of η is regulator-dependent and contested. In heat-kernel counting, gauge fields count negatively (Kabat; Larsen–Wilczek). An order-of-magnitude link, not a fit.
+- **The mechanism tracks the critical density.** The rms Ω_Λ is 2.725A in the radiation era (exact), 1.81A in the matter era (exact) and 0.951A today. With A = A_obs, **|Ω_Λ| ≈ 1.96 during nucleosynthesis**, where 0.046 is allowed.
+- **Whole histories:**
+  - P(BBN and CMB and today all pass) is at most **8.5×10⁻⁵** (best N = 510) and 4.5×10⁻⁵ at N = 360. ΛCDM passes by construction.
+  - Of the histories matching today, 93 % flip the sign of Λ before z = 2. The rest have median w₀ = 0.10 and w_a = −0.53; 59 % lie in DESI's quadrant (w₀ > −1, w_a < 0), but **0 %** lie inside DESI's 2σ boxes.
+- **No-go for any power law.** With Var ∝ V^γ:
+  - today's size needs **γ = 1.00 ± 0.014** (cells of 1–30 l_P);
+  - BBN needs **γ ≤ 0.953**;
+  - DESI's near-constancy (loosest bound w₀ < −0.49) needs **γ ≤ 0.77**.
+
+**Interpretation:**
+1. **A real, new near-miss.** The number of particle species we know, put into the substrate's counting noise, gives today's cosmological constant to within a factor of 1.5–3. The cell size comes out at 4–6 Planck lengths.
+2. **The simple mechanism is ruled out.** White counting noise tracks the critical density, so it is far too large in the early universe and far too jumpy late (consistent with the difficulties of Das et al.). Quieter-than-Poisson counting cannot fix it for any power law.
+3. **A precise design target for USRT's own dynamics.** The substrate's Λ-noise must
+   - (a) be suppressed by ≥43× at nucleosynthesis relative to white noise;
+   - (b) be O(1) today;
+   - (c) change by less than ~30 % over z < 1.
+
+   That needs fluctuations with **memory that freeze at late times**. A growth rule meeting (a)–(c) would turn the near-miss into a prediction.
+
+**Status:** **new to our knowledge** (the species link and the γ no-go); **computed here**. The simple version is **ruled out**, and the design target is **open**.
+
+**References:**
+- **Sorkin**, in *Relativity and Gravitation: Classical and Quantum* (1991) and Int. J. Theor. Phys. 36, 2759 (1997)
+- **Ahmed, Dodelson, Greene & Sorkin**, PRD 69, 103523 (2004)
+- **Zwane, Afshordi & Sorkin**, CQG 35, 194002 (2018)
+- **Das, Nasiri-Zare, Afshordi et al.**, JCAP 10 (2023) 047 and JCAP 10 (2024) 076
+- **Dvali**, Fortsch. Phys. 58, 528 (2010)
+- **Kabat**, Nucl. Phys. B 453, 281 (1995)
+- **Larsen & Wilczek**, Nucl. Phys. B 458, 249 (1996)
+- **Planck 2018**, A&A 641, A6 (2020)
+- **DESI Collaboration**, DR2, arXiv:2503.14738 (2025)
+
+**Files:** [`r21_lambda_from_species.py`](r21_lambda_from_species.py), [results](results/r21_lambda_from_species.txt), ![lambda](figures/r21_lambda_from_species_lambda_species.png)
+
+---
+
+<a id="e30"></a>
+## E30 — The USRT rule book: what this programme derived itself (2026-10-11)
+
+**Question (user):** as E29, "establish calculations, rules and formulations of our own".
+
+**Method:** collect every rule, relation and number this programme derived, with its test and an honest originality label:
+- **NEW** — new to our knowledge, after a literature search;
+- **OURS-NUMBER** — our own computed value for a known principle;
+- **OURS-MODEL** — a correction or constraint on a substrate model, including USRT's own;
+- **RE-DERIVED** — known; reproduced here.
+
+| # | Rule / relation | Key numbers | Test against reality | Label |
+|---|---|---|---|---|
+| R1 | **Covariant-rate rule:** when trapped energy changes the substrate, it must lower the wave speed *and every internal rate* by the same factor N(x) | covariant medium: clock rate = N₀ (0.80051 at N₀ = 0.8); speed-only medium: 1.0002 | Galileo redshift: speed-only medium excluded at 4×10⁴σ; covariant 0.08σ | OURS-MODEL (E23) |
+| R2 | **No-rest-frame rule:** gravity induced on any substrate with a rest frame travels at the wrong speed | c_g = 0.719 c (cubic lattice); c_g² = 11/7 (hard cutoff); cure needs a Lorentz-invariant cutoff with μa < 2.8×10⁻⁸ (fit 0.41(μa)² ln(1.9/μa)) | GW170817 (10⁻¹⁵): lattice excluded by ~10¹⁴ | OURS-NUMBER (E18; principle: Collins et al. 2004) |
+| R3 | **Crystal rule:** a substrate with discrete rotations has quantised defect lines that are cosmic strings, Gμ = Ω_F/8π | Gμ = 0.042–0.083 | CMB Gμ < 1.5×10⁻⁷: excluded by 3–6×10⁵ | NEW in this application (E20; dictionary: Kröner, Kleinert) |
+| R4 | **Third-graviton rule:** absolute time plus spatial gauge symmetry gives an extra scalar graviton that is a ghost or unstable for every λ | lattice reproduces ω²/k² = −(λ−1)/(3λ−1) to 4 digits | GW polarisations, preferred-frame tests | RE-DERIVED (E17; Hořava/BPS) |
+| R5 | **Cell-size–species rule:** l = 2√(Nη) l_P | η = 0.0242 per face (cubic), 0.0235 (radial); within 17 % of the Sakharov route | fixes G | OURS-NUMBER (E19; √N scaling: Dvali) |
+| R6 | **Λ–species relation:** Λ√V_past = 2πκ/(Nη) | A_obs = 0.720; N needed 180–372 vs SM 118; l = 4.2–5.9 l_P | today's Λ: near-miss (factor 1.5–3) | **NEW** (E29) |
+| R7 | **Counting-noise no-go:** white noise tracks the critical density; no power-law statistics fixes it | P(BBN ∧ CMB ∧ today) ≤ 8.5×10⁻⁵; γ needs 1.00 ± 0.014 for the size, but ≤ 0.953 for BBN and ≤ 0.77 for DESI | BBN, CMB, DESI DR2 | **NEW** quantification (E29; consistent with Das et al.) |
+| R8 | **Time = counting:** proper time is the longest chain, with the exact finite-N term (2D): E[L] = 2√N − 1.771 N^{1/6} | twin ratios 0.9403, 0.7947, 0.5855 against predictions 0.9446, 0.7896, 0.5886 | all clock tests (E23 ladder) | OURS-NUMBER (E25; Brightwell–Gregory, Baik–Deift–Johansson) |
+| R9 | **Moving substrate clocks** obey γ exactly in the continuum; a coarse lattice breaks it | error ∝ h²; −21.5 % at v = 0.8 for h = 0.5 | cosmic rays γ ~ 10¹¹ | OURS-NUMBER (E23) |
+| R10 | **Arrow rule:** a reversible substrate needs a low-entropy start; a growing substrate has a built-in direction but no global "now" | bit-exact return; one flipped bit never returns (odds 10⁻⁵⁷¹⁵); 9.5×10⁶ birth orders for one universe | BaBar 14σ, second law, low-entropy cosmos | RE-DERIVED demonstrations (E24) |
+| R11 | **Exact causal-set wave mean:** E[B]/φ = 4ρ(I(ζ) − ½), I(ζ) = −∫₀^∞ e^{iζs}(s−i)⁻³ ds, evaluated on a contour rotated by ±π/4 | I(0) = ½, I′(0) = ½; Monte Carlo χ² = 3.0/4; no real zero off the cone | Lorentz invariance at every energy | OURS-NUMBER/derivation (E25; operator: Sorkin; Fourier forms: Aslanbeigi et al.) |
+| R12 | **Constants rule:** c, ħ and G are the substrate's units; a "new relation" must beat the look-elsewhere baseline | the constants sit at percentiles 8–95 % among random numbers | Lenz 6π⁵ off by 1.1×10⁶σ; Dirac G ∝ 1/t off by 81σ | OURS-NUMBER (E26) |
+
+**Interpretation — what is genuinely ours:**
+- **R6 and R7 are new to our knowledge.** They link the cosmological constant to the particle content through the substrate. The link gives today's Λ to within a factor of 1.5–3, rules out its own simple dynamics, and sets a quantitative target for the substrate's growth law.
+- **R1–R3 and R9 are constraints that any "space is a medium" theory must obey,** each with a measured exclusion. R1 corrected USRT's own earlier model.
+- **R5, R8 and R11 are our own numbers and derivations** for known principles.
+
+**Next original steps:**
+- Compute η for lattice **Dirac fermions** and **U(1) gauge fields** on the same substrate, to settle the Standard Model's effective N in R6. This is the step that decides whether R6 is a coincidence.
+- Build and test a **growth rule with memory** that meets the E29 target.
+- Extend R2 to FCC/BCC lattices and the × polarisation (graviton birefringence of crystal vacua).
+
+**Status:** summary of the programme's own results (E17–E29); labels as above.
+
+**Files:** rule book entry (no new script); see the linked entries.

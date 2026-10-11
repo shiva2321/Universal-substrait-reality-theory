@@ -49,6 +49,8 @@ It ships with an **independent audit** that recomputes every headline claim agai
 > **Where it stands:** consistent with every measurement checked here, and built mostly from established physics. It is **not yet a theory** that derives its own dynamics or any new number (α, the masses, dark matter).
 >
 > The full overview, with its weak points and what it cannot explain, is in [notebook entry E28](research/LAB_NOTEBOOK.md#e28).
+>
+> **Our own results:** the [USRT rule book (E30)](research/LAB_NOTEBOOK.md#e30) lists the rules and relations this programme derived itself, each labelled for originality. New to our knowledge: a link between the cosmological constant and the number of particle species, and a no-go theorem for its simplest dynamics ([E29](research/LAB_NOTEBOOK.md#e29)).
 
 The table below is the *original* idea and what the audit made of it.
 
@@ -268,7 +270,7 @@ All 45 scripts run cleanly (tested with Python 3.13, NumPy, SciPy, Matplotlib, S
 ├── research/
 │   ├── LAB_NOTEBOOK.md                           dated record of every question, method, result
 │   ├── lab.py   run_all.py                       shared helpers; re-run everything
-│   ├── r01 ... r20_*.py                          one script per question
+│   ├── r01 ... r21_*.py                          one script per question
 │   ├── results/   figures/                       text output and plots of each script
 └── audit/
     ├── USRT_AUDIT_REPORT.md                      findings, provenance, before/after fixes, errata
@@ -389,6 +391,7 @@ Exploration after the audit lives in [`research/`](research/). Each question bec
 | [`r18`](research/r18_arrow_of_time.py) | Why is time one-way, even for the substrate? | **An exactly reversible substrate returns bit-for-bit** when every velocity is reversed. Flip one of its 65,536 bits and it never does: un-mixing has odds of 10⁻⁵⁷¹⁵. The arrow comes from the low-entropy start. **A growing (causal-set) substrate is one-way by construction**, yet 9.5 million birth orders give the same universe, so there is no universal "now". |
 | [`r19`](research/r19_causal_set_substrate.py) | Test a causal set: discreteness with no rest frame | **It passes everything the lattice failed.** Links point in every boost direction (Ein(N) exact). Dimension comes from order alone (2.005, 3.000, 3.998). **The twin paradox appears by counting elements.** The mean wave operator is a closed-form function of k² only: **exactly Lorentz invariant**, with c at every energy (MC χ² = 3.0/4). **Curvature from counting → −R/2** (to 1×10⁻⁴). Λ ~ 1/√N gives 1.4×10⁻¹²² against an observed 2.8×10⁻¹²². |
 | [`r20`](research/r20_constants_and_substrate.py) | How do the constants of nature relate to the substrate? | **c, ħ, G are the substrate's units.** α and α_G set the sizes of atoms, stars (α_G^(−3/2) m_p = 1.85 M_⊙) and planets (1.2 Jupiters). The three couplings nearly meet at 2×10¹⁶ GeV (MSSM). Gravity's weakness is an exponential of the strong coupling's running. **Dirac's G ∝ 1/t is excluded at 81σ.** **Null test:** the constants are no closer to simple formulas than random numbers are. |
+| [`r21`](research/r21_lambda_from_species.py) | **Our own relation:** can the substrate's counting noise give the cosmological constant? | **New (to our knowledge): Λ√V = 2πκ/(Nη).** The size of Λ is set by the number of particle species. The observed universe gives Λ√V_past = 0.720, which needs N ≈ 180–370 species; **the Standard Model has 118**, so it lands within a factor 1.5–3 with nothing fitted, and the cells come out at 4–6 Planck lengths. **But** the simple mechanism makes Λ as large during nucleosynthesis as today: P(passing BBN, CMB and today) ≤ 10⁻⁴, and none of its histories fall inside DESI's 2σ boxes. **No power-law counting statistics can fix it** (γ = 1.00 is needed for the size, γ ≤ 0.77 for DESI). |
 
 <table>
 <tr>
@@ -433,6 +436,8 @@ Exploration after the audit lives in [`research/`](research/). Each question bec
 <td width="50%"><img src="research/figures/r20_constants_and_substrate_constants.png" width="100%"><br><sub><b>r20:</b> how the constants build the world and nearly unify, Dirac's drift excluded, and a look-elsewhere test of "hidden relations" (<a href="research/LAB_NOTEBOOK.md#e26">E26</a>).</sub></td>
 </tr>
 </table>
+
+<p align="center"><img src="research/figures/r21_lambda_from_species_lambda_species.png" width="92%"><br><sub><b>r21 (our own relation):</b> today's Λ from the particle-species count (factor 1.5–3 from the Standard Model). The same mechanism fails at nucleosynthesis and against DESI, and no power-law counting statistics can rescue it (<a href="research/LAB_NOTEBOOK.md#e29">E29</a>).</sub></p>
 
 The current best "surviving" picture and the ranked open problems are in [notebook entry E9](research/LAB_NOTEBOOK.md#e9) and, layer by layer, in [E10](research/LAB_NOTEBOOK.md#e10). The mass-and-gravity sector ("USRT v2.1") and the brainstorm verdicts are in [E15](research/LAB_NOTEBOOK.md#e15). The graviton and gravity–quantum unification ("USRT v2.2"), with a verdict on each route, are in [E22](research/LAB_NOTEBOOK.md#e22). In short, G and the geometry of gravity follow from the substrate. The one open problem is the substrate's absolute time: a local Hamiltonian constraint, or Lorentz invariance at the cell scale. **Update ([E27](research/LAB_NOTEBOOK.md#e27), "USRT v2.3"):** a *causal-set* substrate removes that problem. It is a growing random order with no rest frame, it passed every test the lattice failed, and it is now the leading candidate. Time there is the order itself: relational, relative and one-way.
 
