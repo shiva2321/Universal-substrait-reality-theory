@@ -52,7 +52,7 @@ X(s), s = ln V, obeys dX = -X/2 ds + dB exactly (unit stationary variance); Omeg
    N =   3000 (A = 0.087): P(BBN ok) = 0.3629, P(CMB ok) = 0.3406, P(Omega_L today = 0.685 +- 0.02) = 0.00000, ALL three = 0.00e+00
    N =  10365 (A = 0.025): P(BBN ok) = 0.8949, P(CMB ok) = 0.8719, P(Omega_L today = 0.685 +- 0.02) = 0.00000, ALL three = 0.00e+00
    N =  30000 (A = 0.009): P(BBN ok) = 1.0000, P(CMB ok) = 1.0000, P(Omega_L today = 0.685 +- 0.02) = 0.00000, ALL three = 0.00e+00
-   best N = 510: P(all) = 8.50e-05   (ΛCDM: 1 by construction)
+   best N = 510: P(all) = 8.50e-05   (LCDM: 1 by construction)
    (BBN criterion: |mean Omega over 70 keV < T < 1 MeV| < 0.046; CMB: |mean over 1000 < z < 3500| < 0.05,
     an approximate early-dark-energy bound; fixed LCDM background, no back-reaction.)
 

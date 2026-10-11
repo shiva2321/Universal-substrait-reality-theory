@@ -38,7 +38,10 @@ class Report:
 
     def __call__(self, *parts):
         line = " ".join(str(p) for p in parts)
-        print(line)
+        try:
+            print(line)
+        except UnicodeEncodeError:
+            print(line.encode("ascii", errors="replace").decode("ascii"))
         self.lines.append(line)
 
     def section(self, title):
@@ -51,7 +54,7 @@ class Report:
     def save(self):
         os.makedirs(RESULTS, exist_ok=True)
         path = os.path.join(RESULTS, self.name + ".txt")
-        with open(path, "w") as f:
+        with open(path, "w", encoding="utf-8") as f:
             f.write("\n".join(self.lines) + "\n")
         print(f"\n[saved] {os.path.relpath(path, os.path.dirname(HERE))}")
 

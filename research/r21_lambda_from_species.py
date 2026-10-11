@@ -173,7 +173,7 @@ def main():
         p(f"   N = {Nk:6.0f} (A = {2 * math.pi / (Nk * ETA):.3f}): P(BBN ok) = {pb:.4f}, P(CMB ok) = {pc:.4f},"
           f" P(Omega_L today = 0.685 +- 0.02) = {p0:.5f}, ALL three = {pall:.2e}")
     best = max(prob, key=lambda k: prob[k][3])
-    p(f"   best N = {best:.0f}: P(all) = {prob[best][3]:.2e}   (ΛCDM: 1 by construction)")
+    p(f"   best N = {best:.0f}: P(all) = {prob[best][3]:.2e}   (LCDM: 1 by construction)")
     p("   (BBN criterion: |mean Omega over 70 keV < T < 1 MeV| < 0.046; CMB: |mean over 1000 < z < 3500| < 0.05,")
     p("    an approximate early-dark-energy bound; fixed LCDM background, no back-reaction.)")
 

@@ -1,0 +1,125 @@
+
+==============================================================================
+A. The Light-Loop Failure (Audit Verification)
+==============================================================================
+In the original USRT, an electron was modeled as a circulating planar loop of light
+confined in a self-made cavity of radius R = lambda_C / (2*pi) = hbar / (m*c).
+We compute the exact mechanical and electromagnetic properties of this model:
+   Circulation radius R       : 3.861593e-13 m
+   Orbital angular momentum L : 1.054572e-34 J s = 1.0000 hbar (Spin 1)
+   Magnetic dipole moment mu  : 9.274010e-24 J/T
+   Bohr magneton mu_B         : 9.274010e-24 J/T
+   Ratio mu / mu_B            : 1.0000
+   Naive gyromagnetic ratio g : 1.0000
+   True electron spin         : 1/2 hbar  (naive model is off by factor of 2)
+   True electron g-factor     : 2.002319304363
+   Naive g-factor deficit     : 50.06 %
+Verdict: A simple circular light loop is fundamentally a spin-1 vector excitation (g = 1).
+It cannot describe a fermion without additional topological structure.
+
+==============================================================================
+B. Framed Ribbon Geometry and the Calugareanu-White-Fuller Theorem
+==============================================================================
+In a continuous or discrete medium, a defect line carries a transverse phase orientation (framing).
+The Calugareanu-White-Fuller (CWF) theorem states: Lk = Tw + Wr, where:
+   Lk in Z  = integer linking number of the ribbon boundaries (topological invariant),
+   Tw in R  = continuous internal ribbon twist,
+   Wr in R  = continuous spatial writhe of the center-line.
+
+   Demonstrating writhe-twist exchange under continuous chiral deformation:
+   r(t) = ((1 + 0.4*cos(3t))*cos(t), (1 + 0.4*cos(3t))*sin(t), A*sin(3t)) with Lk = 1:
+     A = 0.00 | Wr = +0.0000 | Tw = +1.0000 | Lk = +1.0000 | d(Lk) = 0.00e+00
+     A = 0.16 | Wr = -0.5954 | Tw = +1.5954 | Lk = +1.0000 | d(Lk) = 0.00e+00
+     A = 0.32 | Wr = -0.9532 | Tw = +1.9532 | Lk = +1.0000 | d(Lk) = 0.00e+00
+     A = 0.48 | Wr = -1.1629 | Tw = +2.1629 | Lk = +1.0000 | d(Lk) = 0.00e+00
+     A = 0.64 | Wr = -1.2939 | Tw = +2.2939 | Lk = +1.0000 | d(Lk) = 0.00e+00
+     A = 0.80 | Wr = -1.3802 | Tw = +2.3802 | Lk = +1.0000 | d(Lk) = 2.22e-16
+Verdict: Lk remains strictly integer-conserved across non-planar chiral deformations.
+Spatial looping of the center-line (writhe) converts dynamically into internal substrate twist.
+
+==============================================================================
+C. The Dirac Belt Trick, 4pi Rotational Period, and Spin 1/2
+==============================================================================
+Finkelstein & Rubinstein (1968) proved that a localized soliton with fixed boundaries at infinity
+has configuration space C with fundamental group pi_1(C) = Z_2.
+We simulate the framing under spatial rotation by angle theta in [0, 4pi]:
+   At theta = 0    : psi = +1.00 + -0.00i   (Initial state)
+   At theta = 2*pi : psi = -1.00 + -0.02i   (Sign flip: psi -> -psi)
+   At theta = 4*pi : psi = +1.00 + +0.00i   (Return: psi -> +psi)
+
+   Physical meaning in the substrate:
+   - Rotating the defect core by 2*pi leaves the surrounding substrate elastic web twisted by 2*pi.
+   - In R^3 with fixed boundary conditions at infinity, a 2*pi rotation is topologically entangled.
+   - A 4*pi rotation allows the framing ribbons to untangle smoothly via the Dirac belt homotopy.
+   - The quantum generator of 4*pi periodicity has eigenvalue S = hbar/2.
+   Verdict: The substrate knot is an exact SU(2) spinor (Fermion), not a vector (Boson).
+
+==============================================================================
+D. Dynamic Equipartition and the Gyromagnetic Factor g = 2
+==============================================================================
+Why does an electron have g = 2 rather than g = 1?
+In a framed topological soliton (Faddeev-Skyrme / Hopf knot), stability requires equipartition
+between the toroidal circulation (major radius R) and the poloidal twist (minor radius r_0):
+   E_toroidal = (1/2) M c^2
+   E_poloidal = (1/2) M c^2
+   E_total    = M c^2
+
+Angular momentum partition:
+   L_toroidal = (E_tor / c^2) * R * c = (1/2) M c R = (1/2) hbar   [Orbital partition]
+   S_poloidal = (E_pol / c^2) * r_0 * c            = (1/2) hbar   [Intrinsic Spin S]
+   Total quantum of circulation is hbar, but intrinsic spin S is hbar/2.
+
+Magnetic moment:
+   The electric charge q = -e is located on the topological boundary ribbon (Lk = 1).
+   Circulation period around the torus: T = 2*pi*R / c.
+   Electric current: I = q / T = q*c / (2*pi*R).
+   Enclosed magnetic area: A = pi * R^2.
+   Magnetic dipole moment: mu = I * A = (q*c*R) / 2.
+   Substituting R = hbar / (M*c):
+   mu = (q * hbar) / (2 * M) = mu_B.
+
+Expressing mu in terms of the intrinsic spin S = hbar/2:
+   mu = 2 * [ q / (2 * M) ] * (hbar / 2) = 2 * [ q / (2 * M) ] * S.
+   Therefore, the tree-level gyromagnetic ratio is IDENTICALLY g = 2:
+   Tree-level g-factor : g = 2.0000
+
+One-loop quantum correction (Schwinger 1948 / substrate gauge fluctuation):
+   alpha                 : 0.0072973526
+   a_schwinger = a/(2pi) : 0.0011614097
+   g_schwinger           : 2.0023228195
+   g_electron (CODATA)   : 2.002319304363
+   g_muon (PDG 2024)     : 2.0023318418
+   Residual difference   : 3.5151e-06 (1.76 ppm)
+   Schwinger explains    : 99.85 % of the anomaly
+
+==============================================================================
+E. Topological Knot Complexity and the 3 Lepton Generations
+==============================================================================
+Why are there exactly 3 generations of charged leptons (electron, muon, tau)?
+In mathematical knot theory (Rolfsen table), knots are classified by minimal crossing number C:
+   - C = 0 : Unknot (0_1) - trivial topology, decays to ground state.
+   - C = 1, 2 : No non-trivial knots exist in 3D.
+   - C = 3 : Trefoil knot (3_1) - unique prime knot with 3 crossings (chiral, bridge index 2).
+   - C = 4 : Figure-eight knot (4_1) - unique prime knot with 4 crossings (amphichiral).
+   - C = 5 : Cinquefoil (5_1) and Three-twist (5_2) - prime knots with 5 crossings.
+
+   Topological Knot Hierarchy vs Lepton Families:
+   ------------------------------------------------------------------------
+   Knot                 | Crossings (C)  | Lepton Family    | Mass (MeV)   | Ropelength L/D
+   ------------------------------------------------------------------------
+   Trefoil (3_1)        | 3              | electron (e)     | 0.511        | 32.74     
+   Figure-eight (4_1)   | 4              | muon (mu)        | 105.658      | 42.44     
+   Cinquefoil (5_1)     | 5              | tau (tau)        | 1776.930     | 47.39     
+   ------------------------------------------------------------------------
+
+Scientific Honesty & Status Note:
+   - The topological progression 3 -> 4 -> 5 is a clean, discrete sequence of prime knots.
+   - However, the mass ratios (m_mu / m_e = 206.77, m_tau / m_e = 3477.1) do NOT scale linearly with C.
+   - In non-linear soliton field theories (Faddeev-Skyrme / Battye & Sutcliffe), self-energy scales
+     with ropelength and conformal distortion, but an analytical derivation of the exact mass ratios
+     from first principles remains an OPEN problem.
+   - Per repository rules: we do NOT invent a fitted empirical formula for the masses.
+
+==============================================================================
+F. Visualizations
+==============================================================================
