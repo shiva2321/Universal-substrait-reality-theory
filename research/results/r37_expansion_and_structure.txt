@@ -1,0 +1,65 @@
+
+==============================================================================
+A. The integrator against the exact solution, and the tilt of power-law expansions
+==============================================================================
+For a ~ t^p the mode equation in x = -c k eta is u'' + [1 - (nu^2 - 1/4)/x^2] u = 0, nu = (3p - 1) / (2 (p - 1)); the exact
+vacuum solution is u = sqrt(pi x) H_nu^(1)(x) / 2.  The frozen spectrum goes as P(k) ~ k^(3 - 2 nu), so n_s - 1 = -2 / (p - 1).
+          p      nu  max |u|^2 error  n_s - 1 measured   -2/(p-1)
+         10   1.611          1.7e-10          -0.22222   -0.22222
+         20   1.553          1.6e-10          -0.10526   -0.10526
+         57   1.518          1.6e-10          -0.03571   -0.03571
+        200   1.505          1.6e-10          -0.01005   -0.01005
+       1000   1.501          1.5e-10          -0.00200   -0.00200
+    => the integrator matches the exact Hankel solution to 2e-10 and the measured tilt agrees with -2/(p-1) to 1.8e-06.
+    The observed n_s = 0.9649 +- 0.0042 needs a ~ t^p with p = 58 (epsilon = 1/p = 0.0172), i.e. w = -1 + 2 epsilon / 3 = -0.9885.
+    (Slow roll, a quasi-exponential expansion, is required: modes freeze only if the comoving Hubble radius shrinks.)
+
+==============================================================================
+B. Does the medium's graininess spoil it?  de Sitter expansion with the Bogoliubov dispersion
+==============================================================================
+tau = -c k eta, lambda = H xi / c:  v'' + [1 + (lambda^2/2) tau^2 - 2/tau^2] v = 0 ; adiabatic vacuum imposed at tau_i = max(200, 40/lambda);
+amplitude |v|^2 at tau_f = 0.01, divided by the lambda = 0 result (exact value (1 + 1/tau_f^2)/2).
+    lambda = 0: numerical |v|^2 = 5000.500002, exact 5000.500000 (difference 4.6e-10).
+      lambda    tau_i  |v|^2 / |v_0|^2 - 1
+        0.50      200           -1.453e-01
+        0.30      200           -5.550e-02
+        0.20      200           -2.480e-02
+        0.10      400           -6.234e-03
+        0.05      800           -1.561e-03
+        0.02     2000           -2.500e-04
+    => for small lambda the correction goes as lambda^2.0; because tau = -c k eta is the only variable, every mode is
+       changed by the same factor: the spectrum stays exactly scale invariant and only the amplitude moves.
+       With the adiabatic (medium ground state) initial condition there is no trans-Planckian ambiguity to tune.
+
+==============================================================================
+C. What drives the expansion?  The medium's own equation of state, the tensors, the energy scale
+==============================================================================
+Medium alone (repulsive condensate): P = m n c_s^2 / 2 >= 0 and rho c^2 = m n c^2 + m n c_s^2 / 2, so w = P / rho c^2 >= 0.
+     c_s / c         w   epsilon = 3(1+w)/2
+        0.10    0.0050                1.507
+        0.30    0.0431                1.565
+        0.50    0.1111                1.667
+        0.80    0.2424                1.864
+        1.00    0.3333                2.000
+    Accelerated expansion needs w < -1/3 (epsilon < 1); the tilt needs w = -0.988.  A medium with P >= 0 decelerates: its comoving
+    sound horizon grows and no mode ever freezes.  Tension (P < 0, a stretched liquid) would be needed, and a stretched liquid cavitates.
+Tensors (gravitational waves of the expansion), r = 16 epsilon c_s: the pure power law above gives r = 0.28 for c_s = c, against r < 0.036
+    (typed from memory, BICEP/Keck 2021); that needs c_s < 0.13 c, but the medium's sound speed is c.  A plateau with the same tilt, n_s - 1 = -2/N,
+    N = 57, gives r = 0.0037: allowed.  So the tilt alone does not fix the expansion; its shape (small epsilon, larger eta) does.
+    Caveat: these H and V^1/4 assume that the fluctuating field is the one driving the expansion (as in k-inflation, where the
+    phonon of a P(X) fluid is the inflaton).  If the medium's phonons are only spectators of an expansion driven by something else,
+    turning them into curvature perturbations needs an extra conversion step (curvaton-like) that is not computed here.
+Amplitude A_s = 2.10e-09:  H = pi M_Pl sqrt(A_s r / 2):  power law H = 1.3e+14 GeV (V^1/4 = 2.3e+16 GeV);  plateau H = 1.5e+13 GeV (V^1/4 = 8.0e+15 GeV).
+    Graininess parameter lambda = H xi / c = alpha H t_P = 1.1e-05 alpha (power law) or 1.2e-06 alpha (plateau) for xi = alpha l_P;
+    lambda^2 corrections of order 2e-12: negligible.
+    E-folds: the ~67 that r35 needs to dilute the quench's strings is of the same size as the ~50-60 a standard inflation needs for the
+    horizon problem and the observable modes: one period of quasi-exponential stretching can do both, but nothing here derives it.
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   F5a: frozen phonon fluctuations give a scale-invariant spectrum    -> CONFIRMED: de Sitter is exactly scale invariant; power laws give n_s - 1 = -2/(p-1) (checked to 2e-06); needs p = 58 for the observed tilt
+   F5b: the medium's graininess spoils it                             -> NO: amplitude correction ~ lambda^2.0, about 2e-12 for a Planck-length medium; adiabatic vacuum is the medium's own ground state
+   F5c: the medium itself drives the expansion                        -> NO: its equation of state has w >= 0 (0 to 0.33); tilt needs w = -0.989; a separate driver or a stretched medium is required
+   F5d: a power-law expansion with the observed tilt fits the CMB     -> NO: r = 0.28 > 0.036; a plateau (r = 0.0037) is needed, with H = 2e+13 GeV
+   runtime 19 s

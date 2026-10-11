@@ -61,6 +61,7 @@ This is the running record of every question, calculation, plot and conclusion i
 | [E43](#e43) | 2026-10-11 | Why gravity and quantum physics are not yet united, and why light has a dual nature: are there answers? | — |
 | [E44](#e44) | 2026-10-11 | Time without an outside clock, space as a stiff fluid, and whether light's lumps are in the light or in the detector | r32 |
 | [E45](#e45) | 2026-10-11 | The fluid-space programme, stage 1: the equations, gravity as a flow, the quench from the beginning, hyper-dimensions | r33–r36 |
+| [E46](#e46) | 2026-10-11 | The fluid-space programme, stage 2: expansion and structure, and matter as lumps of the medium | r37, r38 |
 
 ---
 
@@ -379,7 +380,10 @@ Under a constant push the speed went 0.375 → 0.700 → 0.850 → 0.900c. Newto
 - [x] (added 2026-10-11, from E41) Re-run the whole suite on the merged tree (r01–r30) in the background; the parallel session re-commits all regenerated figures, so commit only new files and claim the next numbers early. *Done 2026-10-11 in E42: r01–r31 on the merged tree all run (248 s); 27 of the 30 committed results regenerate byte for byte and the other three differ only in floating-point residuals and runtime lines.*
 - [ ] (added 2026-10-11, from E42) Housekeeping: add a LICENSE; add a smoke test that every `rNN` script reproduces its committed results file (the diff in E42 is a template: ignore runtime lines and residuals below 10⁻¹⁰); and agree a way to reserve numbers between sessions (they have collided on r/E numbers at least twice).
 - [ ] (added 2026-10-11, from E43) Watch for the first gravity-mediated-entanglement (QGEM-type) result; none was found as of 2026-10-11. When one is reported, record it against E21's prediction: a quantum substrate entangles the two masses, a classical one does not.
-- [ ] (added 2026-10-11, from E45) **Fluid-space stage 2, expansion and structure:** put the superfluid in an expanding background (Hubble friction on the phonons) and compute the spectrum of phonon fluctuations frozen at sound-horizon exit: is it scale-invariant with the observed tilt n_s = 0.965 ± 0.004? This is the first test of the "universe from the beginning" chain after the quench.
+- [x] (added 2026-10-11, from E45) **Fluid-space stage 2, expansion and structure:** put the superfluid in an expanding background (Hubble friction on the phonons) and compute the spectrum of phonon fluctuations frozen at sound-horizon exit: is it scale-invariant with the observed tilt n_s = 0.965 ± 0.004? This is the first test of the "universe from the beginning" chain after the quench. *Done 2026-10-11 in E46 (r37): the mechanism works (tilt −2/(p − 1), graininess negligible); the medium cannot drive the expansion and a plateau-shaped expansion is needed (open).*
+- [ ] (added 2026-10-11, from E46) **What drives the stretching:** equations of state with tension (a stretched liquid, van der Waals-like) and the cavitation threshold at which it tears; does any medium with c_s = c reach w < −1/3 before cavitating, and what tilt and tensor ratio follow?
+- [ ] (added 2026-10-11, from E46) **Matter as quasi-particles:** Weyl fermions of a ³He-A-like medium (Volovik): do they give E ≥ cP with a rest mass, a single light cone, and a mass scale? This replaces matter-as-lumps (F6, ruled out).
+- [ ] (added 2026-10-11, from E46) The conversion step if the phonons are spectators (curvaton-like): amplitude, non-Gaussianity and the isocurvature limit.
 - [ ] (added 2026-10-11, from E45) **Fluid-space stage 2, 3D quench:** repeat the F3 quench in 3D (vortex lines): network scaling, loop distribution, and whether the string tension can be reduced by a lower density without destroying the other results.
 - [ ] (added 2026-10-11, from E45) **Fluid-space stage 2, what holds a brane flat:** test stabilisers for the F4 wall (a second component, a conserved topological charge, a pinning potential) against the snake instability; and what sources the escape-speed flow of F2 (a field equation giving v² = −2Φ).
 - [ ] (added 2026-10-11, from E45) Housekeeping: `research/run_all.py` now takes about 7 minutes (r35 alone about 3); consider a `--fast` switch that skips r21, r29, r30 and r35.
@@ -2492,3 +2496,62 @@ Cubes l = 2–12; area-law fit S = η·6l² + b·l + c for l ≥ 4, exactly as f
 - **Arkani-Hamed, Dimopoulos & Dvali**, PLB 429, 263 (1998); **Lee et al.**, PRL 124, 101101 (2020); **Chung & Freese**, PRD 62, 063513 (2000); **Collins et al.**, PRL 93, 191301 (2004); **Abbott et al.** (GW170817), ApJ 848, L13 (2017); **Planck 2018 VI**, A&A 641, A6 (2020)
 
 **Files:** [`r33_fluid_space_foundations.py`](r33_fluid_space_foundations.py), [`r34_flow_gravity.py`](r34_flow_gravity.py), [`r35_quench_from_the_beginning.py`](r35_quench_from_the_beginning.py), [`r36_hyperdimensional_medium.py`](r36_hyperdimensional_medium.py); results [r33](results/r33_fluid_space_foundations.txt), [r34](results/r34_flow_gravity.txt), [r35](results/r35_quench_from_the_beginning.txt), [r36](results/r36_hyperdimensional_medium.txt); figures ![F1](figures/r33_fluid_space_foundations_foundations.png) ![F2](figures/r34_flow_gravity_flow_gravity.png) ![F3](figures/r35_quench_from_the_beginning_quench.png) ![F4](figures/r36_hyperdimensional_medium_hyperdimensional.png)
+
+---
+
+<a id="e46"></a>
+## E46 — The fluid-space programme, stage 2: expansion and structure, and matter as lumps of the medium (2026-10-11)
+
+**Question (user):** "a and d" (the options offered at the end of E45: (a) expansion and structure: can the medium's own fluctuations grow into the observed pattern of the sky, with spectral tilt 0.965; (d) a new idea of yours). The user did not say which idea for (d), so the idea taken here is the one in their own words in E44: matter as a cavity or bubble that "isolates a section/area of it ... and trapp that energy". If a different idea was meant, it is still open.
+
+**Method:** two tests, F5 (r37) and F6 (r38), in the same format as E45: idea, prediction, calculation or simulation, verdict with the reason.
+
+**Added mathematics.**
+1. A phonon field δ in a medium expanding with scale factor a(η) has v = aδ obeying v'' + [c²k²(1 + k²ξ²/2a²) − a''/a]v = 0, with the medium's adiabatic vacuum v → e^(−i∫ω dη)/√(2ω) at early times (in a superfluid this is the ground state, so the initial state is not a free choice; Unruh 1995, Corley & Jacobson 1996). Modes freeze when the comoving sound horizon c/k falls below the comoving Hubble radius 1/(aH), which needs accelerating expansion.
+2. Power law a ∝ t^p: u'' + [1 − (ν² − ¼)/x²]u = 0 with x = −ckη and ν = (3p − 1)/(2(p − 1)); P(k) ∝ k^(3−2ν), so n_s − 1 = −2/(p − 1).
+3. De Sitter with the graininess term: v_ττ + [1 + (λ²/2)τ² − 2/τ²]v = 0, τ = −ckη, λ = Hξ/c: a single variable, so every mode is changed by the same factor.
+4. Medium alone: a repulsive condensate has P = mn c_s²/2 ≥ 0, so w = P/ρc² ≥ 0 (w = 1/3 at c_s = c) and ε = 3(1 + w)/2 ≥ 3/2: decelerating.
+5. Lumps (ħ = m = g = n₀ = 1, c = 1): the dark soliton ψ = iv + √(1−v²) tanh(√(1−v²)(x − vt)) has E = (4/3)(1−v²)^(3/2), P = 2[arccos v − v√(1−v²)], dE/dP = v and inertial mass dP/dv = −4√(1−v²). A relativistic particle has E ≥ cP, with E/(cP) = c/v.
+
+**Results (computed here):**
+
+*F5 — expansion and structure (r37).*
+- **The integrator** matches the exact Hankel-function solution to 2×10⁻¹⁰, and the measured tilt for power-law expansions agrees with −2/(p − 1) to 2×10⁻⁶ (p = 10 … 1000). The observed n_s = 0.9649 ± 0.0042 needs p = 58 (ε = 0.0172), i.e. w = −0.9885: a quasi-exponential expansion.
+- **Graininess.** With the adiabatic vacuum, the frozen amplitude changes by −0.62 λ² (λ = 0.02 … 0.5; exponent 2.0). Because τ is the only variable, the spectrum stays exactly scale invariant. For a Planck-length medium λ = αHt_P ≈ 10⁻⁶–10⁻⁵ α, so the change is ~10⁻¹². The trans-Planckian ambiguity does not arise because the medium's own ground state fixes the initial state.
+- **What drives the expansion.** The medium alone has w = 0 to 0.33 (c_s = 0 to c), never below −1/3, so it decelerates and no mode freezes; the tilt needs w = −0.988. A stretched medium (P < 0) would be needed, and a stretched liquid cavitates.
+- **Tensors.** The power law with the observed tilt gives r = 16ε c_s = 0.28 for c_s = c, against r < 0.036 (BICEP/Keck 2021; typed from memory); it would need c_s < 0.13 c. A plateau with the same tilt (n_s − 1 = −2/N, N = 57) gives r = 0.0037, allowed. For the amplitude A_s = 2.1×10⁻⁹: H = 1.5×10¹³ GeV and V¹ᐟ⁴ = 8×10¹⁵ GeV (plateau), or H = 1.3×10¹⁴ GeV and 2.3×10¹⁶ GeV (power law). These assume the fluctuating field is the one driving the expansion (as in k-inflation); if the phonons are only spectators, converting them into curvature perturbations (curvaton-like) is an extra step not computed.
+- **E-folds.** The ~67 e-folds that r35 needs to dilute the quench's strings are of the same size as the ~50–60 a standard inflation needs for the horizon problem: one stretching can do both, but nothing here derives it.
+
+*F6 — matter as lumps (r38).*
+- **Dark soliton (simulated).** Two solitons of speed ±v in a periodic box reproduce the exact formulas: speed 0.20000, 0.50000, 0.80000 for v = 0.2, 0.5, 0.8; minimum density v² to 3 digits; energy 1.25414, 0.86603, 0.28800 conserved to 10⁻⁶ (an earlier run with a finer grid blew up because the split-step needs dt k²_max/2 < π; the grid was coarsened). The energy *falls* as the lump speeds up and the inertial mass is −4√(1−v²), negative at every speed. E/(cP) rises from 0.43 at rest to 1.00 at v = c: always below 1, whereas a particle with rest mass has E/(cP) = c/v > 1.
+- **Vortex rings** (large-ring asymptotics, valid for R ≳ 4 core sizes): E/(cP) = 2(v/c)(ln − 2)/(ln − 1), from 0.37 (R = 4, v = 0.31) to 0.015 (R = 400, v = 0.009). Every ring has E < cP. As R grows the ring slows while E ~ R ln R and P ~ R² diverge: there is no state at rest with finite energy, so no rest mass. As R shrinks to the core size the ring becomes a sound pulse (E → cP).
+- **Cavity (simulated in spherical symmetry).** The deficit of particles inside the original size w halves in 0.80, 0.85 and 0.875 w/c for w = 2, 4, 8 (mean 0.84), and the curves collapse when time is measured in w/c; the emptiness leaves as a sound pulse and the density overshoots. A 1 mm cavity would last ~3 ps; a Planck-size one a few Planck times. Energy is conserved to 2×10⁻³ (finite-difference gradient).
+
+**The ledger, continued**
+
+| Idea | Verdict | Why |
+|---|---|---|
+| The medium's frozen phonon fluctuations give a scale-invariant spectrum | **supported** (F5) | exact for de Sitter; tilt −2/(p − 1) verified to 2×10⁻⁶ |
+| The medium's graininess spoils it | **no** (F5) | amplitude change −0.62 λ², ~10⁻¹² for a Planck-length medium |
+| Initial state is a free choice (trans-Planckian ambiguity) | **resolved** (F5) | the medium's ground state is the adiabatic vacuum |
+| The medium itself drives the expansion | **ruled out** (F5) | w ≥ 0 for a repulsive condensate; w = −0.988 is needed |
+| A power-law expansion with the observed tilt fits the CMB | **ruled out** (F5) | r = 0.28 against < 0.036; a plateau is needed |
+| Matter is a lump of the medium (a relativistic particle) | **ruled out as it stands** (F6) | solitons and rings have E < cP, negative or no inertial mass, no rest frame |
+| Matter is a cavity of trapped energy | **ruled out as self-sustaining** (F6) | a cavity empties in ~0.84 w/c |
+
+**Interpretation, in plain English:**
+- **The chain so far, "from the very beginning".** A hot medium cools into a superfluid and freezes in vortex defects (E45). A long, nearly exponential stretching is needed (not supplied by the medium itself): it dilutes the defects and stretches the medium's own quantum hiss until it leaves the sound horizon and freezes into a near scale-invariant pattern like the sky's. The medium's graininess does not spoil the pattern. What is missing is the *driver* of the stretching: a repulsive superfluid pushes back and slows the expansion, so something else (or a medium under tension) must do it, and the tilt and tensor limits together ask for a plateau-shaped expansion, not a pure power law.
+- **Matter as a trapped lump fails in a Galilean medium** for three separate reasons: a lump has less energy than the momentum bound a particle must satisfy (E < cP), it has negative inertia or no rest frame, and a bubble empties in about the time sound takes to cross it. This is a statement about this medium, not about the idea of trapped energy: relativistic kinks obey E = γMc² exactly (r01), but only because the field equation is relativistic at the lump scale, which a superfluid is only for its phonons.
+- **What this points to.** Matter is more likely quasi-particles of a Lorentz-invariant sector of the medium (as the Weyl fermions of superfluid ³He-A, Volovik) than lumps of its density; that is the next idea to test.
+- **Limits:** F5 treats the phonons as test fields in a prescribed expansion, and the amplitude chain assumes they are the inflaton; the medium's equation of state is the simple repulsive-condensate one; the tensor limit is typed from memory; F6 uses a 1D soliton, asymptotic ring formulas and a spherically symmetric cavity, not a full 3D simulation of a ring.
+
+**Status:** F5: mode integration and tilt **computed here**; graininess **computed here** (negligible); the medium as driver **ruled out**; the driver and the plateau **open**. F6: soliton **computed here** (simulated) and **ruled out** as matter; rings **ruled out** (asymptotics); cavity **ruled out** as self-sustaining (simulated); matter as Lorentz-invariant quasi-particles **open**.
+
+**References** (from memory):
+- **Garriga & Mukhanov**, PLB 458, 219 (1999); **Armendariz-Picon, Damour & Mukhanov**, PLB 458, 209 (1999) (P(X) fluids)
+- **Unruh**, PRD 51, 2827 (1995); **Corley & Jacobson**, PRD 54, 1568 (1996); **Martin & Brandenberger**, PRD 63, 123501 (2001) (dispersion and the trans-Planckian problem)
+- **Fischer & Schützhold**, PRA 70, 063615 (2004); **Eckel et al.**, PRX 8, 021021 (2018) (analogue cosmology in condensates)
+- **Planck 2018 X**, A&A 641, A10 (2020); **BICEP/Keck**, PRL 127, 151301 (2021)
+- **Zakharov & Shabat**, Sov. Phys. JETP 37, 823 (1973); **Roberts & Grant**, J. Phys. A 4, 55 (1971); **Jones & Roberts**, J. Phys. A 15, 2599 (1982); **Volovik**, *The Universe in a Helium Droplet* (2003)
+
+**Files:** [`r37_expansion_and_structure.py`](r37_expansion_and_structure.py), [`r38_matter_as_lumps.py`](r38_matter_as_lumps.py); results [r37](results/r37_expansion_and_structure.txt), [r38](results/r38_matter_as_lumps.txt); figures ![F5](figures/r37_expansion_and_structure_expansion.png) ![F6](figures/r38_matter_as_lumps_lumps.png)

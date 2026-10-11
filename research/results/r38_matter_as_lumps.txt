@@ -1,0 +1,56 @@
+
+==============================================================================
+A. The dark soliton: a lump of the medium, simulated
+==============================================================================
+Two solitons (speed +v and -v, periodic box 256, 2048 points, dt = 0.005, T = 50) started from the exact profile.
+(The split-step method is stable only for dt k_max^2 / 2 < pi; a finer grid with the same dt blew up, so the grid spacing is 0.125.)
+        v  speed sim  min density sim     v^2  E sim (t=0)  E sim (T)  (4/3)(1-v^2)^1.5
+     0.20    0.20000          0.04003  0.0400      1.25414    1.25414           1.25414
+     0.50    0.50000          0.25000  0.2500      0.86603    0.86603           0.86603
+     0.80    0.80000          0.64000  0.6400      0.28800    0.28800           0.28800
+    => speed, depth and energy agree with the exact formulas (worst relative difference 1.2e-06); the lump is stable in 1D.
+        v         E         P  inertial mass dP/dv  E / (c P)  relativistic c/v
+     0.05    1.3283    2.9417              -3.9950     0.4516             20.00
+     0.20    1.2541    2.3470              -3.9192     0.5344              5.00
+     0.50    0.8660    1.2284              -3.4641     0.7050              2.00
+     0.80    0.2880    0.3270              -2.4000     0.8807              1.25
+     0.95    0.0406    0.0418              -1.2490     0.9700              1.05
+    => the energy FALLS as the lump speeds up and the inertial mass is NEGATIVE (-4 at rest); E/(cP) stays between 0.43 and 1.00, below 1 for v < c, whereas any particle with rest mass has E/(cP) = c/v > 1.
+    A flat soliton also bends and breaks in higher dimensions (snake instability, r36).
+
+==============================================================================
+B. Vortex rings
+==============================================================================
+Large-ring asymptotics (units hbar = m = n0 = 1, kappa = 2 pi, c = 1):
+         R        v          E          P  E / (c P)  E / (P v)
+         4   0.3082      115.7      315.8     0.3664      1.189
+         8   0.1974      340.9     1263.3     0.2699      1.367
+        16   0.1204      900.7     5053.2     0.1783      1.481
+        40   0.0596     2975.3    31582.7     0.0942      1.581
+       100   0.0284     9247.1   197392.1     0.0468      1.648
+       400   0.0088    47934.0  3158273.4     0.0152      1.717
+    (R below ~4 core sizes is outside the asymptotic formulas and only qualitatively right.)
+    => E/(cP) = 2 (v/c)(ln - 2)/(ln - 1), always below 2v/c: every ring has E < cP (impossible for a particle with a real rest mass); E/(Pv) -> 2 where a particle
+       with rest mass has c^2/v^2 -> infinity as v -> 0; and as R grows the ring slows (v -> 0) while E ~ R ln R and P ~ R^2 grow without limit:
+       there is no state at rest with a finite energy, so no rest mass.  As R shrinks to the core size the ring becomes a sound pulse (E -> cP).
+
+==============================================================================
+C. A cavity (bubble) in the medium
+==============================================================================
+Spherically symmetric 3D GP, hole of depth 90 % and Gaussian width w; deficit of particles inside r < w against time.
+        w  t_half (c/w)   t_half   central density at t = w/c  energy drift
+      2.0         0.800     1.60                        1.167       2.0e-03
+      4.0         0.850     3.40                        1.105       9.6e-04
+      8.0         0.875     7.00                        1.057       5.3e-04
+    => the deficit inside the original size halves in t = 0.84 w/c for every size: a cavity
+       of size w lives about w/c, then its emptiness leaves as a sound pulse.  A 1 mm cavity would last 3 ps; a Planck-size one a few Planck times.
+       Only a source that keeps pushing (a repulsive impurity, E1, r01) holds it open, and then the dent is screened (short range).
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   F6a: matter is a lump of the medium obeying E >= cP            -> NO: dark soliton E/(cP) = 0.43-1.00 (< 1), vortex rings E/(cP) ~ 2v/c <= 0.37
+   F6b: such a lump has a positive rest mass and a rest frame     -> NO: the soliton's inertial mass is -4 (negative), and a ring's energy and momentum diverge as it slows to rest
+   F6c: a cavity of trapped energy persists on its own            -> NO: a cavity of size w empties in ~0.8 w/c (sound crossing time)
+   F6d: what would make lumps matter-like                         -> a Lorentz-invariant field equation at the lump scale (relativistic kinks obey E = gamma M c^2: r01); a superfluid only gives that for phonons
+   runtime 4 s
