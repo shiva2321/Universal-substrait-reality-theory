@@ -57,6 +57,7 @@ This is the running record of every question, calculation, plot and conclusion i
 | [E39](#e39) | 2026-10-11 | How much does a gauge field count? The Maxwell field's entanglement on the substrate, and the check of r26 | r29 |
 | [E40](#e40) | 2026-10-11 | Other ways of putting fermions on the substrate: how much does a Dirac fermion count? | r30 |
 | [E41](#e41) | 2026-10-11 | Review of the parallel memory-kernel (r25) and dark-matter (r28) entries, and the hand-off list for the next session | — |
+| [E42](#e42) | 2026-10-11 | Outside review of the whole repository, and a re-test by calculation of R15–R17 (r25, r26, r28) | r31 |
 
 ---
 
@@ -372,7 +373,8 @@ Under a constant push the speed went 0.375 → 0.700 → 0.850 → 0.900c. Newto
 - [ ] (added 2026-10-11, from E39) Non-Abelian edge sectors: the flux-sector entropy of SU(2) and SU(3) (flux in representations; ln dim R terms) and the gauge couplings at the cell scale, to replace the Abelian g² = 0.09–1 range.
 - [ ] (added 2026-10-11, from E41) **Growth rule with memory (the E29 target, still open):** test concrete rules (settling, slow re-rolling, Hubble friction, switch-on at a critical size; E36) on the r21 Ornstein–Uhlenbeck Monte Carlo against BBN, CMB, today and z < 1, counting free parameters; use the observer-consistent horizon-patch count (N = 5 radiation, 17 matter) as a null test.
 - [ ] (added 2026-10-11, from E40) Overlap and domain-wall fermions on the substrate (need a Euclidean-time lattice formulation); and the fermion weights with the flux-sector term of E39 included.
-- [ ] (added 2026-10-11, from E41) Re-run the whole suite on the merged tree (r01–r30) in the background; the parallel session re-commits all regenerated figures, so commit only new files and claim the next numbers early.
+- [x] (added 2026-10-11, from E41) Re-run the whole suite on the merged tree (r01–r30) in the background; the parallel session re-commits all regenerated figures, so commit only new files and claim the next numbers early. *Done 2026-10-11 in E42: r01–r31 on the merged tree all run (248 s); 27 of the 30 committed results regenerate byte for byte and the other three differ only in floating-point residuals and runtime lines.*
+- [ ] (added 2026-10-11, from E42) Housekeeping: add a LICENSE; add a smoke test that every `rNN` script reproduces its committed results file (the diff in E42 is a template: ignore runtime lines and residuals below 10⁻¹⁰); and agree a way to reserve numbers between sessions (they have collided on r/E numbers at least twice).
 
 > **Note (2026-10-10, later):** E10 gives the layered version of this picture, with parameter ranges and the new Coulomb-phase constraint α < α_c ≈ 0.079. Nothing in E9 is retracted.
 
@@ -1671,6 +1673,8 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 
 > **Note (2026-10-11, later, from E41):** R15 (causal-horizon kernel) and R17 (Hopfion dark matter) were added by the parallel session and are **downgraded**; the statement that they are "new to our knowledge" is **withdrawn** until they are re-derived. R18 (gauge-field weight) and R19 (fermion discretisation) are computed here. R1–R12, R18 and R19 are the rules this session stands behind.
 
+> **Note (2026-10-11, later, from E42):** E41's findings on R15 were re-run by calculation and hold; one is added (splitting Poisson counts into independent patches does not reduce the noise, so the kernel double counts even before the observer problem). For R17, the σ/M of 0.517 is πR² in the code (the entry states 4πR², which gives 2.07) and scales as e⁻⁴ (E41 says e⁻²). R16's "geometric mean" and "independent Sakharov / Bekenstein–Hawking" statements are also mislabelled (notes under E35).
+
 ---
 
 <a id="e31"></a>
@@ -1919,6 +1923,11 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 
 > **Review note (2026-10-11, Claude, from E41; by reading the code and its printed output, not re-run):** the causal-horizon filter is **not established**. (1) It uses the comoving distance from *today's* observer to each epoch, but the noise at an epoch concerns an observer *at* that epoch, whose horizon is the particle horizon: ηaH = 1 in the radiation era and 2 in the matter era (exact), so N_patches = 5 and 17 and the suppression is 0.45 and 0.24, not 10⁻⁸. (2) The script prints "Raw rms |Ω_Λ| = 0.0000" at z = 10⁹ where r21 (validated against the exact radiation-era 2.7253·A) gives about 2: its V(a) has no initial-time offset and is clipped at 10⁻²⁵, so the "1.4×10⁻²⁸ at BBN" is a numerical artefact. (3) The Monte Carlo draws independent normals for today, CMB and BBN, so P(all) = P(today) = 1.4 % by construction; the correlation across epochs that gave 10⁻⁴ in r21 is dropped. (4) Its printed w₀ = −0.343 comes from the rms envelope, not a realisation, contradicts its own verdict "w₀ ≈ −1", and is 9σ from the DESI value in the same script (−0.838 ± 0.055). The growth rule with memory remains open.
 
+> **Review note (2026-10-11, Claude, from E42/r31; by calculation):** E41's four points were re-run and hold; r31 adds three.
+> - **Double counting, before any observer problem.** Poisson counts in disjoint patches are already independent, and their variances add to the unsplit √V. Simulated with K = 1 … 4096 patches, the noise of the total stays at 1.00 ± 0.02 of the unsplit value, not 1/√K, so the "central limit theorem" step counts the averaging twice. (A separate Λ per patch would make the noise larger, not smaller.)
+> - **Numbers for E41's points.** The particle-horizon patch count is 5.0 at z = 10⁹ (E41: 5) and 15–20 between z = 10 and 1 (E41: 17 in the matter era). For an observer at the epoch the volume-weighted median is 3.5–3.9 patches, a suppression of 0.51–0.54 (≤ 0.023 is needed). The exact cone volume at z = 10⁹ is 1.8×10⁻⁶⁶ against the 10⁻²⁵ floor at r25 line 88; the raw |Ω_Λ| is 1.96 (printed 0.0000), and r25's volume is off by more than 10 % at every z above 7.6×10³. With the exact volume the same kernel gives 3.2×10⁻⁸ at BBN, which "passes" only through the observer problem.
+> - **Dark energy.** The envelope implies ρ_DE(z = 1)/ρ_DE(0) = 3.1, against 0.98–1.06 for the DESI w₀wₐ best fits; its w₀ = −0.34 is 3.7–9σ from the two DESI values drawn beside it. The figure's legend says the raw noise is "O(1) everywhere" while its curve falls off a cliff at z ≈ 10⁴ (the volume floor).
+
 ---
 
 <a id="e35"></a>
@@ -1980,6 +1989,11 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 > - **"0.0 % residual" is by construction:** κ = 0.648 is solved from N_eff and A_obs (one parameter fitted to one number), so "zero free parameters" is wrong.
 > - **Kabat/Donnelly–Wall:** "Kabat's term is an artifact" and "Donnelly–Wall proved S ≥ 2 S_scalar > 0" are not established statements.
 > - **Status:** the ledger arithmetic is right for its inputs; the physics claim is not established. See E39.
+
+> **Review note (2026-10-11, Claude, from E42/r31):** r31 adds three points to the check above, all from the script and its output.
+> - **"Geometric mean".** The text calls κ = 0.6478 "the geometric mean of the two conventions", and the figure labels 0.65 so. The geometric mean of 0.5 and 1 is 0.707; 0.648 is simply the κ solved from N_eff (r26 line 205). For κ = 0.5, 0.707 and 1 the ratio N_eff ÷ N_needed is 1.30, 0.92 and 0.65. The "± 0.04" on κ has no source.
+> - **Cell size.** The 4.2 and 5.9 ℓ_P quoted as "independent Sakharov and Bekenstein–Hawking values" are the κ = ½ and κ = 1 ends of the Λ relation itself (4.18, 5.91). r13/r14 give 0.26–0.36 √N ℓ_P (4.0–5.6 ℓ_P at N = 233); comparing that with the Λ-derived size is the same equation as N_eff against N_needed, not a second test.
+> - **Regulator.** Within the table as typed, the Wilson regulator alone moves N_eff by ×5.8 (r = 0.5 … 4), and the band [180, 360] covers 38 % of that range on a log scale; E40 extends the range to other discretisations (×18).
 
 ---
 
@@ -2153,6 +2167,11 @@ Cassini: γ − 1 = (2.1 ± 2.3)×10⁻⁵.
 
 > **Review note (2026-10-11, Claude, from E41; by reasoning, not re-run):** the entry assumes what it claims to derive. (1) M_sol = 5.06 GeV is the observed ratio Ω_DM/Ω_b = 5.39 times m_p with n_sol = n_b *put in*: the standard asymmetric-dark-matter relation (Nussinov 1985; Kaplan, Luty & Zurek 2009), an input, not a derivation; "topological equipartition" gives no reason for n_sol = n_b. (2) σ/M = 0.517 cm²/g uses σ = 4πR², R = 1/(eF) with the Skyrme coupling e set to 1 and an unverified energy factor 312, so σ/M ∝ e⁻²: e = 0.5 gives 2.1 cm²/g (excluded by the entry's own bound), e = 2 gives 0.13. Passing is a choice of e. (3) The Bullet-Cluster bound used (1 cm²/g) is the older one; later cluster-merger analyses give about 0.5 cm²/g (Harvey et al. 2015, from memory), which a velocity-independent 0.517 does not meet. (4) The direct-detection estimate is a hand-waved portal factor (F/v)². Status: assumption plus one free parameter.
 
+> **Review note (2026-10-11, Claude, from E42/r31; by calculation), two corrections to the note above:**
+> - **The 0.517 cm²/g is πR², not 4πR².** r28 line 53 computes `np.pi * R_cm**2` (4.660×10⁻²⁴ cm², the number the entry quotes) while the entry writes σ = 4πR². With the 4πR² it states, σ/M = 2.07 cm²/g, above the 1.0 cm²/g limit it uses. Because σ/M ∝ M⁻³, the band 0.1–1 is then reached only for n_sol/n_b = 0.36–0.78 (0.58–1.25 with πR²), and n_sol = n_b is outside the first window.
+> - **The scaling is e⁻⁴, not e⁻².** With the script's own definitions (F = M e/312, R = ħc/(e F)), R ∝ e⁻² and σ/M ∝ e⁻⁴: ×16 at e = 0.5 (8.3 cm²/g with πR², 33 with 4πR²) and ×0.062 at e = 2. The point of the note above stands and is stronger: a factor 2 in the unfixed Skyrme coupling moves σ/M by 16.
+> - Also typed in: σ_SI = 10⁻⁴⁹ cm² (r28 line 210), and the exclusion curve (line 201), which disagrees with `LZ_LIMIT_5GEV` in the same file.
+
 ---
 
 <a id="e39"></a>
@@ -2264,3 +2283,55 @@ Cubes l = 2–12; area-law fit S = η·6l² + b·l + c for l ≥ 4, exactly as f
 **References:** **Nussinov**, Phys. Lett. B 165, 55 (1985); **Kaplan, Luty & Zurek**, PRD 79, 115016 (2009); **Harvey et al.**, Science 347, 1462 (2015) (from memory); **Das, Nasiri-Zare, Afshordi et al.**, JCAP 10 (2023) 047.
 
 **Files:** none new (see [E34](#e34), [E38](#e38), [E36](#e36), [E39](#e39), [E40](#e40)).
+
+> **Correction (2026-10-11, from E42/r31):** E41's findings on r25 were re-run by calculation and hold. Two statements about r28 do not: the σ/M = 0.517 cm²/g comes from σ = **πR²** (r28 line 53), not 4πR², and with the script's own definitions σ/M scales as **e⁻⁴**, not e⁻² (×16 at e = 0.5, ×0.062 at e = 2). With the 4πR² the entry states, σ/M = 2.07 cm²/g at e = 1. The conclusion of E41 (a free parameter decides the outcome) stands and is stronger. The review was by reading, as E41 says; this is the cost of not re-running.
+
+---
+
+<a id="e42"></a>
+## E42 — Outside review of the whole repository, and a re-test by calculation of R15–R17 (r25, r26, r28) (2026-10-11)
+
+**Question (user):** "analyze this entire research repo deeply and tell me what is it, and what do you think of ot honestly and where does it stand ds ion plain easy to understand english"
+
+**Method:**
+- *Overview (pure reasoning):* read the README, the headers of the treatise and preprint, the audit report and the notebook, and the code and printed output of the three newest scripts (r25, r26, r28); mapped authorship from the commit log.
+- *Reproducibility (calculation, on scratch copies so that the repository was not touched):* `audit/run_all.py`, all 45 root scripts and `research/run_all.py` were re-run, the committed result files were diffed, and the audit's headline numbers were re-computed with the constants typed in again. The research suite was run twice: r01–r28 before the merge described next, and r01–r31 after it.
+- *Re-test of R15–R17 (r31):* while this was under way, another session pushed r29–r30 and E39–E41, which cover the same entries (E39 computes the gauge-field weight that r26 asserts; E41 reviews r25 and r28 by reading, "neither was re-run"). This work was therefore renumbered (r31, E42) after a fast-forward merge, and r31 re-runs the claims and checks the numbers E41 states.
+
+**Results (computed here):**
+- **The code runs and reproduces.** All 45 root scripts, the 4 audit scripts and r01–r31 exit cleanly, and the full research suite takes 248 s (E41 estimated about 12 min). Of the 30 committed result files r01–r30, 27 regenerate byte for byte. The other three (r27, r29, r30) differ only in floating-point residuals of 10⁻¹²–10⁻²⁰ and in printed runtime lines; no physical number changed.
+- **The audit's numbers re-compute.** Electron formula 43σ (audit: 42σ; rounding of m_P); 6π⁵ + 3πα/2: 5,523σ; Koide Q = 0.6666645 ± 5.1×10⁻⁶ (−0.43σ); Koide τ +0.43σ; Ω_c/Ω_b = 5.3643 ± 0.0646, with the same seven simple fractions inside 1σ (16/3, 27/5, 43/8, 38/7, 53/10, 59/11, 65/12). The a01 and a02 outputs give Zener ratio 2, speed spreads of 33.2 % (FCC) and 17.2 % (HCP), and 62 % of random targets "derived" by 3,207,600 same-shape formulas.
+- **Who wrote what.** The commit log gives the audit, r01–r22, r27, r29 and r30 to Claude sessions, and r23–r26 and r28 to the owner's account; E37, E39 and E41 call those entries the parallel session's (Gemini, per E37). The over-claiming entries (E32–E35, E38) are all in that group.
+- **R15, R16, R17: not supported as stated.** E39 and E41 reach the same verdict from other angles; r31 confirms it by calculation and adds the points in bold.
+
+  | Claim | Review by reading (E39, E41) | Re-run by calculation (r31) |
+  |---|---|---|
+  | R15: patch averaging suppresses the Λ noise by 1.6×10⁻⁸ at BBN | observer inconsistency: N = 5 (radiation), 17 (matter), suppression 0.45, 0.24 | confirmed (N_horizon 5.0 at z = 10⁹; observer at the epoch 0.51–0.54, ≤ 0.023 needed). **Poisson counts in K independent patches add back to 1.00 ± 0.02, not 1/√K, so the step double counts before any observer problem** |
+  | R15: \|Ω_Λ\| ≈ 10⁻²⁸ at BBN | numerical failure: raw rms printed 0.0000 against ≈ 2 | confirmed: exact cone volume 1.8×10⁻⁶⁶ against a 10⁻²⁵ floor, exact raw value 1.96; r25's volume is wrong above z = 7.6×10³ |
+  | R15: steady dark energy, w₀ ≈ −1 | printed w₀ = −0.343, 9σ from its own DESI value | confirmed. **Implied ρ_DE(z = 1)/ρ_DE(0) = 3.1, against 0.98–1.06 for the DESI fits** |
+  | R16: N_eff = 233.4 matches Λ with 0.0 % residual | w_V = 1.03, not 2; flux sectors add 50–100 scalars; κ is fitted | κ confirmed solved from N_eff. **The "geometric mean" 0.65 is 0.707; the 4.2 / 5.9 ℓ_P "independent" cell sizes are the κ = ½ and 1 ends of the same relation; N_eff ÷ N_needed = 1.30 / 0.92 / 0.65 for κ = 0.5 / 0.707 / 1** |
+  | R17: M = 5.06 GeV derived | the observed ratio × m_p (asymmetric dark matter) | confirmed |
+  | R17: σ/M = 0.517 passes the Bullet Cluster limit | uses 4πR²; scales as e⁻² | **corrected: the code uses πR² (the 4πR² the entry states gives 2.07 > 1.0); the scaling is e⁻⁴ (×16 at e = 0.5)** |
+
+- **Not checked here:** the physics of r01–r22 beyond reading their results and notebook entries; E39's lattice gauge-field computation (its script reproduces; it was not re-derived); the 312 F/e coefficient of the Hopfion; the DESI numbers (taken from r25's dictionary, which E36 says came from a web summary); whether R6 is new in the literature. Neither arXiv nor the web was used in this session.
+
+**Interpretation, in plain English:**
+- **What the repository is.** A hobby-scale research programme around one idea: space is a physical medium, and light, matter and gravity are its ripples and knots. The idea is not new (the aether, Volovik's superfluid vacuum, analogue gravity, Sakharov, causal sets). The repository has three layers. (1) A treatise and preprint with 45 scripts, made on 9–10 October with an AI agent, which claimed to derive the electron mass, c, gravity and dark matter with "zero adjustable parameters". (2) An audit that showed those derivations are circular, fitted or wrong. (3) 31 further calculations and a notebook that rebuild the idea on established physics.
+- **What is good.** The audit is the most valuable part: its numbers re-compute, and it says plainly what was fitted and what was typed in. The notebook labels every result established / computed / open / ruled out, appends corrections instead of rewriting, and compares with measurements in σ. Several results are real and clearly stated constraints on any "space is a medium" theory: a crystal substrate gives cosmic strings 10⁵ times too heavy; a lattice graviton moves at 0.72 c; an absolute time brings a third graviton; a medium that slows only the wave speed fails the redshift test at 4×10⁴σ. The code is deterministic and reproduces. And the repository corrects itself quickly: within the hour that the newest entries were pushed, a second session had found most of the same problems in r25 and r26 (E39, E41).
+- **What is weak.**
+  1. It derives no new number: α, the masses, G, Λ and c are all inputs or restated inputs. No prediction is both unique to USRT and testable soon (the 3:1 TeV-delay pattern was withdrawn for the causal-set substrate, and "no delays" is what ordinary physics also says).
+  2. Almost everything is borrowed, as E28 says.
+  3. The newest results do not hold (table above).
+  4. The failure the audit found in the original sessions, a weakness named and then the next step landing on the target number, came back: in r25 (a kernel whose form guarantees the E29 target: it is 1 today by construction), r26 (κ solved from the answer) and r28 (the mass solved from the ratio). Their verdict lines are typed as fixed text instead of being formatted from the computed numbers, and in r25 the text contradicts the printed w₀.
+  5. Process and housekeeping: two or three AI sessions edit the repository at once, and they have claimed the same numbers more than once (E41; again today, when this entry was r29/E39 until the merge). E41's own review of r28 contained two small errors (4πR², e⁻²), corrected above: reading is not re-running. There is no LICENSE, no test (no `assert` in about 17,000 lines of Python) and no CI, and `main` is still at the second commit while all the work sits on a feature branch.
+- **Where it stands.** A well-documented, partly rigorous exploration, not a theory. It is consistent with the measurements it was checked against, largely because those checks were of ingredients taken from the literature (a causal set is Lorentz invariant by design) rather than independent tests of USRT as a whole. Its best direction is the causal-set substrate with Sorkin's everpresent Λ, where the new content is a species-count coefficient (R6). That is for now an order-of-magnitude coincidence under two free conventions, and E39 shows that it is a near miss only if the classical edge-mode flux sectors are left out (N_eff = 222 against ≈ 1150, band 180–360). The defensible outputs are the audit and a short, narrow note on what fails (crystal substrates, lattice anisotropy, the Λ-noise no-go). The right readers are specialists in causal sets and everpresent Λ.
+- **What would change the picture.** A prediction stated before it is computed and able to fail: fix κ and the fermion weights independently, then compare with Λ. A Λ-memory mechanism that is causal and does not double count. A Faddeev–Skyrme energy and size computed before the dark-matter mass is chosen. A rule for the scripts: a parameter solved from the target is never reported as agreement, and verdict lines are formatted from computed values. And a rule for the sessions: fetch before numbering, and re-run before reviewing.
+
+**Status:** the overview is pure reasoning (**argument**). R15, R16, R17: **not supported as stated** (**computed here**). R6 and R7 are unchanged (**conjecture + no-go**). Reproducibility: **established** by re-run.
+
+**References:** as in E29, E34, E35, E38, E39 and E41, plus (all from memory):
+- **Nussinov**, Phys. Lett. B 165, 55 (1985); **Kaplan, Luty & Zurek**, PRD 79, 115016 (2009); **Petraki & Volkas**, Int. J. Mod. Phys. A 28, 1330028 (2013): asymmetric dark matter
+- **Harvey, Massey, Kitching, Taylor & Tittley**, Science 347, 1462 (2015): merging-cluster limit on self-interaction
+- **Sorkin**, Int. J. Theor. Phys. 36, 2759 (1997); **Ahmed, Dodelson, Greene & Sorkin**, PRD 69, 103523 (2004): everpresent Λ
+
+**Files:** [`r31_audit_of_r25_r26_r28.py`](r31_audit_of_r25_r26_r28.py), [results](results/r31_audit_of_r25_r26_r28.txt), ![audit](figures/r31_audit_of_r25_r26_r28_audit.png)
