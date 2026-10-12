@@ -1,7 +1,7 @@
 """Run every research/rNN_*.py script; each writes research/results/ and research/figures/.
 
 Usage: python run_all.py [--fast]
-  --fast skips the slow scripts (SLOW below): a full run takes more than half an hour (r42 ~11 min, r45 ~5 min, r46 ~4 min at 256^3, r48 needs a GPU).
+  --fast skips the slow scripts (SLOW below): a full run takes more than half an hour (r42 ~11 min, r45 ~5 min, r46 ~4 min at 256^3, r48, r50 and r54 want a GPU: ~8 min and ~17 min on an RTX 3060).
 """
 import glob
 import os
@@ -9,7 +9,7 @@ import subprocess
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SLOW = ("r21", "r29", "r30", "r35", "r39", "r42", "r44", "r45", "r46", "r48")
+SLOW = ("r21", "r29", "r30", "r35", "r39", "r42", "r44", "r45", "r46", "r48", "r50", "r54")
 
 if __name__ == "__main__":
     env = dict(os.environ, MPLBACKEND="Agg")

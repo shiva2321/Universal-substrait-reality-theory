@@ -1,0 +1,50 @@
+Parameters: g = 1.0, g12 = 0.5, n_a = 1.0, Omega = 0.02: c_d = 1.2247, c_r = 0.7071, m_phi = 0.2000, kink width delta = c_r/m_phi = 3.536, sine-Gordon tension 8 F_r^2 c_r m_phi = 1.1314.
+
+==============================================================================
+U1. Uniform state: Bogoliubov spectrum against the hydrodynamic prediction
+==============================================================================
+         q  density branch    c_d q  spin branch  sqrt(m^2 + c_r^2 q^2)
+      0.02         0.02450  0.02449      0.20449                0.20050
+      0.05         0.06125  0.06124      0.20725                0.20310
+      0.10         0.12258  0.12247      0.21685                0.21213
+      0.20         0.24576  0.24495      0.25219                0.24495
+    => the density branch agrees with c_d q to 3.3e-03 and the spin branch with sqrt(m_phi^2 + c_r^2 q^2) to 3.0% (the few percent are the finite-Omega correction to the effective sine-Gordon mass).
+
+==============================================================================
+U2. The kink of the full two-component equations
+==============================================================================
+    stationary state: residual 9.0e-10; winding of the relative phase 6.2815 (2 pi = 6.2832); amplitudes stay nonzero (minimum total density 0.9467 of the uniform value).
+    kink centre at x = +0.000; width from the central slope 3.441 (sine-Gordon 3.536); energy per unit area (grand potential above the uniform state) 1.1107 (sine-Gordon 1.1314).
+    For comparison a plain dark soliton of one component with g = n_0 = 1 has 4/3 = 1.333 per unit area and a width of ~1; the kink is 3.5 healing lengths thick because it is held together by a weak coupling.
+
+==============================================================================
+U3. Bogoliubov-de Gennes spectrum of the planar kink
+==============================================================================
+        k  max Im omega  lowest |omega| (real)    c_r k
+     0.00      7.77e-13                0.00011  0.00000
+     0.05      5.23e-14                0.03205  0.03536
+     0.10      4.10e-14                0.06501  0.07071
+     0.20      4.77e-14                0.13373  0.14142
+     0.30      5.60e-14                0.20581  0.21213
+     0.50      4.29e-14                0.36165  0.35355
+     0.80      4.00e-14                0.63454  0.56569
+     1.20      4.47e-14                1.09571  0.84853
+    => the largest imaginary part over all modes and all k is 7.8e-13 (numerical noise level): the planar kink has NO bending (snake) instability, unlike the plain wall (0.26 at k = 0.7 in r49).
+    The lowest branch is the bending mode of the wall: omega / (c_r k) = 0.919, 0.946, 0.970, 1.023 at k = 0.1, 0.2, 0.3, 0.5 (a massless wave along the wall at the spin-sound speed).
+
+==============================================================================
+U4. Real-time 2D test: rippled walls, kink against dark soliton
+==============================================================================
+    Walls at x = +-25.6 in a 102 x 12.8 periodic box; transverse ripple of amplitude 0.8 (wavelength 12.8, k = 0.49); dt = 0.02.
+    dark-soliton walls: ripple amplitude 0.80 at t = 0; excess low-density regions (broken wall pieces / vortex cores): 0 at t = 0, first appear at t = 6, 8 at t = 60 (max 8)
+    kink walls:        ripple amplitude 0.80 -> max 0.88, min 0.00 after t = 160; plaquettes with a phase winding in either component: 0 -> 0 (max 0)
+    Bending oscillation of the kink wall: period expected from the sound speed 2 pi / (c_r k) = 18.1; observed (spacing of the 18 amplitude minima, x 2) = 17.7; the pure-Bogoliubov frequency at this k (middle panel) gives the exact comparison.
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   U1: the two-component hydrodynamics holds at the parameters used           -> CONFIRMED: density sound to 3e-03, spin branch sqrt(m^2 + c_r^2 q^2) to 3.0%
+   U2: a 2 pi kink of the relative phase exists as a stationary wall          -> YES: residual 9e-10, width 3.44 (SG 3.54), tension 1.111 (SG 1.131), amplitudes nonzero
+   U3: the planar kink has a bending instability                              -> NO: max Im omega = 8e-13 for k = 0-1.2; the bending mode is a wave at c_r (omega/c_r k = 0.96)
+   U4: a rippled kink wall survives in real time, a rippled dark-soliton wall does not -> YES: defects: kink walls max 0 (phase windings), dark-soliton walls max 8 (excess low-density regions; first at t = 6); ripple 0.8
+   runtime 19 s

@@ -1,0 +1,32 @@
+Device: NVIDIA GeForce RTX 3060.  Lattice 512^3, dx = 0.5 (box 256); lambda = (1.0, 0.5, 0.25) (core widths 1.00, 1.41, 2.00); seeds (1, 2, 3); marks (8.0, 10.0, 13.0, 16.0, 20.0, 25.0, 30.0, 36.0, 44.0, 52.0, 60.0).
+
+==============================================================================
+T1. xi(eta) for three core widths
+==============================================================================
+       eta | core 1.00  xi | core 1.41  xi | core 2.00  xi
+       8.0 |          1.397 |          0.358 |          0.178
+      10.0 |          1.608 |          0.806 |          0.197
+      13.0 |          1.605 |          1.565 |          0.418
+      16.0 |          1.586 |          1.567 |          1.031
+      20.0 |          1.551 |          1.585 |          1.548
+      25.0 |          1.510 |          1.561 |          1.546
+      30.0 |          1.473 |          1.537 |          1.565
+      36.0 |          1.439 |          1.499 |          1.544
+      44.0 |          1.402 |          1.461 |          1.501
+      52.0 |          1.366 |          1.428 |          1.463
+      60.0 |          1.337 |          1.403 |          1.454
+
+      core  mean xi (eta >= 25)   d ln xi / d ln eta  xi(60) / xi(25)
+      1.00                1.421               -0.138            0.885
+      1.41                1.482               -0.125            0.899
+      2.00                1.512               -0.086            0.940
+    => the drift exponent varies by 0.05 across core widths (individual values -0.14 to -0.09); the mean xi by 6%.
+    A drift that is the same for every core width is a property of the network; one that changes with the core is an artefact of the prescription.
+    Verdict of this test: the drift is THE SAME for all core widths (to 0.06 in the exponent, eta >= 25): physical within this dynamic range.
+    For comparison, over eta >= 16 (the largest core is still forming there): core 1.00: -0.13, core 1.41: -0.09, core 2.00: +0.14
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   T1: the slow drift of xi found in r48 is independent of the core width -> YES: d ln xi / d ln eta = -0.14 (core 1.00), -0.12 (core 1.41), -0.09 (core 2.00)
+   runtime 1048 s

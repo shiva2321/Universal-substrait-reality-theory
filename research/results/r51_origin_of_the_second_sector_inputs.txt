@@ -1,0 +1,68 @@
+
+==============================================================================
+V1. Tunnelling between two sheets: Omega(d) from exact double-well levels
+==============================================================================
+Units hbar = m = 1; wells of width 2 and depth U_b (barrier outside and between).  Omega = (E_odd - E_even) / 2 is the single-particle tunnelling amplitude (the mean-field Josephson coupling of two
+condensates); E_0 = the single-well ground state, taken as the natural energy scale (mu ~ E_0 up to O(1)); kappa_0 = sqrt(2 (U_b - E_0)) is the decay constant in the barrier; 1/kappa_0 plays the
+role of the healing length.
+      U_b      E_0  kappa_0 | d =    2  d =    4  d =    8  d =   12  d =   16  d =   24  d =   32  d =   40
+      1.0   0.3961   1.0990 |  6.4e-02   7.1e-03   8.7e-05   1.1e-06   1.3e-08   2.0e-12   3.1e-16   4.7e-20
+      4.0   0.6630   2.5834 |  2.7e-03   1.5e-05   4.9e-10   1.6e-14   5.2e-19   5.5e-28   5.8e-37   6.2e-46
+     16.0   0.8883   5.4976 |  4.9e-06   8.2e-11   2.3e-20   6.5e-30   1.8e-39   1.5e-58   1.2e-77   9.1e-97
+    (entries: Omega / E_0)
+    Exponential law and the separation needed (fit of ln(Omega / E_0) against kappa_0 d for the last four points):
+      U_b =  1.0: Omega / E_0 = 0.58 exp(-1.000 kappa_0 d);  Omega / mu = 5e-13 needs kappa_0 d = 27.8; 8e-12 needs 25.0
+      U_b =  4.0: Omega / E_0 = 0.47 exp(-1.000 kappa_0 d);  Omega / mu = 5e-13 needs kappa_0 d = 27.6; 8e-12 needs 24.8
+      U_b = 16.0: Omega / E_0 = 0.29 exp(-1.000 kappa_0 d);  Omega / mu = 5e-13 needs kappa_0 d = 27.1; 8e-12 needs 24.3
+    => with kappa_0 xi ~ 1 the sheets must be about 24-28 healing lengths apart (alpha x 24-28 Planck lengths): the tiny Rabi coupling is the exponential tail of a tunnelling
+       amplitude, a separation of a few tens of healing lengths, with no tuning of any coupling.  (Compare r41: a structure ~ 14-85 healing lengths wide gives m_e / m_P = 4e-23 by the same exponential.)
+
+==============================================================================
+V2. The compatibility problem: a slow spin sound needs a LONG-range inter-sheet repulsion
+==============================================================================
+    Sheets 26 healing lengths apart (the middle of the range above).  A contact interaction between the sheets is exponentially small there (g12 / g ~ e^(-d/xi) ~ 5e-12): s = 1,
+    excluded by r44.  A mediator of range lambda_m gives g12 / g ~ exp(-(d - t) / lambda_m) (t = sheet thickness ~ 1 healing length; the exact plane-plane integral of a Yukawa potential differs by a power-law
+    prefactor).  With s^2 = (g - g12)/(g + g12):
+        s   g12 / g   range lambda_m (healing lengths)  mediator mass / M_P (alpha = 1)
+     0.05     0.995                               5009                         2.00e-04
+     0.10     0.980                               1252                         7.99e-04
+     0.20     0.923                                313                         3.20e-03
+     0.30     0.835                                139                         7.21e-03
+     0.50     0.600                                 49                         2.04e-02
+     0.70     0.342                                 23                         4.28e-02
+    (mediator mass = hbar c / lambda_m = M_P / (lambda_m / xi) for xi = l_P; 1 M_P = 1.22e+19 GeV.)
+    => a spin sound of 0.2-0.5 c needs a mediator of range 49-313 healing lengths, i.e. mass 3.9e+16-2.5e+17 GeV for alpha = 1: 49-313 times longer than the
+       wavefunction tail that sets the tunnelling.  A short-range tunnelling suppression and a long-range repulsion can come from the same bulk only if the repulsion is carried by a field much lighter
+       than the one that governs the matter wavefunction: two different bulk ranges, as for a nearly massless (gravity-like) bulk force between the sheets.  That is a requirement, not a derivation.
+
+==============================================================================
+V3. Technical naturalness
+==============================================================================
+    Omega: when Omega = 0 the relative phase has an exact shift symmetry (r39), so every quantum correction to Omega is proportional to Omega: a small Omega is stable under renormalisation
+    (technically natural).  The exponential tunnelling origin gives it without tuning.
+    s: s = 1 (g12 = 0, two decoupled components) and s = 0 (g12 = g, the edge of the miscible phase) are the special points; s = 0.3 means g12 / g = 0.83, close to the second one:
+    a mild tuning that no symmetry protects (unless g12 and g are fixed by one mediator, V2).
+
+==============================================================================
+V4. Predictions independent of the origin
+==============================================================================
+    r = 16 epsilon s, n_t = -2 epsilon = -r / (8 s) (single-field consistency relation violated by the factor s), f_NL^equil = -(35/108)(1/s^2 - 1), n_s unchanged.
+        s   n_t / (-r/8)   f_NL^equil    r at n_s = 0.965 (f ~ 8-10)
+     0.05           20.0       -129.3                         0.0044
+     0.10           10.0        -32.1                         0.0087
+     0.20            5.0         -7.8                         0.0175
+     0.30            3.3         -3.3                         0.0262
+     0.50            2.0         -1.0                         0.0437
+     0.70            1.4         -0.3                         0.0612
+     1.00            1.0         -0.0                         0.0875
+    Planck 2018 (typed from memory): f_NL^equil = -26 +- 47 (68 %), so s > 0.05; a detection of tensors with r ~ 0.01-0.03 would test n_t = -r/(8s) only if n_t can be measured to ~ 10 % of -r/8 (not in reach of current
+    forecasts), and f_NL^equil ~ -3 at s = 0.3 is far below the sensitivity of Planck (+- 47) and of planned surveys (order 10; typed from memory).  The second sector is, for now, untestable beyond n_s and r.
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   V1: a Rabi coupling of 1e-12 of the medium's energy follows from tunnelling between sheets -> YES: exponential law verified to many digits; needs sheets 24-28 healing lengths apart (barrier heights 1-16 E_0), no tuning
+   V2: the same sheets give the large inter-sheet repulsion the slow spin sound needs     -> ONLY with a mediator of range 49-313 healing lengths (s = 0.5-0.2), that much longer than the wavefunction tail: a requirement, not a derivation
+   V3: both inputs are technically natural                                                -> Omega yes (symmetry); s only as a mild, unprotected tuning (g12/g = 0.83 for s = 0.3)
+   V4: the second sector can be tested beyond n_s and r                                   -> NO at present: f_NL^equil = -3.3 at s = 0.3 against +-47 (Planck); n_t / (-r/8) = 3.3 unmeasurable
+   runtime 0 s

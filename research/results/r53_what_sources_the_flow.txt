@@ -1,0 +1,71 @@
+
+==============================================================================
+W1. A source-free flow of a constant-sound-speed medium
+==============================================================================
+Constant sound speed: P = c^2 rho + const, so h(rho) = c^2 ln rho and Bernoulli reads v^2 / 2 + c^2 ln rho = c^2 ln rho_inf (flow at rest at infinity).  Continuity without sinks: r^2 rho v = q.
+In units c = 1: rho = rho_inf exp(-v^2 / 2), mass flux through the sphere of radius r:  4 pi r^2 rho_inf v exp(-v^2/2).  The function v exp(-v^2/2) has its maximum at v = 1 (the sound speed):
+    the flow is CHOKED: a given mass flux q can only pass through radii r >= r_c = sqrt(q e^(1/2) / (4 pi rho_inf)), where v reaches c exactly; inside r_c there is no steady source-free solution.
+    So a horizon (v = c) exists only at the edge of the region where the sink sits; there is no free flow that goes through the sonic point to smaller radii.
+    Source-free flow with its throat at r = r_h compared with the escape-speed profile c sqrt(r_h / r):
+     r / r_h   v_free / c  v_escape / c  v_free / v_escape  rho / rho_inf
+         1.0    1.000e+00     1.000e+00          1.000e+00        0.60653
+         1.5    2.804e-01     8.165e-01          3.434e-01        0.96146
+         2.0    1.534e-01     7.071e-01          2.170e-01        0.98830
+         3.0    6.755e-02     5.774e-01          1.170e-01        0.99772
+        10.0    6.065e-03     3.162e-01          1.918e-02        0.99998
+       100.0    6.065e-05     1.000e-01          6.065e-04        1.00000
+      1000.0    6.065e-07     3.162e-02          1.918e-05        1.00000
+    => the source-free flow falls as 1/r^2 (incompressible sink), not as 1/sqrt(r): at 10 r_h it is already a factor ~ 50 below the escape speed and at 1000 r_h a factor ~ 5e4.  The escape-speed
+       flow of gravity is NOT what the medium does by itself.
+
+==============================================================================
+W2. What the escape-speed profile requires
+==============================================================================
+v = c sqrt(r_h / r), r_h = 2 G M / c^2, gravity g = G M / r^2 = c^2 r_h / (2 r^2).
+  (a) Uniform density, no pressure gradient: Euler gives f = v dv/dr = -c^2 r_h / (2 r^2) (inward): a body force exactly equal to Newtonian gravity acting on the medium's own parcels (circular: it assumes gravity).
+      Continuity: sigma = -(1/r^2) d(r^2 rho v)/dr = (3/2) rho v / r: a sink density in EVERY volume element, falling as r^(-3/2) (the total sink inside radius R grows as R^(3/2): it is not
+      a localised source).
+  (b) Constant sound speed, no sinks: continuity gives rho ~ r^(-3/2) (rho v r^2 = const); the pressure force per unit mass is -(1/rho) dP/dr = -c^2 d ln rho / dr = +(3/2) c^2 / r, directed OUTWARD, so the
+      body force needed is f = g + (3/2) c^2 / r = g (1 + 3 r / r_h): larger than gravity by the factor 1 + 3 r / r_h:
+         r / r_h  f / g (uniform)    f / g (constant c_s, no sink)
+         1.5e+00              1.0                        5.500e+00
+         3.0e+00              1.0                        1.000e+01
+         1.0e+01              1.0                        3.100e+01
+         1.0e+02              1.0                        3.010e+02
+         1.0e+03              1.0                        3.001e+03
+         1.0e+05              1.0                        3.000e+05
+         1.0e+09              1.0                        3.000e+09
+      At the surface of the Earth r / r_h = 7.18e+08 (r_h = 8.9 mm): the constant-sound-speed medium would need a body force 2.2e+09 times gravity.
+  So the medium's own pressure cannot supply the infall (it opposes it), and the infall needs either a force as strong as gravity on the medium (circular) or a force far stronger.
+
+==============================================================================
+W3. What the drain costs
+==============================================================================
+    Planck density 5.15e+96 kg/m^3.  Medium density rho = f rho_P: f = 0.7 (alpha = 1, n xi^3 = 1, r33) down to f = 7e-9 (the lowest value allowed by the string bound at formation, r42).
+              body     R (m)  v_esc (m/s)  R / v (s)  drain, f = 0.7 (kg/s)  drain, f = 7e-9 (kg/s)  in units of its own mass / s
+             Earth  6.37e+06    1.119e+04   5.70e+02              2.06e+115               2.06e+107                      3.45e+90
+               Sun  6.96e+08    6.178e+05   1.13e+03              1.36e+121               1.36e+113                      6.82e+90
+         Milky Way  3.10e+20    1.133e+06   2.74e+14              4.94e+144               4.94e+136                     1.66e+102
+    The medium inside a volume of radius R is drained and replaced every free-fall time R / v (570 s at the Earth's surface, 30 min at the Sun's): the picture needs a steady inflow from large
+    distances of an amount of medium per second that exceeds the object's own mass by a factor 1e90 (Earth, Sun) to 1e102 (galaxy) for a Planck-density medium.  Whether that is acceptable depends on what 'the medium is lost to the
+    extra dimension' means for energy conservation; the numbers are the price of the kinematics.
+
+==============================================================================
+W4. The area-energy half of the first law
+==============================================================================
+    Jacobson's argument needs the horizon area to grow when energy crosses it (Raychaudhuri).  In the flow picture the horizon is where v = c: r_h = 2 G M(< r_h) / c^2, so it responds to an energy flux dE
+    exactly as in GR (delta r_h = 2 G dE / c^4) IF the flow obeys v^2 = -2 Phi with Phi sourced by the total energy (Poisson); then delta A = 8 pi r_h delta r_h and T_H = hbar c / (4 pi r_h k_B) (acoustic
+    surface gravity kappa = c / (2 r_h) at the horizon, checked below) give delta E = T delta S with S = A / 4 l_P^2.
+    Surface gravity of the escape flow (acoustic metric g_tt = -(c^2 - v^2)): kappa = c / (2 r_h); Hawking temperature T = hbar kappa / (2 pi k_B) = hbar c / (4 pi k_B r_h): in units hbar c / (k_B r_h) = 0.07958 (= 1/4pi = 0.07958).
+    Check with M = 1e+30 kg, dE = 1e+20 J: r_h = 1.485e+03 m, T = 1.227e-07 K, delta S = 5.903e+49 k_B; T delta S / dE = 1.00000 (1 for the Bekenstein-Hawking first law).
+    So the first law is satisfied exactly by a flow that obeys v^2 = -2 Phi with Poisson-sourced Phi, and by nothing in the fluid equations themselves: W1-W3 show the fluid does not produce that flow.  The geometric half
+    of Einstein's equation is exactly the missing field equation for the flow (the 'source of the escape-speed flow').
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   W1: a source-free flow of a constant-sound-speed medium is the escape-speed flow       -> NO: it is choked at the sonic point and falls as 1/r^2: v_free / v_escape = 0.12 at 3 r_h, 1.9e-02 at 10 r_h, 6e-04 at 100 r_h
+   W2: the escape-speed flow follows from the fluid equations with a localised mass       -> NO: it needs a sink in every volume element (sigma = 3 rho v / 2r) and a body force equal to gravity, or a force 1 + 3 r/r_h times gravity if the pressure is constant-c_s
+   W3: the drain is modest                                                                -> NO: the medium in a volume of radius R is replaced every R/v (570 s for the Earth); for a Planck-density medium the drain is 3e90 (Earth) to 2e102 (galaxy) times the object's own mass per second
+   W4: the first law with area change holds for the flow                                  -> ONLY if v^2 = -2 Phi with Poisson-sourced Phi is imposed; the Bekenstein-Hawking relation then holds exactly (T delta S / dE = 1.00000)
+   runtime 0 s
