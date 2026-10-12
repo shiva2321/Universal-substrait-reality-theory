@@ -4,7 +4,7 @@
 
 USRT (Unified Substrate Reality Theory) is a speculative "space is a medium" research programme. It has four parts:
 
-- **The original material:** `UNIFIED_SUBSTRATE_REALITY_THEORY_TREATISE.md`, `RESEARCH_PREPRINT_USRT.md` and 45 simulation scripts in the repository root.
+- **The original material:** `UNIFIED_SUBSTRATE_REALITY_THEORY_TREATISE.md`, `RESEARCH_PREPRINT_USRT.md` and 45 simulation scripts (moved to `archive/usrt_legacy/` on 2026-10-12).
 - **`audit/`:** the independent verification of the original claims. Start with `audit/USRT_AUDIT_REPORT.md`. Run it with `python3 audit/run_all.py` and regenerate its figures with `python3 audit/make_figures.py`.
 - **`research/`:** all new exploration after the audit. Each question becomes a script `rNN_topic.py`. Its output goes to `research/results/` and its plots to `research/figures/`. The running record is **`research/LAB_NOTEBOOK.md`**. Read the notebook first to see what has already been done and what is queued.
 - **`README.md`:** the public overview and gallery.

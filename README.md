@@ -27,7 +27,7 @@ It ships with an **independent audit** that recomputes every headline claim agai
 > Both documents carry errata banners. The details, with reproducible code, are in [`audit/USRT_AUDIT_REPORT.md`](audit/USRT_AUDIT_REPORT.md). This README shows the ideas and the evidence side by side.
 
 <p align="center">
-  <img src="hyperdimensional_reality_view.jpg" width="88%" alt="Concept illustration of USRT">
+  <img src="archive/usrt_legacy/hyperdimensional_reality_view.jpg" width="88%" alt="Concept illustration of USRT">
   <br>
   <sub><b>Concept illustration, not a calculation.</b> This is an AI-generated artist's impression of the picture below; note the garbled labels. It is not derived from any equation in this repository.</sub>
 </p>
@@ -107,7 +107,7 @@ Each figure is produced by the script of the same name. Captions say what is **c
 <table>
 <tr>
 <td width="50%" valign="top">
-<img src="foundational_substrate_potential.png" width="100%"><br>
+<img src="archive/usrt_legacy/foundational_substrate_potential.png" width="100%"><br>
 <b>Foundations of the substrate</b> (<code>foundational_substrate_potential.py</code>)<br>
 <sub>Computed:
 <ul>
@@ -118,7 +118,7 @@ Each figure is produced by the script of the same name. Captions say what is **c
 The corrected Cauchy–Born algebra gives a calibration constant of 28.8, Zener ratio 2 and Λ* = 5.37.</sub>
 </td>
 <td width="50%" valign="top">
-<img src="hcp_planck_lattice_analysis.png" width="100%"><br>
+<img src="archive/usrt_legacy/hcp_planck_lattice_analysis.png" width="100%"><br>
 <b>The close-packed Planck lattice</b> (<code>hcp_planck_lattice_analysis.py</code>)<br>
 <sub>Shows:
 <ul>
@@ -131,24 +131,24 @@ The speeds trace a lobed curve, not a circle: the lattice is anisotropic. The or
 </tr>
 <tr>
 <td valign="top">
-<img src="cauchy_tensor_gravity.png" width="100%"><br>
+<img src="archive/usrt_legacy/cauchy_tensor_gravity.png" width="100%"><br>
 <b>Light bending by the Sun</b> (<code>cauchy_tensor_gravity.py</code>)<br>
 <sub>The ray tracer is fixed (sign error, path length) and now gives <b>1.7513″</b> against the analytic 1.7512″. The full value appears only because GR's metric g<sub>ij</sub> = (1 + 2GM/c²r)δ<sub>ij</sub> is written in. The pure density ("scalar") sector gives half (0.876″), and the audit shows no elastic displacement can produce the required strain.</sub>
 </td>
 <td valign="top">
-<img src="cavity_simulation.png" width="100%"><br>
+<img src="archive/usrt_legacy/cavity_simulation.png" width="100%"><br>
 <b>Gravity as a substrate cavity</b> (<code>cavity_simulation.py</code>)<br>
 <sub>A solved Gross–Pitaevskii cavity around a mass cluster. Panels 2–3 compare it with Newton's 1/r and 1/r², matched at r = 2ξ. The cavity force falls <b>exponentially</b> (∝ e<sup>−1.414 r</sup>): a screened, short-range attraction rather than gravity.</sub>
 </td>
 </tr>
 <tr>
 <td valign="top">
-<img src="universe_simulation.png" width="100%"><br>
+<img src="archive/usrt_legacy/universe_simulation.png" width="100%"><br>
 <b>Toy universe</b> (<code>universe_simulation.py</code>)<br>
 <sub>A flat substrate, then energy injection, then matter carving a cavity, then a test particle. The force is now derived from the computed (screened) cavity instead of the original typed-in a = −0.85/(r² + 1.2). The script prints the force against 1/r²: at r = 8 it is 8 × 10⁻³ against 6 × 10⁻².</sub>
 </td>
 <td valign="top">
-<img src="dark_sector_and_vortex.png" width="100%"><br>
+<img src="archive/usrt_legacy/dark_sector_and_vortex.png" width="100%"><br>
 <b>Dark sector and entanglement</b> (<code>dark_sector_and_vortex.py</code>)<br>
 <sub>
 <ul>
@@ -160,12 +160,12 @@ The speeds trace a lobed curve, not a circle: the lattice is anisotropic. The or
 </tr>
 <tr>
 <td valign="top">
-<img src="electron_mass_cavity.png" width="100%"><br>
+<img src="archive/usrt_legacy/electron_mass_cavity.png" width="100%"><br>
 <b>The electron as trapped light</b> (<code>electron_mass_cavity.py</code>)<br>
 <sub>A light-speed loop at the Compton radius. E = m<sub>e</sub>c² and μ = μ<sub>B</sub> are identities, because m<sub>e</sub> is the input. The computed angular momentum is <b>L = 1.000 ħ</b> with <b>g = 1.000</b>, whereas the electron has ½ħ and g = 2.0023. This is the known problem with Zitterbewegung loop models.</sub>
 </td>
 <td valign="top">
-<img src="exact_three_generation_lepton_spectrum.png" width="100%"><br>
+<img src="archive/usrt_legacy/exact_three_generation_lepton_spectrum.png" width="100%"><br>
 <b>Three lepton generations</b> (<code>exact_three_generation_lepton_spectrum.py</code>)<br>
 <sub>The Koide/Brannen circulant with δ = 2/9:
 <ul>
@@ -178,12 +178,12 @@ The speeds trace a lobed curve, not a circle: the lattice is anisotropic. The or
 </tr>
 <tr>
 <td valign="top">
-<img src="massless_entities_and_light_physics.png" width="100%"><br>
+<img src="archive/usrt_legacy/massless_entities_and_light_physics.png" width="100%"><br>
 <b>Massless excitations</b> (<code>massless_entities_and_light_physics.py</code>)<br>
 <sub>The dispersion relations, group velocity, Compton shift and Doppler factors are standard relativity and QED. Panel (c) computes the acoustic branches of an elastic medium: the longitudinal one is <b>gapless</b>, which is an open problem for "light = shear wave".</sub>
 </td>
 <td valign="top">
-<img src="visualize_3d_cavities_and_photons.png" width="100%"><br>
+<img src="archive/usrt_legacy/visualize_3d_cavities_and_photons.png" width="100%"><br>
 <b>Visualising the picture in 3D</b> (<code>visualize_3d_cavities_and_photons.py</code>)<br>
 <sub>Illustrative:
 <ul>
@@ -196,7 +196,7 @@ These are drawings of the intuition, not solutions of field equations.</sub>
 </tr>
 <tr>
 <td valign="top">
-<img src="cosmogenesis_simulation.png" width="100%"><br>
+<img src="archive/usrt_legacy/cosmogenesis_simulation.png" width="100%"><br>
 <b>Cosmogenesis</b> (<code>cosmogenesis_simulation.py</code>)<br>
 <sub>A schematic of the story in four stages:
 <ol>
@@ -208,7 +208,7 @@ These are drawings of the intuition, not solutions of field equations.</sub>
 The curves are illustrative profiles; stages 1–2 are standard textbook potentials.</sub>
 </td>
 <td valign="top">
-<img src="master_theory_synthesis.png" width="100%"><br>
+<img src="archive/usrt_legacy/master_theory_synthesis.png" width="100%"><br>
 <b>Audited dashboard</b> (<code>master_theory_synthesis.py</code>)<br>
 <sub>The ten "pillars", now each with a computed or labelled status, replacing the original hard-coded <code>PASSED</code> flags:
 <ul>
@@ -265,12 +265,14 @@ All 45 scripts run cleanly (tested with Python 3.13, NumPy, SciPy, Matplotlib, S
 ├── UNIFIED_SUBSTRATE_REALITY_THEORY_TREATISE.md  full monograph, 16 sections (+ errata banner)
 ├── RESEARCH_PREPRINT_USRT.md                     preprint draft, Section 1 (+ errata banner)
 ├── hyperdimensional_reality_view.jpg             AI-generated concept illustration
-├── *.py  /  *.png                                45 simulation scripts, each with its figure
+├── archive/usrt_legacy/                          the 45 original simulation scripts, each with its figure (moved from the root; audited in audit/)
+├── koide_anomaly/                                Koide-relation package from a Gemini session (audited in E51 / r56: mostly prior art, internal inconsistencies)
+├── encyclopedia/  *_FOUNDATIONS_FOR_REALITY_RESEARCH.md  CHRONOLOGY_...md   reference library written by a Gemini session; unverified drafts, see E51
 ├── CLAUDE.md                                     working rules: every calculation is saved and pushed
 ├── research/
 │   ├── LAB_NOTEBOOK.md                           dated record of every question, method, result
 │   ├── lab.py   run_all.py                       shared helpers; re-run everything
-│   ├── r01 ... r55_*.py                          one script per question
+│   ├── r01 ... r56_*.py                          one script per question
 │   ├── results/   figures/                       text output and plots of each script
 └── audit/
     ├── USRT_AUDIT_REPORT.md                      findings, provenance, before/after fixes, errata

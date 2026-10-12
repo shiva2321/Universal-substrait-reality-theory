@@ -1,0 +1,71 @@
+
+==============================================================================
+K1. The tau-mass 'prediction'
+==============================================================================
+    Solving Q(m_e, m_mu, m_tau) = 2/3 for m_tau: 1776.969027 MeV; PDG 2024 (as typed in the package) 1776.93 +- 0.09 MeV: pull +0.43 sigma.
+    This is Koide's own prediction of 1981 (about 1776.97 MeV): prior art, reproduced exactly.  Belle II / a tau-charm factory improving sigma(m_tau) tests whether Q = 2/3 is exact; that is a real, old test.
+
+==============================================================================
+K2. Quark Koide ratios with uncertainties
+==============================================================================
+    up (u, c, t): Q = 0.8489 +- 0.0012  (+158 sigma from 2/3).  The package quotes '+27.3 %' / '+9.7 %' with no uncertainty.
+    down (d, s, b): Q = 0.7314 +- 0.0074  (+9 sigma from 2/3).  The package quotes '+27.3 %' / '+9.7 %' with no uncertainty.
+    The masses mix definitions (MS-bar at 2 GeV, at m_c, at m_b, and a direct/pole top mass); the sigma above ignores that scheme dependence, which is larger than the quoted errors for the up sector.
+
+==============================================================================
+K3. How surprising is Q = 2/3 to 5e-6?
+==============================================================================
+    Random mass triples, log-uniform over 1-4000 (ratios of the size of the lepton ones): |Q - 2/3| < 5e-6 in 1.3e-05 of triples; < 1e-3 in 2.4e-03.
+    So the lepton coincidence is a ~1-in-10^5 event for a single pre-chosen formula; Koide is one of many ratio formulas that have been tried on the lepton (and quark) masses, so the look-elsewhere factor is unknown
+    and large.  Suggestive, not established.  The quark values (K2) do not obey it at all.
+
+==============================================================================
+K4. Is the 'Sumino shielding' check a test?
+==============================================================================
+    In sumino_mechanism.simulate_lepton_mass_shielding the 'family' shift is defined as the QED shift with the opposite sign (+(3 alpha/2 pi) ln(m/Lambda) against -(3 alpha/2 pi) ln(m/Lambda)),
+    so the 'shielded' Q equals the input Q by construction.  Scaling the family coefficient by a factor f:
+         f   Q_shielded - Q_exact
+      1.00             +1.110e-16
+      1.10             +1.155e-04
+      0.90             -1.145e-04
+      0.50             -5.625e-04
+    => the printed 'INVARIANT: diff = +1.1e-16' is an identity (f = 1 was solved for, not found); it carries no information.  Whether a real family gauge sector gives f = 1 is not computed anywhere in the package
+       (the coefficient g_F^2 = 6 pi alpha is quoted from Sumino 2009 as the condition for cancellation).
+
+==============================================================================
+K5. Internal consistency of the package
+==============================================================================
+    (a) Q(MS-bar, M_Z) - Q(pole): qed_running gives +1.16e-03; sumino_mechanism gives -1.10e-03 (opposite sign); an independent evaluation with typed MS-bar masses at M_Z
+        (0.48657, 102.718, 1746.24 MeV) gives +1.26e-03.  The hard-coded text in qed_running.py says Q goes 'down to ~0.6660 at M_Z'; its own output (and the independent value 0.66793) is above 2/3.
+    (b) mu -> 3e bound on the lightest family gauge boson: sumino_mechanism says M_A >= 54.3 TeV; prediction_2 (v_F >= 383.7 TeV) implies M_12 = 32.3 TeV.  The two modules use branching-ratio
+        formulas that differ by a factor 8 (so by 8^(1/4) = 1.68 in mass).
+    (c) The benchmark v_F = 300 TeV (commented 'inside allowed, testable window') gives BR(mu -> 3e) = 2.68e-12 against the limit 1.0e-12 that the same file used to get v_F >= 384 TeV:
+        the benchmark is excluded by the package's own bound.  BR(mu Ti -> e Ti) is taken as 1.5 x BR(mu -> 3e) with no derivation; BR(mu -> e gamma) uses an unexplained loop factor; BR(tau -> 3mu) an ad hoc 0.174.
+    (d) Final line of prediction_2: 'observed if v_F lies below ~2,300 TeV'; the file's own computed Mu3e reach is 3837 TeV.
+    (e) The 'Cabibbo-like' ratio M_12/M_13 = |sqrt(m_e) - sqrt(m_mu)| / |sqrt(m_e) - sqrt(m_tau)| = 0.2308 follows from the mass formula M_ij ~ |sqrt(m_i) - sqrt(m_j)| chosen in prediction_2
+        (sumino_mechanism's docstring uses a different one); the equally good-looking sqrt(m_mu/m_tau) = 0.2438.  Neither has anything to do with quark mixing (sin theta_C = 0.225): numerology.
+
+==============================================================================
+K6. Does QCD running explain the quark ratios?
+==============================================================================
+    Q_u at mu = 2 GeV, M_Z, 1e16 GeV: 0.8533, 0.8708, 0.8724;  Q_d: 0.7314, 0.7399, 0.7399.
+    QCD running moves the quark ratios AWAY from 2/3 (by 2 % between 2 GeV and the GUT scale), while the observed offsets are 27 % (up) and 10 % (down).  Running cannot explain them, and the
+    statement that the code 'proves' that gluon loops 'cannot be cancelled by family gauge bosons' is an assertion: no family-boson loop for coloured fermions is computed.
+
+==============================================================================
+K7. The Brannen phase 2/9 and the '452 sigma'
+==============================================================================
+    delta fitted to (m_e, m_mu) with Q = 2/3 built in: 0.222222047 rad; 2/9 = 0.222222222; difference -1.75e-07 (relative 7.9e-07).
+    With delta = 2/9 exactly the muon mass comes out 105.6594145 MeV against 105.6583755: a relative miss of 9.8e-06, +452 sigma only because the muon is measured to 2e-8.
+    So: delta = 2/9 holds to ~8e-7 relative but not exactly; the relation is a numerical coincidence at the 10^-6 level, not a result of the package (Brannen 2006 is prior art).
+
+==============================================================================
+Verdict (every number below is computed above)
+==============================================================================
+   K1 the tau-mass 'prediction' is new                -> NO: Koide 1981; reproduces 1776.969 MeV, +0.43 sigma
+   K2 the quark offsets are quantified                -> NOT in the package (no sigma); with sigma: up 158 sigma, down 8.7 sigma from 2/3
+   K3 Q = 2/3 is a >5 sigma coincidence               -> NOT shown: 1e-05 for one formula, look-elsewhere factor unknown
+   K4 'Sumino shielding' is verified                  -> NO: an identity by construction; the physics (f = 1) is quoted from the literature
+   K5 the modules agree with each other               -> NO: sign of the QED shift, bound (x1.7), benchmark excluded by its own bound, hard-coded 2300 vs 3837 TeV
+   K6 QCD running explains the quark ratios           -> NO: it moves them away from 2/3
+   K7 the phase 2/9 is exact                          -> NO: relative miss 1e-5 in the muon mass; prior art (Brannen)
