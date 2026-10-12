@@ -65,6 +65,7 @@ This is the running record of every question, calculation, plot and conclusion i
 | [E47](#e47) | 2026-10-11 | The fluid-space programme, stage 3: what drives the stretching, matter as quasi-particles, the 3D network of vortex lines, and entanglement from the quantum to the cosmic scale | r39–r43 |
 | [E48](#e48) | 2026-10-11 | The fluid-space programme, stage 4: a second sector for the stretching, the single light cone, the network at scale, from the first law toward Einstein's equation, and what holds a wall flat | r44–r49 |
 | [E49](#e49) | 2026-10-12 | The fluid-space programme, stage 5: where the second sector's inputs come from, reheating and the dark sector, the single light cone with a gauge field, what would source the gravity flow, a topological wall, and the network's drift | r50–r55 |
+| [E50](#e50) | 2026-10-12 | An honest audit of the fluid-space programme: what is new, what is prior art, what is a prediction | — |
 
 ---
 
@@ -408,6 +409,7 @@ Under a constant push the speed went 0.375 → 0.700 → 0.850 → 0.900c. Newto
 - [ ] (added 2026-10-12, from E49) **A field equation for the gravity flow:** a Poisson-type equation for the potential Φ in v² = −2Φ coming from the medium (a long-range field sourced by energy, with the drain of r53 interpreted as energy conservation across the extra dimension); without it the first law holds only because the flow is imposed.
 - [ ] (added 2026-10-12, from E49) **What makes the species speeds equal:** a symmetry or a strongly coupled fixed point (r45 and r52 show weak couplings cannot); and a multi-species version of the one-loop flow (all charged Standard-Model fermions at different speeds).
 - [ ] (added 2026-10-12, from E49) **The string network at larger dynamic range** (η beyond 60, a prescription without a comoving core): where ξ goes asymptotically and whether it grows logarithmically as in global-string simulations.
+- [ ] (added 2026-10-12, from E50) **Decide the direction before any further stage:** either one time-boxed, zero-parameter calculation compared with a real measurement within σ (α, a mass ratio or Λ from the medium's parameters, pass/fail fixed in advance), or close the programme as a requirements map. The E48–E49 queue items above are consistency checks and should wait for this decision.
 
 > **Note (2026-10-10, later):** E10 gives the layered version of this picture, with parameter ranges and the new Coulomb-phase constraint α < α_c ≈ 0.079. Nothing in E9 is retracted.
 
@@ -2862,3 +2864,41 @@ Cubes l = 2–12; area-law fit S = η·6l² + b·l + c for l ≥ 4, exactly as f
 - **Press, Ryden & Spergel**, ApJ 347, 590 (1989); **Gorghetto, Hardy & Villadoro**, JHEP 07, 151 (2018) (global-string scaling with a logarithm); **Hindmarsh et al.**, JCAP 2019
 
 **Files:** [`r50_reheating_and_the_dark_sector.py`](r50_reheating_and_the_dark_sector.py) (GPU, ~18 min with the checks), [`r51_origin_of_the_second_sector_inputs.py`](r51_origin_of_the_second_sector_inputs.py), [`r52_gauge_speed_flow.py`](r52_gauge_speed_flow.py), [`r53_what_sources_the_flow.py`](r53_what_sources_the_flow.py), [`r54_string_scaling_core_dependence.py`](r54_string_scaling_core_dependence.py) (GPU, ~17 min), [`r55_topological_wall.py`](r55_topological_wall.py); results in `results/r50_…` to `r55_…`, figures in `figures/`.
+
+---
+
+<a id="e50"></a>
+## E50 — An honest audit of the fluid-space programme: what is new, what is prior art, what is a prediction (2026-10-12)
+
+**Question (user):** "are we even progressing toward a novel solution or just recreating already established things and experiments ... it seems we are just wasting time, tokens and efforts ... there is nothing novel or new or useful that came out of this research."
+
+**Method:** pure reasoning, no script. Each result of E44–E49 is sorted into (a) prior art re-derived inside the model, (b) a number specific to the model that is not a statement about the world, (c) a prediction that differs from GR + ΛCDM + the Standard Model and could be compared with a measurement not used to fix a parameter. The literature was **not** searched item by item; the attributions below are from memory and the novelty of each item is unchecked.
+
+**Results:**
+
+| Result | Sort | What it really is |
+|---|---|---|
+| Acoustic metric, gravity as a flow, analogue horizons (E45, r33–r36) | (a) | Unruh, Visser, Volovik, Painlevé–Gullstrand: re-derived |
+| Sound-speed inflation: r = 16εs, n_t = −r/(8s), f_NL = −(35/108)(1/s² − 1) (r44, r51) | (a) | textbook k-inflation (Garriga–Mukhanov; Chen et al.); f was chosen to fit n_s, so n_s is an input, not a prediction |
+| Two-component Josephson medium, sine-Gordon kink, snake instability (r44, r49, r55) | (a) | standard BEC physics |
+| A Rabi coupling of 10⁻¹² from tunnelling between sheets (r51) | (a) | textbook double-well splitting; only the mapping to the model's units is specific |
+| Spin-quantum stability from the exchange symmetry; avoided-crossing gap ∝ ε (r50) | (a) | a Z₂ selection rule and first-order perturbation theory |
+| Classical-field transfer time ≈ 6.5/Ω, extrapolated to 10⁷ Hubble times (r50) | (b) | a scaling in a 2D toy simulation (scatter ×2.7, four single-seed points, extrapolated over 9 orders); not a statement about the world |
+| One-loop speed flow, Yukawa and gauge (r45, r52) | (a) | Chadha–Nielsen, Isobe–Nagaosa; the closed form g(x) = (2/3π)[1 − 4/(x(1+x)²)] may well be in the literature (unchecked) |
+| Lattice first law, modular Hamiltonian as boost generator (r47) | (a) | Bisognano–Wichmann, Casini–Huerta–Myers, Jacobson |
+| String networks: coarsening, scaling, drift (r42, r46, r48, r54) | (a) | standard Kibble–Zurek and global-string simulations at modest size |
+| The fluid does not source the escape-speed flow (r53) | (a) | the known open problem of superfluid-vacuum models (Volovik): no Einstein equation from the medium |
+| A prediction compared with a measurement not used to fix a parameter | (c) | **none** |
+
+**Interpretation, in plain English:**
+- **No novel prediction has come out.** Every item above is either prior art or a toy-model number. The programme has not produced one number that GR, ΛCDM and the Standard Model do not already give and that a measurement could contradict.
+- **The model has more free inputs than checks.** Inputs: the Rabi coupling (~10⁻¹²), the spin sound s, the mediator range (49–313 healing lengths), equal species speeds (to 10⁻¹⁵), a field equation for the gravity flow, the decay constant f (fixed by n_s), the initial amplitude. Independent comparisons with data: zero. A model with this many knobs can be made to agree with n_s and r.
+- **The pattern in E48–E49 is a warning sign.** Each hard question (single light cone, the source of the gravity flow, reheating of the visible sector, the slow spin sound) ended as "this needs an input". That means the picture is not yet doing explanatory work; it is being fitted around.
+- **What has real, modest value:** a clean list of what any "space is a medium" theory must add before it can claim anything (a long-range field between the sheets; a symmetry that makes the species speeds equal; a field equation that makes the flow follow gravity), each with numbers showing what happens if it is left out. That is a map of requirements, closer to a review than to a discovery.
+- **My share of this.** I filled the queue with consistency checks and wrote long entries that looked like progress; the missing prediction was recorded as "inputs" inside them rather than stated as the headline. It should have been the headline after E44.
+
+**Status:** assessment (established as far as the audit goes; novelty of each item **unchecked** against the literature).
+
+**What would change it:** one zero-parameter calculation compared with a real measurement within its uncertainty σ (for example α, a mass ratio, or the cosmological constant from the medium's parameters with nothing fitted), decided in advance as pass or fail; or an observable that differs from GR + ΛCDM + SM and is within reach of a measurement.
+
+**References** (from memory): **Garriga & Mukhanov**, Phys. Lett. B 458, 219 (1999); **Chen, Huang, Kachru & Shiu**, JCAP 0701, 002 (2007); **Volovik**, *The Universe in a Helium Droplet* (2003); **Unruh**, PRL 46, 1351 (1981); **Visser**, Class. Quantum Grav. 15, 1767 (1998); **Isobe & Nagaosa**, PRB 86, 165127 (2012); **Jacobson**, PRL 75, 1260 (1995).
